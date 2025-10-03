@@ -1,161 +1,57 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "IranYekan";
-  src: url("./assets/fonts/IRANYekanWebLight.woff2");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "IranYekan";
-  src: url("./assets/fonts/IRANYekanWebRegular.woff2");
+  font-family: "YekanBakh";
+  src: url("./assets/fonts/YekanBakh-Regular.woff2") format("truetype");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "IranYekan";
-  src: url("./assets/fonts/IRANYekanWebBold.woff2");
+  font-family: "YekanBakh";
+  src: url("./assets/fonts/YekanBakh-SemiBold.woff2") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "YekanBakh";
+  src: url("./assets/fonts/YekanBakh-Bold.woff2") format("truetype");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "IranYekan";
-  src: url("./assets/fonts/IRANYekanWebExtraBold.woff2");
-  font-weight: 800;
+  font-family: "YekanBakh";
+  src: url("./assets/fonts/YekanBakh-Black.woff2") format("truetype");
+  font-weight: 900;
 }
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --font-iranYekan: "IranYekan";
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --primary-dark: #831747;
-  --primary-lighter: #f8d4e4;
-  --primary-main: #db2777;
-}
-:root {
-  --radius: 0.65rem;
-  --background: #ffffff;
-  --foreground: #09090b;
-  --card: #ffffff;
-  --card-foreground: #09090b;
-  --popover: #ffffff;
-  --popover-foreground: #09090b;
-  --primary: rgb(255, 32, 86);
-  --primary-foreground: #fff1f2;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717b;
-  --accent: #f4f4f5;
-  --accent-foreground: #18181b;
-  --destructive: #e7000b;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #ff2056;
-  --chart-1: #f54900;
-  --chart-2: #009689;
-  --chart-3: #104e64;
-  --chart-4: #ffb900;
-  --chart-5: #fe9a00;
-  --sidebar: #fafafa;
-  --sidebar-foreground: #09090b;
-  --sidebar-primary: #ff2056;
-  --sidebar-primary-foreground: #fff1f2;
-  --sidebar-accent: #f4f4f5;
-  --sidebar-accent-foreground: #18181b;
-  --sidebar-border: #e4e4e7;
-  --sidebar-ring: #ff2056;
-}
+@theme {
+  --font-YekanBakh: "YekanBakh";
+  --color-primary-light: #db2777;
+  --color-on-primary-light: #ffffff;
+  --color-bg-primary-light: #eeeff1;
+  --color-text-primary-light: #000000;
+  --color-text-secondary-light: #58616c;
+  --color-card-image-light: #6c7885;
+  --color-card-light: #e6e8eb;
+  --color-base-side-light: #e6e8eb;
+  --color-border-light: #ced2d7;
+  --color-border-text-field-light: #ced2d7;
+  --color-text-info-light: #cafdf5;
+  --color-text-success-light: #d3fcd2;
+  --color-text-error-light: #ffe9d5;
+  --color-info-light: #00b8d9;
+  --color-success-light: #22c55e;
+  --color-error-light: #b71d18;
 
-.dark {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --card: #18181b;
-  --card-foreground: #fafafa;
-  --popover: #18181b;
-  --popover-foreground: #fafafa;
-  --primary: #ff2056;
-  --primary-foreground: #fff1f2;
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
-  --muted: #27272a;
-  --muted-foreground: #9f9fa9;
-  --accent: #27272a;
-  --accent-foreground: #fafafa;
-  --destructive: #ff6467;
-  --border: #ffffff1a;
-  --input: #ffffff26;
-  --ring: #ff2056;
-  --chart-1: #1447e6;
-  --chart-2: #00bc7d;
-  --chart-3: #fe9a00;
-  --chart-4: #ad46ff;
-  --chart-5: #ff2056;
-  --sidebar: #18181b;
-  --sidebar-foreground: #fafafa;
-  --sidebar-primary: #ff2056;
-  --sidebar-primary-foreground: #fff1f2;
-  --sidebar-accent: #27272a;
-  --sidebar-accent-foreground: #fafafa;
-  --sidebar-border: #ffffff1a;
-  --sidebar-ring: #ff2056;
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50 font-iranYekan;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  .productCard__img {
-    @apply rounded-sm object-fill border border-b-gray-300;
-  }
-
-  .badge {
-    background-color: var(--primary-dark);
-    color: var(--primary-lighter);
-    border-radius: 9999px;
-  }
-}
-
-.checkbox {
-  @apply w-4.5 h-4.5 rounded-sm bg-[#22C55E] appearance-none relative
-before:content-['✔'] before:absolute before:text-white before:text-sm before:top-0.25 before:left-1;
+  --color-primary-dark: #831747;
+  --color-primary-hover-dark: #db277714;
+  --color-base-side-dark: #151515;
+  --color-bg-primary-dark: #0f0f0f;
+  --color-base-text-field-dark: #141516;
+  --color-base-card-dark: #1f2937;
+  --color-border-dark: #ced2d7;
+  --color-border-text-field-dark: #3f4043;
+  --color-text-primary-dark: #ffffff;
 }
