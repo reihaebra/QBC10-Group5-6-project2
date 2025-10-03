@@ -1,14 +1,9 @@
+import ButtonFavorite from "./ButtonFavorite";
 const ProductCardSmall = () => {
   return (
     <div className="font-yekan-bakh flex flex-col gap-4 w-[350px] h-[336px]">
       <div className="bg-neutral-light-600 w-[350px] h-[296px] rounded-lg relative dark:bg-neutral-dark-600">
-        <button className="flex items-center justify-center absolute top-4 right-4 cursor-pointer">
-          <img
-            src="./src/assets/icons/favorite.svg"
-            alt="favorite"
-            className="hover:content-[url('./src/assets/icons/favorite-hover.svg')]"
-          />
-        </button>
+        <ButtonFavorite />
       </div>
       <div className="flex items-center justify-between">
         <span className="font-sans font-normal text-base text-primary-text-light dark:text-primary-text-dark">
@@ -28,13 +23,7 @@ const ProductCardBig = () => {
   return (
     <div className="font-yekan-bakh flex flex-col gap-4 w-[404px] h-96">
       <div className="bg-neutral-light-600 w-[404px] h-[346px] rounded-lg relative dark:bg-neutral-dark-600">
-        <button className="flex items-center justify-center absolute top-4 right-4 cursor-pointer">
-          <img
-            src="./src/assets/icons/favorite.svg"
-            alt="favorite"
-            className="hover:content-[url('./src/assets/icons/favorite-hover.svg')]"
-          />
-        </button>
+        <ButtonFavorite />
       </div>
       <div className="flex items-center justify-between">
         <span className="font-sans font-normal text-lg text-primary-text-light dark:text-primary-text-dark">
