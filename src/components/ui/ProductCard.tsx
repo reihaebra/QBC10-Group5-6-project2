@@ -1,4 +1,6 @@
+import { BadgeSmall, BadgeBig } from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
+
 const ProductCardSmall = () => {
   return (
     <div className="font-yekan-bakh flex flex-col gap-4 w-[350px] h-[336px]">
@@ -10,9 +12,7 @@ const ProductCardSmall = () => {
           Apple iPad Pro 12.9-inch
         </span>
         <div className="flex items-center justify-center py-0.5 px-2 max-w-24 max-h-5 rounded-3xl bg-primary-dark">
-          <span className="font-normal leading-4 text-[11px] text-primary-lighter">
-            ۱۰,۰۰۰ تومان
-          </span>
+          <BadgeSmall />
         </div>
       </div>
     </div>
@@ -30,9 +30,7 @@ const ProductCardBig = () => {
           Apple iPad Pro 12.9-inch
         </span>
         <div className="flex items-center justify-center py-0.5 px-2.5 max-w-24 max-h-6 rounded-3xl bg-primary-dark">
-          <span className="font-normal leading-5 text-xs text-primary-lighter">
-            ۱۰,۰۰۰ تومان
-          </span>
+          <BadgeBig />
         </div>
       </div>
     </div>
