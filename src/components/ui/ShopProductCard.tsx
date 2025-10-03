@@ -1,4 +1,5 @@
 import ButtonFavorite from "./ButtonFavorite";
+import ButtonMore from "./ButtonMore";
 const ShopProductCard = () => {
   return (
     <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-shop-card-dark">
@@ -25,12 +26,7 @@ const ShopProductCard = () => {
           ...
         </p>
         <div className="flex items-end justify-between pt-3">
-          <button className="flex items-center gap-2 px-3 py-2 bg-primary-main rounded-lg cursor-pointer">
-            <span className="font-normal text-sm text-on-primary-light">
-              مشاهده بیشتر
-            </span>
-            <img src="./src/assets/icons/left-arrow.svg" alt="left-arrow" />
-          </button>
+          <ButtonMore />
           <button className="p-2 cursor-pointer">
             <img
               src="./src/assets/icons/add-to-cart-light.svg"
