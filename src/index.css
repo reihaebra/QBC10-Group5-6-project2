@@ -27,21 +27,22 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-YekanBakh: "YekanBakh";
-  --color-primary-light: #db2777;
+  --font-yekan-bakh: "YekanBakh";
+
+  --color-primary-main: #db2777;
   --color-primary-lighter: #f8d4e4;
   --color-on-primary-light: #ffffff;
-  --color-bg-primary-light: #eeeff1;
-  --color-text-primary-light: #000000;
-  --color-text-secondary-light: #58616c;
+  --color-background-base-light: #eeeff1;
+  --color-primary-text-light: #000000;
+  --color-secondary-light: #58616c;
   --color-card-image-light: #6c7885;
   --color-card-light: #e6e8eb;
   --color-base-side-light: #e6e8eb;
   --color-border-light: #ced2d7;
   --color-border-text-field-light: #ced2d7;
-  --color-text-info-light: #cafdf5;
-  --color-text-success-light: #d3fcd2;
-  --color-text-error-light: #ffe9d5;
+  --color-info-text-light: #cafdf5;
+  --color-success-text-light: #d3fcd2;
+  --color-error-text-light: #ffe9d5;
   --color-info-light: #00b8d9;
   --color-success-light: #22c55e;
   --color-error-light: #b71d18;
@@ -49,10 +50,12 @@
   --color-primary-dark: #831747;
   --color-primary-hover-dark: #db277714;
   --color-base-side-dark: #151515;
-  --color-bg-primary-dark: #0f0f0f;
+  --color-background-primary-dark: #0f0f0f;
+  --color-shop-card-dark: #1f2937;
+  --color-secondary-dark: #9ca3af;
   --color-base-text-field-dark: #141516;
   --color-base-card-dark: #1f2937;
   --color-border-dark: #ced2d7;
   --color-border-text-field-dark: #3f4043;
-  --color-text-primary-dark: #ffffff;
+  --color-primary-text-dark: #ffffff;
 }
