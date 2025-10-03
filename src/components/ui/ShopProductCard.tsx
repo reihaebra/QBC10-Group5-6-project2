@@ -1,14 +1,9 @@
+import ButtonFavorite from "./ButtonFavorite";
 const ShopProductCard = () => {
   return (
     <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-shop-card-dark">
       <div className="relative">
-        <button className="flex items-center justify-center absolute top-2 right-5 cursor-pointer">
-          <img
-            src="./src/assets/icons/favorite.svg"
-            alt="favorite"
-            className="hover:content-[url('./src/assets/icons/favorite-hover.svg')]"
-          />
-        </button>
+        <ButtonFavorite />
         <img src="./src/assets/images/iphone-14-pro.png" alt="iphone-14-pro" />
         <div className="flex items-center justify-center py-0.5 px-2.5 max-w-12 max-h-6 rounded-3xl bg-primary-dark absolute right-4 bottom-3">
           <span className="font-normal leading-5 text-xs text-primary-lighter">
