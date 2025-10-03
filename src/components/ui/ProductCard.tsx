@@ -1,7 +1,7 @@
 const ProductCardSmall = () => {
   return (
     <div className="font-yekan-bakh flex flex-col gap-4 w-[350px] h-[336px]">
-      <div className="bg-neutral-light-600 w-[350px] h-[296px] rounded-lg relative">
+      <div className="bg-neutral-light-600 w-[350px] h-[296px] rounded-lg relative dark:bg-neutral-dark-600">
         <button className="flex items-center justify-center absolute top-4 right-4 cursor-pointer">
           <img
             src="./src/assets/icons/favorite.svg"
@@ -11,7 +11,7 @@ const ProductCardSmall = () => {
         </button>
       </div>
       <div className="flex items-center justify-between">
-        <span className="font-sans font-normal text-base text-primary-text-light">
+        <span className="font-sans font-normal text-base text-primary-text-light dark:text-primary-text-dark">
           Apple iPad Pro 12.9-inch
         </span>
         <div className="flex items-center justify-center py-0.5 px-2 max-w-24 max-h-5 rounded-3xl bg-primary-dark">
@@ -27,7 +27,7 @@ const ProductCardSmall = () => {
 const ProductCardBig = () => {
   return (
     <div className="font-yekan-bakh flex flex-col gap-4 w-[404px] h-96">
-      <div className="bg-neutral-light-600 w-[404px] h-[346px] rounded-lg relative">
+      <div className="bg-neutral-light-600 w-[404px] h-[346px] rounded-lg relative dark:bg-neutral-dark-600">
         <button className="flex items-center justify-center absolute top-4 right-4 cursor-pointer">
           <img
             src="./src/assets/icons/favorite.svg"
@@ -37,7 +37,7 @@ const ProductCardBig = () => {
         </button>
       </div>
       <div className="flex items-center justify-between">
-        <span className="font-sans font-normal text-lg text-primary-text-light">
+        <span className="font-sans font-normal text-lg text-primary-text-light dark:text-primary-text-dark">
           Apple iPad Pro 12.9-inch
         </span>
         <div className="flex items-center justify-center py-0.5 px-2.5 max-w-24 max-h-6 rounded-3xl bg-primary-dark">
