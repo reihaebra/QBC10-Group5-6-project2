@@ -1,6 +1,6 @@
 const ShopProductCard = () => {
   return (
-    <div className="font-YekanBakh flex flex-col rounded-lg max-w-96 bg-card-light">
+    <div className="font-YekanBakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-shop-card-dark">
       <div className="relative">
         <button className="flex items-center justify-center absolute top-2 right-5 cursor-pointer">
           <img
@@ -18,19 +18,19 @@ const ShopProductCard = () => {
       </div>
       <div className="p-5">
         <div className="flex items-start justify-between pb-2">
-          <span className="font-sans font-normal text-xl leading-7 text-text-primary-light">
+          <span className="font-sans font-normal text-xl leading-7 text-primary-text-light dark:text-primary-text-dark">
             Apple iPhone 14 Pro
           </span>
-          <span className="font-bold text-base leading-6 text-primary-light">
+          <span className="font-bold text-base leading-6 text-primary-main">
             ۱۰,۰۰۰ تومان
           </span>
         </div>
-        <p className="font-normal text-base leading-6 text-text-secondary-light">
+        <p className="font-normal text-base leading-6 text-secondary-light dark:text-secondary-dark">
           آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR
           ...
         </p>
         <div className="flex items-end justify-between pt-3">
-          <button className="flex items-center gap-2 px-3 py-2 bg-primary-light rounded-lg cursor-pointer">
+          <button className="flex items-center gap-2 px-3 py-2 bg-primary-main rounded-lg cursor-pointer">
             <span className="font-normal text-sm text-on-primary-light">
               مشاهده بیشتر
             </span>
@@ -39,7 +39,13 @@ const ShopProductCard = () => {
           <button className="p-2 cursor-pointer">
             <img
               src="./src/assets/icons/add-to-cart-light.svg"
-              alt="add-to-cart-light"
+              alt="add to cart light"
+              className="dark:hidden"
+            />
+            <img
+              src="./src/assets/icons/add-to-cart-dark.svg"
+              alt="add to cart dark"
+              className="hidden dark:block"
             />
           </button>
         </div>
