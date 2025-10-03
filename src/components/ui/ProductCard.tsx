@@ -11,9 +11,7 @@ const ProductCardSmall = () => {
         <span className="font-sans font-normal text-base text-primary-text-light dark:text-primary-text-dark">
           Apple iPad Pro 12.9-inch
         </span>
-        <div className="flex items-center justify-center py-0.5 px-2 max-w-24 max-h-5 rounded-3xl bg-primary-dark">
-          <BadgeSmall />
-        </div>
+        <BadgeSmall />
       </div>
     </div>
   );
@@ -29,9 +27,7 @@ const ProductCardBig = () => {
         <span className="font-sans font-normal text-lg text-primary-text-light dark:text-primary-text-dark">
           Apple iPad Pro 12.9-inch
         </span>
-        <div className="flex items-center justify-center py-0.5 px-2.5 max-w-24 max-h-6 rounded-3xl bg-primary-dark">
-          <BadgeBig />
-        </div>
+        <BadgeBig />
       </div>
     </div>
   );
