@@ -1,6 +1,6 @@
 const ShopProductCard = () => {
   return (
-    <div className="font-YekanBakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-shop-card-dark">
+    <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-shop-card-dark">
       <div className="relative">
         <button className="flex items-center justify-center absolute top-2 right-5 cursor-pointer">
           <img
