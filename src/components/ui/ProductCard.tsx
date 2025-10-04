@@ -1,4 +1,4 @@
-import { BadgeSmall, BadgeBig } from "./Badge";
+import Badge from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
 
 const ProductCardSmall = () => {
@@ -11,7 +11,7 @@ const ProductCardSmall = () => {
         <span className="font-sans font-normal text-base text-primary-text-light dark:text-primary-text-dark">
           Apple iPad Pro 12.9-inch
         </span>
-        <BadgeSmall />
+        <Badge size="small">۱۰,۰۰۰ تومان</Badge>
       </div>
     </div>
   );
@@ -27,7 +27,7 @@ const ProductCardBig = () => {
         <span className="font-sans font-normal text-lg text-primary-text-light dark:text-primary-text-dark">
           Apple iPad Pro 12.9-inch
         </span>
-        <BadgeBig />
+        <Badge size="big">۱۰,۰۰۰ تومان</Badge>
       </div>
     </div>
   );
