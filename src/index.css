@@ -38,8 +38,8 @@
   --color-card-image-light: #6c7885;
   --color-card-light: #e6e8eb;
   --color-base-side-light: #e6e8eb;
-  --color-border-light: #ced2d7;
-  --color-border-text-field-light: #ced2d7;
+  --color-input-light: #ced2d7;
+  --color-input-active: #078dee;
   --color-info-text-light: #cafdf5;
   --color-success-text-light: #d3fcd2;
   --color-error-text-light: #ffe9d5;
@@ -55,9 +55,8 @@
   --color-secondary-dark: #9ca3af;
   --color-base-text-field-dark: #141516;
   --color-base-card-dark: #1f2937;
-  --color-border-dark: #ced2d7;
-  --color-border-text-field-dark: #3f4043;
   --color-primary-text-dark: #ffffff;
+  --color-input-dark: #3f4043;
 
   --color-neutral-light-600: #6c7885;
 
