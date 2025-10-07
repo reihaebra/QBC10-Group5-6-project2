@@ -1,3 +1,4 @@
+import React from "react";
 interface BadgeProps {
   size: "small" | "big";
   children: React.ReactNode;

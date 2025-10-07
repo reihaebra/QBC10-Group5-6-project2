@@ -1,3 +1,4 @@
+import React from "react";
 import ButtonFavorite from "./ButtonFavorite";
 import ButtonMore from "./ButtonMore";
 

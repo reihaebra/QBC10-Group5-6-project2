@@ -1,3 +1,4 @@
+import React from "react";
 const ButtonShop = () => {
   return (
     <button className="flex items-center justify-center px-8 py-2 bg-primary-main rounded-full cursor-pointer hover:bg-primary-dark">

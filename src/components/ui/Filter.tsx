@@ -1,3 +1,4 @@
+import React from "react";
 import { samples } from "../../../constants/filterSampleItems";
 
 const Filter = () => {

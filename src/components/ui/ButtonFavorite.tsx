@@ -1,3 +1,4 @@
+import React from "react";
 const ButtonFavorite = () => {
   return (
     <button className="flex items-center justify-center absolute top-4 right-4 cursor-pointer">
