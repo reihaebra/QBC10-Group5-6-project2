@@ -1,12 +1,13 @@
 import React from "react";
 import Sidebar from "../components/ui/Sidebar";
 import UserDropdown from "../components/ui/UserDropdown";
+import ButtonPrimary from "./ui/ButtonPrimary";
 
 const ProductPage = () => {
   return (
     <>
       {/* top part of the page */}
-      <div className="flex flex-row gap-10  bg-background-base-light">
+      <div className="flex flex-row gap-12  bg-background-base-light">
         <div id="side">
           <Sidebar />
           <UserDropdown />
@@ -14,7 +15,7 @@ const ProductPage = () => {
         {/* productImage */}
         <div
           id="productImage"
-          className="max-w-1/2 h-1/6  mt-16 border border-red-600"
+          className="w-1/3 h-1/3  mt-16 border border-red-600"
         >
           <img
             src="src/assets/images/mba13-midnight-select-202402.png"
@@ -25,11 +26,10 @@ const ProductPage = () => {
         {/* productIntroduce */}
         <div
           id="productIntroduce"
-          className="flex flex-col gap-8 max-w-1/2 h-2/6 mt-16 p-5 border border-red-600"
+          className="flex flex-col gap-10 w-1/3 h-1/3 mt-16 p-5 border border-red-600"
         >
           <div className="flex flex-row justify-between">
             <h3>Apple MacBook Air M2</h3>
-            <img src="/src/assets/icons/favorite.svg" alt="favorite" />
           </div>
           <div>
             <p>
@@ -121,8 +121,11 @@ const ProductPage = () => {
             </div>
           </div>
           <div className="border border-red-600">
-            <button className="bg-primary-lighter">افزودن به سبد خرید</button>
+            <ButtonPrimary text="افزودن به سبد خرید" />
           </div>
+        </div>
+        <div id="favorite" className="mt-16">
+          <img src="/src/assets/icons/favorite.svg" alt="favorite" />
         </div>
       </div>
     </>
