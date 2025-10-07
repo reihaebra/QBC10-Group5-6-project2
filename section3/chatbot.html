@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Chatbot</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <!-- This is a main container -->
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <!-- babel is JavaScripts compiler -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      //small pieces of component
+      function ChatInput() {
+        return (
+          //fragment
+          <>
+            <input
+              type="text"
+              placeholder="Send a message to Chatbot"
+              size="30"
+            ></input>
+            <button>Send</button>
+          </>
+        );
+      }
+
+      function ChatMessage({ message, sender }) {
+        return (
+          <div>
+            {sender === "robot" && <img src="src/img/robot.png" width="50" />}
+            {message}
+            {sender === "user" && <img src="src/img/user.png" width="50" />}
+          </div>
+        );
+      }
+
+      function ChatMessages() {
+        const chatMessage = [
+          {
+            message: "Hello chatbot1",
+            sender: "user",
+            id: "id1",
+          },
+          {
+            message: "Hello! How can I help you?",
+            sender: "robot",
+            id: "id2",
+          },
+          {
+            message: "Thanks",
+            sender: "user",
+            id: "id3",
+          },
+          {
+            message:
+              "No problem! Let me know if you need help with anything else!",
+            sender: "robot",
+            id: "id4",
+          },
+        ];
+
+        return (
+          <>
+            {chatMessage.map((chatMessage) => {
+              return (
+                <ChatMessage
+                  message={chatMessage.message}
+                  sender={chatMessage.sender}
+                  key={chatMessage.id}
+                />
+              );
+            })}
+          </>
+        );
+      }
+
+      function App() {
+        return (
+          //   //fragment
+          <>
+            <ChatInput />
+            <ChatMessages />
+          </>
+        );
+      }
+
+      // Set Up and uses React
+      const container = document.querySelector(".js-container");
+      // ReactDOM.createRoot(container).render(<App></App>);
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

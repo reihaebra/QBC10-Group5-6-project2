@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Basics</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <!-- This is a main container -->
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <!-- babel is JavaScripts compiler -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+   
+    <script type="text/babel">
+      const button = <button>Click Me!</button>;
+      const paragraph = <p>this is a paragraph</p>;
+      const div = (
+        <div>
+          <button>Click Me!</button>
+          <br />
+          <p>this is a paragraph {2 + 3}</p>
+        </div>
+      );
+      // Set Up and uses React
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(div);
+    </script>
+  </body>
+</html>
