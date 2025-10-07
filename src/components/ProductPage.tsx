@@ -31,7 +31,14 @@ const ProductPage = () => {
           <div>
             <h1>۱۰,۰۰۰ تومان</h1>
           </div>
-          <div></div>
+          <div>
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+          </div>
           <div></div>
           <div></div>
         </div>
