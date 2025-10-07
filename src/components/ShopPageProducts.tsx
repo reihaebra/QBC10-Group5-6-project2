@@ -1,7 +1,7 @@
 import ShopProductCard from "./ui/ShopProductCard";
-import data from "../../constants/ShopPageSamples";
+import data from "../../constants/Shop-page-samples";
 
-const ShopPage_Products = () => {
+const ShopPageProducts = () => {
   return (
     <main className="flex flex-row flex-wrap gap-6 max-w-[1200px] h-fit">
       {data.map((item) => (
@@ -19,4 +19,4 @@ const ShopPage_Products = () => {
   );
 };
 
-export default ShopPage_Products;
+export default ShopPageProducts;
