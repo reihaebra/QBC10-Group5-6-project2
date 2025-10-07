@@ -1,16 +1,16 @@
-interface ButtonMainProps {
+interface ButtonPrimaryProps {
   text: string;
   iconSrc?: string;
   altText?: string;
   handleClick: () => void;
 }
 
-const ButtonMain = ({
+const ButtonPrimary = ({
   text,
   iconSrc,
   altText = "",
   handleClick,
-}: ButtonMainProps) => {
+}: ButtonPrimaryProps) => {
   return (
     <button
       onClick={handleClick}
@@ -22,4 +22,4 @@ const ButtonMain = ({
   );
 };
 
-export default ButtonMain;
+export default ButtonPrimary;
