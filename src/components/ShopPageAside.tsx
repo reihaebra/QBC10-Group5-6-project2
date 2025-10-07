@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ShopPage_button from "./ShopPage_button";
+import ShopPage_button from "./ShopPageButton";
 const ShopPage_aside = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

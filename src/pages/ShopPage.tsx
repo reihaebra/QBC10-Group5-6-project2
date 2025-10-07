@@ -1,6 +1,6 @@
 import Sidebar from "../components/ui/Sidebar";
-import ShopPage_aside from "../components/ShopPage_aside";
-import ShopPage_Products from "../components/ShopPage_Products";
+import ShopPage_aside from "../components/ShopPageAside";
+import ShopPage_Products from "../components/ShopPageProducts";
 const ShopPage = () => {
   return (
     <div className="flex  bg-background-base-light justify-between font-yekan-bakh">

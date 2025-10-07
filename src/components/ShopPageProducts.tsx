@@ -1,4 +1,4 @@
-import ShopProductCard from "../components/ui/ShopProductCard";
+import ShopProductCard from "./ui/ShopProductCard";
 interface Product {
   title: string;
   brand: string;
