@@ -2,7 +2,7 @@ import OrderRow from "./OrderRow";
 import data from "../../constants/orders-sample";
 const OrdersFrame = () => {
   return (
-    <ul className="flex flex-col gap-6 h-fit font-yekan-bakh">
+    <ul className="flex flex-col gap-6 h-fit font-yekan-bakh w-full">
       <li className="flex gap-4 justify-between border-b border-b-input-light pb-4">
         <div className="flex gap-4 w-[346px]">
           <p className="font-normal text-primary-text-light text-base w-20">
