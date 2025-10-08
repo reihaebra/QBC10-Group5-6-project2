@@ -1,4 +1,5 @@
 import OrderRow from "./OrderRow";
+import data from "../../constants/orders-sample";
 const OrdersFrame = () => {
   return (
     <ul className="flex flex-col gap-6 h-fit font-yekan-bakh">
@@ -30,8 +31,18 @@ const OrdersFrame = () => {
           عملیات
         </p>
       </li>
-        {/* Here will be OrderRow components */}
-        <OrderRow/>
+      {data.map((item) => (
+        <OrderRow
+          key={item.id}
+          imageUrl={item.imageUrl}
+          name={item.name}
+          price={item.price}
+          user={item.user}
+          date={item.date}
+          paymentStatus={item.paymentStatus}
+          transitionStatus={item.transitionStatus}
+        />
+      ))}
     </ul>
   );
 };

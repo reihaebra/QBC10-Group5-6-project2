@@ -4,13 +4,13 @@ type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";
 
 interface OrderRowProps {
-  imageUrl?: string;
-  name?: string;
-  price?: string;
-  user?: string;
-  date?: string;
-  paymentStatus?: PaymentStatus;
-  transitionStatus?: TransitionStatus;
+  imageUrl: string;
+  name: string;
+  price: string;
+  user: string;
+  date: string;
+  paymentStatus: PaymentStatus;
+  transitionStatus: TransitionStatus;
 }
 
 const OrderRow = ({
