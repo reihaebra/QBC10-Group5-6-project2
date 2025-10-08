@@ -1,5 +1,5 @@
 import ShopProductCard from "./ui/ShopProductCard";
-import data from "../../constants/shop-page-samples";
+import data from "../../constants/shop-page-sample";
 
 const ShopPageProducts = () => {
   return (
