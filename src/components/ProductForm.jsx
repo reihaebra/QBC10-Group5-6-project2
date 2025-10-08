@@ -1,61 +1,86 @@
+import React from 'react';
+import { useState } from 'react';
+import TextField from './ui/TextField';
+import ButtonPrimary from './ui/ButtonPrimary';
+
 export default function ProductForm() {
+  // دریافت دیتا
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    brand: '',
+    description: '',
+    stock_status: 'in_stock',
+    max_purchase: '',
+  });
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
   return (
     <form
-      dir="rtl"
+      onSubmit={handleSubmit}
       className="w-[70rem] font-yekan-bakh font-bold text-primary-text-light dark:text-primary-text-dark"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* نام */}
         <div className="md:col-span-2">
-          <label className="label justify-between">
-            <span className="label-text">نام</span>
-            <span className="label-text-alt text-error">*</span>
-          </label>
-          <input
-            name="name"
-            type="text"
-            placeholder="نام محصول را وارد نمایید"
-            className="input input-bordered w-full bg-input-light dark:bg-input-dark dark:text-primary-text-dark"
-            required
+          <TextField
+            inputLabel="نام"
+            inputValue={formData.name}
+            onChangeInput={() =>
+              handleChange(
+                'name',
+                (document.getElementById('text-field') as HTMLInputElement)
+                  ?.value || ''
+              )
+            }
           />
         </div>
 
         {/* قیمت */}
-        <div>
-          <label className="label">
-            <span className="label-text">قیمت</span>
-          </label>
-          <input
-            name="price"
-            type="number"
-            min="0"
-            step="1000"
-            placeholder="قیمت محصول را وارد نمایید"
-            className="input input-bordered w-full bg-input-light dark:bg-input-dark dark:text-primary-text-dark"
-          />
-        </div>
+        <TextField
+          inputLabel="قیمت"
+          inputValue={formData.name}
+          onChangeInput={() =>
+            handleChange(
+              'price',
+              (document.getElementById('text-field') as HTMLInputElement)
+                ?.value || ''
+            )
+          }
+        />
 
         {/* برند */}
-        <div>
-          <label className="label">
-            <span className="label-text">برند</span>
-          </label>
-          <input
-            name="brand"
-            type="text"
-            placeholder="برند محصول را وارد نمایید"
-            className="input input-bordered w-full bg-input-light dark:bg-input-dark dark:text-primary-text-dark"
-          />
-        </div>
+        <TextField
+          inputLabel="برند"
+          inputValue={formData.name}
+          onChangeInput={() =>
+            handleChange(
+              'brand',
+              (document.getElementById('text-field') as HTMLInputElement)
+                ?.value || ''
+            )
+          }
+        />
 
-        {/* توضیحات  */}
-        <div className="md:col-span-2">
-          <label className="label">
-            <span className="label-text">توضیحات</span>
+        {/* توضیحات */}
+        <div className="md:col-span-2 flex flex-col gap-2">
+          <label className="font-normal text-base text-primary-text-light dark:text-on-primary-light">
+            توضیحات
           </label>
           <textarea
             name="description"
             rows={4}
+            value={formData.description}
+            onChange={(e) => handleChange('description', e.target.value)}
             placeholder="توضیحات محصول را وارد نمایید"
             className="textarea textarea-bordered w-full resize-none bg-input-light dark:bg-input-dark dark:text-primary-text-dark"
           />
@@ -68,6 +93,8 @@ export default function ProductForm() {
           </label>
           <select
             name="stock_status"
+            value={formData.stock_status}
+            onChange={(e) => handleChange('stock_status', e.target.value)}
             className="select select-bordered w-full bg-input-light dark:bg-input-dark dark:text-primary-text-dark"
           >
             <option value="in_stock">موجود</option>
@@ -76,27 +103,23 @@ export default function ProductForm() {
         </div>
 
         {/* تعداد قابل خرید */}
-        <div>
-          <label className="label">
-            <span className="label-text">تعداد قابل خرید</span>
-          </label>
-          <input
-            name="max_purchase"
-            type="number"
-            min="1"
-            placeholder="تعداد قابل خرید را وارد نمایید"
-            className="input input-bordered w-full bg-input-light dark:bg-input-dark dark:text-primary-text-dark"
-          />
-        </div>
-
-        {/* دکمه ثبت  */}
+        <TextField
+          inputLabel="تعداد قابل خرید"
+          inputValue={formData.name}
+          onChangeInput={() =>
+            handleChange(
+              'max_purchase',
+              (document.getElementById('text-field') as HTMLInputElement)
+                ?.value || ''
+            )
+          }
+        />
+        {/* دکمه ثبت */}
         <div className="md:col-span-2 flex justify-start">
-          <button
-            type="submit"
-            className="btn bg-primary-main border-0 dark:bg-primary-dark"
-          >
-            ساخت محصول جدید
-          </button>
+          <ButtonPrimary
+            text="ساخت محصول جدید"
+            handleClick={() => console.log('Product created:', formData)}
+          />
         </div>
       </div>
     </form>
