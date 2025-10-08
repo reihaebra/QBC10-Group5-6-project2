@@ -1,4 +1,8 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
+
+type SidebarProps = {
+  children?: ReactNode;
+};
 
 const menuItems = [
   { name: "sidebar-home", label: "داشبورد" },
@@ -7,17 +11,17 @@ const menuItems = [
   { name: "sidebar-favorite", label: "علاقه‌مندی‌ها" },
 ];
 
-const Sidebar = () => {
+const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div
       className={`
-        h-screen flex flex-col justify-between font-yekan-bakh font-normal
+        fixed top-0 right-0 h-screen flex flex-col justify-between font-yekan-bakh font-normal
         bg-on-primary-light text-primary-text-light
         dark:bg-primary-text-light dark:text-primary-text-dark
         transition-all duration-300
-        ${isExpanded ? "w-80" : "w-24"}
+        ${isExpanded ? "w-80" : "w-24"}  z-50
       `}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
@@ -49,6 +53,7 @@ const Sidebar = () => {
           </button>
         ))}
       </div>
+      {children}
     </div>
   );
 };
