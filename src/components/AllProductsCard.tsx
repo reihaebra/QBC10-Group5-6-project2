@@ -34,7 +34,7 @@ const AllProductsCard: React.FC<ProductCardProps> = ({
           <ButtonPrimary
             text="مشاهده بیشتر"
             handleClick={handleClick}
-            iconSrc="../assets/icons/arrow-left.svg"
+            iconSrc="./src/assets/icons/left-arrow.svg"
           />
           <p className="text-base text-primary-text-light font-[400]">{price}</p>
         </div>
