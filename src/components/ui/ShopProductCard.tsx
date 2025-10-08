@@ -1,5 +1,5 @@
 import ButtonFavorite from "./ButtonFavorite";
-import ButtonMore from "./ButtonMore";
+import ButtonPrimary from "./ButtonPrimary";
 
 interface ShopProductCardProps {
   title: string;
@@ -18,6 +18,9 @@ const ShopProductCard = ({
   imageUrl = "./src/assets/images/iphone-14-pro.png",
   onAddToCart,
 }: ShopProductCardProps) => {
+  const handleShowMore = () => {
+    // TODO
+  };
   return (
     <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-shop-card-dark">
       <div className="relative">
@@ -42,7 +45,12 @@ const ShopProductCard = ({
           {description}
         </p>
         <div className="flex items-end justify-between pt-3">
-          <ButtonMore />
+          <ButtonPrimary
+            text="مشاهده بیشتر"
+            iconSrc="./src/assets/icons/left-arrow.svg"
+            altText="left arrow"
+            handleClick={handleShowMore}
+          />
           <button onClick={onAddToCart} className="p-2 cursor-pointer">
             <img
               src="./src/assets/icons/add-to-cart-light.svg"
