@@ -17,10 +17,9 @@ const ShowPageAside = () => {
           <FilterHeading title="فیلتر قیمت" />
           <div className="p-5 text-sm">
             <input
-              className="bg-on-primary-light w-50 h-[42px] rounded-lg py-[10px] px-3.5"
+              className="bg-on-primary-light w-50 h-[42px] rounded-lg py-2.5 px-3.5"
               type="text"
-              name=""
-              id=""
+              name="priceFilter"
               placeholder="قیمت را وارد نمایید"
             />
           </div>
