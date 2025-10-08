@@ -34,7 +34,7 @@ const ProductCard = ({
       className={`font-yekan-bakh flex flex-col gap-4 ${sizeStyles.container}`}
     >
       <div
-        className={`bg-neutral-light-600 ${sizeStyles.imageContainer} rounded-lg relative dark:bg-neutral-dark-600`}
+        className={`bg-neutral-light-600 ${sizeStyles.imageContainer} rounded-lg relative dark:bg-[var(--color-neutral-dark-600)]`}
       >
         {imageUrl ? (
           <img
@@ -47,7 +47,7 @@ const ProductCard = ({
       </div>
       <div className="flex items-center justify-between">
         <span
-          className={`font-sans font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-primary-text-dark`}
+          className={`font-sans font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-[var(--color-primary-text-dark)]`}
         >
           {title}
         </span>
