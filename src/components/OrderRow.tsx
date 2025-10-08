@@ -1,5 +1,6 @@
-import { use } from "react";
+// OrderRow.tsx
 import OrderRowButton from "./OrderRowButton";
+
 type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";
 
@@ -23,32 +24,44 @@ const OrderRow = ({
   transitionStatus = "unsent",
 }: OrderRowProps) => {
   return (
-    <li className="flex gap-4 justify-between items-center">
-      <div className="flex gap-4 items-center">
-        <figure className="w-20 h-20 overflow-hidden p-2">
-          <img src={imageUrl} alt="" className="w-16 h-16" />
+    <tr className="bg-surface-light ">
+      <td className="py-3 px-2 flex items-center gap-3">
+        <figure className="w-16 h-16 overflow-hidden p-1 flex-shrink-0">
+          <img
+            src={imageUrl}
+            alt={name}
+            className="w-full h-full object-cover rounded-lg"
+          />
         </figure>
-        <p className="font-normal text-primary-text-light text-base w-[250px]">
+      </td>
+      <td>
+        <p className="font-normal text-primary-text-light text-base">
           {name || "نام محصول"}
         </p>
-      </div>
-      <p className=" font-normal text-primary-text-light text-base w-20">
+      </td>
+
+      <td className="text-center text-primary-text-light">
         {date || "1402/02/01"}
-      </p>
-      <p className=" font-normal text-primary-text-light text-base w-20">
-        {user || "کاربر"}
-      </p>
-      <p className=" font-normal text-primary-text-light text-base w-20">
+      </td>
+      <td className="text-center text-primary-text-light">{user || "کاربر"}</td>
+      <td className="text-center text-primary-text-light">
         {price || "0 تومان"}
-      </p>
-      <>{paymentStatus && <OrderRowButton status={paymentStatus} />}</>
-      <>{transitionStatus && <OrderRowButton status={transitionStatus} />}</>
-      <div className="flex gap-2.5 h-fit w-[100px] justify-center">
-        <button className="rounded-lg py-2 px-3 bg-primary-main text-center font-normal text-on-primary-light h-9 my-auto ">
+      </td>
+
+      <td className="text-center align-middle">
+        <OrderRowButton status={paymentStatus} />
+      </td>
+
+      <td className="text-center align-middle">
+        <OrderRowButton status={transitionStatus} />
+      </td>
+
+      <td className="text-center">
+        <button className="rounded-lg py-2 px-3 bg-primary-main text-on-primary-light text-sm">
           جزییات
         </button>
-      </div>
-    </li>
+      </td>
+    </tr>
   );
 };
 

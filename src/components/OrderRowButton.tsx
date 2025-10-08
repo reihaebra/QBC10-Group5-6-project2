@@ -32,9 +32,9 @@ const OrderRowButton = ({ status }: OrderRowButtonProps) => {
       : "در حال ارسال";
 
   return (
-    <div className="flex gap-2.5 h-fit w-fit">
+    <div className="flex gap-2.5 h-fit w-fit justify-center mx-auto">
       <button
-        className={`rounded-xl px-2 py-0.5 flex items-center justify-center w-[100px] ${bgColorClass}`}
+        className={`rounded-xl px-2 py-0.5 flex items-center justify-center  ${bgColorClass}`}
       >
         <p className={`font-normal text-sm ${textColorClass}`}>{text}</p>
       </button>
