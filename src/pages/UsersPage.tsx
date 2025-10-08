@@ -48,7 +48,7 @@ export const UsersPage = () => {
                 ID
               </th>
               <th scope="col" className="text-right">
-                نام
+                نـام
               </th>
               <th scope="col" className="text-right">
                 ایمیل
@@ -199,3 +199,4 @@ export const UsersPage = () => {
 };
 
 export default UsersPage;
+
