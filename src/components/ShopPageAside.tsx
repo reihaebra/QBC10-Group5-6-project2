@@ -7,7 +7,7 @@ const ShowPageAside = () => {
     setSelectedOption(event.target.value);
   };
   return (
-    <aside className=" w-[264px] h-[810px] bg-base-side-light flex items-center flex-col justify-start">
+    <aside className=" w-[264px] h-[810px] bg-base-side-light flex items-center flex-col justify-start mr-80">
       <div className="relative flex flex-col gap-10 w-60 top-3">
         <div className="flex flex-col gap-7">
           <FilterHeading title="فیلتر برند" />
