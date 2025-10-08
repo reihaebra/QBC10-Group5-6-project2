@@ -1,9 +1,9 @@
 import { useState } from "react";
-import ProductPage from "./components/ProductPage";
+import ProductContainer from "./components/ProductContainer";
 import "./App.css";
 
 const App = () => {
-  return <ProductPage />;
+  return <ProductContainer />;
 };
 
 export default App;
