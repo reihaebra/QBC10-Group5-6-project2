@@ -17,7 +17,7 @@ const ShowPageAside = () => {
           <FilterHeading title="فیلتر قیمت" />
           <div className="p-5 text-sm">
             <input
-              className="bg-on-primary-light w-50 h-[42px] rounded-lg py-2.5 px-3.5"
+              className="bg-on-primary-light w-50 h-[42px] rounded-lg py-2.5 px-3.5 focus:outline-primary-main"
               type="text"
               name="priceFilter"
               placeholder="قیمت را وارد نمایید"
@@ -25,8 +25,8 @@ const ShowPageAside = () => {
           </div>
         </div>
       </div>
-      <div className="flex px-5 gap-2.5">
-        <button className="cursor-pointer w-50 h-7 rounded-sm  border border-neutral-dark-600">
+      <div className="flex px-5 gap-2.5 mt-3.5">
+        <button className="cursor-pointer w-50 h-7 rounded-sm  border border-neutral-dark-600 ">
           حذف فیلتر ها
         </button>
       </div>
