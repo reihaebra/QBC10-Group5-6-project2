@@ -7,9 +7,9 @@ const CartTable = () => {
     <div className=''>
       <table className="w-full text-right table-fixed">
         <thead>
-          <tr className='pb-2 flex flex-row justify-between text-center dark:text-primary-text-dark'>
+          <tr className='pb-2 flex flex-row justify-between text-center dark:text-[var(--color-primary-text-dark)]'>
             <th className="flex gap-[16px] w-[350px] font-normal text-base">
-              <p className=' w-[80px]'>عکس</p>
+              <p className='w-[80px]'>عکس</p>
               <p className='max-w-[300px]'>نام محصول</p>
             </th>
             <th className='w-[36px] font-normal text-base'>تعداد</th>
@@ -19,7 +19,7 @@ const CartTable = () => {
         </thead>
         <tbody>
           {items.map((item, index) => (
-            <CartItems key={index} image={item.image} name={item.name} count={item.count} price={item.price} />
+            <CartItems key={index} image={item.image} name={item.name} quantity={item.quantity} price={item.price} />
           ))}
         </tbody>
       </table>
