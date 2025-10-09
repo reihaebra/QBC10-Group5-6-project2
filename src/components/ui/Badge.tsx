@@ -11,7 +11,7 @@ const Badge = ({ size = "small", children = "۱۰,۰۰۰ تومان" }: BadgePro
 
   return (
     <div
-      className={`flex items-center justify-center max-w-24 rounded-full bg-primary-dark ${sizeClasses}`}
+      className={`flex items-center justify-center rounded-full bg-primary-dark ${sizeClasses}`}
     >
       <span className="font-normal leading-5 text-xs text-primary-lighter">
         {children}
