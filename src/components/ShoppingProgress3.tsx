@@ -20,7 +20,7 @@ const ShoppingProgress3 = () => {
 
       <div className="flex">
         <Sidebar/>
-        <main className="w-[100%] h-[100%] bg-background-base-light dark:bg-[var(--color-background-primary-dark)] m-auto flex flex-col justify-center items-center pt-10 gap-[76px] font-yekan-bakh">
+        <main className="w-full h-full bg-background-base-light dark:bg-[var(--color-background-primary-dark)] mr-25 flex flex-col justify-center items-center pt-10 gap-18 font-yekan-bakh">
           {/* <ProgressBar/> */}
           {/* <ShoppingProgress2/> */}
           {/* <ShoppingProgress3 isVisible={true}/> */}

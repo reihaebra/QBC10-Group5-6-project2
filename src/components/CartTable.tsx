@@ -8,13 +8,13 @@ const CartTable = () => {
       <table className="w-full text-right table-fixed">
         <thead>
           <tr className='pb-2 flex flex-row justify-between text-center dark:text-[var(--color-primary-text-dark)]'>
-            <th className="flex gap-[16px] w-[350px] font-normal text-base">
-              <p className='w-[80px]'>عکس</p>
-              <p className='max-w-[300px]'>نام محصول</p>
+            <th className="flex gap-4 w-88 font-normal text-base">
+              <p className='w-20'>عکس</p>
+              <p className='max-w-75'>نام محصول</p>
             </th>
-            <th className='w-[36px] font-normal text-base'>تعداد</th>
-            <th className='w-[80px] font-normal text-base'>قیمت</th>
-            <th className='w-[80px] font-normal text-base'>قیمت نهایی</th>
+            <th className='w-9 font-normal text-base'>تعداد</th>
+            <th className='w-20 font-normal text-base'>قیمت</th>
+            <th className='w-25 font-normal text-base'>قیمت نهایی</th>
           </tr>
         </thead>
         <tbody>
