@@ -42,7 +42,7 @@ const ProductContainer = () => {
           <div id="productDetail" className="flex flex-row justify-between">
             <div
               id="rightcolumn"
-              className="flex flex-col gap-3.5 font-normal text-[16px]"
+              className="flex flex-col gap-3.5 font-normal text-base"
             >
               <div className="flex flex-row gap-2">
                 <img
@@ -95,7 +95,7 @@ const ProductContainer = () => {
             </div>
             <div
               id="leftcolumn"
-              className="flex flex-col gap-3.5 font-normal text-[16px]"
+              className="flex flex-col gap-3.5 font-normal text-base"
             >
               <div className="flex flex-row gap-2">
                 <img
