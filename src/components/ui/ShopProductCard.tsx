@@ -42,7 +42,7 @@ const ShopProductCard = ({
         <p className="font-normal text-base leading-6 text-secondary-light dark:text-secondary-dark">
           {description}
         </p>
-        <div className="flex items-end justify-between pt-3">
+        <div className="flex items-end justify-between pt-3 w-full h-full">
           <ButtonMore />
           <button onClick={onAddToCart} className="p-2 cursor-pointer">
             <img

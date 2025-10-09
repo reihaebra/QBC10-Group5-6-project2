@@ -1,51 +1,96 @@
-import { useState } from "react";
-import ShopProductCard from "./ui/ShopProductCard";
+import React, { useRef, useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import ShopProductCard from "../components/ui/ShopProductCard";
 
 const HeroCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
 
   const products = [
     {
       title: "Apple iPhone 14 Pro",
       brand: "Apple",
-      price: "۱۰,۰۰۰ تومان",
+      price: "۵۰,۰۰۰,۰۰۰ تومان",
       description:
-        "آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی Super Retina XDR با فناوری ProMotion و تراشه A16 Bionic است.",
+        "آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی Super Retina XDR است و از تراشه A16 Bionic بهره می‌برد.",
       imageUrl: "./src/assets/images/iphone-14-pro.png",
     },
     {
-      title: "Apple iPhone 15 Pro",
+      title: "Apple iPhone 14",
       brand: "Apple",
-      price: "۱۲,۰۰۰ تومان",
+      price: "۴۰,۰۰۰,۰۰۰ تومان",
       description:
-        "نسخه جدید آیفون با طراحی تیتانیومی و قدرت پردازنده A17 Pro.",
-      imageUrl: "./src/assets/images/iphone-15-pro.png",
+        "آیفون 14 با صفحه نمایش 6.1 اینچی و طراحی زیبا، تجربه کاربری روانی ارائه می‌دهد.",
+      imageUrl: "./src/assets/images/iphone-14.png",
     },
   ];
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % products.length);
-  };
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
-  };
+  useEffect(() => {
+    if (swiperInstance && prevRef.current && nextRef.current) {
+      swiperInstance.params.navigation.prevEl = prevRef.current;
+      swiperInstance.params.navigation.nextEl = nextRef.current;
+      swiperInstance.navigation.init();
+      swiperInstance.navigation.update();
+    }
+  }, [swiperInstance]);
 
   return (
-    <div className="flex items-center justify-center relative">
+    <div className="relative flex items-center justify-center w-full">
+      {/* کروسل */}
+      <div className="absolute left-10 w-163 h-175 z-10">
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          onSwiper={setSwiperInstance}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop
+          spaceBetween={16}
+          slidesPerView={1}
+          className="w-full h-full rounded-2xl overflow-hidden bg-neutral-light-600 dark:bg-neutral-dark-600"
+        >
+          {products.map((product, index) => (
+            <SwiperSlide key={index}>
+              <ShopProductCard {...product} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* دکمه قبلی */}
       <button
-        onClick={prevSlide}
-        className="absolute right-0 z-10 p-3 text-white bg-black/30 rounded-full"
+        ref={prevRef}
+        className="absolute top-1/2 left-[-2px] -translate-y-1/2 z-20 bg-white dark:bg-neutral-dark-700 p-2 rounded-full  hover:scale-105 transition-transform"
       >
-        ‹
+        <img
+          src="./src/assets/icons/arrleft-light.svg"
+          alt="prev"
+          className="w-5 h-5 dark:hidden"
+        />
+        <img
+          src="./src/assets/icons/arrleft-dark.svg"
+          alt="prev dark"
+          className="hidden w-5 h-5 dark:block"
+        />
       </button>
 
-      <ShopProductCard {...products[currentIndex]} onAddToCart={() => {}} />
-
+      {/* دکمه بعدی */}
       <button
-        onClick={nextSlide}
-        className="absolute left-0 z-10 p-3 text-white bg-black/30 rounded-full"
+        ref={nextRef}
+        className="absolute top-1/2 left-175 -translate-y-1/2 z-20 bg-white dark:bg-neutral-dark-700 p-2 rounded-full hover:scale-105 transition-transform"
       >
-        ›
+        <img
+          src="./src/assets/icons/arrright-light.svg"
+          alt="next"
+          className="w-5 h-5 dark:hidden"
+        />
+        <img
+          src="./src/assets/icons/arrright-dark.svg"
+          alt="next dark"
+          className="hidden w-5 h-5 dark:block"
+        />
       </button>
     </div>
   );

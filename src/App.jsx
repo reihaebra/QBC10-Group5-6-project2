@@ -3,7 +3,11 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 
 const App = () => {
-  <HomePage />;
+  return (
+    <div>
+      <HomePage />
+    </div>
+  );
 };
 
 export default App;

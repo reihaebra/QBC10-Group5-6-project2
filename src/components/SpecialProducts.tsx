@@ -1,4 +1,6 @@
+import React from "react";
 import ProductCard from "./ui/ProductCard";
+import ButtonShop from "./ui/ButtonShop";
 
 const SpecialProducts = () => {
   const products = [
@@ -14,9 +16,14 @@ const SpecialProducts = () => {
 
   return (
     <div className="mt-10">
-      <h2 className="font-yekan-bakh text-2xl font-semibold text-white mb-6">
-        محصولات ویژه
-      </h2>
+      <div className="flex justify-between items-center mx-[10px] my-[5px]">
+        <h2 className="font-yekan-bakh text-2xl font-semibold mb-6">
+          محصولات ویژه
+        </h2>
+        <div className="my-[15px]">
+          <ButtonShop />
+        </div>
+      </div>
 
       <div className="grid grid-cols-4 gap-6">
         {products.map((p, i) => (
