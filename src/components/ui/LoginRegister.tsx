@@ -17,14 +17,15 @@ const authItems = [
   { name: "sidebar-register", label: "ثبت نام" },
 ];
 
-const App = () => {
+const LoginRegister = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const renderItems = (items: Item[]) =>
     items.map((item, index) => (
       <button
         key={index}
-        className="flex items-center gap-2 p-2 hover:bg-primary-hover-dark rounded transition-colors duration-200"
+        className="flex items-center gap-2 p-2 hover:bg-primary-hover-dark hover:text-primary-main
+hover:text-primary-main rounded transition-colors duration-200"
       >
         <img
           src={`/src/assets/icons/${item.name}-light.svg`}
@@ -50,11 +51,11 @@ const App = () => {
   return (
     <div
       className={`
-        h-screen flex flex-col justify-between font-yekan-bakh font-normal
-        bg-on-primary-light text-primary-text-light
-        dark:bg-primary-text-light dark:text-primary-text-dark
-        transition-all duration-300
-        ${isExpanded ? "w-80" : "w-24"}
+        fixed top-0 right-0 h-screen flex flex-col justify-between font-yekan-bakh font-normal
+        bg-on-primary-light text-primary-text-light pr-4
+        dark:bg-black dark:text-white
+        transition-all duration-300 
+        ${isExpanded ? "w-80" : "w-24"} z-50
       `}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
@@ -68,4 +69,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default LoginRegister;
