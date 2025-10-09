@@ -38,37 +38,38 @@ export const UsersPage = () => {
   };
 
   return (
-    <div className="p-6 w-full font-yekan-bakh text-base text-primary-text-light dark:text-primary-text-dark">
+    <div className="p-6 w-full h-screen font-yekan-bakh text-base font-normal bg-[var(--color-background-base-light)] dark:bg-[var(--color-background-primary-dark)] text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
       {/* Admins Table */}
       <div className="overflow-x-auto">
-        <table className="table w-full rounded-xl table-fixed">
+        <table className="w-full rounded-xl table-fixed border-collapse">
           <thead>
-            <tr>
-              <th scope="col" className="text-right">
+            <tr className="border-b-1 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]">
+              <th scope="col" className=" text-right w-2/8  m-2 font-normal">
                 ID
               </th>
-              <th scope="col" className="text-right">
+              <th scope="col" className="text-right w-2/8 pr-4 font-normal">
                 نـام
               </th>
-              <th scope="col" className="text-right">
+              <th scope="col" className="text-right w-2/8 pr-4 font-normal">
                 ایمیل
               </th>
-              <th scope="col" className="text-center">
+              <th scope="col" className="text-center w-1/8 p-2 font-normal">
                 ادمین
               </th>
-              <th scope="col" className="text-center">
+              <th scope="col" className="text-left w-1/8 pl-8 font-normal">
                 عملیات
               </th>
             </tr>
+            <tr className="border-b-1 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]"></tr>
           </thead>
-          <tbody className="text-primary-text-light dark:text-primary-text-dark">
+          <tbody className="text-[var(primary-text-light)] dark:text-[var(--color-primary-text-dark)]">
             {admins.map((admin: Admin, index: number) => (
               <tr
                 key={index}
-                className="hover:bg-primary-hover-dark transition-all duration-150"
+                className="hover:bg-[var(--color-primary-hover-dark)] transition-all duration-150"
               >
                 {/* ID */}
-                <td className="text-sm px-4 py-2">{admin.id}</td>
+                <td className="text-sm py-2">{admin.id}</td>
 
                 {/* Name by icon */}
                 <td className="px-4 py-2">
@@ -94,7 +95,7 @@ export const UsersPage = () => {
                             if (e.key === "Enter") handleSave(index, "name");
                             if (e.key === "Escape") handleCancel();
                           }}
-                          className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none"
+                          className="h-9 bg-[var(--color-on-primary-light)] dark:bg-[var(--color-base-text-field-dark)] border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] rounded-lg px-2 py-1 text-sm focus:outline-none text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]"
                           autoFocus
                         />
                       </div>
@@ -109,7 +110,12 @@ export const UsersPage = () => {
                           <img
                             src="/src/assets/icons/user-list-edit.svg"
                             alt="edit"
-                            className="w-4 h-4 opacity-70 hover:opacity-100"
+                            className="w-4 h-4  hover:opacity-70 hidden dark:block"
+                          />
+                          <img
+                            src="/src/assets/icons/user-list-edit-black.svg"
+                            alt="edit"
+                            className="w-4 h-4  hover:opacity-70 dark:hidden"
                           />
                         </button>
                         <span>{admin.name}</span>
@@ -142,7 +148,7 @@ export const UsersPage = () => {
                             if (e.key === "Enter") handleSave(index, "email");
                             if (e.key === "Escape") handleCancel();
                           }}
-                          className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none"
+                          className="h-9 bg-[var(--color-on-primary-light)] dark:bg-[var(--color-base-text-field-dark)] border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] rounded-lg px-2 py-1 text-sm focus:outline-none text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]"
                           autoFocus
                         />
                       </div>
@@ -157,7 +163,12 @@ export const UsersPage = () => {
                           <img
                             src="/src/assets/icons/user-list-edit.svg"
                             alt="edit"
-                            className="w-4 h-4 opacity-70 hover:opacity-100"
+                            className="w-4 h-4  hover:opacity-70 hidden dark:block"
+                          />
+                          <img
+                            src="/src/assets/icons/user-list-edit-black.svg"
+                            alt="edit"
+                            className="w-4 h-4  hover:opacity-70 dark:hidden"
                           />
                         </button>
                         <span>{admin.email}</span>
@@ -180,8 +191,8 @@ export const UsersPage = () => {
                 </td>
 
                 {/* Operation */}
-                <td className="px-4 py-2">
-                  <button className="flex h-9 w-9 bg-error-light rounded-lg justify-center items-center mx-auto cursor-pointer">
+                <td className="px-8 py-2 justify-items-end pl">
+                  <button className="flex h-9 w-9 bg-error-light rounded-lg justify-center items-center cursor-pointer">
                     <img
                       className="w-6 h-6"
                       src="/src/assets/icons/user-list-delete_forever.svg"
@@ -199,4 +210,3 @@ export const UsersPage = () => {
 };
 
 export default UsersPage;
-
