@@ -4,32 +4,32 @@ import data from "../../constants/orders-sample";
 
 const OrdersFrame = () => {
   return (
-    <div className="w-full overflow-x-auto font-yekan-bakh">
-      <table className="min-w-full border-collapse">
-        <thead>
+    <div className="w-full overflow-x-auto font-yekan-bakh dark:text-[var(--color-primary-text-dark)]">
+      <table className="min-w-full border-collapse ">
+        <thead >
           <tr className="border-b border-input-light bg-surface-light">
-             <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-20">
+             <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-20 dark:text-[var(--color-primary-text-dark)]">
               عکس
             </th>
-            <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-50">
+            <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-50 dark:text-[var(--color-primary-text-dark)]">
               نام محصول
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
               تاریخ
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
               کاربر
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
               قیمت نهایی
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
               پرداخت
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
               ارسال
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
               عملیات
             </th>
           </tr>
