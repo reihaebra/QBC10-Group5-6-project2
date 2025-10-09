@@ -35,13 +35,13 @@ const ProductCard = ({
       className={`font-yekan-bakh flex flex-col gap-4 ${sizeStyles.container}`}
     >
       <div
-        className={`bg-neutral-light-600 ${sizeStyles.imageContainer} rounded-lg relative dark:bg-[var(--color-neutral-dark-600)]`}
+        className={`bg-neutral-light-600 ${sizeStyles.imageContainer} rounded-lg overflow-hidden relative dark:bg-[var(--color-neutral-dark-600)]`}
       >
         {imageUrl ? (
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover object-center rounded-lg"
           />
         ) : null}
         <ButtonFavorite />
