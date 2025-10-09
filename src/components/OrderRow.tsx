@@ -1,6 +1,6 @@
 // OrderRow.tsx
 import OrderRowButton from "./OrderRowButton";
-
+import ButtonPrimary from "./ui/ButtonPrimary";
 type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";
 
@@ -36,7 +36,7 @@ const OrderRow = ({
       </td>
       <td>
         <p className="font-normal text-primary-text-light text-base">
-          {name || "نام محصو ل"}
+          {name || "نام محصول"}
         </p>
       </td>
 
@@ -56,10 +56,13 @@ const OrderRow = ({
         <OrderRowButton status={transitionStatus} />
       </td>
 
-      <td className="text-center">
-        <button className="rounded-lg py-2 px-3 bg-primary-main text-on-primary-light text-sm">
-          جزییات
-        </button>
+      <td className="text-center align-middle">
+        <div className="flex justify-center">
+          <ButtonPrimary
+            text={"جزییات"}
+            handleClick={() => console.log("button info clicked")}
+          />
+        </div>
       </td>
     </tr>
   );

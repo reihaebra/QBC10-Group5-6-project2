@@ -15,10 +15,10 @@ const OrderRowButton = ({ status }: OrderRowButtonProps) => {
 
   const textColorClass =
     status === "paid"  || status === "sent"
-      ? "text-[#D3FCD2]"
+      ? "text-order-paid-text"
       : status === "unpaid"  || status === "unsent"
-      ? "text-[#FFE9D5]"
-      : "text-[#CAFDF5]";
+      ? "text-order-unpaid-text"
+      : "text-order-pending-text";
 
   const text =
     status === "paid"
