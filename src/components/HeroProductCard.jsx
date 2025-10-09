@@ -30,7 +30,7 @@ const HeroProductCard = ({
           <p className="text-lg font-bold text-gray-900 text-left dark:text-white">
             {price}
           </p>
-          <p className="text-gray-900 text-sm leading-relaxed dark:text-white">
+          <p className="text-dark text-sm leading-relaxed dark:text-white">
             {description}
           </p>
         </div>
