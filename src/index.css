@@ -46,6 +46,9 @@
   --color-info-light: #00b8d9;
   --color-success-light: #22c55e;
   --color-error-light: #b71d18;
+  --color-order-paid-text: #D3FCD2;
+  --color-order-unpaid-text: #FFE9D5;
+  --color-order-pending-text: #CAFDF5;
 
   --color-primary-dark: #831747;
   --color-primary-hover-dark: #db277714;
