@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import ShopProductCard from "../components/ui/ShopProductCard";
+import HeroProductCard from "../components/HeroProductCard";
 
 const HeroCarousel = () => {
   const prevRef = useRef(null);
@@ -13,22 +13,31 @@ const HeroCarousel = () => {
   const products = [
     {
       title: "Apple iPhone 14 Pro",
-      brand: "Apple",
+      brand: "اپل",
       price: "۵۰,۰۰۰,۰۰۰ تومان",
       description:
-        "آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی Super Retina XDR است و از تراشه A16 Bionic بهره می‌برد.",
-      imageUrl: "./src/assets/images/iphone-14-pro.png",
+        "آیفون 14 پرو دارای صفحه‌نمایش 6.1 اینچی Super Retina XDR و تراشه قدرتمند A16 Bionic است.",
+      imageUrl: "../src/assets/images/iphone-14-pro.png",
+      rating: "۵",
+      reviews: "۴۲۰۲",
+      stock: "۱۰",
+      updatedAt: "چند لحظه قبل",
     },
     {
       title: "Apple iPhone 14",
-      brand: "Apple",
+      brand: "اپل",
       price: "۴۰,۰۰۰,۰۰۰ تومان",
       description:
-        "آیفون 14 با صفحه نمایش 6.1 اینچی و طراحی زیبا، تجربه کاربری روانی ارائه می‌دهد.",
-      imageUrl: "./src/assets/images/iphone-14.png",
+        "آیفون 14 با طراحی زیبا و صفحه‌نمایش Super Retina XDR تجربه‌ای روان و دلپذیر ارائه می‌دهد.",
+      imageUrl: "../src/assets/images/iphone-14-pro.png",
+      rating: "۴.۸",
+      reviews: "۳۵۸۰",
+      stock: "۵",
+      updatedAt: "۲ ساعت قبل",
     },
   ];
 
+  // اتصال دکمه‌ها به Swiper
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
       swiperInstance.params.navigation.prevEl = prevRef.current;
@@ -39,7 +48,7 @@ const HeroCarousel = () => {
   }, [swiperInstance]);
 
   return (
-    <div className="relative flex items-center justify-center w-full">
+    <div className="relative flex items-center justify-center w-full py-10">
       {/* کروسل */}
       <div className="absolute left-10 w-163 h-175 z-10">
         <Swiper
@@ -49,11 +58,11 @@ const HeroCarousel = () => {
           loop
           spaceBetween={16}
           slidesPerView={1}
-          className="w-full h-full rounded-2xl overflow-hidden bg-neutral-light-600 dark:bg-neutral-dark-600"
+          className="w-full h-full rounded-2xl overflow-hidden"
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
-              <ShopProductCard {...product} />
+              <HeroProductCard {...product} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -62,7 +71,7 @@ const HeroCarousel = () => {
       {/* دکمه قبلی */}
       <button
         ref={prevRef}
-        className="absolute top-1/2 left-[-2px] -translate-y-1/2 z-20 bg-white dark:bg-neutral-dark-700 p-2 rounded-full  hover:scale-105 transition-transform"
+        className="absolute left-[-2px] top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
           src="./src/assets/icons/arrleft-light.svg"
@@ -79,7 +88,7 @@ const HeroCarousel = () => {
       {/* دکمه بعدی */}
       <button
         ref={nextRef}
-        className="absolute top-1/2 left-175 -translate-y-1/2 z-20 bg-white dark:bg-neutral-dark-700 p-2 rounded-full hover:scale-105 transition-transform"
+        className="absolute left-175 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
           src="./src/assets/icons/arrright-light.svg"

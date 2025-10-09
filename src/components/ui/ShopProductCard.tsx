@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonFavorite from "./ButtonFavorite";
 import ButtonPrimary from "./ButtonPrimary";
+import ButtonMore from "./ButtonMore";
 
 interface ShopProductCardProps {
   title: string;
