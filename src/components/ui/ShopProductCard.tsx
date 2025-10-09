@@ -22,7 +22,7 @@ const ShopProductCard = ({
     // TODO
   };
   return (
-    <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-shop-card-dark">
+    <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-[var(--color-shop-card-dark)]">
       <div className="relative">
         <ButtonFavorite />
         <img src={imageUrl} alt={title} />
@@ -34,14 +34,14 @@ const ShopProductCard = ({
       </div>
       <div className="p-5">
         <div className="flex items-start justify-between pb-2">
-          <span className="font-sans font-normal text-xl leading-7 text-primary-text-light dark:text-primary-text-dark">
+          <span className="font-sans font-normal text-xl leading-7 text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
             {title}
           </span>
           <span className="font-bold text-base leading-6 text-primary-main">
             {price}
           </span>
         </div>
-        <p className="font-normal text-base leading-6 text-secondary-light dark:text-secondary-dark">
+        <p className="font-normal text-base leading-6 text-secondary-light dark:text-[var(--color-secondary-dark)]">
           {description}
         </p>
         <div className="flex items-end justify-between pt-3">
