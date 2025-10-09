@@ -30,7 +30,7 @@ const OrdersFrame = () => {
               ارسال
             </th>
             <th className="text-center font-normal text-primary-text-light text-base">
-              عملیات
+              سعملیات
             </th>
           </tr>
         </thead>

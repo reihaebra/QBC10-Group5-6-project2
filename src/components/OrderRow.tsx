@@ -36,7 +36,7 @@ const OrderRow = ({
       </td>
       <td>
         <p className="font-normal text-primary-text-light text-base">
-          {name || "نام محصول"}
+          {name || "نام محصو ل"}
         </p>
       </td>
 
