@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "./ui/Sidebar";
 import UserDropdown from "./ui/UserDropdown";
 import ButtonPrimary from "./ui/ButtonPrimary";
+import AdminMenu from "./AdminMenu";
 
 const ProductContainer = () => {
   return (
@@ -34,8 +35,8 @@ const ProductContainer = () => {
               18 ساعت عمر باتری و طراحی بدون فن.
             </p>
           </div>
-          <div className="text-[var(--color-primary-text-light)] font-medium  dark:text-[var(--color-primary-text-dark)]">
-            <span className="text-3xl">۱۰,۰۰۰ تومان</span>
+          <div className="text-[var(--color-primary-text-light)]  dark:text-[var(--color-primary-text-dark)]">
+            <span className="text-3xl font-bold">۱۰,۰۰۰ تومان</span>
           </div>
           {/* productDetail */}
           <div id="productDetail" className="flex flex-row justify-between">
@@ -203,14 +204,7 @@ const ProductContainer = () => {
               </div>
             </div>
             <div id="select-box" className="w-24 h-10">
-              <select
-                dir="ltr"
-                className="collapse w-[86px] h-10 pl-3 focus:outline-none max-w-xs bg-[var(--color-on-primary-light)] border border-gray-300 dark:border dark:border-gray-600 dark:bg-[var(--color-base-text-field-dark)]"
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+              <AdminMenu />
             </div>
           </div>
           <div>
