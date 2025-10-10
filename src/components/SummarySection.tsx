@@ -15,7 +15,7 @@ const SummarySection = () => {
               <h3 className="mb-2 font-medium text-2xl text-primary-text-light dark:text-[var(--color-primary-text-dark)]">روش پرداخت</h3>
               <p className="text-base text-primary-text-light dark:text-[var(--color-primary-text-dark)]"><span className='text-secondary-light dark:text-[var(--color-secondary-dark)]'>روش:</span> درگاه پرداخت پاسارگاد</p>
             </div>
-            <div className="p-4 flex-1 flex-col gap-[16px] max-w-[250px]">
+            <div className="p-4 flex-1 flex-col gap-4 max-w-63">
               <h3 className="mb-2 font-medium text-2xl text-primary-text-light dark:text-[var(--color-primary-text-dark)]">آدرس دریافت</h3>
               <p className="text-base text-primary-text-light dark:text-[var(--color-primary-text-dark)]"><span className='text-secondary-light dark:text-[var(--color-secondary-dark)]'>آدرس:</span> تهران، خیابان آزادی، نبش کوچه فدری، پلاک ۱۳</p>
             </div>
