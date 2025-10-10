@@ -10,7 +10,7 @@ const TextField = ({
   onChangeInput,
 }: TextFieldProps) => {
   return (
-    <div className="font-yekan-bakh flex flex-col items-start gap-2 max-w-[531px] max-h-20">
+    <div className="font-yekan-bakh flex flex-col items-start gap-2 w-full max-h-20">
       <label
         className="font-normal text-base leading-6 text-primary-text-light dark:text-[var(--color-on-primary-light)]"
         htmlFor="text-field"
