@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Sidebar />
-      <div className="flex flex-col gap-10 pt-[110px] mb-[110px] relative w-screen bg-background-base-light h-screen">
+      <div className="flex flex-col gap-10 pt-[110px] mb-[110px] relative w-screen bg-background-base-light h-screen dark:bg-[var(--color-background-primary-dark)]">
         <div className="flex gap-32 w-full justify-center h-fit">
           <DashboardCard title="فروش کل" amount="۰ تومان" />
           <DashboardCard title="مشتری ها" amount="10" />
@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
         </div>
         {/* نمودار فروش */}
         <div className="w-full  rounded-2xl p-6 max-w-[1584px] mx-auto h-[984px]">
-          <h3 className="text-secondary-light mb-4 text-sm font-bold text-right">
+          <h3 className="text-secondary-light mb-4 text-sm font-bold text-right dark:text-[var(--color-secondary-dark)]">
             نمودار فروش
           </h3>
           <div className="w-full h-full">
@@ -49,8 +49,8 @@ const Dashboard: React.FC = () => {
                   domain={[0, dataMax + 1]}
                   ticks={[...Array(dataMax + 2).keys()]}
                   orientation="right"
-                  axisLine={false} // حذف خط عمودی محور
-                  tickLine={false} // حذف خطوط کوچک کنار tickها
+                  axisLine={false}
+                  tickLine={false}
                 />
 
                 <Tooltip
@@ -66,7 +66,7 @@ const Dashboard: React.FC = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <p className="text-secondary-light mb-4 text-xs font-bold text-center">
+          <p className="text-secondary-light mb-4 text-sm font-bold text-center  dark:text-[var(--color-secondary-dark)">
            تاریخ
           </p>
         </div>
