@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Sidebar />
-      <div className="flex flex-col gap-10 pt-[110px] mb-[110px] relative w-screen bg-background-base-light h-screen dark:bg-[var(--color-background-primary-dark)]">
+      <div className="flex flex-col gap-10 pt-[110px] mb-[110px] font-yekan-bakh relative w-screen bg-background-base-light h-screen dark:bg-[var(--color-background-primary-dark)]">
         <div className="flex gap-32 w-full justify-center h-fit">
           <DashboardCard title="فروش کل" amount="۰ تومان" />
           <DashboardCard title="مشتری ها" amount="10" />
