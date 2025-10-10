@@ -9,7 +9,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({title , amount}) => {
       <figure className="w-12 h-12 rounded-full bg-primary-main py-3 px-5 text-white">$</figure>
       <div className="flex flex-col gap-1">
         <p className="font-normal text-base text-secondary-light dark:text-[var(--color-secondary-dark)]">{title}</p>
-        <p className="font-bold text-xl text-primary-text-light dark:text-[var(--color-on-primary-ligh)]">{amount}</p>
+        <p className="font-bold text-xl text-primary-text-light dark:text-[var(--color-on-primary-light)]">{amount}</p>
       </div>
     </div>
   )
