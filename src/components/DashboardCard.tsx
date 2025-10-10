@@ -1,11 +1,15 @@
+interface DashboardCardProps {
+    title: string;
+    amount: string;
+}
 
-const DashboardCard: React.FC = () => {
+const DashboardCard: React.FC<DashboardCardProps> = ({title , amount}) => {
   return (
     <div className="w-80 h-40 rounded-lg bg-on-primary-light flex flex-col justify-center gap-4 pr-7">
       <figure className="w-12 h-12 rounded-full bg-primary-main py-3 px-5 text-white">$</figure>
       <div className="flex flex-col gap-1">
-        <p className="font-normal text-base text-secondary-light">فروش کل</p>
-        <p className="font-bold text-xl text-primary-text-light">۰ تومان</p>
+        <p className="font-normal text-base text-secondary-light">{title}</p>
+        <p className="font-bold text-xl text-primary-text-light">{amount}</p>
       </div>
     </div>
   )

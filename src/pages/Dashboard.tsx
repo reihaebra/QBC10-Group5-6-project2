@@ -25,9 +25,9 @@ const Dashboard: React.FC = () => {
       <Sidebar />
       <div className="flex flex-col gap-10 pt-[110px] mb-[110px] relative w-screen bg-background-base-light h-screen">
         <div className="flex gap-32 w-full justify-center h-fit">
-          <DashboardCard />
-          <DashboardCard />
-          <DashboardCard />
+          <DashboardCard title="فروش کل" amount="۰ تومان" />
+          <DashboardCard title="مشتری ها" amount="10" />
+          <DashboardCard title="سفارشات" amount="100" />
         </div>
         {/* نمودار فروش */}
         <div className="w-full  rounded-2xl p-6 max-w-[1584px] mx-auto h-[984px]">
