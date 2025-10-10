@@ -5,8 +5,10 @@ const SummarySection = () => {
   function handleClick(): void {}
 
   return (
-    <div className='flex flex-col gap-5'>
-        <h2 className="font-medium text-right text-2xl text-primary-text-light dark:text-[var(--color-primary-text-dark)]">خلاصه خرید</h2>
+    <div className="flex flex-col gap-5">
+      <h2 className="font-medium text-right text-2xl text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
+        خلاصه خرید
+      </h2>
 
         <section className="bg-base-side-light dark:bg-[var(--color-base-side-dark)] rounded-lg p-6 space-y-6 flex justify-between text-right">
             <div className="p-4 flex-1 max-w-63 flex-col gap-4">
@@ -40,7 +42,7 @@ const SummarySection = () => {
 
         <ButtonSecondary text='ثبت سفارش' handleClick={handleClick}/>
     </div>
-  )
-}
+  );
+};
 
-export default SummarySection
+export default SummarySection;

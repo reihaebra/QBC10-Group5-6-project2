@@ -4,7 +4,7 @@ import {items} from '../../constants/shopping-progress'
 
 const CartTable = () => {
   return (
-    <div className=''>
+    <div>
       <table className="w-full text-right table-fixed">
         <thead>
           <tr className='pb-2 flex flex-row justify-between text-center dark:text-[var(--color-primary-text-dark)]'>
