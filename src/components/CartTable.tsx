@@ -1,6 +1,6 @@
 import React from 'react'
 import CartItems from './CartItems'
-import {items} from '../../constants/shopping_progress'
+import {items} from '../../constants/shopping-progress'
 
 const CartTable = () => {
   return (

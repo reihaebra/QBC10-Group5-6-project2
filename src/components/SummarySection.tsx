@@ -1,6 +1,9 @@
 import React from 'react'
+import ButtonSecondary from './ui/ButtonSecondary'
 
 const SummarySection = () => {
+  function handleClick(): void {}
+
   return (
     <div className='flex flex-col gap-5'>
         <h2 className="font-medium text-right text-2xl text-primary-text-light dark:text-[var(--color-primary-text-dark)]">خلاصه خرید</h2>
@@ -35,9 +38,7 @@ const SummarySection = () => {
 
         </section>
 
-        <button className='font-bold text-xl bg-primary-main text-on-primary-light py-3 rounded-full w-full'>
-            ثبت سفارش
-        </button>
+        <ButtonSecondary text='ثبت سفارش' handleClick={handleClick}/>
     </div>
   )
 }

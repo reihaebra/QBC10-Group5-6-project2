@@ -3,31 +3,13 @@ import Summary from '../components/Summary'
 import Sidebar from '../components/ui/Sidebar'
 import PurchaseSteps3 from './PurchaseSteps3'
 
-
-// interface ShoppingProgress3Props{
-//     isVisible: boolean;
-// }
-
 const ShoppingProgress3 = () => {
-    // const {isVisible = false} = props;
-
   return (
     <>
-        {/* { isVisible &&
-            (<Summary/>)
-
-        } */}
-
-      <div className="flex">
-        <Sidebar/>
         <main className="w-full h-full bg-background-base-light dark:bg-[var(--color-background-primary-dark)] mr-25 flex flex-col justify-center items-center pt-10 gap-18 font-yekan-bakh">
-          {/* <ProgressBar/> */}
-          {/* <ShoppingProgress2/> */}
-          {/* <ShoppingProgress3 isVisible={true}/> */}
           <PurchaseSteps3/>
           <Summary/>
         </main>
-      </div>
     </>
   )
 }
