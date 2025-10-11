@@ -12,7 +12,7 @@ const HeroProductCard = ({
   updatedAt,
 }) => {
   return (
-    <div className="font-yekan-bakh flex flex-col rounded-2xl overflow-hidden w-full shadow-sm">
+    <div className="font-yekan-bakh flex flex-col rounded-2xl overflow-hidden w-full">
       {/* تصویر محصول */}
       <div className="w-full flex justify-center bg-gray-100 p-4">
         <img
@@ -23,11 +23,11 @@ const HeroProductCard = ({
       </div>
 
       {/* بخش سه ستون */}
-      <div className="flex w-full p-6 gap-6">
+      <div className="flex w-full p-6 gap-6 pr-0 mr-0">
         {/* ستون اول – بزرگترین */}
-        <div className="flex-1 min-w-[40%] flex flex-col gap-2">
-          <h3 className="text-xl font-semibold font-sans">{title}</h3>
-          <p className="text-lg font-bold text-gray-900 text-left dark:text-white">
+        <div className="flex-1 min-w-[40%] flex flex-col gap-2 gap-y-2">
+          <h3 className="text-base font-normal font-sans">{title}</h3>
+          <p className="text-xl font-normal text-gray-900 text-left dark:text-white">
             {price}
           </p>
           <p className="text-dark text-sm leading-relaxed dark:text-white">
@@ -37,7 +37,7 @@ const HeroProductCard = ({
 
         {/* ستون دوم و سوم – در سه ردیف روبه‌روی هم */}
         <div className="flex flex-1 min-w-[40%] justify-between text-gray-600 dark:text-gray-400 text-sm">
-          <div className="flex flex-col gap-y-2">
+          <div className="flex flex-col gap-y-5">
             {/* ردیف اول */}
             <div className="flex items-center gap-2">
               <img
@@ -93,7 +93,7 @@ const HeroProductCard = ({
             </div>
           </div>
 
-          <div className="flex flex-col gap-y-2">
+          <div className="flex flex-col gap-y-5">
             {/* ردیف اول */}
             <div className="flex items-center gap-2">
               <img
