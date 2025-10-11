@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ButtonPrimary from "./ButtonPrimary";
+import ButtonPrimary from "./ui/ButtonPrimary";
 
 interface CommentFormProps {
   onSubmit: (comment: {
