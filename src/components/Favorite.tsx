@@ -30,7 +30,7 @@ const Favorite = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-[var(--color-background-primary-dark)]">
+    <div>
       <div className="flex flex-wrap justify-center gap-8">
         {products.map((product) => (
           <div key={product.id}>
