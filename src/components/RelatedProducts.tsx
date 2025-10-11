@@ -1,5 +1,5 @@
-import ProductCard from "./ProductCard";
-import allProducts from "../../../constants/all-products-samples";
+import ProductCard from "./ui/ProductCard";
+import allProducts from "../../constants/all-products-samples";
 
 const RelatedProducts = () => {
   return (
