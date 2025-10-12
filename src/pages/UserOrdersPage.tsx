@@ -1,6 +1,6 @@
 import Sidebar from "../components/ui/Sidebar";
 import OrdersFrame from "../components/OrdersFrame";
-const OrderPage = () => {
+const UserOrdersPage = () => {
   return (
     <>
       <div className="relative flex h-screen justify-between dark:bg-[var(--color-background-primary-dark)] ">
@@ -13,4 +13,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default UserOrdersPage;
