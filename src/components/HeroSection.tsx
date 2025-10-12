@@ -21,7 +21,6 @@ const HeroSection = () => {
       <div className="relative -ml-12 z-20 w-[40%]">
         <SideCards />
       </div>
-      {/* کروسل */}
       <div className="relative z-10 w-[58%]">
         <HeroCarousel />
       </div>

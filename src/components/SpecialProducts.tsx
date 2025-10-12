@@ -1,7 +1,6 @@
 import React from "react";
 import ProductCard from "./ui/ProductCard";
-import ButtonSecondary from "./ui/ButtonSecondary"; // 👈 جایگزین ایمپورت
-// import ButtonShop from "./ui/ButtonShop"; // ❌ حذف کن
+import ButtonSecondary from "./ui/ButtonSecondary";
 
 const SpecialProducts = () => {
   const products = [
