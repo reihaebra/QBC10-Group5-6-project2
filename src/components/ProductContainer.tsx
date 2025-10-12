@@ -1,18 +1,11 @@
 import React from "react";
-import Sidebar from "./ui/Sidebar";
-import UserDropdown from "./ui/UserDropdown";
 import ButtonPrimary from "./ui/ButtonPrimary";
-import AdminMenu from "./AdminMenu";
+import InventoryDropdown from "../components/ui/InventoryDropdown";
 
 const ProductContainer = () => {
   return (
     <>
-      {/* top part of the page */}
       <div className="flex flex-row gap-12  bg-background-base-light dark:bg-[var(--color-background-primary-dark)] font-yekan-bakh">
-        <div id="side">
-          <Sidebar />
-          <UserDropdown />
-        </div>
         {/* productImage */}
         <div id="productImage" className="w-1/3 h-1/3  mt-16">
           <img
@@ -204,7 +197,7 @@ const ProductContainer = () => {
               </div>
             </div>
             <div id="select-box" className="w-24 h-10">
-              <AdminMenu />
+              <InventoryDropdown />
             </div>
           </div>
           <div>
