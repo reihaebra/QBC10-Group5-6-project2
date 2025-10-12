@@ -8,7 +8,7 @@ const OrderSummary: React.FC = () => {
   const rate = 60000;
 
   return (
-    <aside className="p-4 w-full">
+    <aside className="pt-4 w-full">
       <h3 className="font-bold text-xl text-right mb-4">خلاصه خرید</h3>
       <div className="flex flex-col  gap-2 w-full font-bold text-base ">
         <div className="flex  justify-between">
