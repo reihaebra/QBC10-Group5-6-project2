@@ -124,7 +124,7 @@ const PurchaseForm = (props: FormProps) => {
             >
               روش پرداخت
             </p>
-            <div className="flex items-center space-x-2 space-x-reverse gap-1.5">
+            <div className="flex items-center space-x-2 space-x-reverse gap-1.5 pb-2">
               <input
                 id="pasargadPayment"
                 type="radio"

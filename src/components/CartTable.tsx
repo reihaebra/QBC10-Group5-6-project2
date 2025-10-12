@@ -2,7 +2,24 @@ import React from 'react'
 import CartItems from './CartItems'
 import {items} from '../../constants/shopping-progress'
 
-const CartTable = () => {
+interface TableProps {
+  setSum: React.Dispatch<React.SetStateAction<number>>;
+  
+}
+
+const CartTable = (props: TableProps) => {
+  const {setSum} = props;
+  
+  const list = items.map((item, index) => (
+            <CartItems key={index} image={item.image} name={item.name} quantity={item.quantity} price={item.price} />
+          ));
+
+  const total = items.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
+
+  setSum(total);
+  
   return (
     <div>
       <table className="w-full text-right table-fixed">
@@ -18,9 +35,7 @@ const CartTable = () => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
-            <CartItems key={index} image={item.image} name={item.name} quantity={item.quantity} price={item.price} />
-          ))}
+          {list}
         </tbody>
       </table>
         
