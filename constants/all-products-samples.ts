@@ -6,6 +6,13 @@ interface Product {
   imageUrl: string;
 }
 
+interface FavoriteItem {
+  id: number;
+  title: string;
+  price: string;
+  imageUrl: string;
+}
+
 const allProducts: Product[] = [
   {
     id: 1,
@@ -57,4 +64,26 @@ const allProducts: Product[] = [
   },
 ];
 
+const products: FavoriteItem[] = [
+  {
+    id: 1,
+    title: "Apple iPad Pro 12.9-inch",
+    price: "۱۰,۰۰۰ تومان",
+    imageUrl: "",
+  },
+  {
+    id: 2,
+    title: "Samsung Galaxy Tab S8",
+    price: "۸,۵۰۰ تومان",
+    imageUrl: "",
+  },
+  {
+    id: 3,
+    title: "Samsung Galaxy Tab S8",
+    price: "۸,۵۰۰ تومان",
+    imageUrl: "",
+  },
+];
+
 export default allProducts;
+export { products };
