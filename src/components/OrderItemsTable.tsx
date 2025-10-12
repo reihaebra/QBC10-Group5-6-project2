@@ -13,11 +13,11 @@ const OrderItemsTable: React.FC = () => {
   return (
     <section
       aria-label="جدول محصولات"
-      className=" w-fit h-auto max-h-96  p-6  gap-2.5  border-2 border-input-light  dark:border[var(--color-input-dark)]"
+      className=" w-fit h-auto max-h-96  p-6  gap-2.5  border-2 border-input-light  dark:border-[var(--color-input-dark)]"
     >
       <table className="w-fit font-normal text-base flex-col ">
         {/* --- Table Header --- */}
-        <thead className="w-fit border-b border-input-light dark:border[var(--color-input-dark)]">
+        <thead className="w-fit border-b border-input-light dark:border-[var(--color-input-dark)]">
           <tr>
             <th className="py-2  text-right">عکس</th>
             <th className="py-2  text-right pl-48 pr-2">نام محصول</th>
