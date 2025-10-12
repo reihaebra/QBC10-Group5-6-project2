@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const UserDropdown = () => {
   const [open, setOpen] = useState(false);
 
-  const menuItems = ["پروفایل", "خروج از حساب"];
+  const menuItems = [
+    { label: "پروفایل", path: "/profile" },
+    { label: "خروج از حساب", path: "/login" },
+  ];
 
   return (
     <div className="p-4 flex flex-col items-start font-yekan-bakh text-base text-regular relative">
@@ -45,7 +49,7 @@ export const UserDropdown = () => {
                 index * 50
               }ms]`}
             >
-              <a>{item}</a>
+              <NavLink to={item.path}>{item.label}</NavLink>
             </li>
           ))}
         </ul>
