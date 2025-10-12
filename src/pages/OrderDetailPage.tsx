@@ -11,7 +11,7 @@ import {
   itemsSeed,
 } from "../components/TestData";
 
-const OrderDetailsPage = () => {
+const OrderDetailPage = () => {
   return (
     <TestDataProvider seed={itemsSeed} address={addressSeed}>
       <div className="min-h-screen font-yekan-bakh bg-background-base-light dark:bg-[var(--color-background-primary-dark)] overflow-x-hidden flex flex-row-reverse justify-center items-center self-center mx-auto">
@@ -35,4 +35,4 @@ const OrderDetailsPage = () => {
   );
 };
 
-export default OrderDetailsPage;
+export default OrderDetailPage;
