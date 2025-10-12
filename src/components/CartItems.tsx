@@ -5,12 +5,11 @@ interface CartItemProps {
     name: string;
     quantity: number;
     price: number;
-    finalPrice?: number;
 }
 
 const CartItems = (props: CartItemProps) => {
-    let {image, name, quantity, price, finalPrice = 0} = props;
-    finalPrice = quantity * price;
+    const {image, name, quantity, price} = props;
+    const finalPrice = quantity * price;
 
     return (
         
@@ -24,6 +23,7 @@ const CartItems = (props: CartItemProps) => {
             <td className='w-9'>{quantity}</td>
             <td className='w-20'>{price.toLocaleString()}</td>
             <td className='w-25'>{finalPrice.toLocaleString()}</td>
+            {/* {setSumPrice(sumprice => sumprice + finalPrice)} */}
         </tr>
         
     )
