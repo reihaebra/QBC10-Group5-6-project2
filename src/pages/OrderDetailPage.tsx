@@ -4,7 +4,7 @@ import OrderItemsTable from "../components/OrderItemsTable";
 import CustomerInfo from "../components/CustomerInfo";
 import OrderSummary from "../components/OrderSummary";
 import StatusStrip from "../components/StatusStrip";
-import ButtonSecondary from "../components/ui/ButtonSecondary";
+
 import {
   TestDataProvider,
   addressSeed,
@@ -26,7 +26,6 @@ const OrderDetailPage = () => {
               <CustomerInfo data={addressSeed} />
               <StatusStrip />
               <OrderSummary />
-              <ButtonSecondary text="ارسال شده" handleClick={() => {}} />
             </div>
           </div>
         </main>
