@@ -24,7 +24,7 @@ const TextField = ({
         value={inputValue}
         placeholder={`${inputLabel} محصول را وارد نمایید`}
         onChange={onChangeInput}
-        className="font-normal flex items-center justify-start px-2 py-2.5 w-full max-h-11 text-primary-text-light bg-on-primary-light border border-input-light rounded-lg placeholder-secondary-light outline-none disabled:bg-input-light focus:border-input-active dark:disabled:bg-[var(--color-input-dark)] dark:text-[var(--color-on-primary-light)] dark:placeholder-[var(--color-secondary-dark)] dark:bg-[var(--color-input-dark)] dark:border-[var(--color-input-dark)]"
+        className="font-normal flex items-center justify-start px-2 py-2.5 w-full max-h-11 text-primary-text-light bg-on-primary-light border border-input-light rounded-lg placeholder-secondary-light outline-none disabled:bg-input-light focus:border-input-active dark:disabled:bg-[var(--color-input-dark)] dark:text-[var(--color-on-primary-light)] dark:placeholder-[var(--color-secondary-dark)] dark:bg-[var(--color-base-text-field-dark)] dark:border-[var(--color-input-dark)]"
       />
     </div>
   );
