@@ -1,11 +1,11 @@
 import React from "react";
-import { Address } from "../../constants/TestData";
+import type { Address } from "../../constants/TestData";
 
 interface CustomerInfoProps {
   data: Address;
 }
 
-const CustomerInfo: React.FC<CustomerInfoProps> = ({ data }) => {
+const CustomerInfo = ({ data }: CustomerInfoProps) => {
   return (
     <div className="w-lg">
       <h2 className="font-bold text-xl text-right mb-3">آدرس دریافت</h2>

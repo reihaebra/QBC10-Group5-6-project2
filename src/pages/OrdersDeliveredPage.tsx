@@ -9,7 +9,7 @@ import {
   TestDataProvider,
   addressSeed,
   itemsSeed,
-} from "../components/TestData";
+} from "../../constants/TestData";
 
 const OrdersDeliveredPage = () => {
   return (
