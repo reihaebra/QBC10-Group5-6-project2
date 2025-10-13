@@ -14,12 +14,11 @@ import UserOrdersPage from "./pages/UserOrdersPage";
 import OrderPage from "./pages/OrderPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import OrdersDeliverOptionPage from "./pages/OrdersDeliverOptionPage";
-import OrdersDeliveredPage from "./pages/OrdersDeliveredPage";
 import UsersPage from "./pages/UsersPage";
 import Dashboard from "./pages/Dashboard";
 import CreateProduct from "./pages/CreateProduct";
-import AllProducts from "./pages/AllProducts";
 import EditProduct from "./pages/EditProduct";
+import AllProducts from "./pages/AllProducts";
 
 const App = () => {
   return (
@@ -34,20 +33,19 @@ const App = () => {
       <Route path="/user/cart" element={<CartPage />} />
       <Route path="/user/shop-progress" element={<ShoppingProgressPage />} />
       <Route path="/user/checkout" element={<CheckoutPage />} />
-      <Route path="/user/orders-detail" element={<OrderDetailPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/user/my-orders" element={<UserOrdersPage />} />
+      <Route path="/user/my-orders/:orderId" element={<OrderDetailPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/admin/dashboard" element={<Dashboard />} />
       <Route path="/admin/all-users" element={<UsersPage />} />
       <Route path="/admin/orders" element={<OrderPage />} />
       <Route
-        path="/admin/orders-deliver-option"
+        path="/admin/orders/:orderId"
         element={<OrdersDeliverOptionPage />}
       />
-      <Route path="/admin/orders-delivered" element={<OrdersDeliveredPage />} />
       <Route path="/admin/create-product" element={<CreateProduct />} />
-      <Route path="/admin/all-products" element={<AllProducts />} />
       <Route path="/admin/edit-product" element={<EditProduct />} />
+      <Route path="/admin/all-products" element={<AllProducts />} />
       <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>
   );
