@@ -1,14 +1,15 @@
 import { useState, ReactNode } from "react";
+import { NavLink } from "react-router-dom";
 
 type SidebarProps = {
   children?: ReactNode;
 };
 
 const menuItems = [
-  { name: "sidebar-home", label: "داشبورد" },
-  { name: "sidebar-shop", label: "فروشگاه" },
-  { name: "sidebar-shopping-card", label: "سبد خرید" },
-  { name: "sidebar-favorite", label: "علاقه‌مندی‌ها" },
+  { name: "sidebar-home", label: "داشبورد", path: "/admin/dashboard" },
+  { name: "sidebar-shop", label: "فروشگاه", path: "/user/shop" },
+  { name: "sidebar-shopping-card", label: "سبد خرید", path: "/user/cart" },
+  { name: "sidebar-favorite", label: "علاقه‌مندی‌ها", path: "/user/favorites" },
 ];
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
@@ -28,8 +29,9 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
     >
       <div className="flex flex-col gap-4 p-2">
         {menuItems.map((item, index) => (
-          <button
+          <NavLink
             key={index}
+            to={item.path}
             className="flex items-center gap-2 p-2 hover:bg-primary-hover-dark hover:text-primary-main rounded transition-colors duration-200"
           >
             <img
@@ -50,7 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
             {isExpanded && (
               <h5 className="text-base font-normal">{item.label}</h5>
             )}
-          </button>
+          </NavLink>
         ))}
       </div>
       {children}

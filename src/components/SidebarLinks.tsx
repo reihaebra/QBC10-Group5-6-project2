@@ -5,7 +5,10 @@ interface SidebarLinksProps {
   onSelect: (section: string) => void;
 }
 
-const SidebarLinks: React.FC<SidebarLinksProps> = ({ activeSection, onSelect }) => {
+const SidebarLinks: React.FC<SidebarLinksProps> = ({
+  activeSection,
+  onSelect,
+}) => {
   const links = [
     { id: "add", label: "ثبت نظر" },
     { id: "view", label: "مشاهده نظرات" },

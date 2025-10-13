@@ -7,11 +7,11 @@ const ProductContainer = () => {
     <>
       <div className="flex flex-row gap-12  bg-background-base-light dark:bg-[var(--color-background-primary-dark)] font-yekan-bakh">
         {/* productImage */}
-        <div id="productImage" className="w-1/3 h-1/3  mt-16">
+        <div id="productImage" className="w-1/3  mt-16">
           <img
             src="src/assets/images/mba13-midnight-select-202402.png"
             alt="productImage"
-            className="w-full h-full"
+            className="w-3xl h-full items-stretch object-cover"
           />
         </div>
         {/* productIntroduce */}
@@ -204,7 +204,7 @@ const ProductContainer = () => {
             <ButtonPrimary text="افزودن به سبد خرید" handleClick={() => {}} />
           </div>
         </div>
-        <div id="favorite" className="mt-16 mr-52">
+        <div id="favorite" className="mt-16 mr-64">
           <img
             src="/src/assets/icons/favorite.svg"
             alt="favorite"
