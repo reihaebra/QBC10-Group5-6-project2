@@ -1,5 +1,5 @@
 import React from "react";
-import { Address } from "./TestData";
+import { Address } from "../../constants/TestData";
 
 interface CustomerInfoProps {
   data: Address;
