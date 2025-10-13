@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Summary from '../components/Summary'
 import CartTable from './CartTable'
 import SummarySection from './SummarySection'
 
