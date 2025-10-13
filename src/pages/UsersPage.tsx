@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Admin, EditingState, admins } from "../../constants/usersSampleList";
+import { admins } from "../../constants/usersSampleList";
+import type { Admin } from "../../constants/usersSampleList";
+import type { EditingState } from "../../constants/usersSampleList";
 
 export const UsersPage = () => {
   // state to track the row being edited

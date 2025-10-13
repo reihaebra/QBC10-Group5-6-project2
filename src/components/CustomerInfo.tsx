@@ -1,5 +1,6 @@
 import React from "react";
-import { Address } from "./TestData";
+import { addressSeed } from "./TestData";
+import type { Address } from "./TestData";
 
 interface CustomerInfoProps {
   data: Address;
