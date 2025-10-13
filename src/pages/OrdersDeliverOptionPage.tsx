@@ -4,14 +4,14 @@ import OrderItemsTable from "../components/OrderItemsTable";
 import CustomerInfo from "../components/CustomerInfo";
 import OrderSummary from "../components/OrderSummary";
 import StatusStrip from "../components/StatusStrip";
-
+import ButtonSecondary from "../components/ui/ButtonSecondary";
 import {
   TestDataProvider,
   addressSeed,
   itemsSeed,
 } from "../components/TestData";
 
-const OrderDetailPage = () => {
+const OrdersDeliverOptionPage = () => {
   return (
     <TestDataProvider seed={itemsSeed} address={addressSeed}>
       <div className="min-h-screen font-yekan-bakh bg-background-base-light dark:bg-[var(--color-background-primary-dark)] overflow-x-hidden flex flex-row-reverse justify-center items-center self-center mx-auto">
@@ -26,6 +26,7 @@ const OrderDetailPage = () => {
               <CustomerInfo data={addressSeed} />
               <StatusStrip />
               <OrderSummary />
+              <ButtonSecondary text="ارسال شده" handleClick={() => {}} />
             </div>
           </div>
         </main>
@@ -34,4 +35,4 @@ const OrderDetailPage = () => {
   );
 };
 
-export default OrderDetailPage;
+export default OrdersDeliverOptionPage;

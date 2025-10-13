@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const AdminDropdown = () => {
   const [open, setOpen] = useState(false);
 
   const menuItems = [
-    "داشبورد",
-    "محصول جدید",
-    "مدیریت کاربران",
-    "سفارشات",
-    "پروفایل",
-    "خروج از حساب",
+    { label: "داشبورد", path: "/admin/dashboard" },
+    { label: "محصول جدید", path: "/admin/create-product" },
+    { label: "مدیریت کاربران", path: "/admin/all-users" },
+    { label: "سفارشات", path: "/admin/orders" },
+    { label: "پروفایل", path: "/profile" },
+    { label: "خروج از حساب", path: "/login" },
   ];
 
   return (
@@ -52,7 +53,7 @@ export const AdminDropdown = () => {
                 index * 50
               }ms]`}
             >
-              <a>{item}</a>
+              <NavLink to={item.path}>{item.label}</NavLink>
             </li>
           ))}
         </ul>
