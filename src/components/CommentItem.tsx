@@ -1,7 +1,12 @@
 // CommentItem.jsx
 import React from "react";
-
-const CommentItem = ({ name, date, text, rating }) => {
+type CommentItemProps = {
+  name: string;
+  date: string;
+  text: string;
+  rating: number;
+};
+const CommentItem : React.FC<CommentItemProps> = ({ name, date, text, rating }) => {
   // برای مثال ستاره‌ها فقط به عنوان تصویر ساده
   const stars = Array.from({ length: rating }, (_, i) => (
     <img
