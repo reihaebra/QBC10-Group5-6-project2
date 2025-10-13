@@ -1,5 +1,6 @@
-import data, { ProductList } from "../../constants/cartSample";
-import AdminMenu from "./ui/AdminMenu";
+import data from "../../constants/cartSample";
+import type { ProductList } from "../../constants/cartSample";
+import InventoryDropdown from "./ui/InventoryDropdown";
 import ButtonSecondary from "./ui/ButtonSecondary";
 
 export const Cart = () => {
@@ -37,7 +38,7 @@ export const Cart = () => {
                 <td>
                   <div className="flex justify-end items-center">
                     <div className="w-40 h-1  flex justify-center items-center">
-                      <AdminMenu />
+                      <InventoryDropdown />
                     </div>
                     <img
                       className="w-4 h-4 cursor-pointer"
