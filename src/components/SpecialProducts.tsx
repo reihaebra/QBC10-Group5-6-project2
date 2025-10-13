@@ -12,15 +12,19 @@ const SpecialProducts = () => {
     { title: "Apple Watch SE", price: "۵,۰۰۰ تومان" },
     { title: "AirPods Pro 2", price: "۴,۰۰۰ تومان" },
     { title: "MacBook Pro 14-inch", price: "۲۰,۰۰۰ تومان" },
+    { title: "MacBook Air M3", price: "۱۸,۰۰۰ تومان" },
   ];
 
+  const visibleProducts = products.slice(0, 6);
+
   return (
-    <div className="mt-10">
-      <div className="flex justify-between items-center mx-[10px] my-1">
-        <h2 className="font-yekan-bakh text-2xl font-semibold mb-6">
+    <div className="mt-8">
+      {/* فاصله از راست برای عنوان */}
+      <div className="flex justify-between items-center mx-[8px] my-1 pr-26">
+        <h2 className="font-yekan-bakh text-xl font-semibold mb-4">
           محصولات ویژه
         </h2>
-        <div className="my-4">
+        <div className="my-3 pl-8">
           <ButtonSecondary
             text="فروشگاه"
             handleClick={() => console.log("رفتن به فروشگاه")}
@@ -28,12 +32,13 @@ const SpecialProducts = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
-        {products.map((p, i) => (
+      {/* کارت‌ها به سمت راست و فاصله کمتر */}
+      <div className="grid grid-cols-3 gap-3 justify-items-end pr-10 pl-10">
+        {visibleProducts.map((p, i) => (
           <ProductCard
             key={i}
             {...p}
-            size="small"
+            size="big"
             imageUrl="./src/assets/images/ipad.png"
           />
         ))}
@@ -43,3 +48,4 @@ const SpecialProducts = () => {
 };
 
 export default SpecialProducts;
+

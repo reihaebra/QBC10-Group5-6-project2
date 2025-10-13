@@ -1,6 +1,18 @@
 import React from "react";
 
-const HeroProductCard = ({
+interface HeroProductCardProps {
+  imageUrl: string;
+  title: string;
+  brand: string;
+  price: string | number;
+  description: string;
+  rating: number;
+  reviews: number;
+  stock: number;
+  updatedAt: string;
+}
+
+const HeroProductCard: React.FC<HeroProductCardProps> = ({
   imageUrl,
   title,
   brand,
@@ -13,13 +25,14 @@ const HeroProductCard = ({
 }) => {
   return (
     <div className="font-yekan-bakh flex flex-col overflow-hidden w-full">
-      <div className="w-full flex justify-center bg-gray-100 p-4 rounded-2xl ">
+      <div className="w-full flex justify-center bg-gray-100 p-4 rounded-2xl object-cover">
         <img
           src={imageUrl}
           alt={title}
           className="w-full max-w-175 object-contain h-120"
         />
       </div>
+
       <div className="flex w-full p-6 gap-6 pr-0 mr-0">
         <div className="flex-1 min-w-[40%] flex flex-col gap-2 gap-y-2">
           <h3 className="text-base font-normal font-sans">{title}</h3>
@@ -30,6 +43,7 @@ const HeroProductCard = ({
             {description}
           </p>
         </div>
+
         <div className="flex flex-1 min-w-[40%] justify-between text-gray-600 dark:text-gray-400 text-sm">
           <div className="flex flex-col gap-y-9">
             <div className="flex items-center gap-2">
@@ -45,12 +59,10 @@ const HeroProductCard = ({
               />
               <span>
                 امتیاز:
-                <span className="text-black dark:text-white">
-                  {" "}
-                  {rating}
-                </span>{" "}
+                <span className="text-black dark:text-white"> {rating}</span>
               </span>
             </div>
+
             <div className="flex items-center gap-2">
               <img
                 src="src/assets/icons/frame-light.svg"
@@ -67,6 +79,7 @@ const HeroProductCard = ({
                 <span className="text-black dark:text-white"> {reviews}</span>
               </span>
             </div>
+
             <div className="flex items-center gap-2">
               <img
                 src="src/assets/icons/mojodi-light.svg"
@@ -80,10 +93,7 @@ const HeroProductCard = ({
               />
               <span>
                 موجودی:
-                <span className=" text-black dark:text-white">
-                  {" "}
-                  {stock}
-                </span>{" "}
+                <span className="text-black dark:text-white">{stock}</span>
               </span>
             </div>
           </div>
@@ -105,6 +115,7 @@ const HeroProductCard = ({
                 <span className="text-black dark:text-white"> {brand}</span>
               </span>
             </div>
+
             <div className="flex items-center gap-2">
               <img
                 src="src/assets/icons/time-light.svg"
@@ -118,9 +129,13 @@ const HeroProductCard = ({
               />
               <span>
                 بروزرسانی:
-                <span className="text-black dark:text-white"> {updatedAt}</span>
+                <span className="text-black dark:text-white">
+                  {" "}
+                  {updatedAt}
+                </span>
               </span>
             </div>
+
             <div className="flex items-center gap-2">
               <img
                 src="src/assets/icons/star-light.svg"
@@ -145,3 +160,4 @@ const HeroProductCard = ({
 };
 
 export default HeroProductCard;
+

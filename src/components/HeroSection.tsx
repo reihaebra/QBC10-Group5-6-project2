@@ -16,6 +16,7 @@ const HeroSection = () => {
         mx-auto
         mt-8
         px-4
+        pr-26
       "
     >
       <div className="relative -ml-12 z-20 w-[40%]">
