@@ -21,14 +21,14 @@ export const AdminDropdown = () => {
       >
         <span className="text-primary-text-light dark:text-white">ادمین</span>
         <img
-          src="src/assets/icons/sidebar-more-light.svg"
+          src="../../public/icons/sidebar-more-light.svg"
           alt="admin"
           className={`w-3 h-3 block dark:hidden transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"
           }`}
         />
         <img
-          src="src/assets/icons/sidebar-more-dark.svg"
+          src="../../public/icons/sidebar-more-dark.svg"
           alt="admin"
           className={`w-3 h-3 hidden dark:block transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"

@@ -29,7 +29,7 @@ const HeroCarousel: React.FC = () => {
       price: "۵۰,۰۰۰,۰۰۰ تومان",
       description:
         "آیفون 14 پرو دارای صفحه‌نمایش 6.1 اینچی Super Retina XDR و تراشه قدرتمند A16 Bionic است.",
-      imageUrl: "/src/assets/images/iphone-14-pro.png",
+      imageUrl: "/../../public/images/iphone-14-pro.png",
       rating: 5,
       reviews: 4202,
       stock: 10,
@@ -41,7 +41,7 @@ const HeroCarousel: React.FC = () => {
       price: "۴۰,۰۰۰,۰۰۰ تومان",
       description:
         "آیفون 14 با طراحی زیبا و صفحه‌نمایش Super Retina XDR تجربه‌ای روان و دلپذیر ارائه می‌دهد.",
-      imageUrl: "/src/assets/images/iphone-14-pro.png",
+      imageUrl: "/../../public/images/iphone-14-pro.png",
       rating: 4.8,
       reviews: 3580,
       stock: 5,

@@ -27,12 +27,12 @@ const LoginRegister = () => {
 hover:text-primary-main rounded transition-colors duration-200"
       >
         <img
-          src={`/src/assets/icons/${item.name}-light.svg`}
+          src={`/../../public/icons/${item.name}-light.svg`}
           alt={item.label}
           className="w-6 h-6 block dark:hidden"
         />
         <img
-          src={`/src/assets/icons/${item.name}-dark.svg`}
+          src={`/../../public/icons/${item.name}-dark.svg`}
           alt={item.label}
           className="w-6 h-6 hidden dark:block"
         />

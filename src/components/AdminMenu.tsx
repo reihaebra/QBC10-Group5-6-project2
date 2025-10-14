@@ -18,14 +18,14 @@ export const AdminMenu = () => {
         onClick={() => setOpen(!open)}
       >
         <img
-          src="src/assets/icons/sidebar-more-light.svg"
+          src="../../public/icons/sidebar-more-light.svg"
           alt="arrow"
           className={`w-4 h-4 block dark:hidden transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"
           }`}
         />
         <img
-          src="src/assets/icons/sidebar-more-dark.svg"
+          src="../../public/icons/sidebar-more-dark.svg"
           alt="arrow"
           className={`w-4 h-4 hidden dark:block transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"

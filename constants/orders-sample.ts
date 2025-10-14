@@ -15,7 +15,7 @@ interface OrderRowProps {
 const data: OrderRowProps[] = [
   {
     id: 1,
-    imageUrl: "./src/assets/images/iphone-14-full-order.png",
+    imageUrl: "./../../public/images/iphone-14-full-order.png",
     name: "Apple iPhone 14 Pro",
     price: "۱۰,۰۰۰ ",
     user: "کاربر",
@@ -25,7 +25,7 @@ const data: OrderRowProps[] = [
   },
   {
     id: 2,
-    imageUrl: "./src/assets/images/mac-midnight.png",
+    imageUrl: "./../../public/images/mac-midnight.png",
     name: "Apple MacBook Air M2",
     price: "۱۰,۰۰۰ ",
     user: "کاربر",
@@ -35,7 +35,7 @@ const data: OrderRowProps[] = [
   },
   {
     id: 3,
-    imageUrl: "./src/assets/images/ipad-pro.png",
+    imageUrl: "./../../public/images/ipad-pro.png",
     name: "Apple iPad Pro 12.9-inch",
     price: "۱۰,۰۰۰ ",
     user: "کاربر",
