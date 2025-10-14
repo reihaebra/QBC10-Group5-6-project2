@@ -1,8 +1,33 @@
 import React from "react";
 import ButtonSecondary from "./ui/ButtonSecondary";
 
-const PurchaseForm: React.FC = () => {
-  function handleClick(): void {}
+interface FormProps {
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  setAddress: React.Dispatch<React.SetStateAction<string>>;
+  setCity: React.Dispatch<React.SetStateAction<string>>;
+  setCountry: React.Dispatch<React.SetStateAction<string>>;
+  setPostal: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const PurchaseForm = (props: FormProps) => {
+  const { setStep, setAddress, setCity, setCountry, setPostal} = props;
+
+  const handleAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAddress(e.target.value);
+  };
+  const handleCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(e.target.value);
+  };
+  const handleCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCountry(e.target.value);
+  };
+  const handlePostal = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPostal(Number(e.target.value));
+  };
+  
+  const handleClick = () => {
+    setStep(step => step + 1);
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] font-yekan-bakh">
@@ -29,6 +54,7 @@ const PurchaseForm: React.FC = () => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
+                onChange={handleAddress}
             />
           </div>
           <div>
@@ -48,6 +74,7 @@ const PurchaseForm: React.FC = () => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
+                onChange={handleCity}
             />
           </div>
           <div>
@@ -67,6 +94,7 @@ const PurchaseForm: React.FC = () => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
+                onChange={handleCountry}
             />
           </div>
           <div>
@@ -86,6 +114,7 @@ const PurchaseForm: React.FC = () => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
+                onChange={handlePostal}
             />
           </div>
           <div className="pt-1.5">
@@ -95,7 +124,7 @@ const PurchaseForm: React.FC = () => {
             >
               روش پرداخت
             </p>
-            <div className="flex items-center space-x-2 space-x-reverse gap-1.5">
+            <div className="flex items-center space-x-2 space-x-reverse gap-1.5 pb-2">
               <input
                 id="pasargadPayment"
                 type="radio"

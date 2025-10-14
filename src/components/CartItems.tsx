@@ -5,12 +5,11 @@ interface CartItemProps {
     name: string;
     quantity: number;
     price: number;
-    finalPrice?: number;
 }
 
 const CartItems = (props: CartItemProps) => {
-    let {image, name, quantity, price, finalPrice = 0} = props;
-    finalPrice = quantity * price;
+    const {image, name, quantity, price} = props;
+    const finalPrice = quantity * price;
 
     return (
         
