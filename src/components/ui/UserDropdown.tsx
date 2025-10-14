@@ -17,14 +17,14 @@ export const UserDropdown = () => {
       >
         <span className="text-primary-text-light dark:text-white">کاربر</span>
         <img
-          src="src/assets/icons/sidebar-more-light.svg"
+          src="../../public/icons/sidebar-more-light.svg"
           alt="user"
           className={`w-3 h-3 block dark:hidden transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"
           }`}
         />
         <img
-          src="src/assets/icons/sidebar-more-dark.svg"
+          src="../../public/icons/sidebar-more-dark.svg"
           alt="user"
           className={`w-3 h-3 hidden dark:block transition-transform duration-300 ${
             open ? "rotate-180" : "rotate-0"

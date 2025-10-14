@@ -84,12 +84,12 @@ const HeroCarousel: React.FC = () => {
         className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
-          src="/src/assets/icons/arrleft-light.svg"
+          src="../../public/icons/arrleft-light.svg"
           alt="prev"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="/src/assets/icons/arrleft-dark.svg"
+          src="../../public/icons/arrleft-dark.svg"
           alt="prev dark"
           className="hidden w-5 h-5 dark:block"
         />
@@ -101,12 +101,12 @@ const HeroCarousel: React.FC = () => {
         className="absolute left-155 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
-          src="/src/assets/icons/arrright-light.svg"
+          src="../../public/icons/arrright-light.svg"
           alt="next"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="/src/assets/icons/arrright-dark.svg"
+          src="../../public/icons/arrright-dark.svg"
           alt="next dark"
           className="hidden w-5 h-5 dark:block"
         />

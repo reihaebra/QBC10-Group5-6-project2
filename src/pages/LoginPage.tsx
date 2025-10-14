@@ -61,13 +61,13 @@ h-[100vh] pr-32
         {/* دارک و لایت */}
         <div className="col-span-12 md:col-span-7">
           <img
-            src="/src/assets/images/lightBg.png"
+            src="../../public/images/lightBg.png"
             alt="Login background"
             className="block dark:hidden w-full h-[calc(100vh-100px)] object-cover rounded-xl transition-all duration-300"
           />
 
           <img
-            src="/src/assets/images/darkBg.png"
+            src="../../public/images/darkBg.png"
             alt="Login background dark"
             className="hidden dark:block w-full h-[calc(100vh-100px)] object-cover rounded-xl transition-all duration-300"
           />

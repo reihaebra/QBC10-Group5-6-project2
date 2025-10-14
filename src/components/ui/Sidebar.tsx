@@ -35,14 +35,14 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
             className="flex items-center gap-2 p-2 hover:bg-primary-hover-dark hover:text-primary-main rounded transition-colors duration-200"
           >
             <img
-              src={`src/assets/icons/${item.name}-light.svg`}
+              src={`../../public/icons/${item.name}-light.svg`}
               alt={item.label}
               className={`${
                 isExpanded ? "w-6 h-6" : "w-6 h-6 mx-auto"
               } block dark:hidden`}
             />
             <img
-              src={`src/assets/icons/${item.name}-dark.svg`}
+              src={`../../public/icons/${item.name}-dark.svg`}
               alt={item.label}
               className={`${
                 isExpanded ? "w-6 h-6" : "w-6 h-6 mx-auto"
