@@ -29,12 +29,6 @@ const ProductForm = ({
       text-primary-text-light dark:text-[var(--color-primary-text-dark)]"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <h1
-          className="font-semibold text-primary-text-light text-2xl leading-8 pb-2 
-        dark:text-[var(--color-primary-text-dark)]"
-        >
-          محصول جدید
-        </h1>
         <div className="md:col-span-2 flex flex-col items-center">
           <div className="w-full max-w-3xl rounded-lg">
             {image && (
