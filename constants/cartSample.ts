@@ -6,7 +6,7 @@ export interface ProductList {
 }
 
 const data: ProductList[] = [
-  {
+  { 
     title: "iPhone 14 Pro",
     brand: "Apple",
     price: "۱۰,۰۰۰ تومان",
@@ -21,7 +21,7 @@ const data: ProductList[] = [
   {
     title: "iPhone 16 Pro",
     brand: "Apple",
-    price: "۱۰,۰۰۰ توم ان",
+    price: "۱۰,۰۰۰ تومان",
 
     imageUrl: "./src/assets/images/iphone-14-full-order.png",
   },
