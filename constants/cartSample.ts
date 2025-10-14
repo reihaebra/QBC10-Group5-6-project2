@@ -21,7 +21,7 @@ const data: ProductList[] = [
   {
     title: "iPhone 16 Pro",
     brand: "Apple",
-    price: "۱۰,۰۰۰ تومان",
+    price: "۱۰,۰۰۰ توم ان",
 
     imageUrl: "./src/assets/images/iphone-14-full-order.png",
   },
