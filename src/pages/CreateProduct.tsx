@@ -47,6 +47,12 @@ const CreateProduct = () => {
         </Sidebar>
       </aside>
       <main className="w-full max-w-4xl">
+        <h1
+          className="font-semibold text-primary-text-light text-2xl leading-8 mb-8 
+        dark:text-[var(--color-primary-text-dark)]"
+        >
+          محصول جدید
+        </h1>
         <ProductForm
           formData={formData}
           image={image}
