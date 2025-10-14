@@ -70,7 +70,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
             </span>
 
             <img
-    src="src/assets/icons/chevron_left_light.svg"
+    src="../../public/icons/chevron_left_light.svg"
     alt="فلش"
     className={`w-4 h-4 transition-transform duration-200 ${
       isOpen ? "rotate-180" : ""
@@ -79,7 +79,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
 
   {/* عکس برای حالت دارک */}
   <img
-    src="src/assets/icons/chevron_left_dark.svg"
+    src="../../public/icons/chevron_left_dark.svg"
     alt="فلش تیره"
     className={`w-4 h-4 transition-transform duration-200 ${
       isOpen ? "rotate-180" : ""

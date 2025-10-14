@@ -9,7 +9,7 @@ const ProductContainer = () => {
         {/* productImage */}
         <div id="productImage" className="w-1/3  mt-16">
           <img
-            src="src/assets/images/mba13-midnight-select-202402.png"
+            src="../../public/images/mba13-midnight-select-202402.png"
             alt="productImage"
             className="w-3xl h-full items-stretch object-cover"
           />
@@ -37,14 +37,15 @@ const ProductContainer = () => {
               id="rightcolumn"
               className="flex flex-col gap-3.5 font-normal text-base"
             >
+              
               <div className="flex flex-row gap-2">
                 <img
-                  src="src/assets/icons/star-light.svg"
+                  src="../../public/icons/star-light.svg"
                   alt="star-light"
                   className="block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/star-dark.svg"
+                  src="../../public/icons/star-dark.svg"
                   alt="star-dark"
                   className="hidden dark:block"
                 />
@@ -55,12 +56,12 @@ const ProductContainer = () => {
               </div>
               <div className="flex flex-row gap-2">
                 <img
-                  src="src/assets/icons/basket-number.svg"
+                  src="../../public/icons/basket-number.svg"
                   alt="basket-number"
                   className="block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/basket-number-dark.svg"
+                  src="../../public/icons/basket-number-dark.svg"
                   alt="basket-number-dark"
                   className="hidden dark:block"
                 />
@@ -71,12 +72,12 @@ const ProductContainer = () => {
               </div>
               <div className="flex flex-row gap-2">
                 <img
-                  src="src/assets/icons/mojoodi.svg"
+                  src="../../public/icons/mojoodi.svg"
                   alt="mojoodi"
                   className="block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/mojoodi-dark.svg"
+                  src="../../public/icons/mojoodi-dark.svg"
                   alt="mojoodi-dark"
                   className="hidden dark:block"
                 />
@@ -92,12 +93,12 @@ const ProductContainer = () => {
             >
               <div className="flex flex-row gap-2">
                 <img
-                  src="src/assets/icons/brand.svg"
+                  src="../../public/icons/brand.svg"
                   alt="brand"
                   className="block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/brand-dark.svg"
+                  src="../../public/icons/brand-dark.svg"
                   alt="brand-dark"
                   className="hidden dark:block"
                 />
@@ -108,12 +109,12 @@ const ProductContainer = () => {
               </div>
               <div className="flex flex-row gap-2">
                 <img
-                  src="src/assets/icons/clock.svg"
+                  src="../../public/icons/clock.svg"
                   alt="clock"
                   className="block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/clock-dark.svg"
+                  src="../../public/icons/clock-dark.svg"
                   alt="clock-dark"
                   className="hidden dark:block"
                 />
@@ -124,12 +125,12 @@ const ProductContainer = () => {
               </div>
               <div className="flex flex-row gap-2">
                 <img
-                  src="src/assets/icons/star-light.svg"
+                  src="../../public/icons/star-light.svg"
                   alt="star-light"
                   className="block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/star-dark.svg"
+                  src="../../public/icons/star-dark.svg"
                   alt="star-dark"
                   className="hidden dark:block"
                 />
@@ -145,52 +146,52 @@ const ProductContainer = () => {
               ۵۰۰۰ نظر
               <div id="stars" className="flex flex-row">
                 <img
-                  src="src/assets/icons/half-star-light.svg"
+                  src="../../public/icons/half-star-light.svg"
                   alt="half-star-light"
                   className="max-w-4 block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/half-star-dark.svg"
+                  src="../../public/icons/half-star-dark.svg"
                   alt="half-star-dark"
                   className="max-w-4 hidden dark:block"
                 />
                 <img
-                  src="src/assets/icons/star-light.svg"
+                  src="../../public/icons/star-light.svg"
                   alt="star-light"
                   className="max-w-4 block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/star-dark.svg"
+                  src="../../public/icons/star-dark.svg"
                   alt="star-dark"
                   className="max-w-4 hidden dark:block"
                 />
                 <img
-                  src="src/assets/icons/star-light.svg"
+                  src="../../public/icons/star-light.svg"
                   alt="star-light"
                   className="max-w-4 block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/star-dark.svg"
+                  src="../../public/icons/star-dark.svg"
                   alt="star-dark"
                   className="max-w-4 hidden dark:block"
                 />
                 <img
-                  src="src/assets/icons/star-light.svg"
+                  src="../../public/icons/star-light.svg"
                   alt="star-light"
                   className="max-w-4 block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/star-dark.svg"
+                  src="../../public/icons/star-dark.svg"
                   alt="star-dark"
                   className="max-w-4 hidden dark:block"
                 />
                 <img
-                  src="src/assets/icons/star-light.svg"
+                  src="../../public/icons/star-light.svg"
                   alt="star-light"
                   className="max-w-4 block dark:hidden"
                 />
                 <img
-                  src="src/assets/icons/star-dark.svg"
+                  src="../../public/icons/star-dark.svg"
                   alt="star-dark"
                   className="max-w-4 hidden dark:block"
                 />
@@ -206,12 +207,12 @@ const ProductContainer = () => {
         </div>
         <div id="favorite" className="mt-16 mr-64">
           <img
-            src="/src/assets/icons/favorite.svg"
+            src="/../../public/icons/favorite.svg"
             alt="favorite"
             className="block dark:hidden"
           />
           <img
-            src="/src/assets/icons/favorite-dark.svg"
+            src="/../../public/icons/favorite-dark.svg"
             alt="favorite-dark"
             className="hidden dark:block"
           />

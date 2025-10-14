@@ -39,7 +39,7 @@ const SpecialProducts = () => {
             key={i}
             {...p}
             size="big"
-            imageUrl="./src/assets/images/ipad.png"
+            imageUrl="./../../public/images/ipad.png"
           />
         ))}
       </div>

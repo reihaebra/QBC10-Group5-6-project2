@@ -15,7 +15,7 @@ export const PurchaseSteps2 = () => {
         <div className="flex flex-col items-center gap-2">
           <p className="text-base text-success-light font-normal">آدرس</p>
           <img
-            src="../src/assets/icons/Shopping-Progress-Check-emoji.svg"
+            src="../../../public/icons/Shopping-Progress-Check-emoji.svg"
             alt="checked"
             className="w-4.5"
           />
@@ -26,7 +26,7 @@ export const PurchaseSteps2 = () => {
         <div className="flex flex-col items-center gap-2">
           <p className="text-base text-success-light font-normal">ورود</p>
           <img
-            src="../src/assets/icons/Shopping-Progress-Check-emoji.svg"
+            src="../../../public/icons/Shopping-Progress-Check-emoji.svg"
             alt="checked"
             className="w-4.5"
           />

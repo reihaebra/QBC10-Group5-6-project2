@@ -11,7 +11,7 @@ const CommentItem : React.FC<CommentItemProps> = ({ name, date, text, rating }) 
   const stars = Array.from({ length: rating }, (_, i) => (
     <img
       key={i}
-      src="src/assets/icons/star-light.svg"
+      src="../../public/icons/star-light.svg"
       alt="star"
       className="w-4 h-4 block dark:hidden"
     />
@@ -20,7 +20,7 @@ const CommentItem : React.FC<CommentItemProps> = ({ name, date, text, rating }) 
   const darkStars = Array.from({ length: rating }, (_, i) => (
     <img
       key={i}
-      src="src/assets/icons/star-dark.svg"
+      src="../../public/icons/star-dark.svg"
       alt="star-dark"
       className="w-4 h-4 hidden dark:block"
     />

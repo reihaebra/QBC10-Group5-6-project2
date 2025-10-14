@@ -48,12 +48,12 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
           <div className="flex flex-col gap-y-9">
             <div className="flex items-center gap-2">
               <img
-                src="src/assets/icons/star-light.svg"
+                src="../../public/icons/star-light.svg"
                 alt="star"
                 className="block dark:hidden"
               />
               <img
-                src="src/assets/icons/star-dark.svg"
+                src="../../public/icons/star-dark.svg"
                 alt="star"
                 className="hidden dark:block"
               />
@@ -65,12 +65,12 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
 
             <div className="flex items-center gap-2">
               <img
-                src="src/assets/icons/frame-light.svg"
+                src="../../public/icons/frame-light.svg"
                 alt="count"
                 className="block dark:hidden"
               />
               <img
-                src="src/assets/icons/frame-dark.svg"
+                src="../../public/icons/frame-dark.svg"
                 alt="count"
                 className="hidden dark:block"
               />
@@ -82,12 +82,12 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
 
             <div className="flex items-center gap-2">
               <img
-                src="src/assets/icons/mojodi-light.svg"
+                src="../../public/icons/mojodi-light.svg"
                 alt="stock"
                 className="block dark:hidden"
               />
               <img
-                src="src/assets/icons/mojodi-dark.svg"
+                src="../../public/icons/mojodi-dark.svg"
                 alt="stock"
                 className="hidden dark:block"
               />
@@ -101,12 +101,12 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
           <div className="flex flex-col gap-y-9">
             <div className="flex items-center gap-2">
               <img
-                src="src/assets/icons/brand-light.svg"
+                src="../../public/icons/brand.svg"
                 alt="brand"
                 className="block dark:hidden"
               />
               <img
-                src="src/assets/icons/brand-dark.svg"
+                src="../../public/icons/brand-dark.svg"
                 alt="brand"
                 className="hidden dark:block"
               />
@@ -118,12 +118,12 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
 
             <div className="flex items-center gap-2">
               <img
-                src="src/assets/icons/time-light.svg"
+                src="../../public/icons/time-light.svg"
                 alt="time"
                 className="block dark:hidden"
               />
               <img
-                src="src/assets/icons/time-dark.svg"
+                src="../../public/icons/time-dark.svg"
                 alt="time"
                 className="hidden dark:block"
               />
@@ -138,12 +138,12 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
 
             <div className="flex items-center gap-2">
               <img
-                src="src/assets/icons/star-light.svg"
+                src="../../public/icons/star-light.svg"
                 alt="reviews"
                 className="block dark:hidden"
               />
               <img
-                src="src/assets/icons/star-dark.svg"
+                src="../../public/icons/star-dark.svg"
                 alt="reviews"
                 className="hidden dark:block"
               />

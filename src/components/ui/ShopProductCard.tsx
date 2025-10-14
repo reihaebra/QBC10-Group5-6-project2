@@ -16,7 +16,7 @@ const ShopProductCard = ({
   brand = "Apple",
   price = "۱۰,۰۰۰ تومان",
   description = "آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR ...",
-  imageUrl = "./src/assets/images/iphone-14-pro.png",
+  imageUrl = "../../public/images/iphone-14-pro.png",
   onAddToCart,
 }: ShopProductCardProps) => {
   const handleShowMore = () => {
@@ -46,18 +46,18 @@ const ShopProductCard = ({
         <div className="flex items-end justify-between pt-3">
           <ButtonPrimary
             text="مشاهده بیشتر"
-            iconSrc="./src/assets/icons/left-arrow.svg"
+            iconSrc="../../public/icons/left-arrow.svg"
             altText="left arrow"
             handleClick={handleShowMore}
           />
           <button onClick={onAddToCart} className="p-2 cursor-pointer">
             <img
-              src="./src/assets/icons/add-to-cart-light.svg"
+              src="../../public/icons/add-to-cart-light.svg"
               alt="add to cart light"
               className="dark:hidden"
             />
             <img
-              src="./src/assets/icons/add-to-cart-dark.svg"
+              src="../../public/icons/add-to-cart-dark.svg"
               alt="add to cart dark"
               className="hidden dark:block"
             />

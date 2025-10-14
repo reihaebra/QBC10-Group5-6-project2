@@ -83,7 +83,7 @@ export const UsersPage = () => {
                           className="flex h-9 w-9 bg-info-light rounded-lg justify-center items-center mx-auto cursor-pointer"
                         >
                           <img
-                            src="/src/assets/icons/user-list-check-white.svg"
+                            src="/../../public/icons/user-list-check-white.svg"
                             alt="save"
                             className="w-4 h-4"
                           />
@@ -110,12 +110,12 @@ export const UsersPage = () => {
                           }
                         >
                           <img
-                            src="/src/assets/icons/user-list-edit.svg"
+                            src="/../../public/icons/user-list-edit.svg"
                             alt="edit"
                             className="w-4 h-4  hover:opacity-70 hidden dark:block"
                           />
                           <img
-                            src="/src/assets/icons/user-list-edit-black.svg"
+                            src="/../../public/icons/user-list-edit-black.svg"
                             alt="edit"
                             className="w-4 h-4  hover:opacity-70 dark:hidden"
                           />
@@ -136,7 +136,7 @@ export const UsersPage = () => {
                           className="flex h-9 w-9 bg-info-light rounded-lg justify-center items-center mx-auto cursor-pointer"
                         >
                           <img
-                            src="/src/assets/icons/user-list-check-white.svg"
+                            src="/../../public/icons/user-list-check-white.svg"
                             alt="save"
                             className="w-4 h-4"
                           />
@@ -163,12 +163,12 @@ export const UsersPage = () => {
                           }
                         >
                           <img
-                            src="/src/assets/icons/user-list-edit.svg"
+                            src="/../../public/icons/user-list-edit.svg"
                             alt="edit"
                             className="w-4 h-4  hover:opacity-70 hidden dark:block"
                           />
                           <img
-                            src="/src/assets/icons/user-list-edit-black.svg"
+                            src="/../../public/icons/user-list-edit-black.svg"
                             alt="edit"
                             className="w-4 h-4  hover:opacity-70 dark:hidden"
                           />
@@ -184,8 +184,8 @@ export const UsersPage = () => {
                   <img
                     src={
                       admin.isAdmin
-                        ? "/src/assets/icons/user-list-check.svg"
-                        : "/src/assets/icons/user-list-close.svg"
+                        ? "/../../public/icons/user-list-check.svg"
+                        : "/../../public/icons/user-list-close.svg"
                     }
                     alt="admin"
                     className="w-5 h-5 mx-auto"
@@ -197,7 +197,7 @@ export const UsersPage = () => {
                   <button className="flex h-9 w-9 bg-error-light rounded-lg justify-center items-center cursor-pointer">
                     <img
                       className="w-6 h-6"
-                      src="/src/assets/icons/user-list-delete_forever.svg"
+                      src="/../../public/icons/user-list-delete_forever.svg"
                       alt="delete"
                     />
                   </button>

@@ -8,7 +8,7 @@ const PurchaseSteps3 = () => {
           <p className="text-base text-success-light font-normal">
             خلاصه خرید
           </p>
-          <img src="../src/assets/icons/Shopping-Progress-Check-emoji.svg" alt="checked" className="w-4.5" />
+          <img src="../../../public/icons/Shopping-Progress-Check-emoji.svg" alt="checked" className="w-4.5" />
         </div>
         <div className="flex-1 mx-4">
           <div className="h-0.5 bg-success-light rounded-full"></div>
@@ -17,7 +17,7 @@ const PurchaseSteps3 = () => {
           <p className="text-base text-success-light font-normal">
             آدرس
           </p>
-          <img src="../src/assets/icons/Shopping-Progress-Check-emoji.svg" alt="checked" className="w-4.5" />
+          <img src="../../../public/icons/Shopping-Progress-Check-emoji.svg" alt="checked" className="w-4.5" />
         </div>
         <div className="flex-1 mx-4">
           <div className="h-0.5 bg-success-light rounded-full"></div>
@@ -26,7 +26,7 @@ const PurchaseSteps3 = () => {
           <p className="text-base text-success-light font-normal">
             ورود
           </p>
-          <img src="../src/assets/icons/Shopping-Progress-Check-emoji.svg" alt="checked" className="w-4.5" />
+          <img src="../../../public/icons/Shopping-Progress-Check-emoji.svg" alt="checked" className="w-4.5" />
         </div>
       </div>
     </div>

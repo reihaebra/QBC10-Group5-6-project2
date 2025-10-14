@@ -29,7 +29,7 @@ const HeroCarousel: React.FC = () => {
       price: "۵۰,۰۰۰,۰۰۰ تومان",
       description:
         "آیفون 14 پرو دارای صفحه‌نمایش 6.1 اینچی Super Retina XDR و تراشه قدرتمند A16 Bionic است.",
-      imageUrl: "/src/assets/images/iphone-14-pro.png",
+      imageUrl: "/../../public/images/iphone-14-pro.png",
       rating: 5,
       reviews: 4202,
       stock: 10,
@@ -41,7 +41,7 @@ const HeroCarousel: React.FC = () => {
       price: "۴۰,۰۰۰,۰۰۰ تومان",
       description:
         "آیفون 14 با طراحی زیبا و صفحه‌نمایش Super Retina XDR تجربه‌ای روان و دلپذیر ارائه می‌دهد.",
-      imageUrl: "/src/assets/images/iphone-14-pro.png",
+      imageUrl: "/../../public/images/iphone-14-pro.png",
       rating: 4.8,
       reviews: 3580,
       stock: 5,
@@ -84,12 +84,12 @@ const HeroCarousel: React.FC = () => {
         className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
-          src="/src/assets/icons/arrleft-light.svg"
+          src="../../public/icons/arrleft-light.svg"
           alt="prev"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="/src/assets/icons/arrleft-dark.svg"
+          src="../../public/icons/arrleft-dark.svg"
           alt="prev dark"
           className="hidden w-5 h-5 dark:block"
         />
@@ -101,12 +101,12 @@ const HeroCarousel: React.FC = () => {
         className="absolute left-155 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
-          src="/src/assets/icons/arrright-light.svg"
+          src="../../public/icons/arrright-light.svg"
           alt="next"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="/src/assets/icons/arrright-dark.svg"
+          src="../../public/icons/arrright-dark.svg"
           alt="next dark"
           className="hidden w-5 h-5 dark:block"
         />
