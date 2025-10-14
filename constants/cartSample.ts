@@ -10,20 +10,20 @@ const data: ProductList[] = [
     title: "iPhone 14 Pro",
     brand: "Apple",
     price: "۱۰,۰۰۰ تومان",
-    imageUrl: "./src/assets/images/iphone-14-full-order.png",
+    imageUrl: "../../public/images/iphone-14-full-order.png",
   },
   {
     title: "iPhone 15 Pro",
     brand: "Apple",
     price: "۱۰,۰۰۰ تومان",
-    imageUrl: "./src/assets/images/iphone-14-full-order.png",
+    imageUrl: "../../public/images/iphone-14-full-order.png",
   },
   {
     title: "iPhone 16 Pro",
     brand: "Apple",
     price: "۱۰,۰۰۰ تومان",
 
-    imageUrl: "./src/assets/images/iphone-14-full-order.png",
+    imageUrl: "../../public/images/iphone-14-full-order.png",
   },
 ];
 
