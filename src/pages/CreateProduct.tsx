@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "../components/ui/Sidebar";
 import AdminDropdown from "../components/ui/AdminDropdown";
 import ProductForm from "../components/ProductForm";
+import ButtonPrimary from "../components/ui/ButtonPrimary";
 
 const CreateProduct = () => {
   const [formData, setFormData] = useState({
@@ -53,6 +54,9 @@ const CreateProduct = () => {
           onImageChange={handleImageChange}
           onSubmit={handleSubmit}
         />
+        <div className="md:col-span-2 flex justify-center md:justify-start pt-8">
+          <ButtonPrimary text="ساخت محصول جدید" handleClick={() => {}} />
+        </div>
       </main>
     </div>
   );
