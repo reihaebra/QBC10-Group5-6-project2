@@ -1,3 +1,4 @@
+import Badge from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
 import ButtonPrimary from "./ButtonPrimary";
 
@@ -26,10 +27,8 @@ const ShopProductCard = ({
       <div className="relative">
         <ButtonFavorite />
         <img src={imageUrl} alt={title} />
-        <div className="flex items-center justify-center py-0.5 px-2.5 max-w-12 max-h-6 rounded-3xl bg-primary-dark absolute right-4 bottom-3">
-          <span className="font-normal leading-5 text-xs text-primary-lighter">
-            {brand}
-          </span>
+        <div className="absolute right-4 bottom-3">
+          <Badge size="big">{brand}</Badge>
         </div>
       </div>
       <div className="p-5">
