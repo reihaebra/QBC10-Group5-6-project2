@@ -1,5 +1,4 @@
 import TextField from "./ui/TextField";
-import ButtonPrimary from "./ui/ButtonPrimary";
 
 interface ProductFormProps {
   formData: {
@@ -145,9 +144,6 @@ const ProductForm = ({
             <option value="in_stock">موجود</option>
             <option value="out_of_stock">ناموجود</option>
           </select>
-        </div>
-        <div className="md:col-span-2 flex justify-center md:justify-start pt-2">
-          <ButtonPrimary text="ساخت محصول جدید" handleClick={() => {}} />
         </div>
       </div>
     </form>
