@@ -33,10 +33,14 @@ const ShopProductCard = ({
   };
 
   return (
-    <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-[var(--color-shop-card-dark)]">
+    <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 w-full bg-card-light dark:bg-[var(--color-shop-card-dark)]">
       <div className="relative">
         <ButtonFavorite />
-        <img src={imageUrl} alt={title} />
+        <img
+          src={imageUrl}
+          alt={title}
+          className="h-40 object-cover w-full rounded-t-lg"
+        />
         <div className="absolute right-4 bottom-3">
           <Badge size="big">{brand}</Badge>
         </div>
