@@ -2,19 +2,29 @@ import { useEffect, useState } from "react";
 import FilterHeading from "./ui/FilterHeading";
 import Filter from "./ui/Filter";
 import { getCategoryList } from "../api/requests/categoryList";
+
 interface Category {
   _id: string;
   name: string;
 }
-const ShowPageAside = () => {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+interface ShowPageAsideProps {
+  categoriesFilter: string[];
+  onCategoryChange: (id: string, checked: boolean) => void;
+  priceFilter: string;
+  onPriceChange: (value: string) => void;
+  onClearFilters: () => void;
+}
+
+const ShowPageAside = ({
+  categoriesFilter,
+  onCategoryChange,
+  priceFilter,
+  onPriceChange,
+  onClearFilters,
+}: ShowPageAsideProps) => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [priceFilter, setPriceFilter] = useState<string>("");
-  const handleCheckboxChange = (id: string, checked: boolean) => {
-    setSelectedCategories((prev) =>
-      checked ? [...prev, id] : prev.filter((item) => item !== id)
-    );
-  };
+
   useEffect(() => {
     const fetchCategories = async () => {
       const data: Category[] = await getCategoryList();
@@ -23,27 +33,19 @@ const ShowPageAside = () => {
     fetchCategories();
   }, []);
 
-  const clearFilters = () => {
-    console.log(selectedCategories);
-    setSelectedCategories([]);
-    setPriceFilter("");
-  };
-  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPriceFilter(e.target.value);
-  };
-
   return (
-    <aside className=" flex-shrink-0 w-[264px] h-fit bg-base-side-light flex items-center flex-col justify-start mr-60 dark:bg-[var(--color-base-side-dark)]">
+    <aside className="flex-shrink-0 w-[264px] h-fit bg-base-side-light flex items-center flex-col justify-start mr-60 dark:bg-[var(--color-base-side-dark)]">
       <div className="relative flex flex-col gap-10 w-60 top-3">
-        <div className="flex flex-col gap-7 ">
+        <div className="flex flex-col gap-7">
           <FilterHeading title="فیلتر برند" />
           <Filter
             categories={categories}
-            selectedCategories={selectedCategories}
-            onChange={handleCheckboxChange}
+            selectedCategories={categoriesFilter}
+            onChange={onCategoryChange}
           />
         </div>
-        <div className="flex flex-col gap-1.5 ">
+
+        <div className="flex flex-col gap-1.5">
           <FilterHeading title="فیلتر قیمت" />
           <div className="p-5 text-sm">
             <input
@@ -51,16 +53,17 @@ const ShowPageAside = () => {
               type="text"
               name="priceFilter"
               value={priceFilter}
-              onChange={handlePriceChange}
+              onChange={(e) => onPriceChange(e.target.value)}
               placeholder="قیمت را وارد نمایید"
             />
           </div>
         </div>
       </div>
+
       <div className="flex px-5 gap-2.5 mt-3.5">
         <button
-          className="cursor-pointer w-50 h-7 rounded-sm mb-3.5  border border-neutral-dark-600 dark:text-[var(--color-on-primary-light)]"
-          onClick={clearFilters}
+          className="cursor-pointer w-50 h-7 rounded-sm mb-3.5 border border-neutral-dark-600 dark:text-[var(--color-on-primary-light)]"
+          onClick={onClearFilters}
         >
           حذف فیلتر ها
         </button>
