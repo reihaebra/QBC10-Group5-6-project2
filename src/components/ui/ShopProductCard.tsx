@@ -19,9 +19,19 @@ const ShopProductCard = ({
   imageUrl = "../../public/images/iphone-14-pro.png",
   onAddToCart,
 }: ShopProductCardProps) => {
+  const shortDescription = (description: string, limit: number = 15) => {
+    const words = description.split(" ");
+    if (words.length > limit) {
+      return words.slice(0, limit).join(" ") + " ...";
+    } else {
+      return description;
+    }
+  };
+
   const handleShowMore = () => {
     // TODO
   };
+
   return (
     <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 bg-card-light dark:bg-[var(--color-shop-card-dark)]">
       <div className="relative">
@@ -31,7 +41,7 @@ const ShopProductCard = ({
           <Badge size="big">{brand}</Badge>
         </div>
       </div>
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between pb-2">
           <span className="font-sans font-normal text-xl leading-7 text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
             {title}
@@ -41,9 +51,9 @@ const ShopProductCard = ({
           </span>
         </div>
         <p className="font-normal text-base leading-6 text-secondary-light dark:text-[var(--color-secondary-dark)]">
-          {description}
+          {shortDescription(description)}
         </p>
-        <div className="flex items-end justify-between pt-3">
+        <div className="flex items-end justify-between pt-3 mt-auto">
           <ButtonPrimary
             text="مشاهده بیشتر"
             iconSrc="../../public/icons/left-arrow.svg"
