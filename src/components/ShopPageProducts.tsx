@@ -1,20 +1,119 @@
 import ShopProductCard from "./ui/ShopProductCard";
 import data from "../../constants/shop-page-sample";
+import { useEffect, useRef, useState } from "react";
+import { getAllProducts } from "../api/requests/products";
+import { getProductsPagination } from "../api/requests/productsPagination";
+interface ProductShopPage {
+  _id: string;
+  name: string;
+  category: {
+    id: string;
+    name: string;
+  };
+  price: string;
+  description: string;
+  image: string;
+}
 
 const ShopPageProducts = () => {
+  const [products, setProducts] = useState<ProductShopPage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const pageNumbers = useRef(1);
+
+  useEffect(() => {
+    const fetchTotalProducts = async () => {
+      const response = await getAllProducts();
+      pageNumbers.current = Math.ceil(response.length / 6);
+      console.log("Total pages:", pageNumbers.current);
+    };
+    fetchTotalProducts();
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await getProductsPagination(page, 6);
+        console.log(response);
+        setHasMore(response.hasMore);
+        console.log(hasMore);
+        console.log(pageNumbers.current);
+
+        setProducts(response.products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, [page]);
+
+  if (loading) {
+    return <p>در حال بارگذاری محصولات...</p>;
+  }
+
   return (
-    <main className="flex flex-row flex-wrap gap-6 max-w-[1200px] h-fit">
-      {data.map((item) => (
-        <ShopProductCard
-          key={item.title}
-          title={item.title}
-          brand={item.brand}
-          price={item.price}
-          description={item.description}
-          imageUrl={item.imageUrl}
-          onAddToCart={() => console.log(`${item.title} added to cart!`)}
-        />
-      ))}
+    <main className="flex flex-col items-center">
+      <section className="flex flex-row flex-wrap gap-6 max-w-[1200px]">
+        {products.length > 0 ? (
+          products.map((item) => (
+            <ShopProductCard
+              key={item._id}
+              title={item.name}
+              brand={item.category.name}
+              price={item.price}
+              description={item.description}
+              imageUrl={item.image}
+              onAddToCart={() => console.log(`${item.name} added to cart!`)}
+            />
+          ))
+        ) : (
+          <p>محصولی یافت نشد.</p>
+        )}
+      </section>
+
+      <div className="flex items-center gap-3 mt-6 mx-auto">
+        {/* دکمه قبلی */}
+        <button
+          disabled={page === 1}
+          onClick={() => setPage((p) => p - 1)}
+          className="px-3 py-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300 transition"
+        >
+          قبلی
+        </button>
+
+        {/* شماره صفحات */}
+        <div className="flex gap-2">
+          {Array.from(
+            { length: pageNumbers.current || 0 },
+            (_, i) => i + 1
+          ).map((num) => (
+            <button
+              key={num}
+              onClick={() => setPage(num)}
+              className={`w-8 h-8 flex items-center justify-center rounded-lg  text-sm transition
+            ${
+              page === num
+                ? "bg-primary-lighter text-black"
+                : "bg-white border-gray-300 hover:bg-gray-100"
+            }`}
+            >
+              {num}
+            </button>
+          ))}
+        </div>
+
+        {/* دکمه بعدی */}
+        <button
+          disabled={page === pageNumbers.current}
+          onClick={() => setPage((p) => p + 1)}
+          className="px-3 py-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300 transition"
+        >
+          بعدی
+        </button>
+      </div>
     </main>
   );
 };
