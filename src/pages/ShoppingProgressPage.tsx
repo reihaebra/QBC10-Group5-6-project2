@@ -4,6 +4,7 @@ import PurchaceSteps3 from "../components/PurchaseSteps3";
 import ShoppingProgress3 from "../components/ShoppingProgress3";
 import PurchaseSteps2 from "../components/PurchaseSteps2";
 import PurchaseForm from "../components/PurchaseForm";
+import UserDropdown from "../components/ui/UserDropdown";
 
 const ShoppingProgressPage = () => {
   const [step, setStep] = useState(2);
@@ -15,7 +16,9 @@ const ShoppingProgressPage = () => {
 
   return (
     <div className="flex flex-col h-screen bg-background-base-light justify-between items-stretch font-yekan-bakh dark:bg-[var(--color-background-primary-dark)]">
-      <Sidebar />
+      <Sidebar>
+        <UserDropdown />
+      </Sidebar>
       <div className="mt-12">
         {step == 2 ? <PurchaseSteps2 /> : <PurchaceSteps3 />}
       </div>

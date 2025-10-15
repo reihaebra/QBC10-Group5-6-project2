@@ -43,7 +43,6 @@ export const Cart = () => {
                     <img
                       className="w-4 h-4 cursor-pointer"
                       src="/../../public/icons/cart-delete-red.svg"
-                      
                       alt="delete"
                     />
                   </div>

@@ -41,11 +41,9 @@ const EditProduct = () => {
       className="flex items-start justify-center gap-16 py-16 min-h-screen
       bg-background-base-light dark:bg-[var(--color-background-primary-dark)]"
     >
-      <aside>
-        <Sidebar>
-          <AdminDropdown />
-        </Sidebar>
-      </aside>
+      <Sidebar>
+        <AdminDropdown />
+      </Sidebar>
       <main className="w-full max-w-4xl">
         <ProductForm
           formData={formData}

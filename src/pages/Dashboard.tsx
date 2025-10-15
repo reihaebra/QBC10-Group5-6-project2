@@ -1,4 +1,5 @@
 import DashboardCard from "../components/DashboardCard";
+import AdminDropdown from "../components/ui/AdminDropdown";
 import Sidebar from "../components/ui/Sidebar";
 import {
   BarChart,
@@ -22,10 +23,12 @@ const dataMax = Math.max(...data.map((item) => item.sale));
 const Dashboard: React.FC = () => {
   return (
     <>
-      <Sidebar />
+      <Sidebar>
+        <AdminDropdown />
+      </Sidebar>
       <div
         className="flex flex-col gap-10 py-16 pr-24 font-yekan-bakh relative w-full 
-        h-fit overflow-x-hidden 
+        h-screen overflow-x-hidden 
         bg-background-base-light 
         dark:bg-[var(--color-background-primary-dark)]"
       >

@@ -3,6 +3,7 @@ import { admins } from "../../constants/usersSampleList";
 import type { Admin } from "../../constants/usersSampleList";
 import type { EditingState } from "../../constants/usersSampleList";
 import Sidebar from "../components/ui/Sidebar";
+import AdminDropdown from "../components/ui/AdminDropdown";
 
 export const UsersPage = () => {
   const [editing, setEditing] = useState<EditingState | null>(null);
@@ -39,7 +40,9 @@ export const UsersPage = () => {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar>
+        <AdminDropdown />
+      </Sidebar>
       <div className="pt-16 pr-48 w-full h-screen font-yekan-bakh text-base font-normal bg-[var(--color-background-base-light)] dark:bg-[var(--color-background-primary-dark)] text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
         <div className="overflow-x-auto">
           <table className="w-7xl rounded-xl table-fixed border-collapse">

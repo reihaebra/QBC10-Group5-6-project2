@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import FilterHeading from "./ui/FilterHeading";
 import Filter from "./ui/Filter";
-import { getCategoryList } from "../api/requests/CategoryList";
+import { getCategoryList } from "../api/requests/categoryList";
 interface Category {
   _id: string;
   name: string;
@@ -14,7 +14,6 @@ const ShowPageAside = () => {
     setSelectedCategories((prev) =>
       checked ? [...prev, id] : prev.filter((item) => item !== id)
     );
-    
   };
   useEffect(() => {
     const fetchCategories = async () => {

@@ -41,11 +41,9 @@ const CreateProduct = () => {
       className="flex items-start justify-center gap-16 py-16 min-h-screen
       bg-background-base-light dark:bg-[var(--color-background-primary-dark)]"
     >
-      <aside>
-        <Sidebar>
-          <AdminDropdown />
-        </Sidebar>
-      </aside>
+      <Sidebar>
+        <AdminDropdown />
+      </Sidebar>
       <main className="w-full max-w-4xl">
         <h1
           className="font-semibold text-primary-text-light text-2xl leading-8 mb-8 
