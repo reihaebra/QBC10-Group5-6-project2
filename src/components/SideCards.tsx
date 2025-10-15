@@ -25,36 +25,10 @@ const SideCards = () => {
   ];
 
   return (
-    <div className="w-184 h-176 flex flex-col gap-8">
-      <div className="flex gap-4">
-        <ProductCard
-          size="small"
-          title={products[0].title}
-          price={products[0].price}
-          imageUrl={products[0].imageUrl}
-        />
-        <ProductCard
-          size="small"
-          title={products[1].title}
-          price={products[1].price}
-          imageUrl={products[1].imageUrl}
-        />
-      </div>
-
-      <div className="flex gap-4">
-        <ProductCard
-          size="small"
-          title={products[2].title}
-          price={products[2].price}
-          imageUrl={products[2].imageUrl}
-        />
-        <ProductCard
-          size="small"
-          title={products[3].title}
-          price={products[3].price}
-          imageUrl={products[3].imageUrl}
-        />
-      </div>
+    <div className="flex flex-wrap gap-6">
+      {products.map((product, i) => (
+        <ProductCard key={i} {...product} size="small" />
+      ))}
     </div>
   );
 };

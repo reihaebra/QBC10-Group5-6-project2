@@ -7,7 +7,7 @@ const Badge = ({ size = "small", children = "۱۰,۰۰۰ تومان" }: BadgePro
   const sizeClasses =
     size === "big"
       ? "leading-5 text-xs py-0.5 px-2.5 max-h-6"
-      : "leading-4 text-[11px] py-0.5 px-2 max-h-5";
+      : "leading-4 text-[10px] py-0.5 px-2 max-h-5";
 
   return (
     <div

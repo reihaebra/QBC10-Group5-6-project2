@@ -17,14 +17,14 @@ const ProductCard = ({
   const sizeStyles =
     size === "big"
       ? {
-          container: "w-[404px] h-96",
-          imageContainer: "w-[404px] h-[346px]",
+          container: "w-80 h-80",
+          imageContainer: "w-80 h-72",
           titleText: "text-lg",
           badgeSize: "big",
         }
       : {
-          container: " w-[350px] h-[336px]",
-          imageContainer: "w-[350px] h-[296px]",
+          container: "w-72 h-72",
+          imageContainer: "w-72 h-64",
           titleText: "text-base",
           badgeSize: "small",
         };
@@ -51,7 +51,7 @@ const ProductCard = ({
         >
           {title}
         </span>
-        <Badge size="big">{price}</Badge>
+        <Badge size={sizeStyles.badgeSize}>{price}</Badge>
       </div>
     </div>
   );

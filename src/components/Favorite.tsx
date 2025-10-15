@@ -8,7 +8,7 @@ const Favorite = () => {
         {allProductsSample.map((product) => (
           <div key={product.id}>
             <ProductCard
-              size="big"
+              size="small"
               title={product.title}
               price={product.price}
               imageUrl={product.imageUrl}

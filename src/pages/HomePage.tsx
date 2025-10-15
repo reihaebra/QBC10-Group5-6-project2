@@ -5,7 +5,7 @@ import UserDropdown from "../components/ui/UserDropdown";
 
 const HomePage = () => {
   return (
-    <main className=" bg-background-light dark:bg-[var(--color-background-primary-dark)]">
+    <main className="bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
       <Sidebar>
         <UserDropdown />
       </Sidebar>

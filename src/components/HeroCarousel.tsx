@@ -59,8 +59,8 @@ const HeroCarousel: React.FC = () => {
   }, [swiperInstance]);
 
   return (
-    <div className="relative flex items-center justify-center w-full py-10">
-      <div className="absolute left-10 w-143 h-175 z-10">
+    <div className="relative flex items-center justify-center max-w-[500px] w-full h-full self-start">
+      <div className="w-full">
         <Swiper
           modules={[Navigation, Autoplay]}
           onSwiper={setSwiperInstance}
@@ -68,7 +68,7 @@ const HeroCarousel: React.FC = () => {
           loop
           spaceBetween={16}
           slidesPerView={1}
-          className="w-full h-full rounded-2xl overflow-hidden"
+          className="w-full h-full overflow-hidden"
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
@@ -80,7 +80,7 @@ const HeroCarousel: React.FC = () => {
 
       <button
         ref={prevRef}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
+        className="absolute -left-8 bottom-7/12 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
           src="../../public/icons/arrleft-light.svg"
@@ -96,7 +96,7 @@ const HeroCarousel: React.FC = () => {
 
       <button
         ref={nextRef}
-        className="absolute left-155 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
+        className="absolute -right-8 bottom-7/12 z-20 p-2 rounded-full hover:scale-105 transition-transform"
       >
         <img
           src="../../public/icons/arrright-light.svg"
