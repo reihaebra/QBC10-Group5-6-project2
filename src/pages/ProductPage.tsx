@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ProductContainer from "../components/ProductContainer";
 import UserDropdown from "../components/ui/UserDropdown";
 import Sidebar from "../components/ui/Sidebar";

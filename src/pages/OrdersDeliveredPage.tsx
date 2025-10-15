@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "../components/ui/Sidebar";
 import OrderItemsTable from "../components/OrderItemsTable";
 import CustomerInfo from "../components/CustomerInfo";

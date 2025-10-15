@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ButtonPrimary from "./ui/ButtonPrimary";
 
 interface CommentFormProps {
@@ -70,20 +70,21 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
             </span>
 
             <img
-    src="../../public/icons/chevron_left_light.svg"
-    alt="فلش"
-    className={`w-4 h-4 transition-transform duration-200 ${
-      isOpen ? "rotate-180" : ""
-    } dark:hidden`} 
-  />
+              src="../../public/icons/chevron_left_light.svg"
+              alt="فلش"
+              className={`w-4 h-4 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              } dark:hidden`}
+            />
 
-  {/* عکس برای حالت دارک */}
-  <img
-    src="../../public/icons/chevron_left_dark.svg"
-    alt="فلش تیره"
-    className={`w-4 h-4 transition-transform duration-200 ${
-      isOpen ? "rotate-180" : ""
-    } hidden dark:block`} />
+            {/* عکس برای حالت دارک */}
+            <img
+              src="../../public/icons/chevron_left_dark.svg"
+              alt="فلش تیره"
+              className={`w-4 h-4 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              } hidden dark:block`}
+            />
           </div>
 
           {isOpen && (
@@ -116,15 +117,9 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
           />
         </div>
 
-        
         <div className="self-start inline-block">
-  <ButtonPrimary
-    text="ثبت نظر"
-    handleClick={handleSubmit}
-  />
-</div>
-
-
+          <ButtonPrimary text="ثبت نظر" handleClick={handleSubmit} />
+        </div>
       </form>
     </div>
   );

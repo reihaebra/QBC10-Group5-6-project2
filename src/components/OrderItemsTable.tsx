@@ -1,7 +1,5 @@
-import React from "react";
 import { useTestData } from "./TestData";
 
-// 💰 Format number to USD currency
 const formatMoney = (value: number) =>
   new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -16,7 +14,6 @@ const OrderItemsTable: React.FC = () => {
       className=" w-fit h-auto max-h-96  p-6  gap-2.5  border-2 border-input-light  dark:border-[var(--color-input-dark)]"
     >
       <table className="w-fit font-normal text-base flex-col ">
-        {/* --- Table Header --- */}
         <thead className="w-fit border-b border-input-light dark:border-[var(--color-input-dark)]">
           <tr>
             <th className="py-2  text-right">عکس</th>
@@ -27,7 +24,6 @@ const OrderItemsTable: React.FC = () => {
           </tr>
         </thead>
 
-        {/* --- Table Body --- */}
         <tbody>
           {items.map(({ id, image, name, qty, price }) => (
             <tr key={id} className="align-middle">

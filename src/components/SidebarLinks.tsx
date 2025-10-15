@@ -1,5 +1,3 @@
-import React from "react";
-
 interface SidebarLinksProps {
   activeSection: string;
   onSelect: (section: string) => void;

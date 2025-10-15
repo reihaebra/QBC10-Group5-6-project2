@@ -1,5 +1,3 @@
-import React from "react";
-
 interface HeroProductCardProps {
   imageUrl: string;
   title: string;
@@ -129,10 +127,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
               />
               <span>
                 بروزرسانی:
-                <span className="text-black dark:text-white">
-                  {" "}
-                  {updatedAt}
-                </span>
+                <span className="text-black dark:text-white"> {updatedAt}</span>
               </span>
             </div>
 
@@ -160,4 +155,3 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
 };
 
 export default HeroProductCard;
-

@@ -1,4 +1,3 @@
-import React from "react";
 import { addressSeed } from "./TestData";
 import type { Address } from "./TestData";
 

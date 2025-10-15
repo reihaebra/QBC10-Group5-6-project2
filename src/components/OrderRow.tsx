@@ -1,4 +1,3 @@
-// OrderRow.tsx
 import OrderRowButton from "./OrderRowButton";
 import ButtonPrimary from "./ui/ButtonPrimary";
 type PaymentStatus = "paid" | "unpaid";
@@ -43,7 +42,9 @@ const OrderRow = ({
       <td className="text-center text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
         {date || "1402/02/01"}
       </td>
-      <td className="text-center text-primary-text-light dark:text-[var(--color-primary-text-dark)]">{user || "کاربر"}</td>
+      <td className="text-center text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
+        {user || "کاربر"}
+      </td>
       <td className="text-center text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
         {price || "0 تومان"}
       </td>

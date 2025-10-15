@@ -1,7 +1,6 @@
-import React from 'react';
-import ButtonPrimary from '../components/ui/ButtonPrimary';
-import FormInput from '../components/FormInput';
-import Sidebar from '../components/ui/Sidebar';
+import ButtonPrimary from "../components/ui/ButtonPrimary";
+import FormInput from "../components/FormInput";
+import Sidebar from "../components/ui/Sidebar";
 
 export default function Login() {
   return (
@@ -51,8 +50,8 @@ h-[100vh] pr-32
             <p className="text-sm">
               عضو نیستید ؟
               <a href="/register" className="text-primary-main ml-1">
-                {' '}
-                &nbsp;ثبت‌نام{' '}
+                {" "}
+                &nbsp;ثبت‌نام{" "}
               </a>
             </p>
           </div>

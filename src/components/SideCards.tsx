@@ -1,4 +1,3 @@
-import React from "react";
 import ProductCard from "../components/ui/ProductCard";
 
 const SideCards = () => {
@@ -27,7 +26,6 @@ const SideCards = () => {
 
   return (
     <div className="w-184 h-176 flex flex-col gap-8">
-      {/* ردیف اول */}
       <div className="flex gap-4">
         <ProductCard
           size="small"
@@ -43,7 +41,6 @@ const SideCards = () => {
         />
       </div>
 
-      {/* ردیف دوم */}
       <div className="flex gap-4">
         <ProductCard
           size="small"

@@ -1,4 +1,3 @@
-import React from "react";
 import ButtonPrimary from "./ui/ButtonPrimary";
 import InventoryDropdown from "../components/ui/InventoryDropdown";
 
@@ -6,7 +5,6 @@ const ProductContainer = () => {
   return (
     <>
       <div className="flex flex-row gap-12  bg-background-base-light dark:bg-[var(--color-background-primary-dark)] font-yekan-bakh">
-        {/* productImage */}
         <div id="productImage" className="w-1/3  mt-16">
           <img
             src="../../public/images/mba13-midnight-select-202402.png"
@@ -14,7 +12,6 @@ const ProductContainer = () => {
             className="w-3xl h-full items-stretch object-cover"
           />
         </div>
-        {/* productIntroduce */}
         <div
           id="productIntroduce"
           className="flex flex-col gap-11 w-1/3 h-1/3 mt-16 pl-5 pr-5"
@@ -31,13 +28,11 @@ const ProductContainer = () => {
           <div className="text-[var(--color-primary-text-light)]  dark:text-[var(--color-primary-text-dark)]">
             <span className="text-3xl font-bold">۱۰,۰۰۰ تومان</span>
           </div>
-          {/* productDetail */}
           <div id="productDetail" className="flex flex-row justify-between">
             <div
               id="rightcolumn"
               className="flex flex-col gap-3.5 font-normal text-base"
             >
-              
               <div className="flex flex-row gap-2">
                 <img
                   src="../../public/icons/star-light.svg"

@@ -1,8 +1,6 @@
-import React from "react";
 import ButtonPrimary from "../components/ui/ButtonPrimary";
 import FormInput from "../components/FormInput";
 import Sidebar from "../components/ui/Sidebar";
-
 
 export default function Register() {
   return (
@@ -19,7 +17,6 @@ bg-background-base-light dark:bg-background-primary-dark
 h-[100vh] pr-32
 "
       >
-        {/* فرم ثبت‌نام */}
         <div className="col-span-12 md:col-span-5">
           <div className="space-y-6">
             <h2 className="text-lg font-bold">ثبت‌نام</h2>
@@ -49,7 +46,6 @@ h-[100vh] pr-32
               placeholder="رمز عبور خود را دوباره وارد نمایید"
             />
 
-            {/* دکمه ثبت‌نام */}
             <div className="pt-3">
               <div className="max-w-28">
                 <ButtonPrimary text="ثبت‌نام" handleClick={() => {}} />
@@ -66,7 +62,6 @@ h-[100vh] pr-32
           </div>
         </div>
 
-        {/* لایت و دارک */}
         <div className="col-span-12 md:col-span-7">
           <img
             src="../../public/images/auth_light.png"

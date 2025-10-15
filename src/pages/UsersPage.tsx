@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { admins } from "../../constants/usersSampleList";
 import type { Admin } from "../../constants/usersSampleList";
 import type { EditingState } from "../../constants/usersSampleList";
 
 export const UsersPage = () => {
-  // state to track the row being edited
   const [editing, setEditing] = useState<EditingState | null>(null);
   const [editValues, setEditValues] = useState<{ name: string; email: string }>(
     {
@@ -29,19 +28,16 @@ export const UsersPage = () => {
     setEditValues({ ...editValues, [field]: e.target.value });
   };
 
-  // save changes on Enter key
   const handleSave = (index: number, field: "name" | "email") => {
     setEditing(null);
   };
 
-  // ESC key
   const handleCancel = () => {
     setEditing(null);
   };
 
   return (
     <div className="p-6 w-full h-screen font-yekan-bakh text-base font-normal bg-[var(--color-background-base-light)] dark:bg-[var(--color-background-primary-dark)] text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
-      {/* Admins Table */}
       <div className="overflow-x-auto">
         <table className="w-full rounded-xl table-fixed border-collapse">
           <thead>
@@ -70,10 +66,8 @@ export const UsersPage = () => {
                 key={index}
                 className="hover:bg-[var(--color-primary-hover-dark)] transition-all duration-150"
               >
-                {/* ID */}
                 <td className="text-sm py-2">{admin.id}</td>
 
-                {/* Name by icon */}
                 <td className="px-4 py-2">
                   <div className="inline-flex items-center gap-2">
                     {editing?.index === index && editing?.field === "name" ? (
@@ -126,7 +120,6 @@ export const UsersPage = () => {
                   </div>
                 </td>
 
-                {/* Email */}
                 <td className="px-4 py-2">
                   <div className="inline-flex items-center gap-2">
                     {editing?.index === index && editing?.field === "email" ? (
@@ -179,7 +172,6 @@ export const UsersPage = () => {
                   </div>
                 </td>
 
-                {/* Checked img */}
                 <td className="px-4 py-2">
                   <img
                     src={
@@ -192,7 +184,6 @@ export const UsersPage = () => {
                   />
                 </td>
 
-                {/* Operation */}
                 <td className="px-8 py-2 justify-items-end pl">
                   <button className="flex h-9 w-9 bg-error-light rounded-lg justify-center items-center cursor-pointer">
                     <img

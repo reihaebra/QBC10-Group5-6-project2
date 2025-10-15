@@ -1,4 +1,3 @@
-import React from "react";
 import DashboardCard from "../components/DashboardCard";
 import Sidebar from "../components/ui/Sidebar";
 import {
@@ -29,7 +28,6 @@ const Dashboard: React.FC = () => {
           <DashboardCard title="مشتری ها" amount="10" />
           <DashboardCard title="سفارشات" amount="100" />
         </div>
-        {/* نمودار فروش */}
         <div className="w-full  rounded-2xl p-6 max-w-[1584px] mx-auto h-[984px]">
           <h3 className="text-secondary-light mb-4 text-sm font-bold text-right dark:text-[var(--color-secondary-dark)]">
             نمودار فروش
@@ -54,7 +52,10 @@ const Dashboard: React.FC = () => {
                 />
 
                 <Tooltip
-                  contentStyle={{ backgroundColor: "var(--color-primary-main)", color: "var(--color-on-primary-light)" }}
+                  contentStyle={{
+                    backgroundColor: "var(--color-primary-main)",
+                    color: "var(--color-on-primary-light)",
+                  }}
                   cursor={{ fill: "rgba(233,30,99,0.1)" }}
                 />
                 <Bar
@@ -67,7 +68,7 @@ const Dashboard: React.FC = () => {
             </ResponsiveContainer>
           </div>
           <p className="text-secondary-light mb-4 text-sm font-bold text-center  dark:text-[var(--color-secondary-dark)">
-           تاریخ
+            تاریخ
           </p>
         </div>
       </div>

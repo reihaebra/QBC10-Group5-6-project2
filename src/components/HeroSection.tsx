@@ -1,4 +1,3 @@
-import React from "react";
 import HeroCarousel from "../components/HeroCarousel";
 import SideCards from "../components/SideCards";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { useTestData } from "./TestData";
 
 const ir = (n: number) => `${n.toLocaleString("fa-IR")} تومان`;

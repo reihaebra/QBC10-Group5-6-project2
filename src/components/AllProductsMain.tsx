@@ -1,4 +1,3 @@
-import React from "react";
 import allProductsSamples from "../../constants/all-products-samples";
 import AllProductsCard from "./AllProductsCard";
 const AllProductsMain: React.FC = () => {

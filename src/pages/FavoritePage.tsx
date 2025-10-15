@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "../components/ui/Sidebar";
 import Favorite from "../components/Favorite";
 

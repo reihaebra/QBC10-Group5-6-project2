@@ -1,4 +1,3 @@
-// OrdersFrame.tsx
 import OrderRow from "./OrderRow";
 import data from "../../constants/orders-sample";
 
@@ -6,9 +5,9 @@ const OrdersFrame = () => {
   return (
     <div className="w-full overflow-x-auto font-yekan-bakh dark:text-[var(--color-primary-text-dark)]">
       <table className="min-w-full border-collapse ">
-        <thead >
+        <thead>
           <tr className="border-b border-input-light bg-surface-light">
-             <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-20 dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-20 dark:text-[var(--color-primary-text-dark)]">
               عکس
             </th>
             <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-50 dark:text-[var(--color-primary-text-dark)]">

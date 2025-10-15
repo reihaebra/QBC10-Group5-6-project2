@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
-// --- Types ---
 export type Currency = "USD" | "IRR";
 
 export type LineItem = {
@@ -20,7 +19,6 @@ export type Address = {
   payment: string;
 };
 
-// --- Seed Data ---
 export const itemsSeed: LineItem[] = [
   {
     id: "1",
@@ -56,7 +54,6 @@ export const addressSeed: Address = {
   payment: "درگاه پرداخت پاسارگاد",
 };
 
-// --- Context Types ---
 type TestDataCtx = {
   items: LineItem[];
   inc: (id: string) => void;
@@ -69,10 +66,8 @@ type TestDataCtx = {
   address: Address;
 };
 
-// --- Context ---
 const TestDataContext = createContext<TestDataCtx | null>(null);
 
-// --- Provider ---
 export const TestDataProvider: React.FC<{
   seed: LineItem[];
   children: React.ReactNode;
@@ -123,7 +118,6 @@ export const TestDataProvider: React.FC<{
   );
 };
 
-// --- Hook ---
 export const useTestData = () => {
   const ctx = useContext(TestDataContext);
   if (!ctx) throw new Error("useTestData must be used within TestDataProvider");

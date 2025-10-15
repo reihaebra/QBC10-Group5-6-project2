@@ -1,4 +1,3 @@
-import React from "react";
 import ProductCard from "./ui/ProductCard";
 import ButtonSecondary from "./ui/ButtonSecondary";
 
@@ -48,4 +47,3 @@ const SpecialProducts = () => {
 };
 
 export default SpecialProducts;
-
