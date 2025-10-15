@@ -6,7 +6,7 @@ type SidebarProps = {
 };
 
 const menuItems = [
-  { name: "sidebar-home", label: "داشبورد", path: "/admin/dashboard" },
+  { name: "sidebar-home", label: "خانه", path: "/user/home" },
   { name: "sidebar-shop", label: "فروشگاه", path: "/user/shop" },
   { name: "sidebar-shopping-card", label: "سبد خرید", path: "/user/cart" },
   { name: "sidebar-favorite", label: "علاقه‌مندی‌ها", path: "/user/favorites" },
