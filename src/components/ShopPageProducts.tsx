@@ -3,6 +3,7 @@ import data from "../../constants/shop-page-sample";
 import { useEffect, useRef, useState } from "react";
 import { getAllProducts } from "../api/requests/products";
 import { getProductsPagination } from "../api/requests/productsPagination";
+import { getFilteredProducts } from "../api/requests/filteredProducts";
 interface ProductShopPage {
   _id: string;
   name: string;
@@ -14,8 +15,15 @@ interface ProductShopPage {
   description: string;
   image: string;
 }
+interface ShopPageProductsProps {
+  selectedCategories: string[];
+  priceFilter: string;
+}
 
-const ShopPageProducts = () => {
+const ShopPageProducts = ({
+  selectedCategories,
+  priceFilter,
+}: ShopPageProductsProps) => {
   const [products, setProducts] = useState<ProductShopPage[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -34,13 +42,18 @@ const ShopPageProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await getProductsPagination(page, 6);
-        console.log(response);
-        setHasMore(response.hasMore);
-        console.log(hasMore);
-        console.log(pageNumbers.current);
-
-        setProducts(response.products);
+        if (selectedCategories.length > 0 || priceFilter) {
+          const response = await getFilteredProducts(selectedCategories, priceFilter ? [0, parseInt(priceFilter)] : [0, 20000000000]);
+          setProducts(response);
+          setHasMore(false); 
+        } else {
+          const response = await getProductsPagination(page, 6);
+          console.log(response);
+          setHasMore(response.hasMore);
+          console.log(hasMore);
+          console.log(pageNumbers.current);
+          setProducts(response.products);
+        }
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -48,7 +61,7 @@ const ShopPageProducts = () => {
       }
     };
     fetchProducts();
-  }, [page]);
+  }, [page, selectedCategories, priceFilter]);
 
   if (loading) {
     return <p>در حال بارگذاری محصولات...</p>;
@@ -73,8 +86,7 @@ const ShopPageProducts = () => {
           <p>محصولی یافت نشد.</p>
         )}
       </section>
-
-      <div className="flex items-center gap-3 mt-6 mx-auto">
+      {selectedCategories.length === 0 && !priceFilter && <div className="flex items-center gap-3 mt-6 mx-auto">
         {/* دکمه قبلی */}
         <button
           disabled={page === 1}
@@ -113,7 +125,8 @@ const ShopPageProducts = () => {
         >
           بعدی
         </button>
-      </div>
+      </div>}
+      
     </main>
   );
 };
