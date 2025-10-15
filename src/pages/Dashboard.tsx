@@ -28,7 +28,7 @@ const Dashboard: React.FC = () => {
       </Sidebar>
       <div
         className="flex flex-col gap-10 py-16 pr-24 font-yekan-bakh relative w-full 
-        h-fit overflow-x-hidden 
+        h-screen overflow-x-hidden 
         bg-background-base-light 
         dark:bg-[var(--color-background-primary-dark)]"
       >

@@ -4,7 +4,7 @@ import Sidebar from "../components/ui/Sidebar";
 
 const AllProducts: React.FC = () => {
   return (
-    <div className="flex flex-row pr-32 bg-background-base-light justify-between dark:bg-[var(--color-background-primary-dark)]">
+    <div className="flex flex-row pr-32 h-screen bg-background-base-light justify-between dark:bg-[var(--color-background-primary-dark)]">
       <Sidebar>
         <AdminDropdown />
       </Sidebar>

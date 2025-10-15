@@ -4,7 +4,7 @@ import UserDropdown from "../components/ui/UserDropdown";
 const UserOrdersPage = () => {
   return (
     <>
-      <div className="relative flex h-screen justify-between dark:bg-[var(--color-background-primary-dark)] ">
+      <div className="relative flex h-screen justify-between bg-background-base-light dark:bg-[var(--color-background-primary-dark)] ">
         <Sidebar>
           <UserDropdown />
         </Sidebar>

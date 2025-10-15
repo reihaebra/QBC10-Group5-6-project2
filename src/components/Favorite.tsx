@@ -4,7 +4,7 @@ import allProductsSample from "../../constants/all-products-samples";
 const Favorite = () => {
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-start gap-8">
         {allProductsSample.map((product) => (
           <div key={product.id}>
             <ProductCard

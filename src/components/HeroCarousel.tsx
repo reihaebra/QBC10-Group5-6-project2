@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import HeroProductCard from "../components/ui/HeroProductCard";
+import HeroProductCard from "../components/HeroProductCard";
 
 interface Product {
   title: string;

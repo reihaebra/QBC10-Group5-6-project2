@@ -20,7 +20,7 @@ const CheckoutPage = () => {
         </Sidebar>
 
         <main className="flex-1 pr-32 p-8 mt-6 mx-auto">
-          <div className="flex  gap-10 mx-auto ">
+          <div className="flex gap-10 mx-auto ">
             <div className="col-span-2 min-w-0">
               <OrderItemsTable />
             </div>
