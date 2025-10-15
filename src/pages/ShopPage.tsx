@@ -6,7 +6,7 @@ const ShopPage = () => {
     <div className="flex  bg-background-base-light justify-between font-yekan-bakh dark:bg-[var(--color-background-primary-dark)]">
       <Sidebar />
       {/* main + aside */}
-      <div className="relative flex flex-row gap-16 top-8 left-[156px] justify-center font-YekanBakh text-black">
+      <div className="relative flex flex-row gap-16 top-8 left-[156px] justify-center font-YekanBakh text-black bg-background-base-light h-screen w-[calc(100vw-156px)] dark:bg-[var(--color-background-primary-dark)] dark:text-white">
         {/* aside */}
         <ShowPageAside/>
         {/* products card */}
