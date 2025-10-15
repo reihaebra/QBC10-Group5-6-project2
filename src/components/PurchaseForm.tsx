@@ -1,4 +1,3 @@
-import React from "react";
 import ButtonSecondary from "./ui/ButtonSecondary";
 
 interface FormProps {
@@ -10,7 +9,7 @@ interface FormProps {
 }
 
 const PurchaseForm = (props: FormProps) => {
-  const { setStep, setAddress, setCity, setCountry, setPostal} = props;
+  const { setStep, setAddress, setCity, setCountry, setPostal } = props;
 
   const handleAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(e.target.value);
@@ -24,10 +23,10 @@ const PurchaseForm = (props: FormProps) => {
   const handlePostal = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPostal(Number(e.target.value));
   };
-  
+
   const handleClick = () => {
-    setStep(step => step + 1);
-  }
+    setStep((step) => step + 1);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] font-yekan-bakh">
@@ -54,7 +53,7 @@ const PurchaseForm = (props: FormProps) => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
-                onChange={handleAddress}
+              onChange={handleAddress}
             />
           </div>
           <div>
@@ -74,7 +73,7 @@ const PurchaseForm = (props: FormProps) => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
-                onChange={handleCity}
+              onChange={handleCity}
             />
           </div>
           <div>
@@ -94,7 +93,7 @@ const PurchaseForm = (props: FormProps) => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
-                onChange={handleCountry}
+              onChange={handleCountry}
             />
           </div>
           <div>
@@ -114,7 +113,7 @@ const PurchaseForm = (props: FormProps) => {
                 placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
                  focus:border-info-light
                 outline-none transition-all"
-                onChange={handlePostal}
+              onChange={handlePostal}
             />
           </div>
           <div className="pt-1.5">

@@ -1,46 +1,48 @@
-import React from 'react'
-import CartItems from './CartItems'
-import {items} from '../../constants/shopping-progress'
+import CartItems from "./CartItems";
+import { items } from "../../constants/shopping-progress";
 
 interface TableProps {
   setSum: React.Dispatch<React.SetStateAction<number>>;
-  
 }
 
 const CartTable = (props: TableProps) => {
-  const {setSum} = props;
-  
+  const { setSum } = props;
+
   const list = items.map((item, index) => (
-            <CartItems key={index} image={item.image} name={item.name} quantity={item.quantity} price={item.price} />
-          ));
+    <CartItems
+      key={index}
+      image={item.image}
+      name={item.name}
+      quantity={item.quantity}
+      price={item.price}
+    />
+  ));
 
   const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity, 0
+    (sum, item) => sum + item.price * item.quantity,
+    0
   );
 
   setSum(total);
-  
+
   return (
     <div>
       <table className="w-full text-right table-fixed">
         <thead>
-          <tr className='pb-2 flex flex-row justify-between text-center dark:text-[var(--color-primary-text-dark)]'>
+          <tr className="pb-2 flex flex-row justify-between text-center dark:text-[var(--color-primary-text-dark)]">
             <th className="flex gap-4 w-88 font-normal text-base">
-              <p className='w-20'>عکس</p>
-              <p className='max-w-75'>نام محصول</p>
+              <p className="w-20">عکس</p>
+              <p className="max-w-75">نام محصول</p>
             </th>
-            <th className='w-9 font-normal text-base'>تعداد</th>
-            <th className='w-20 font-normal text-base'>قیمت</th>
-            <th className='w-25 font-normal text-base'>قیمت نهایی</th>
+            <th className="w-9 font-normal text-base">تعداد</th>
+            <th className="w-20 font-normal text-base">قیمت</th>
+            <th className="w-25 font-normal text-base">قیمت نهایی</th>
           </tr>
         </thead>
-        <tbody>
-          {list}
-        </tbody>
+        <tbody>{list}</tbody>
       </table>
-        
     </div>
-  )
-}
+  );
+};
 
-export default CartTable
+export default CartTable;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ButtonPrimary from "./ui/ButtonPrimary";
 
 interface CommentFormProps {
@@ -43,19 +43,19 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="font-yekan-bakh">
+    <div className="font-yekan-bakh w-md">
       <form
         onSubmit={handleSubmit}
-        className="rounded-lg p-4 flex flex-col gap-6 mr-40 text-right transition-colors duration-300 relative"
+        className="rounded-lg px-4 flex flex-col gap-2 mr-40 text-right transition-colors duration-300"
       >
-        <div className="relative">
+        <div>
           <label className="block text-gray-700 dark:text-gray-200 mb-1 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]">
             امتیاز
           </label>
 
           <div
             onClick={() => setIsOpen(!isOpen)}
-            className={`cursor-pointer w-1/2 rounded-md border border-gray-300 dark:border-neutral-700 
+            className={`cursor-pointer w-md rounded-md border border-gray-300 dark:border-neutral-700 
                         bg-white dark:bg-[var(--color-base-text-field-dark)] text-gray-900 dark:text-gray-100 
                         px-3 py-2 pr-4 flex justify-between items-center focus:outline-none focus:ring-2 `}
           >
@@ -70,25 +70,25 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
             </span>
 
             <img
-    src="../../public/icons/chevron_left_light.svg"
-    alt="فلش"
-    className={`w-4 h-4 transition-transform duration-200 ${
-      isOpen ? "rotate-180" : ""
-    } dark:hidden`} 
-  />
+              src="../../public/icons/chevron_left_light.svg"
+              alt="فلش"
+              className={`w-4 h-4 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              } dark:hidden`}
+            />
 
-  {/* عکس برای حالت دارک */}
-  <img
-    src="../../public/icons/chevron_left_dark.svg"
-    alt="فلش تیره"
-    className={`w-4 h-4 transition-transform duration-200 ${
-      isOpen ? "rotate-180" : ""
-    } hidden dark:block`} />
+            <img
+              src="../../public/icons/chevron_left_dark.svg"
+              alt="فلش تیره"
+              className={`w-4 h-4 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              } hidden dark:block`}
+            />
           </div>
 
           {isOpen && (
             <ul
-              className="absolute z-10 mt-1 w-1/2 bg-white dark:bg-neutral-900 border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]
+              className="absolute z-10 mt-1 w-md bg-white dark:bg-neutral-900 border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]
                          rounded-md shadow-md max-h-48 overflow-auto"
             >
               {[1, 2, 3, 4, 5].map((num) => (
@@ -112,19 +112,13 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="نظر خود را وارد نمایید"
-            className="w-1/2 rounded-md border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] bg-white dark:bg-[var(--color-base-text-field-dark)] text-gray-900 dark:text-gray-100 px-3 py-2 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-400 dark:placeholder-gray-400"
+            className="w-md rounded-md border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] bg-white dark:bg-[var(--color-base-text-field-dark)] text-gray-900 dark:text-gray-100 px-3 py-2 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-400 dark:placeholder-gray-400"
           />
         </div>
 
-        
         <div className="self-start inline-block">
-  <ButtonPrimary
-    text="ثبت نظر"
-    handleClick={handleSubmit}
-  />
-</div>
-
-
+          <ButtonPrimary text="ثبت نظر" handleClick={handleSubmit} />
+        </div>
       </form>
     </div>
   );

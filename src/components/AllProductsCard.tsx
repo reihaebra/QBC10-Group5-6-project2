@@ -16,7 +16,7 @@ const AllProductsCard: React.FC<ProductCardProps> = ({
   imageUrl,
 }) => {
   return (
-    <div className="flex flex-row p-2 rounded-lg max-w-[672px] h-fit bg-card-light dark:bg-[var(--color-shop-card-dark)]">
+    <div className="flex flex-row p-2 rounded-lg w-xl h-fit bg-card-light dark:bg-[var(--color-shop-card-dark)]">
       <img src={imageUrl} alt={title} className="W-[160PX] h-[160px]" />
       <div className="flex flex-col p-4">
         <div className="flex justify-between">
@@ -36,7 +36,9 @@ const AllProductsCard: React.FC<ProductCardProps> = ({
             handleClick={handleClick}
             iconSrc="./../../public/icons/left-arrow.svg"
           />
-          <p className="text-base text-primary-text-light font-normal dark:text-white">{price}</p>
+          <p className="text-base text-primary-text-light font-normal dark:text-white">
+            {price}
+          </p>
         </div>
       </div>
     </div>

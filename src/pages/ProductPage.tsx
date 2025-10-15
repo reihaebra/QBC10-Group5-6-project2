@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ProductContainer from "../components/ProductContainer";
 import UserDropdown from "../components/ui/UserDropdown";
 import Sidebar from "../components/ui/Sidebar";
@@ -35,36 +35,38 @@ function ProductPage() {
       </Sidebar>
       <div className="flex flex-col pr-32 bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
         <ProductContainer />
-        <div className="flex pt-8">
-          <SidebarLinks
-            activeSection={activeSection}
-            onSelect={setActiveSection}
-          />
+        <div className="py-10 ">
+          <div className="flex pt-8">
+            <SidebarLinks
+              activeSection={activeSection}
+              onSelect={setActiveSection}
+            />
 
-          <div className="flex-1 p-10 flex flex-col gap-6">
-            {activeSection === "related" && <RelatedProducts />}
+            <div className="flex-1 px-10 flex flex-col gap-6">
+              {activeSection === "related" && <RelatedProducts />}
 
-            {activeSection === "add" && (
-              <CommentForm onSubmit={handleCommentSubmit} />
-            )}
+              {activeSection === "add" && (
+                <CommentForm onSubmit={handleCommentSubmit} />
+              )}
 
-            {activeSection === "view" && (
-              <div className="flex flex-col gap-4">
-                {comments.length === 0 ? (
-                  <p>هیچ نظری ثبت نشده است.</p>
-                ) : (
-                  comments.map((c, index) => (
-                    <CommentItem
-                      key={index}
-                      name={c.name}
-                      date={c.date}
-                      text={c.text}
-                      rating={c.rating}
-                    />
-                  ))
-                )}
-              </div>
-            )}
+              {activeSection === "view" && (
+                <div className="flex flex-col gap-4">
+                  {comments.length === 0 ? (
+                    <p>هیچ نظری ثبت نشده است.</p>
+                  ) : (
+                    comments.map((c, index) => (
+                      <CommentItem
+                        key={index}
+                        name={c.name}
+                        date={c.date}
+                        text={c.text}
+                        rating={c.rating}
+                      />
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

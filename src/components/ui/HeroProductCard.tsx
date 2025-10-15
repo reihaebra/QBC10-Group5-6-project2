@@ -1,5 +1,3 @@
-import React from "react";
-
 interface HeroProductCardProps {
   imageUrl: string;
   title: string;
@@ -33,7 +31,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
         />
       </div>
 
-      <div className="flex w-full p-6 gap-6 pr-0 mr-0">
+      <div className="flex w-full p-2 gap-6 pr-0 mr-0">
         <div className="flex-1 min-w-[40%] flex flex-col gap-2 gap-y-2">
           <h3 className="text-base font-normal font-sans">{title}</h3>
           <p className="text-xl font-normal text-gray-900 text-left mb-1 dark:text-white">
@@ -45,7 +43,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
         </div>
 
         <div className="flex flex-1 min-w-[40%] justify-between text-gray-600 dark:text-gray-400 text-sm">
-          <div className="flex flex-col gap-y-9">
+          <div className="flex flex-col gap-y-6">
             <div className="flex items-center gap-2">
               <img
                 src="../../public/icons/star-light.svg"
@@ -98,7 +96,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
             </div>
           </div>
 
-          <div className="flex flex-col gap-y-9">
+          <div className="flex flex-col gap-y-6">
             <div className="flex items-center gap-2">
               <img
                 src="../../public/icons/brand.svg"
@@ -129,10 +127,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
               />
               <span>
                 بروزرسانی:
-                <span className="text-black dark:text-white">
-                  {" "}
-                  {updatedAt}
-                </span>
+                <span className="text-black dark:text-white"> {updatedAt}</span>
               </span>
             </div>
 
@@ -160,4 +155,3 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
 };
 
 export default HeroProductCard;
-

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -78,7 +78,6 @@ const HeroCarousel: React.FC = () => {
         </Swiper>
       </div>
 
-      {/* دکمه قبلی */}
       <button
         ref={prevRef}
         className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"
@@ -95,7 +94,6 @@ const HeroCarousel: React.FC = () => {
         />
       </button>
 
-      {/* دکمه بعدی */}
       <button
         ref={nextRef}
         className="absolute left-155 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full hover:scale-105 transition-transform"

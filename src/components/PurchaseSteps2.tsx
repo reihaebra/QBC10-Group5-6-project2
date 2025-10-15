@@ -1,5 +1,3 @@
-import React from "react";
-
 export const PurchaseSteps2 = () => {
   return (
     <div className="w-155 mx-auto font-yekan-bakh">

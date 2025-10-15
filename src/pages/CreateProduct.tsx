@@ -49,7 +49,7 @@ const CreateProduct = () => {
       <main className="w-full max-w-4xl">
         <h1
           className="font-semibold text-primary-text-light text-2xl leading-8 mb-8 
-        dark:text-[var(--color-primary-text-dark)]"
+        dark:text-[var(--color-primary-text-dark)] font-yekan-bakh"
         >
           محصول جدید
         </h1>
