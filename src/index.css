@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+* {
+  box-sizing: 0;
+  outline: 0;
+}
+
 @font-face {
   font-family: "YekanBakh";
   src: url("./assets/fonts/YekanBakh-Regular.woff2") format("truetype");
@@ -46,9 +51,9 @@
   --color-info-light: #00b8d9;
   --color-success-light: #22c55e;
   --color-error-light: #b71d18;
-  --color-order-paid-text: #D3FCD2;
-  --color-order-unpaid-text: #FFE9D5;
-  --color-order-pending-text: #CAFDF5;
+  --color-order-paid-text: #d3fcd2;
+  --color-order-unpaid-text: #ffe9d5;
+  --color-order-pending-text: #cafdf5;
 
   --color-primary-dark: #831747;
   --color-primary-hover-dark: #db277714;

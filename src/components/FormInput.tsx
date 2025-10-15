@@ -21,7 +21,7 @@ export default function FormInput({
           "input input-bordered w-full rounded-lg p-2",
           "bg-on-primary-light dark:bg-base-text-field-dark",
           "dark:text-primary-text-dark",
-          "border border-[var(--color-border-light)] dark:border-[var(--color-border-dark)]",
+          "border border-input-light dark:border-[var(--color-input-dark)]",
           "focus:border-input-active",
           className,
         ].join(" ")}

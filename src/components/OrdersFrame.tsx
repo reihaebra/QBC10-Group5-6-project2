@@ -6,7 +6,7 @@ const OrdersFrame = () => {
     <div className="w-full overflow-x-auto font-yekan-bakh dark:text-[var(--color-primary-text-dark)]">
       <table className="min-w-full border-collapse ">
         <thead>
-          <tr className="border-b border-input-light bg-surface-light">
+          <tr className="border-b border-input-light dark:border-[var(--color-input-dark)]">
             <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-20 dark:text-[var(--color-primary-text-dark)]">
               عکس
             </th>

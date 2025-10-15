@@ -14,7 +14,7 @@ const SidebarLinks: React.FC<SidebarLinksProps> = ({
   ];
 
   return (
-    <div className="font-yekan-bakh flex flex-col items-start text-right space-y-4 pr-4 mt-5 mr-10">
+    <div className="font-yekan-bakh flex flex-col items-start text-right space-y-4 pr-4 mr-10">
       {links.map((link) => (
         <button
           key={link.id}

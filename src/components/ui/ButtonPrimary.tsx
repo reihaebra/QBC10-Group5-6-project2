@@ -18,7 +18,7 @@ const ButtonPrimary = ({
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer hover:${bgHoverColor} ${bgColor}`}
+      className={`flex items-center font-yekan-bakh gap-2 px-3 py-2 rounded-lg cursor-pointer hover:${bgHoverColor} ${bgColor}`}
     >
       <span className="font-normal text-sm text-on-primary-light">{text}</span>
       {iconSrc && <img src={iconSrc} alt={altText} />}

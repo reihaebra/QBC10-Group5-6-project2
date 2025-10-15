@@ -2,7 +2,7 @@ import allProductsSamples from "../../constants/all-products-samples";
 import AllProductsCard from "./AllProductsCard";
 const AllProductsMain: React.FC = () => {
   return (
-    <div className="relative top-[107px] flex flex-row flex-wrap gap-8 h-fit justify-center">
+    <div className="relative font-yekan-bakh p-16 flex flex-row flex-wrap gap-8 h-fit justify-center">
       {allProductsSamples.map((product) => {
         const { id, title, description, price, imageUrl } = product;
         return (

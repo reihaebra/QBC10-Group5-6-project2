@@ -18,18 +18,25 @@ const data = [
   { month: "مرداد", sale: 1 },
 ];
 const dataMax = Math.max(...data.map((item) => item.sale));
+
 const Dashboard: React.FC = () => {
   return (
     <>
       <Sidebar />
-      <div className="flex flex-col gap-10 pt-[110px] mb-[110px] font-yekan-bakh relative w-screen bg-background-base-light h-screen dark:bg-[var(--color-background-primary-dark)]">
+      <div
+        className="flex flex-col gap-10 py-16 pr-24 font-yekan-bakh relative w-full 
+        h-fit overflow-x-hidden 
+        bg-background-base-light 
+        dark:bg-[var(--color-background-primary-dark)]"
+      >
         <div className="flex gap-32 w-full justify-center h-fit">
           <DashboardCard title="فروش کل" amount="۰ تومان" />
           <DashboardCard title="مشتری ها" amount="10" />
           <DashboardCard title="سفارشات" amount="100" />
         </div>
-        <div className="w-full  rounded-2xl p-6 max-w-[1584px] mx-auto h-[984px]">
-          <h3 className="text-secondary-light mb-4 text-sm font-bold text-right dark:text-[var(--color-secondary-dark)]">
+
+        <div className="w-full rounded-2xl py-6 max-w-[1200px] mx-auto h-[700px]">
+          <h3 className="text-secondary-light mb-4 mr-10 text-sm font-bold text-right dark:text-[var(--color-secondary-dark)]">
             نمودار فروش
           </h3>
           <div className="w-full h-full">
@@ -40,7 +47,6 @@ const Dashboard: React.FC = () => {
                   stroke="var(--color-secondary-dark)"
                   strokeDasharray=""
                 />
-
                 <XAxis dataKey="month" />
                 <YAxis
                   tickMargin={15}
@@ -50,7 +56,6 @@ const Dashboard: React.FC = () => {
                   axisLine={false}
                   tickLine={false}
                 />
-
                 <Tooltip
                   contentStyle={{
                     backgroundColor: "var(--color-primary-main)",
@@ -67,7 +72,7 @@ const Dashboard: React.FC = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <p className="text-secondary-light mb-4 text-sm font-bold text-center  dark:text-[var(--color-secondary-dark)">
+          <p className="text-secondary-light mb-4 text-sm font-bold text-center dark:text-[var(--color-secondary-dark)]">
             تاریخ
           </p>
         </div>

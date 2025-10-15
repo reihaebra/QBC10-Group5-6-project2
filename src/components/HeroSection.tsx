@@ -13,12 +13,12 @@ const HeroSection = () => {
         max-w-[1600px]
         min-w-[1024px]
         mx-auto
-        mt-8
+        pt-8
         px-4
-        pr-26
+        pr-32
       "
     >
-      <div className="relative -ml-12 z-20 w-[40%]">
+      <div className="relative ml-12 z-20 w-[40%]">
         <SideCards />
       </div>
       <div className="relative z-10 w-[58%]">

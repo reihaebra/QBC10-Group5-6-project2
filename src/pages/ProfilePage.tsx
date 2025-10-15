@@ -13,7 +13,7 @@ const ProfilePage = () => {
   });
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
+    <div className="flex items-center justify-center pr-32 min-h-screen bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
       <aside>
         <Sidebar>
           <UserDropdown />

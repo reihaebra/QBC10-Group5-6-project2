@@ -18,12 +18,11 @@ const SpecialProducts = () => {
 
   return (
     <div className="mt-8">
-      {/* فاصله از راست برای عنوان */}
-      <div className="flex justify-between items-center mx-[8px] my-1 pr-26">
+      <div className="flex justify-between items-center mx-2 my-1 pr-26">
         <h2 className="font-yekan-bakh text-xl font-semibold mb-4">
           محصولات ویژه
         </h2>
-        <div className="my-3 pl-8">
+        <div className="my-3 pl-8 font-yekan-bakh">
           <ButtonSecondary
             text="فروشگاه"
             handleClick={() => console.log("رفتن به فروشگاه")}
@@ -31,7 +30,6 @@ const SpecialProducts = () => {
         </div>
       </div>
 
-      {/* کارت‌ها به سمت راست و فاصله کمتر */}
       <div className="grid grid-cols-3 gap-3 justify-items-end pr-10 pl-10">
         {visibleProducts.map((p, i) => (
           <ProductCard

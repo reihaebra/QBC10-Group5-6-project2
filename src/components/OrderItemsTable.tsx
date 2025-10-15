@@ -31,7 +31,7 @@ const OrderItemsTable: React.FC = () => {
                 <img
                   src={image}
                   alt={name}
-                  className="w-16 h-16 rounded border border-gray-200 dark:border-[var(--color-input-dark)] object-cover"
+                  className="w-16 h-16 rounded object-cover"
                 />
               </td>
               <td className="pr-2">{name}</td>
