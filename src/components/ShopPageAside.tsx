@@ -34,15 +34,9 @@ const ShowPageAside = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <aside className=" flex-shrink-0 w-[264px] h-[810px] bg-base-side-light flex items-center flex-col justify-start mr-60 dark:bg-[var(--color-base-side-dark)]">
-      <div className="relative flex flex-col gap-4 w-60 top-3">
-        <div className="flex flex-col gap-2 ">
-=======
     <aside className=" flex-shrink-0 w-[264px] h-fit bg-base-side-light flex items-center flex-col justify-start mr-60 dark:bg-[var(--color-base-side-dark)]">
       <div className="relative flex flex-col gap-10 w-60 top-3">
         <div className="flex flex-col gap-7 ">
->>>>>>> 694fe23bca11e0965ec63700cb3d19b8bfd8232c
           <FilterHeading title="فیلتر برند" />
           <Filter
             categories={categories}
@@ -65,14 +59,10 @@ const ShowPageAside = () => {
         </div>
       </div>
       <div className="flex px-5 gap-2.5 mt-3.5">
-<<<<<<< HEAD
-        <button className=" cursor-pointer w-50 h-7 rounded-sm border border-neutral-dark-600 dark:text-[var(--color-on-primary-light)]">
-=======
         <button
           className="cursor-pointer w-50 h-7 rounded-sm mb-3.5  border border-neutral-dark-600 dark:text-[var(--color-on-primary-light)]"
           onClick={clearFilters}
         >
->>>>>>> 694fe23bca11e0965ec63700cb3d19b8bfd8232c
           حذف فیلتر ها
         </button>
       </div>
