@@ -51,13 +51,13 @@ export default function Login() {
 
         <div className="col-span-12 md:col-span-7 mx-auto">
           <img
-            src="public/images/auth_light.png"
+            src="../../public/images/auth_light.png"
             alt="Login background"
             className="block dark:hidden w-full h-[calc(100vh-100px)] object-cover rounded-md transition-all duration-300"
           />
 
           <img
-            src="public/images/auth_dark.png"
+            src="../../public/images/auth_dark.png"
             alt="Login background dark"
             className="hidden dark:block w-full h-[calc(100vh-100px)] object-cover rounded-md transition-all duration-300"
           />
