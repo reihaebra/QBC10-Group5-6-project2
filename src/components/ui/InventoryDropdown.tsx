@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { createPortal } from "react-dom";
 
 export const InventoryDropdown = () => {
   const [open, setOpen] = useState(false);
@@ -12,19 +11,6 @@ export const InventoryDropdown = () => {
     setSelectedItem(item);
     setOpen(false);
   };
-
-  const getMenuPosition = () => {
-    if (menuRef.current) {
-      const rect = menuRef.current.getBoundingClientRect();
-      return {
-        top: rect.bottom + window.scrollY,
-        left: rect.left + window.scrollX,
-      };
-    }
-    return { top: 0, left: 0 };
-  };
-
-  const { top, left } = getMenuPosition();
 
   return (
     <div
@@ -54,31 +40,28 @@ export const InventoryDropdown = () => {
         </span>
       </div>
 
-      {open &&
-        createPortal(
-          <div
-            className="fixed"
-            style={{ top: `${top}px`, left: `${left}px` }}
-            onMouseLeave={() => setOpen(false)}
+      {open && (
+        <div
+          className="absolute top-full mt-1 left-0 z-50"
+          onMouseLeave={() => setOpen(false)}
+        >
+          <ul
+            className={`flex flex-col bg-white border border-[var(--color-input-light)] text-primary-text-light
+              w-24 py-2 px-2 dark:text-white dark:bg-[var(--color-base-side-dark)] dark:border-[var(--color-input-dark)]
+              rounded-md transition-all duration-300 overflow-y-auto shadow-lg`}
           >
-            <ul
-              className={`flex flex-col bg-white border border-[var(--color-input-light)] text-primary-text-light
-                w-24 py-2 px-2 dark:text-white dark:bg-[var(--color-base-side-dark)] dark:border-[var(--color-input-dark)]
-                rounded-md transition-all duration-300 overflow-y-auto  z-[1000] shadow-lg`}
-            >
-              {menuItems.map((item, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleSelect(item)}
-                  className="hover:bg-primary-hover-dark hover:text-primary-main p-2 rounded-md transition-all duration-200 cursor-pointer"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>,
-          document.body
-        )}
+            {menuItems.map((item, index) => (
+              <li
+                key={index}
+                onClick={() => handleSelect(item)}
+                className="hover:bg-primary-hover-dark hover:text-primary-main p-2 rounded-md transition-all duration-200 cursor-pointer"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
