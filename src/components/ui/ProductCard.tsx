@@ -43,11 +43,13 @@ const ProductCard = ({
             className="w-full h-full object-cover object-center rounded-lg"
           />
         ) : null}
-        <ButtonFavorite />
+        <div className="absolute top-4 right-4">
+          <ButtonFavorite />
+        </div>
       </div>
       <div className="flex items-center justify-between">
         <span
-          className={`font-sans font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-[var(--color-primary-text-dark)]`}
+          className={`font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-[var(--color-primary-text-dark)]`}
         >
           {title}
         </span>
