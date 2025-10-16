@@ -2,6 +2,7 @@ import Badge from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
 
 interface ProductCardProps {
+  id: number;
   size: "small" | "big";
   title: string;
   price: string;
@@ -9,6 +10,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   size = "small",
   title = "Apple iPad Pro 12.9-inch",
   price = "۱۰,۰۰۰ تومان",
@@ -43,7 +45,12 @@ const ProductCard = ({
             className="w-full h-full object-cover object-center rounded-lg"
           />
         ) : null}
-        <ButtonFavorite />
+        <ButtonFavorite
+          id={id}
+          title={title}
+          price={price}
+          imageUrl={imageUrl}
+        />
       </div>
       <div className="flex items-center justify-between">
         <span
