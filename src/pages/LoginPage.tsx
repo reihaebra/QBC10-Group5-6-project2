@@ -79,7 +79,7 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
 "
       >
         <div className="col-span-12 md:col-span-5">
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-6">
             <h2 className="text-lg font-bold">ورود</h2>
 
             <FormInput
@@ -104,7 +104,7 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
               } as any)}
             />
 
-            <div className="pt-2">
+            <div className="pt-3">
               <div className="max-w-28">
                 <button
                   type="submit"
@@ -119,7 +119,7 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
             </div>
 
             <p className="text-sm">
-              عضو نیستید ؟
+              عضو نیستید؟
               <Link to="/register" className="text-primary-main ml-1">
                 ثبت‌نام
               </Link>
@@ -127,7 +127,7 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
           </form>
         </div>
 
-        <div className="col-span-12 md:col-span-7">
+        <div className="col-span-12 md:col-span-7 mx-auto">
           <img
             src="../../public/images/auth_light.png"
             alt="Login background"
@@ -143,4 +143,5 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
     </div>
   );
 }
+
 
