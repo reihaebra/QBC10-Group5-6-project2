@@ -17,8 +17,8 @@ const SpecialProducts = () => {
   const visibleProducts = products.slice(0, 6);
 
   return (
-    <div className="flex flex-col gap-6 pr-40 pl-16 pb-20">
-      <div className="flex justify-between items-center py-3">
+    <div className="flex flex-col gap-6 w-full items-center justify-center">
+      <div className="flex justify-between items-center py-3 w-full">
         <h2 className="font-yekan-bakh text-xl font-semibold">محصولات ویژه</h2>
         <div className="font-yekan-bakh">
           <ButtonSecondary
@@ -28,7 +28,7 @@ const SpecialProducts = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-8 h-fit w-fit">
         {visibleProducts.map((p, i) => (
           <ProductCard
             key={i}

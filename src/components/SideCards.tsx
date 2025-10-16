@@ -25,7 +25,7 @@ const SideCards = () => {
   ];
 
   return (
-    <div className="flex flex-wrap gap-6">
+    <div className="grid grid-cols-2 2xl:grid-cols-3 gap-4 h-fit">
       {products.map((product, i) => (
         <ProductCard key={i} {...product} size="small" />
       ))}
