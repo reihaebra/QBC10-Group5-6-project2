@@ -43,9 +43,12 @@ const ShopPageProducts = ({
     const fetchProducts = async () => {
       try {
         if (selectedCategories.length > 0 || priceFilter) {
-          const response = await getFilteredProducts(selectedCategories, priceFilter ? [0, parseInt(priceFilter)] : [0, 20000000000]);
+          const response = await getFilteredProducts(
+            selectedCategories,
+            priceFilter ? [0, parseInt(priceFilter)] : [0, 20000000000]
+          );
           setProducts(response);
-          setHasMore(false); 
+          setHasMore(false);
         } else {
           const response = await getProductsPagination(page, 6);
           console.log(response);
@@ -86,47 +89,47 @@ const ShopPageProducts = ({
           <p>محصولی یافت نشد.</p>
         )}
       </section>
-      {selectedCategories.length === 0 && !priceFilter && <div className="flex items-center gap-3 mt-6 mx-auto">
-        {/* دکمه قبلی */}
-        <button
-          disabled={page === 1}
-          onClick={() => setPage((p) => p - 1)}
-          className="px-3 py-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300 transition"
-        >
-          قبلی
-        </button>
+      {selectedCategories.length === 0 && !priceFilter && (
+        <div className="flex items-center gap-3 mt-6 self-start">
+          <button
+            disabled={page === 1}
+            onClick={() => setPage((p) => p - 1)}
+            className="px-3 py-2 w-16 bg-card-light dark:bg-[var(--color-shop-card-dark)] rounded-md disabled:opacity-50 
+            hover:bg-primary-main hover:text-white transition cursor-pointer dark:hover:bg-[var(--color-primary-dark)]"
+          >
+            قبلی
+          </button>
 
-        {/* شماره صفحات */}
-        <div className="flex gap-2">
-          {Array.from(
-            { length: pageNumbers.current || 0 },
-            (_, i) => i + 1
-          ).map((num) => (
-            <button
-              key={num}
-              onClick={() => setPage(num)}
-              className={`w-8 h-8 flex items-center justify-center rounded-lg  text-sm transition
+          <div className="flex gap-2">
+            {Array.from(
+              { length: pageNumbers.current || 0 },
+              (_, i) => i + 1
+            ).map((num) => (
+              <button
+                key={num}
+                onClick={() => setPage(num)}
+                className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm transition cursor-pointer text-black
             ${
               page === num
-                ? "bg-primary-lighter text-black"
-                : "bg-white border-gray-300 hover:bg-gray-100"
+                ? "bg-primary-lighter"
+                : "bg-white border-gray-300 hover:bg-primary-lighter"
             }`}
-            >
-              {num}
-            </button>
-          ))}
-        </div>
+              >
+                {num}
+              </button>
+            ))}
+          </div>
 
-        {/* دکمه بعدی */}
-        <button
-          disabled={page === pageNumbers.current}
-          onClick={() => setPage((p) => p + 1)}
-          className="px-3 py-2 bg-gray-200 rounded disabled:opacity-50 hover:bg-gray-300 transition"
-        >
-          بعدی
-        </button>
-      </div>}
-      
+          <button
+            disabled={page === pageNumbers.current}
+            onClick={() => setPage((p) => p + 1)}
+            className="px-3 py-2 w-16 bg-card-light dark:bg-[var(--color-shop-card-dark)] rounded-md 
+            disabled:opacity-50 hover:bg-primary-main hover:text-white transition cursor-pointer dark:hover:bg-[var(--color-primary-dark)]"
+          >
+            بعدی
+          </button>
+        </div>
+      )}
     </main>
   );
 };

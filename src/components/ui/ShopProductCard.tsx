@@ -19,12 +19,12 @@ const ShopProductCard = ({
   imageUrl = "../../public/images/iphone-14-pro.png",
   onAddToCart,
 }: ShopProductCardProps) => {
-  const shortDescription = (description: string, limit: number = 15) => {
-    const words = description.split(" ");
+  const shortText = (text: string, limit: number) => {
+    const words = text.split(" ");
     if (words.length > limit) {
       return words.slice(0, limit).join(" ") + " ...";
     } else {
-      return description;
+      return text;
     }
   };
 
@@ -33,31 +33,39 @@ const ShopProductCard = ({
   };
 
   return (
-    <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 w-full bg-card-light dark:bg-[var(--color-shop-card-dark)]">
-      <div className="relative">
-        <div className="absolute top-4 right-4">
-          <ButtonFavorite />
+    <div
+      className="relative font-yekan-bakh flex flex-col rounded-lg max-w-80 max-h-96 w-full 
+    bg-card-light dark:bg-[var(--color-shop-card-dark)]"
+    >
+      <div className="absolute top-4 right-4 z-10">
+        <ButtonFavorite />
+      </div>
+      <div className="h-1/2 relative">
+        <div className="w-full h-full overflow-hidden rounded-t-lg">
+          <img
+            src={imageUrl}
+            alt={title}
+            className="object-cover w-full h-full hover:scale-110 transition"
+          />
         </div>
-        <img
-          src={imageUrl}
-          alt={title}
-          className="h-40 object-cover w-full rounded-t-lg"
-        />
         <div className="absolute right-4 bottom-3">
           <Badge size="big">{brand}</Badge>
         </div>
       </div>
-      <div className="p-5 flex flex-col flex-1">
+      <div className="p-5 flex flex-col flex-1 h-1/2">
         <div className="flex items-start justify-between pb-2">
-          <span className="font-normal text-xl leading-7 text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
-            {title}
+          <span
+            className="font-normal text-lg leading-7 text-primary-text-light 
+          dark:text-[var(--color-primary-text-dark)]"
+          >
+            {shortText(title, 3)}
           </span>
           <span className="font-bold text-base leading-6 text-primary-main">
-            {price}
+            {price} تومان
           </span>
         </div>
         <p className="font-normal text-base leading-6 text-secondary-light dark:text-[var(--color-secondary-dark)]">
-          {shortDescription(description)}
+          {shortText(description, 10)}
         </p>
         <div className="flex items-end justify-between pt-3 mt-auto">
           <ButtonPrimary
@@ -66,7 +74,10 @@ const ShopProductCard = ({
             altText="left arrow"
             handleClick={handleShowMore}
           />
-          <button onClick={onAddToCart} className="p-2 cursor-pointer">
+          <button
+            onClick={onAddToCart}
+            className="p-2 cursor-pointer hover:scale-105"
+          >
             <img
               src="../../public/icons/add-to-cart-light.svg"
               alt="add to cart light"
