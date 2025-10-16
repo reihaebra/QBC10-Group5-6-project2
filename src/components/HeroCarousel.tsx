@@ -59,7 +59,7 @@ const HeroCarousel: React.FC = () => {
   }, [swiperInstance]);
 
   return (
-    <div className="relative flex items-center justify-center max-w-[500px] w-full h-full self-start">
+    <div className="relative flex items-center justify-end max-w-xl mx-auto w-full h-full self-start">
       <div className="w-full">
         <Swiper
           modules={[Navigation, Autoplay]}
@@ -68,7 +68,7 @@ const HeroCarousel: React.FC = () => {
           loop
           spaceBetween={16}
           slidesPerView={1}
-          className="w-full h-full overflow-hidden"
+          className="overflow-hidden"
         >
           {products.map((product, index) => (
             <SwiperSlide key={index}>
