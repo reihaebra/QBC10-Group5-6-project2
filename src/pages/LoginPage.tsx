@@ -32,9 +32,20 @@ export default function Login() {
         return;
       }
 
+      // Minimal diagnostics (success branch only)
+      console.log("auth res.status:", response?.status);
+      console.log("auth res.data keys:", Object.keys(response?.data ?? {}));
+
       localStorage.setItem("id", userData._id);
       localStorage.setItem("isAdmin", String(userData.isAdmin));
-      localStorage.setItem("token", userData.token || "");
+
+      if (userData?.token) {
+        localStorage.setItem("token", userData.token);
+      } else {
+        console.warn(
+          "Login succeeded but no token in response body. If using cookies, ensure backend CORS and Set-Cookie are correctly configured."
+        );
+      }
 
       toast.success(`Welcome ${userData.username ?? ""} 🙂`);
       navigate("/user/home");
@@ -51,7 +62,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="text-primary-text-light dark:text-primary-text-dark bg-background-base-light dark:bg-background-primary-dark">
       <aside>
         <Sidebar />
       </aside>

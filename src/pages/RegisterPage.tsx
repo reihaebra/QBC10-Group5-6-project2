@@ -9,6 +9,12 @@ import Sidebar from "../components/ui/Sidebar";
 
 import { registerUser } from "../api/requests/auth";
 
+/**
+ * Cookie-based auth reminder (client is already configured with withCredentials=true in axios):
+ * - Backend must send CORS headers with Access-Control-Allow-Credentials: true
+ * - Access-Control-Allow-Origin must be an exact origin (not *) that matches the frontend
+ * - Set-Cookie should include proper SameSite and Secure attributes for the current environment
+ */
 export default function Register() {
   const navigate = useNavigate();
 
@@ -46,6 +52,17 @@ export default function Register() {
       });
 
       const userData = res?.data;
+      // Minimal diagnostics (success branch only)
+      console.log("auth res.status:", res?.status);
+      console.log("auth res.data keys:", Object.keys(res?.data ?? {}));
+
+      if (userData?.token) {
+        localStorage.setItem("token", userData.token);
+      } else {
+        console.warn(
+          "Register succeeded but no token in response body. If using cookies, ensure backend CORS and Set-Cookie are correctly configured."
+        );
+      }
       if (userData && userData._id) {
         toast.success("Registration successful!");
         navigate("/login");
@@ -67,7 +84,7 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <div className="text-primary-text-light dark:text-primary-text-dark bg-background-base-light dark:bg-background-primary-dark">
       <aside>
         <Sidebar />
       </aside>
