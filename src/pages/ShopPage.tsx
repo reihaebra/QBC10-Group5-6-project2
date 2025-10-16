@@ -25,12 +25,12 @@ const ShopPage = () => {
   };
 
   return (
-    <div className="flex bg-background-base-light justify-between font-yekan-bakh dark:bg-[var(--color-background-primary-dark)]">
+    <div className="flex bg-background-base-light h-screen overflow-hidden justify-between font-yekan-bakh dark:bg-[var(--color-background-primary-dark)]">
       <Sidebar>
         <UserDropdown />
       </Sidebar>
 
-      <div className="relative flex flex-row gap-16 top-8 font-YekanBakh text-black bg-background-base-light h-auto w-[calc(100vw-156px)] dark:bg-[var(--color-background-primary-dark)] dark:text-white">
+      <div className="relative flex flex-row gap-16  h-screen top-8 font-YekanBakh text-black bg-background-base-light  w-[calc(100vw-156px)] dark:bg-[var(--color-background-primary-dark)] dark:text-white">
         <ShowPageAside
           categoriesFilter={selectedCategories}
           onCategoryChange={handleCategoryChange}
