@@ -84,7 +84,7 @@ export default function Register() {
   };
 
   return (
-    <div className="text-primary-text-light dark:text-primary-text-dark bg-background-base-light dark:bg-background-primary-dark">
+    <div>
       <aside>
         <Sidebar />
       </aside>
@@ -95,13 +95,12 @@ export default function Register() {
         className="
 grid grid-cols-12 gap-20 items-start p-6 pt-12
 font-yekan-bakh font-normal
-text-primary-text-light dark:text-primary-text-dark
-bg-background-base-light dark:bg-background-primary-dark
-h-[100vh] pr-32
+              text-primary-text-light dark:text-[var(--color-primary-text-dark)] 
+              bg-background-base-light dark:bg-[var(--color-background-primary-dark)]
+              h-[100vh] pr-32
 "
       >
-        {/* فرم ثبت‌نام */}
-        <div className="col-span-12 md:col-span-5">
+        <div className="col-span-12 md:col-span-5 mx-auto">
           <form onSubmit={handleRegister} className="space-y-6">
             <h2 className="text-lg font-bold">ثبت‌نام</h2>
 
@@ -164,7 +163,7 @@ h-[100vh] pr-32
             </div>
 
             <p className="text-sm">
-              عضو هستید ؟
+              عضو هستید؟ 
               <Link to="/login" className="text-primary-main ml-1">
                 ورود
               </Link>
@@ -172,7 +171,6 @@ h-[100vh] pr-32
           </form>
         </div>
 
-        {/* دارک و لایت */}
         <div className="col-span-12 md:col-span-7">
           <img
             src="../../public/images/auth_light.png"
@@ -189,3 +187,4 @@ h-[100vh] pr-32
     </div>
   );
 }
+
