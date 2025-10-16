@@ -1,6 +1,6 @@
 const ButtonFavorite = () => {
   return (
-    <button className="flex items-center justify-center absolute top-4 right-4 cursor-pointer">
+    <button className="flex items-center justify-center cursor-pointer">
       <img
         src="../../public/icons/favorite.svg"
         alt="favorite"

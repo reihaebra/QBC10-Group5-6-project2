@@ -14,15 +14,13 @@ const SidebarLinks: React.FC<SidebarLinksProps> = ({
   ];
 
   return (
-    <div className="font-yekan-bakh flex flex-col items-start text-right space-y-4 pr-4 mr-10">
+    <div className="font-yekan-bakh flex flex-col items-start gap-5">
       {links.map((link) => (
         <button
           key={link.id}
           onClick={() => onSelect(link.id)}
-          className={`text-base transition-all duration-200 focus:outline-none ${
-            activeSection === link.id
-              ? "font-bold text-[color:var(--color-primary-text-light)] dark:text-[color:var(--color-primary-text-dark)]"
-              : "font-normal text-[color:var(--color-secondary-light)] dark:text-[color:var(--color-secondary-dark)]"
+          className={`text-base transition-all duration-200 focus:outline-none cursor-pointer text-primary-text-light dark:text-[var(--color-on-primary-light)] ${
+            activeSection === link.id ? "font-bold" : "font-normal"
           }`}
         >
           {link.label}

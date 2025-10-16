@@ -35,7 +35,9 @@ const ShopProductCard = ({
   return (
     <div className="font-yekan-bakh flex flex-col rounded-lg max-w-96 w-full bg-card-light dark:bg-[var(--color-shop-card-dark)]">
       <div className="relative">
-        <ButtonFavorite />
+        <div className="absolute top-4 right-4">
+          <ButtonFavorite />
+        </div>
         <img
           src={imageUrl}
           alt={title}
@@ -47,7 +49,7 @@ const ShopProductCard = ({
       </div>
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between pb-2">
-          <span className="font-sans font-normal text-xl leading-7 text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
+          <span className="font-normal text-xl leading-7 text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
             {title}
           </span>
           <span className="font-bold text-base leading-6 text-primary-main">
