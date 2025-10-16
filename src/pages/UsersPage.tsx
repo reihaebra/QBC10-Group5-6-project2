@@ -43,12 +43,16 @@ export const UsersPage = () => {
       <Sidebar>
         <AdminDropdown />
       </Sidebar>
-      <div className="pt-16 pr-48 w-full h-screen font-yekan-bakh text-base font-normal bg-[var(--color-background-base-light)] dark:bg-[var(--color-background-primary-dark)] text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
-        <div className="overflow-x-auto">
+      <div
+        className="px-14 pr-36 py-8 mx-auto w-full min-h-screen h-full font-yekan-bakh text-base 
+      font-normal bg-[var(--color-background-base-light)] dark:bg-[var(--color-background-primary-dark)] 
+      text-primary-text-light dark:text-[var(--color-primary-text-dark)]"
+      >
+        <div className="flex items-center justify-center">
           <table className="w-7xl rounded-xl table-fixed border-collapse">
             <thead>
               <tr className="border-b-1 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]">
-                <th scope="col" className=" text-right w-2/8  m-2 font-normal">
+                <th scope="col" className=" text-right w-2/8 m-2 font-normal">
                   ID
                 </th>
                 <th scope="col" className="text-right w-2/8 pr-4 font-normal">
@@ -97,7 +101,9 @@ export const UsersPage = () => {
                               if (e.key === "Enter") handleSave(index, "name");
                               if (e.key === "Escape") handleCancel();
                             }}
-                            className="h-9 bg-[var(--color-on-primary-light)] dark:bg-[var(--color-base-text-field-dark)] border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] rounded-lg px-2 py-1 text-sm focus:outline-none text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]"
+                            className="h-9 bg-[var(--color-on-primary-light)] dark:bg-[var(--color-base-text-field-dark)] 
+                            border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] rounded-lg 
+                            px-2 py-1 text-sm focus:outline-none text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]"
                             autoFocus
                           />
                         </div>
@@ -133,7 +139,8 @@ export const UsersPage = () => {
                         <div className="inline-flex items-center gap-2">
                           <button
                             onClick={() => handleSave(index, "email")}
-                            className="flex h-9 w-9 bg-info-light rounded-lg justify-center items-center mx-auto cursor-pointer"
+                            className="flex h-9 w-9 bg-info-light rounded-lg justify-center 
+                            items-center mx-auto cursor-pointer"
                           >
                             <img
                               src="/../../public/icons/user-list-check-white.svg"
@@ -150,7 +157,10 @@ export const UsersPage = () => {
                               if (e.key === "Enter") handleSave(index, "email");
                               if (e.key === "Escape") handleCancel();
                             }}
-                            className="h-9 bg-[var(--color-on-primary-light)] dark:bg-[var(--color-base-text-field-dark)] border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] rounded-lg px-2 py-1 text-sm focus:outline-none text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]"
+                            className="h-9 bg-[var(--color-on-primary-light)] dark:bg-[var(--color-base-text-field-dark)] 
+                            border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] rounded-lg 
+                            px-2 py-1 text-sm focus:outline-none text-[var(--color-secondary-light)] 
+                            dark:text-[var(--color-secondary-dark)]"
                             autoFocus
                           />
                         </div>

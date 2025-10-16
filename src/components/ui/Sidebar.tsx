@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         bg-on-primary-light text-primary-text-light
         dark:bg-black dark:text-white
         transition-all duration-300
-        ${isExpanded ? "w-80" : "w-24"}  z-50
+        ${isExpanded ? "w-80" : "w-20"}  z-50
       `}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
