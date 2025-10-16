@@ -2,7 +2,52 @@ import ButtonPrimary from "./ui/ButtonPrimary";
 import InventoryDropdown from "../components/ui/InventoryDropdown";
 import ButtonFavorite from "./ui/ButtonFavorite";
 
+import { useState } from "react";
+import { getSingleProducts } from "../api/requests/singleProduct";
+
+interface Reviews {
+  name: string;
+  rating: number | string;
+  comment: string;
+  user: number | string;
+  _id: number | string;
+  createdAt: number | string;
+  updatedAt: string | number;
+}
+
+interface Product {
+  id: number | string;
+  name: string;
+  image: string;
+  quantity: number | string;
+  description: string;
+  rating: number | string;
+  price: number | string;
+  countInStock: number | string;
+  reviews: Reviews[];
+  category: string;
+  createdAt: number | string;
+  updatedAt: string | number;
+  numReviews: string | number;
+  __v: number;
+}
+
 const ProductContainer = () => {
+  const [product, setProduct] = useState<Product | null>(null);
+
+  const fetchProduct = async (id: number | string) => {
+    try {
+      const response = await getSingleProducts(id);
+      if (!response.ok) {
+        throw new Error("محصول مورد نظر یافت نشد!");
+      }
+      const data: any = await response.json();
+      setProduct(data);
+    } catch (error) {
+      console.error("Erorr:", error);
+    }
+  };
+
   return (
     <div className="font-yekan-bakh flex gap-16 bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
       <div id="productImage" className="w-1/3 rounded-lg">
