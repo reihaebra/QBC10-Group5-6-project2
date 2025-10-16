@@ -30,7 +30,7 @@ const ShopPage = () => {
         <UserDropdown />
       </Sidebar>
 
-      <div className="relative flex flex-row gap-16 top-8 justify-center font-YekanBakh text-black bg-background-base-light h-auto w-[calc(100vw-156px)] dark:bg-[var(--color-background-primary-dark)] dark:text-white">
+      <div className="relative flex flex-row gap-16 top-8 font-YekanBakh text-black bg-background-base-light h-auto w-[calc(100vw-156px)] dark:bg-[var(--color-background-primary-dark)] dark:text-white">
         <ShowPageAside
           categoriesFilter={selectedCategories}
           onCategoryChange={handleCategoryChange}
