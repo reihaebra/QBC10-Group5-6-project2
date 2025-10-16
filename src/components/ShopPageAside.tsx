@@ -34,7 +34,10 @@ const ShowPageAside = ({
   }, []);
 
   return (
-    <aside className="flex-shrink-0 w-[264px] h-fit bg-base-side-light flex items-center flex-col justify-start mr-60 dark:bg-[var(--color-base-side-dark)]">
+    <aside
+      className="flex-shrink-0 w-[264px] h-fit bg-base-side-light flex items-center flex-col 
+    justify-start dark:bg-[var(--color-base-side-dark)]"
+    >
       <div className="relative flex flex-col gap-10 w-60 top-3">
         <div className="flex flex-col gap-7">
           <FilterHeading title="فیلتر برند" />
@@ -49,7 +52,9 @@ const ShowPageAside = ({
           <FilterHeading title="فیلتر قیمت" />
           <div className="p-5 text-sm">
             <input
-              className="bg-on-primary-light w-50 h-[42px] rounded-lg py-2.5 px-3.5 focus:outline-primary-main"
+              className="w-50 h-[42px] rounded-lg py-2.5 px-3.5 text-primary-text-light bg-on-primary-light 
+              border border-input-light placeholder-secondary-light 
+              outline-none disabled:bg-input-light focus:border-input-active dark:disabled:bg-[var(--color-input-dark)]"
               type="text"
               name="priceFilter"
               value={priceFilter}
@@ -62,7 +67,8 @@ const ShowPageAside = ({
 
       <div className="flex px-5 gap-2.5 mt-3.5">
         <button
-          className="cursor-pointer w-50 h-7 rounded-sm mb-3.5 border border-neutral-dark-600 dark:text-[var(--color-on-primary-light)]"
+          className="cursor-pointer w-50 h-7 rounded-sm mb-3.5 border border-neutral-dark-600 
+          dark:text-[var(--color-on-primary-light)]"
           onClick={onClearFilters}
         >
           حذف فیلتر ها
