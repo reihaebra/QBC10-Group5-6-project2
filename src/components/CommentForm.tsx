@@ -43,26 +43,31 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="font-yekan-bakh w-md">
+    <div className="font-yekan-bakh">
       <form
         onSubmit={handleSubmit}
-        className="rounded-lg px-4 flex flex-col gap-2 mr-40 text-right transition-colors duration-300"
+        className="rounded-lg flex flex-col gap-6 transition-colors duration-300"
       >
         <div>
-          <label className="block text-gray-700 dark:text-gray-200 mb-1 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]">
+          <label
+            className="block text-primary-text-light dark:text-[var(--color-on-primary-light)] 
+          mb-2 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]"
+          >
             امتیاز
           </label>
 
           <div
             onClick={() => setIsOpen(!isOpen)}
-            className={`cursor-pointer w-md rounded-md border border-gray-300 dark:border-neutral-700 
-                        bg-white dark:bg-[var(--color-base-text-field-dark)] text-gray-900 dark:text-gray-100 
-                        px-3 py-2 pr-4 flex justify-between items-center focus:outline-none focus:ring-2 `}
+            className={`cursor-pointer w-xl text-primary-text-light bg-on-primary-light 
+            border border-input-light rounded-lg placeholder-secondary-light outline-none
+            focus:border-input-active dark:text-[var(--color-on-primary-light)] 
+            dark:placeholder-[var(--color-secondary-dark)] dark:bg-[var(--color-base-text-field-dark)] dark:border-[var(--color-input-dark)]
+            px-3 py-2 pr-4 flex justify-between items-center`}
           >
             <span
               className={`${
                 rating === null
-                  ? "text-gray-400 dark:text-gray-400"
+                  ? "text-secondary-light dark:text-[var(--color-secondary-dark)]"
                   : "text-gray-900 dark:text-gray-100"
               }`}
             >
@@ -88,14 +93,18 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
 
           {isOpen && (
             <ul
-              className="absolute z-10 mt-1 w-md bg-white dark:bg-neutral-900 border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]
-                         rounded-md shadow-md max-h-48 overflow-auto"
+              className="absolute z-10 mt-1 w-xl text-primary-text-light dark:text-[var(--color-on-primary-light)] 
+              bg-on-primary-light dark:bg-[var(--color-base-text-field-dark)] border border-[var(--color-input-light)] 
+              dark:border-[var(--color-input-dark)]
+              rounded-lg shadow-md max-h-48 overflow-auto"
             >
               {[1, 2, 3, 4, 5].map((num) => (
                 <li
                   key={num}
                   onClick={() => handleSelect(num)}
-                  className="px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-[var(--color-primary-hover-dark)] hover:text-[var(--color-primary-main)] cursor-pointer transition-colors"
+                  className="px-4 py-2 text-primary-text-light dark:text-[var(--color-on-primary-light)]
+                  hover:bg-[var(--color-primary-hover-dark)] 
+                  hover:text-[var(--color-primary-main)] cursor-pointer transition-colors"
                 >
                   {num}
                 </li>
@@ -104,19 +113,22 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
           )}
         </div>
 
-        <div className="mt-5">
-          <label className="block text-gray-700 dark:text-gray-200 mb-1">
+        <div className="flex flex-col items-start gap-2 w-xl">
+          <label className="font-normal text-base leading-6 text-primary-text-light dark:text-[var(--color-on-primary-light)]">
             نظر
           </label>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="نظر خود را وارد نمایید"
-            className="w-md rounded-md border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)] bg-white dark:bg-[var(--color-base-text-field-dark)] text-gray-900 dark:text-gray-100 px-3 py-2 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-400 dark:placeholder-gray-400"
+            className="px-3 py-2 w-full h-28 resize-none text-secondary-light bg-on-primary-light 
+            border border-input-light rounded-lg placeholder-secondary-light outline-none disabled:bg-input-light 
+            focus:border-input-active dark:disabled:bg-[var(--color-input-dark)] dark:text-[var(--color-secondary-dark)] 
+            dark:placeholder-[var(--color-secondary-dark)] dark:bg-[var(--color-base-text-field-dark)] dark:border-[var(--color-input-dark)]"
           />
         </div>
 
-        <div className="self-start inline-block">
+        <div className="self-start">
           <ButtonPrimary text="ثبت نظر" handleClick={handleSubmit} />
         </div>
       </form>

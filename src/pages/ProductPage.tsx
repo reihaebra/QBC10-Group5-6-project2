@@ -33,40 +33,38 @@ function ProductPage() {
       <Sidebar>
         <UserDropdown />
       </Sidebar>
-      <div className="flex flex-col pr-32 bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
+      <div className="flex flex-col pr-32 py-20 bg-background-base-light dark:bg-[var(--color-background-primary-dark)] min-h-screen h-full">
         <ProductContainer />
-        <div className="py-10 ">
-          <div className="flex pt-8">
-            <SidebarLinks
-              activeSection={activeSection}
-              onSelect={setActiveSection}
-            />
+        <div className="flex pt-16 gap-28 pr-20">
+          <SidebarLinks
+            activeSection={activeSection}
+            onSelect={setActiveSection}
+          />
 
-            <div className="flex-1 px-10 flex flex-col gap-6">
-              {activeSection === "related" && <RelatedProducts />}
+          <div className="flex flex-1 flex-col">
+            {activeSection === "related" && <RelatedProducts />}
 
-              {activeSection === "add" && (
-                <CommentForm onSubmit={handleCommentSubmit} />
-              )}
+            {activeSection === "add" && (
+              <CommentForm onSubmit={handleCommentSubmit} />
+            )}
 
-              {activeSection === "view" && (
-                <div className="flex flex-col gap-4">
-                  {comments.length === 0 ? (
-                    <p>هیچ نظری ثبت نشده است.</p>
-                  ) : (
-                    comments.map((c, index) => (
-                      <CommentItem
-                        key={index}
-                        name={c.name}
-                        date={c.date}
-                        text={c.text}
-                        rating={c.rating}
-                      />
-                    ))
-                  )}
-                </div>
-              )}
-            </div>
+            {activeSection === "view" && (
+              <div className="flex flex-col gap-4">
+                {comments.length === 0 ? (
+                  <p>هیچ نظری ثبت نشده است.</p>
+                ) : (
+                  comments.map((c, index) => (
+                    <CommentItem
+                      key={index}
+                      name={c.name}
+                      date={c.date}
+                      text={c.text}
+                      rating={c.rating}
+                    />
+                  ))
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
