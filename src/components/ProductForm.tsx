@@ -64,26 +64,32 @@ const ProductForm = ({
         </div>
         <div className="md:col-span-2">
           <TextField
+            type="text"
             inputLabel="نام"
-            inputId="name-field"
             inputValue={formData.name}
+            inputName="name"
+            placeholder="نام محصول را وارد نمایید"
             onChangeInput={(e: React.ChangeEvent<HTMLInputElement>) =>
               onChange("name", e.target.value)
             }
           />
         </div>
         <TextField
+          type="text"
           inputLabel="قیمت"
-          inputId="price-field"
           inputValue={formData.price}
+          inputName="price"
+          placeholder="قیمت محصول را وارد نمایید"
           onChangeInput={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChange("price", e.target.value)
           }
         />
         <TextField
+          type="text"
           inputLabel="برند"
-          inputId="brand-field"
           inputValue={formData.brand}
+          inputName="brand"
+          placeholder="برند محصول را وارد نمایید"
           onChangeInput={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChange("brand", e.target.value)
           }
@@ -97,6 +103,7 @@ const ProductForm = ({
           </label>
           <textarea
             name="description"
+            id="description"
             rows={4}
             value={formData.description}
             onChange={(e) => onChange("description", e.target.value)}
@@ -110,9 +117,11 @@ const ProductForm = ({
           />
         </div>
         <TextField
+          type="text"
           inputLabel="تعداد قابل خرید"
-          inputId="max-purchase-field"
           inputValue={formData.max_purchase}
+          inputName="max_purchase"
+          placeholder="تعداد قابل خرید را وارد نمایید"
           onChangeInput={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChange("max_purchase", e.target.value)
           }
