@@ -8,16 +8,11 @@ import Sidebar from "../components/ui/Sidebar";
 
 
 import { registerUser } from "../api/requests/auth";
+import axios from "../api/axios";
 
-/**
- * Cookie-based auth reminder (client is already configured with withCredentials=true in axios):
- * - Backend must send CORS headers with Access-Control-Allow-Credentials: true
- * - Access-Control-Allow-Origin must be an exact origin (not *) that matches the frontend
- * - Set-Cookie should include proper SameSite and Secure attributes for the current environment
- */
+
 export default function Register() {
   const navigate = useNavigate();
-
   
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -27,8 +22,13 @@ export default function Register() {
 
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    //  ولیدیشن ساده قبل از تماس با API
+    // Env diagnostics 
+    try {
+      console.log("Current baseURL:", axios?.defaults?.baseURL);
+      console.log("Frontend origin:", window.location.origin);
+    } catch {}
+    
+    // Simple validations before API call
     if (!username.trim()) return toast.error("نام و نام خانوادگی الزامی است");
     if (!email.trim()) return toast.error("ایمیل الزامی است");
     if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email))
@@ -42,41 +42,51 @@ export default function Register() {
 
     try {
       setLoading(true);
-
-     
       const res = await registerUser({
         username,
         email,
         password,
-        passwordRepeat,
-      });
+        confirm_Password: passwordRepeat,
+      } as any);
 
-      const userData = res?.data;
-      // Minimal diagnostics (success branch only)
-      console.log("auth res.status:", res?.status);
-      console.log("auth res.data keys:", Object.keys(res?.data ?? {}));
+      // Success diagnostics
+      console.log("register status:", res?.status);
+      console.log("register keys:", Object.keys(res?.data ?? {}));
 
-      if (userData?.token) {
-        localStorage.setItem("token", userData.token);
-      } else {
-        console.warn(
-          "Register succeeded but no token in response body. If using cookies, ensure backend CORS and Set-Cookie are correctly configured."
-        );
+      if (res?.data?.token) {
+        localStorage.setItem("token", res.data.token);
       }
-      if (userData && userData._id) {
-        toast.success("Registration successful!");
+      if (res?.data && res.data._id) {
+        toast.success("ثبت‌نام با موفقیت انجام شد");
         navigate("/login");
         return;
       }
-      toast.error("Registration failed, please try again");
+      toast.error("ثبت نام ناموفق بود. لطفا مجددا تلاش کنید");
     } catch (error: any) {
+      
+      console.log("register error:", error?.response?.status, error?.response?.data || error?.message);
+      // Extended diagnostics
+      console.log("Register error:", error);
+      console.log("Response status:", error?.response?.status);
+      console.log("Response data:", error?.response?.data);
+      console.log("Request:", error?.request);
+
+      const hasRequest = !!error?.request;
+      const hasResponse = !!error?.response;
+      if (hasRequest && !hasResponse) {
+        toast.error("درخواست توسط اینترنت بلاک شده است");
+        return;
+      }
+
       const status = error?.response?.status;
       if (status === 409) {
-        toast.error("User already exists");
+        toast.error("کاربر وجود دارد");
       } else if (status === 400) {
-        toast.error("اطلاعات وارد شده معتبر نیست");
+        toast.error("ورودی نامعتبر");
+      } else if (status >= 500) {
+        toast.error("خطای سرور. لطفا مجددا تلاش کنید");
       } else {
-        toast.error("Registration failed, please try again");
+        toast.error("ثبت نام ناموفق بود. لطفا مجددا تلاش کنید");
       }
     } finally {
       setLoading(false);
@@ -187,4 +197,5 @@ font-yekan-bakh font-normal
     </div>
   );
 }
+
 
