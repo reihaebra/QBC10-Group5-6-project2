@@ -61,7 +61,7 @@ export default function Register() {
         navigate("/login");
         return;
       }
-      toast.error("Registration failed, please try again");
+      toast.error("ثبت نام ناموق بود. لطفا مجددا تلاش کنید");
     } catch (error: any) {
       
       console.log("register error:", error?.response?.status, error?.response?.data || error?.message);
@@ -74,19 +74,19 @@ export default function Register() {
       const hasRequest = !!error?.request;
       const hasResponse = !!error?.response;
       if (hasRequest && !hasResponse) {
-        toast.error("request was blocked by browser");
+        toast.error("درخواست توسط اینترنت بلاک شده است");
         return;
       }
 
       const status = error?.response?.status;
       if (status === 409) {
-        toast.error("User already exists");
+        toast.error("کاربر وجود دارد");
       } else if (status === 400) {
-        toast.error("Invalid input");
+        toast.error("ورودی نامعتبر");
       } else if (status >= 500) {
-        toast.error("Server error, please try again");
+        toast.error("خطای سرور. لطفا مجددا تلاش کنید");
       } else {
-        toast.error("Registration failed, please try again");
+        toast.error("ثبت نام ناموق بود. لطفا مجددا تلاش کنید");
       }
     } finally {
       setLoading(false);

@@ -22,7 +22,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
   updatedAt,
 }) => {
   return (
-    <div className="font-yekan-bakh flex flex-col max-w-[500px]">
+    <div className="font-yekan-bakh flex flex-col max-w-xl">
       <div className="w-full flex justify-center rounded-lg">
         <img
           src={imageUrl}
@@ -32,12 +32,12 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
       </div>
 
       <div className="flex w-full pt-4 gap-6">
-        <div className="flex-1 min-w-[45%] flex flex-col gap-2">
+        <div className="flex-1 min-w-[45%] flex flex-col">
           <h3 className="text-base font-normal font-sans">{title}</h3>
           <p className="text-lg font-normal text-black text-left dark:text-white">
             {price}
           </p>
-          <p className="text-dark text-sm leading-relaxed dark:text-white">
+          <p className="text-dark text-sm leading-relaxed dark:text-white pt-6">
             {description}
           </p>
         </div>
