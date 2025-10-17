@@ -1,10 +1,8 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-
 import FormInput from "../components/FormInput";
 import Sidebar from "../components/ui/Sidebar";
-
 import { loginUser } from "../api/requests/auth";
 
 export default function Login() {
@@ -70,17 +68,14 @@ export default function Login() {
       <Toaster position="top-right" />
 
       <section
-        className="
-grid grid-cols-12 gap-20 items-start p-6 pt-12
-font-yekan-bakh font-normal
-text-primary-text-light dark:text-[var(--color-primary-text-dark)] 
-              bg-background-base-light dark:bg-[var(--color-background-primary-dark)]
-              h-[100vh] pr-32
-"
+        className="grid grid-cols-12 gap-20 items-start p-12 font-yekan-bakh 
+        font-normal text-primary-text-light dark:text-[var(--color-primary-text-dark)] 
+        bg-background-base-light dark:bg-[var(--color-background-primary-dark)]
+        h-[100vh] pr-32"
       >
         <div className="col-span-12 md:col-span-5">
           <form onSubmit={handleLogin} className="space-y-6">
-            <h2 className="text-lg font-bold">ورود</h2>
+            <h2 className="text-2xl font-semibold">ورود</h2>
 
             <FormInput
               {...({
@@ -89,7 +84,8 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
                 label: "ایمیل",
                 placeholder: "ایمیل خود را وارد نمایید",
                 value: email,
-                onChange: (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
+                onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value),
               } as any)}
             />
 
@@ -100,7 +96,8 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
                 label: "رمز عبور",
                 placeholder: "رمز عبور خود را وارد نمایید",
                 value: password,
-                onChange: (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
+                onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value),
               } as any)}
             />
 
@@ -109,7 +106,8 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer bg-primary-main hover:bg-primary-dark disabled:opacity-60 disabled:cursor-not-allowed`}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer bg-primary-main 
+                    hover:bg-primary-dark disabled:opacity-60 disabled:cursor-not-allowed`}
                 >
                   <span className="font-normal text-sm text-on-primary-light">
                     {loading ? "در حال ورود..." : "ورود"}
@@ -118,16 +116,19 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
               </div>
             </div>
 
-            <p className="text-sm">
-              عضو نیستید؟
-              <Link to="/register" className="text-primary-main ml-1">
+            <p className="text-base">
+              {"عضو نیستید؟ "}
+              <Link
+                to="/register"
+                className="text-primary-main hover:underline"
+              >
                 ثبت‌نام
               </Link>
             </p>
           </form>
         </div>
 
-        <div className="col-span-12 md:col-span-7 mx-auto">
+        <div className="col-span-12 md:col-span-7">
           <img
             src="../../public/images/auth_light.png"
             alt="Login background"
@@ -143,5 +144,3 @@ text-primary-text-light dark:text-[var(--color-primary-text-dark)]
     </div>
   );
 }
-
-
