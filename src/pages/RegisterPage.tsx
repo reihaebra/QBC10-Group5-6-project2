@@ -61,7 +61,7 @@ export default function Register() {
         navigate("/login");
         return;
       }
-      toast.error("ثبت نام ناموق بود. لطفا مجددا تلاش کنید");
+      toast.error("ثبت نام ناموفق بود. لطفا مجددا تلاش کنید");
     } catch (error: any) {
       
       console.log("register error:", error?.response?.status, error?.response?.data || error?.message);
@@ -86,7 +86,7 @@ export default function Register() {
       } else if (status >= 500) {
         toast.error("خطای سرور. لطفا مجددا تلاش کنید");
       } else {
-        toast.error("ثبت نام ناموق بود. لطفا مجددا تلاش کنید");
+        toast.error("ثبت نام ناموفق بود. لطفا مجددا تلاش کنید");
       }
     } finally {
       setLoading(false);
@@ -197,4 +197,5 @@ font-yekan-bakh font-normal
     </div>
   );
 }
+
 
