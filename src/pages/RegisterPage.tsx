@@ -2,18 +2,15 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
-
 import FormInput from "../components/FormInput";
 import Sidebar from "../components/ui/Sidebar";
-
 
 import { registerUser } from "../api/requests/auth";
 import axios from "../api/axios";
 
-
 export default function Register() {
   const navigate = useNavigate();
-  
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,12 +19,12 @@ export default function Register() {
 
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Env diagnostics 
+    // Env diagnostics
     try {
       console.log("Current baseURL:", axios?.defaults?.baseURL);
       console.log("Frontend origin:", window.location.origin);
     } catch {}
-    
+
     // Simple validations before API call
     if (!username.trim()) return toast.error("نام و نام خانوادگی الزامی است");
     if (!email.trim()) return toast.error("ایمیل الزامی است");
@@ -63,8 +60,11 @@ export default function Register() {
       }
       toast.error("ثبت نام ناموفق بود. لطفا مجددا تلاش کنید");
     } catch (error: any) {
-      
-      console.log("register error:", error?.response?.status, error?.response?.data || error?.message);
+      console.log(
+        "register error:",
+        error?.response?.status,
+        error?.response?.data || error?.message
+      );
       // Extended diagnostics
       console.log("Register error:", error);
       console.log("Response status:", error?.response?.status);
@@ -102,26 +102,24 @@ export default function Register() {
       <Toaster position="top-right" />
 
       <section
-        className="
-grid grid-cols-12 gap-20 items-start p-6 pt-12
-font-yekan-bakh font-normal
-              text-primary-text-light dark:text-[var(--color-primary-text-dark)] 
-              bg-background-base-light dark:bg-[var(--color-background-primary-dark)]
-              h-[100vh] pr-32
-"
+        className="grid grid-cols-12 gap-20 items-start p-12 font-yekan-bakh 
+        font-normal text-primary-text-light dark:text-[var(--color-primary-text-dark)] 
+        bg-background-base-light dark:bg-[var(--color-background-primary-dark)]
+        h-[100vh] pr-32"
       >
-        <div className="col-span-12 md:col-span-5 mx-auto">
+        <div className="col-span-12 md:col-span-5">
           <form onSubmit={handleRegister} className="space-y-6">
-            <h2 className="text-lg font-bold">ثبت‌نام</h2>
+            <h2 className="text-2xl font-semibold">ثبت‌نام</h2>
 
             <FormInput
               {...({
                 type: "text",
                 name: "username",
-                label: "نام و نام خانوادگی",
+                label: "نام",
                 placeholder: "نام خود را وارد نمایید",
                 value: username,
-                onChange: (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value),
+                onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                  setUsername(e.target.value),
               } as any)}
             />
 
@@ -132,7 +130,8 @@ font-yekan-bakh font-normal
                 label: "ایمیل",
                 placeholder: "ایمیل خود را وارد نمایید",
                 value: email,
-                onChange: (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
+                onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value),
               } as any)}
             />
 
@@ -140,10 +139,11 @@ font-yekan-bakh font-normal
               {...({
                 type: "password",
                 name: "password",
-                label: "رمز عبور",
-                placeholder: "رمز عبور خود را وارد نمایید",
+                label: "رمزعبور",
+                placeholder: "رمزعبور خود را وارد نمایید",
                 value: password,
-                onChange: (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
+                onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value),
               } as any)}
             />
 
@@ -151,21 +151,23 @@ font-yekan-bakh font-normal
               {...({
                 type: "password",
                 name: "passwordRepeat",
-                label: "تکرار رمز عبور",
-                placeholder: "رمز عبور خود را مجدداً وارد نمایید",
+                label: "تکرار رمزعبور",
+                placeholder: "رمزعبور خود را دوباره وارد نمایید",
                 value: passwordRepeat,
-                onChange: (e: ChangeEvent<HTMLInputElement>) => setPasswordRepeat(e.target.value),
+                onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                  setPasswordRepeat(e.target.value),
               } as any)}
             />
 
             <div className="pt-3">
-              <div className="max-w-28">
+              <div className="max-w-36">
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer bg-primary-main hover:bg-primary-dark disabled:opacity-60 disabled:cursor-not-allowed`}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer bg-primary-main 
+                    hover:bg-primary-dark disabled:opacity-60 disabled:cursor-not-allowed`}
                 >
-                  <span className="font-normal text-sm text-on-primary-light">
+                  <span className="font-normal text-base text-on-primary-light">
                     {loading ? "در حال ثبت‌نام..." : "ثبت‌نام"}
                   </span>
                 </button>
@@ -173,8 +175,8 @@ font-yekan-bakh font-normal
             </div>
 
             <p className="text-sm">
-              عضو هستید؟ 
-              <Link to="/login" className="text-primary-main ml-1">
+              {"عضو هستید؟ "}
+              <Link to="/login" className="text-primary-main hover:underline">
                 ورود
               </Link>
             </p>
@@ -197,5 +199,3 @@ font-yekan-bakh font-normal
     </div>
   );
 }
-
-
