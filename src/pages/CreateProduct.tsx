@@ -59,7 +59,7 @@ const CreateProduct = () => {
           onSubmit={handleSubmit}
         />
         <div className="md:col-span-2 flex justify-center md:justify-start pt-8">
-          <ButtonPrimary text="ساخت محصول جدید" handleClick={() => {}} />
+          <ButtonPrimary text="ساخت محصول جدید" type="submit" />
         </div>
       </main>
     </div>
