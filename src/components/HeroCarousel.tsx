@@ -1,13 +1,13 @@
-import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import HeroProductCard from "../components/HeroProductCard";
+import HeroProductCard from "./HeroProductCard";
 
-interface Product {
+export interface Product {
+  id: number;
   title: string;
-  brand: string;
+  brand: string; // ✅ حالا اجباریه
   price: string;
   description: string;
   imageUrl: string;
@@ -17,98 +17,27 @@ interface Product {
   updatedAt: string;
 }
 
-const HeroCarousel: React.FC = () => {
-  const prevRef = useRef<HTMLButtonElement | null>(null);
-  const nextRef = useRef<HTMLButtonElement | null>(null);
-  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+interface HeroCarouselProps {
+  products: Product[];
+}
 
-  const products: Product[] = [
-    {
-      title: "Apple iPhone 14 Pro",
-      brand: "اپل",
-      price: "۵۰,۰۰۰,۰۰۰ تومان",
-      description:
-        "آیفون 14 پرو دارای صفحه‌نمایش 6.1 اینچی Super Retina XDR و تراشه قدرتمند A16 Bionic است.",
-      imageUrl: "/../../public/images/iphone-14-pro.png",
-      rating: 5,
-      reviews: 4202,
-      stock: 10,
-      updatedAt: "چند لحظه قبل",
-    },
-    {
-      title: "Apple iPhone 14",
-      brand: "اپل",
-      price: "۴۰,۰۰۰,۰۰۰ تومان",
-      description:
-        "آیفون 14 با طراحی زیبا و صفحه‌نمایش Super Retina XDR تجربه‌ای روان و دلپذیر ارائه می‌دهد.",
-      imageUrl: "/../../public/images/iphone-14-pro.png",
-      rating: 4.8,
-      reviews: 3580,
-      stock: 5,
-      updatedAt: "۲ ساعت قبل",
-    },
-  ];
-
-  useEffect(() => {
-    if (swiperInstance && prevRef.current && nextRef.current) {
-      swiperInstance.params.navigation.prevEl = prevRef.current;
-      swiperInstance.params.navigation.nextEl = nextRef.current;
-      swiperInstance.navigation.init();
-      swiperInstance.navigation.update();
-    }
-  }, [swiperInstance]);
-
+const HeroCarousel: React.FC<HeroCarouselProps> = ({ products }) => {
   return (
-    <div className="relative flex items-center justify-end max-w-xl mx-auto w-full h-full self-start">
-      <div className="w-full">
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          onSwiper={setSwiperInstance}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          loop
-          spaceBetween={16}
-          slidesPerView={1}
-          className="overflow-hidden"
-        >
-          {products.map((product, index) => (
-            <SwiperSlide key={index}>
-              <HeroProductCard {...product} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      <button
-        ref={prevRef}
-        className="absolute -left-8 bottom-7/12 z-20 p-2 rounded-full hover:scale-105 transition-transform"
+    <div className="relative flex items-center justify-center max-w-xl mx-auto w-full h-full">
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        loop
+        spaceBetween={16}
+        slidesPerView={1}
+        className="overflow-hidden"
       >
-        <img
-          src="../../public/icons/arrleft-light.svg"
-          alt="prev"
-          className="w-5 h-5 dark:hidden"
-        />
-        <img
-          src="../../public/icons/arrleft-dark.svg"
-          alt="prev dark"
-          className="hidden w-5 h-5 dark:block"
-        />
-      </button>
-
-      <button
-        ref={nextRef}
-        className="absolute -right-8 bottom-7/12 z-20 p-2 rounded-full hover:scale-105 transition-transform"
-      >
-        <img
-          src="../../public/icons/arrright-light.svg"
-          alt="next"
-          className="w-5 h-5 dark:hidden"
-        />
-        <img
-          src="../../public/icons/arrright-dark.svg"
-          alt="next dark"
-          className="hidden w-5 h-5 dark:block"
-        />
-      </button>
+        {products.map((product: Product, index: number) => (
+          <SwiperSlide key={index}>
+            <HeroProductCard {...product} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
