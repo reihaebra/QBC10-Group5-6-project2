@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import allProductsSamples from "../../constants/all-products-samples";
 import AllProductsCard from "./AllProductsCard";
 import { getAllProducts } from "../api/requests/products";
 interface Product {
   _id?: number;
+  name: string;
   description: string;
-  title: string;
   price: string;
   image: string;
+  createdAt: string;
 }
 
 const AllProductsMain: React.FC = () => {
@@ -15,7 +15,7 @@ const AllProductsMain: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getdata = async () => {
+    const getData = async () => {
       try {
         const data = await getAllProducts();
         setProducts(data);
@@ -25,32 +25,34 @@ const AllProductsMain: React.FC = () => {
         setLoading(false);
       }
     };
-
-    getdata();
+    getData();
   }, []);
+
   useEffect(() => {
     console.log(products);
   }, [products]);
+
   return (
     <div className="font-yekan-bakh flex flex-wrap gap-8 justify-center h-fit">
       {loading
-        ? 
-          Array.from({ length: 6 }).map((_, i) => (
+        ? Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
               className="w-xl h-[250px] bg-gray-200 animate-pulse rounded-lg"
             ></div>
           ))
-        : 
-          products.map(({ _id, title, description, price, image }) => (
-            <AllProductsCard
-              key={_id}
-              description={description}
-              title={title}
-              price={price}
-              imageUrl={image}
-            />
-          ))}
+        : products.map(
+            ({ _id, name, description, price, image, createdAt }) => (
+              <AllProductsCard
+                key={_id}
+                description={description}
+                name={name}
+                price={price}
+                imageUrl={image}
+                createdAt={createdAt}
+              />
+            )
+          )}
     </div>
   );
 };
