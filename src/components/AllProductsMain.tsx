@@ -27,10 +27,11 @@ const AllProductsMain: React.FC = () => {
         const data = await getAllProducts();
         setAllProducts(data);
         totalPages.current = Math.ceil(data.length / itemsPerPage);
-
-        // تنظیم صفحه اول
         setVisibleProducts(data.slice(0, itemsPerPage));
-      } catch (error) {
+      } catch (error: any) {
+        if (error.code === "ECONNABORTED") {
+          console.error("Request timed out:", error.message);
+        }
         console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
@@ -52,7 +53,7 @@ const AllProductsMain: React.FC = () => {
           ? Array.from({ length: itemsPerPage }).map((_, i) => (
               <div
                 key={i}
-                className="w-xl h-[180px] bg-gray-200 animate-pulse rounded-lg"
+                className="w-xl h-[176px] bg-gray-200 animate-pulse rounded-lg"
               ></div>
             ))
           : visibleProducts.map(
