@@ -1,6 +1,7 @@
 import Badge from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
 import ButtonPrimary from "./ButtonPrimary";
+import { shortText } from "../../../utils/shortText";
 
 interface ShopProductCardProps {
   title: string;
@@ -9,6 +10,7 @@ interface ShopProductCardProps {
   description: string;
   imageUrl: string;
   onAddToCart: () => void;
+  onShowMore: () => void;
 }
 
 const ShopProductCard = ({
@@ -18,20 +20,8 @@ const ShopProductCard = ({
   description = "آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR ...",
   imageUrl = "../../public/images/iphone-14-pro.png",
   onAddToCart,
+  onShowMore,
 }: ShopProductCardProps) => {
-  const shortText = (text: string, limit: number) => {
-    const words = text.split(" ");
-    if (words.length > limit) {
-      return words.slice(0, limit).join(" ") + " ...";
-    } else {
-      return text;
-    }
-  };
-
-  const handleShowMore = () => {
-    // TODO
-  };
-
   return (
     <div
       className="relative font-yekan-bakh flex flex-col rounded-lg max-w-80 max-h-96 w-full 
@@ -72,7 +62,7 @@ const ShopProductCard = ({
             text="مشاهده بیشتر"
             iconSrc="../../public/icons/left-arrow.svg"
             altText="left arrow"
-            handleClick={handleShowMore}
+            handleClick={onShowMore}
           />
           <button
             onClick={onAddToCart}
