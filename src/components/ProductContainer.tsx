@@ -12,8 +12,8 @@ interface productCategory {
 }
 
 interface ProductContainerProps {
-  product: Product[];
-  productCategory: productCategory[];
+  product: Product;
+  productCategory: productCategory | null;
 }
 
 const ProductContainer = ({
@@ -58,7 +58,7 @@ const ProductContainer = ({
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 امتیاز :
               </h6>
-              <h6>{product?.rating.toFixed(2)}</h6>
+              <h6>{Number(product?.rating).toFixed(2)}</h6>
             </div>
             <div className="flex gap-2">
               <img

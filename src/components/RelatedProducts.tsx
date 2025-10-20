@@ -36,21 +36,22 @@ export interface Product {
   numReviews: string | number;
   __v: number;
 }
-
-const RelatedProducts = () => {
+interface RelatedProductsProps {
+  productID: string;
+}
+const RelatedProducts = ({ productID }: RelatedProductsProps) => {
   const [related, setRelated] = useState<Product[]>([]);
   const [category, setCategory] = useState<productCategory[]>([]);
   useEffect(() => {
     const fetchRelatedProducts = async () => {
       try {
+        console.log(productID);
+        
         const response = await getAllProducts();
-        const category = await getProductCategory("6862e094e700e7d8beb7b5f7");
-        // if (response) {
-        //   const data = await getProductCategory(response.category);
-        //   setProductCategory(data);
-        // }
-        console.log(response);
-        console.log(category);
+        const category = await getProductCategory(productID);
+
+        console.log("this is all products :"+response);
+        console.log("this is category :"+category);
         setRelated(response);
         setCategory(category);
       } catch (error) {
@@ -69,6 +70,7 @@ const RelatedProducts = () => {
       <div className="flex flex-wrap gap-8">
         {related
           .filter((p) => {
+            if (!category || category.length === 0) return false;
             const categories = Array.isArray(p.category)
               ? p.category
               : [p.category];
