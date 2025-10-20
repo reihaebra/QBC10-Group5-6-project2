@@ -1,49 +1,74 @@
-import data from "../../constants/cartSample";
-import type { ProductList } from "../../constants/cartSample";
 import InventoryDropdown from "./ui/InventoryDropdown";
 import ButtonSecondary from "./ui/ButtonSecondary";
+import { useCartContext } from "../../src/context/useCartContext";
 
 export const Cart = () => {
-  const handleButtonClick = () => {
-    console.log("دکمه کلیک شد!");
+  const { cart, removeFromCart, addToCart } = useCartContext()!;
+
+  const handleQuantityChange = (id: number, newQuantity: number) => {
+    const product = cart.find((item) => item.id === id);
+    if (product) {
+      addToCart({ ...product, quantity: newQuantity });
+    }
   };
+
+  const totalQuantity = cart.reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0
+  );
+
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
+    0
+  );
+
+  const handleButtonClick = () => {
+    console.log("تکمیل خرید:", cart);
+  };
+
   return (
     <div className="w-full h-screen font-yekan-bakh text-base font-normal text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
-      {/* Cart Table */}
       <div className="px-8">
         <table className="w-full rounded-xl table-fixed border-collapse">
           <tbody className="text-[var(--color-primary-text-light)] dark:text-[var(--color-primary-text-dark)]">
-            {data.map((data: ProductList) => (
-              <tr className="hover:bg-[var(--color-primary-hover-dark)] transition-all duration-150">
+            {cart.map((item) => (
+              <tr
+                key={item.id}
+                className="hover:bg-[var(--color-primary-hover-dark)] transition-all duration-150"
+              >
                 {/* Image */}
                 <td className="p-2 w-1/10">
                   <img
                     className="w-[88px] h-[88px] rounded-sm cursor-pointer"
-                    src={data.imageUrl}
-                    alt={data.title || "image"}
+                    src={item.imageUrl}
+                    alt={item.title || "image"}
                   />
                 </td>
-                {/*Title Brand Price*/}
-                <td className="">
-                  {/* Title */}
-                  <p className="text-[var(--color-primary-main)]">
-                    {data.title}
-                  </p>
-                  {/* Brand */}
-                  <p>{data.brand}</p>
-                  {/* Price */}
-                  <p className="font-bold">{data.price}</p>
-                </td>
-                {/* Buttons */}
+
+                {/* Title & Price */}
                 <td>
-                  <div className="flex justify-end items-center pl-2">
+                  <p className="text-[var(--color-primary-main)]">
+                    {item.title}
+                  </p>
+                  <p className="font-bold">{item.price}</p>
+                </td>
+
+                {/* Quantity & Delete */}
+                <td>
+                  <div className="flex justify-end items-center pl-2 gap-2">
                     <div className="w-40 h-1 flex justify-center items-center">
-                      <InventoryDropdown />
+                      <InventoryDropdown
+                        value={item.quantity || 1}
+                        onChange={(value: number) =>
+                          handleQuantityChange(item.id, value)
+                        }
+                      />
                     </div>
                     <img
                       className="w-4 h-4 cursor-pointer"
                       src="/../../public/icons/cart-delete-red.svg"
                       alt="delete"
+                      onClick={() => removeFromCart(item.id)}
                     />
                   </div>
                 </td>
@@ -51,16 +76,21 @@ export const Cart = () => {
             ))}
           </tbody>
         </table>
-        <div className="flex flex-col items-start gap-4 max-w-xl mt-8">
-          <p className="font-semibold text-xl">تعداد (۳)</p>
-          <p className="font-bold text-2xl mb-2">۱۰,۰۰۰ تومان</p>
-          <div className="w-full">
-            <ButtonSecondary
-              text="تکمیل خرید"
-              handleClick={handleButtonClick}
-            />
+
+        {cart.length > 0 && (
+          <div className="flex flex-col items-start gap-4 max-w-xl mt-8">
+            <p className="font-semibold text-xl">تعداد ({totalQuantity})</p>
+            <p className="font-bold text-2xl mb-2">
+              {totalPrice.toLocaleString()} تومان
+            </p>
+            <div className="w-full">
+              <ButtonSecondary
+                text="تکمیل خرید"
+                handleClick={handleButtonClick}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

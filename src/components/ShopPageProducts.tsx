@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { getAllProducts } from "../api/requests/products";
 import { getProductsPagination } from "../api/requests/productsPagination";
 import { getFilteredProducts } from "../api/requests/filteredProducts";
+import Pagination from "./Pagination";
+import { useNavigate } from "react-router-dom";
 interface ProductShopPage {
   _id: string;
   name: string;
@@ -29,6 +31,10 @@ const ShopPageProducts = ({
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const pageNumbers = useRef(1);
+  const navigate = useNavigate();
+  const handleShowMore = (productId: string) => {
+    navigate(`/user/shop/${productId}`);
+  };
 
   useEffect(() => {
     const fetchTotalProducts = async () => {
@@ -83,6 +89,7 @@ const ShopPageProducts = ({
               description={item.description}
               imageUrl={item.image}
               onAddToCart={() => console.log(`${item.name} added to cart!`)}
+              onShowMore={()=> handleShowMore(item._id)}
             />
           ))
         ) : (
@@ -90,45 +97,11 @@ const ShopPageProducts = ({
         )}
       </section>
       {selectedCategories.length === 0 && !priceFilter && (
-        <div className="flex items-center gap-3 mt-6 self-start">
-          <button
-            disabled={page === 1}
-            onClick={() => setPage((p) => p - 1)}
-            className="px-3 py-2 w-16 bg-card-light dark:bg-[var(--color-shop-card-dark)] rounded-md disabled:opacity-50 
-            hover:bg-primary-main hover:text-white transition cursor-pointer dark:hover:bg-[var(--color-primary-dark)]"
-          >
-            قبلی
-          </button>
-
-          <div className="flex gap-2">
-            {Array.from(
-              { length: pageNumbers.current || 0 },
-              (_, i) => i + 1
-            ).map((num) => (
-              <button
-                key={num}
-                onClick={() => setPage(num)}
-                className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm transition cursor-pointer text-black
-            ${
-              page === num
-                ? "bg-primary-lighter"
-                : "bg-white border-gray-300 hover:bg-primary-lighter"
-            }`}
-              >
-                {num}
-              </button>
-            ))}
-          </div>
-
-          <button
-            disabled={page === pageNumbers.current}
-            onClick={() => setPage((p) => p + 1)}
-            className="px-3 py-2 w-16 bg-card-light dark:bg-[var(--color-shop-card-dark)] rounded-md 
-            disabled:opacity-50 hover:bg-primary-main hover:text-white transition cursor-pointer dark:hover:bg-[var(--color-primary-dark)]"
-          >
-            بعدی
-          </button>
-        </div>
+        <Pagination
+          page={page}
+          totalPages={pageNumbers.current}
+          onPageChange={setPage}
+        />
       )}
     </main>
   );

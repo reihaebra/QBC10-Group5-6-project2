@@ -1,27 +1,46 @@
 import ButtonPrimary from "./ui/ButtonPrimary";
 import InventoryDropdown from "../components/ui/InventoryDropdown";
 import ButtonFavorite from "./ui/ButtonFavorite";
+import { useState } from "react";
+import type { Product } from "../pages/ProductPage";
+import page from "../../public/icons/star-light.svg";
+import { useCartContext } from "../context/useCartContext";
+interface productCategory {
+  _id: string | number;
+  name: string;
+  __v: string;
+}
 
-const ProductContainer = () => {
+interface ProductContainerProps {
+  product: Product;
+  productCategory: productCategory | null;
+}
+
+const ProductContainer = ({
+  product,
+  productCategory,
+}: ProductContainerProps) => {
+  const { addToCart } = useCartContext()!;
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className="font-yekan-bakh flex gap-16 bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
       <div id="productImage" className="w-1/3 rounded-lg">
         <img
-          src="../../public/images/mba13-midnight-select-202402.png"
+          src={product?.image}
           alt="productImage"
           className="w-3xl h-full object-cover rounded-lg"
         />
       </div>
       <div id="productIntroduce" className="flex flex-col gap-11 w-1/3 h-1/3">
         <h3 className="font-semibold text-2xl text-[var(--color-primary-text-light)] dark:text-[var(--color-primary-text-dark)]">
-          Apple MacBook Air M2
+          {product?.name}
         </h3>
         <p className="text-[var(--color-primary-text-light)] font-normal text-base dark:text-[var(--color-primary-text-dark)]">
-          مک بوک ایر با تراشه M2 دارای صفحه نمایش 13.6 اینچی رتینا است. تا 18
-          ساعت عمر باتری و طراحی بدون فن.
+          {product?.description}
         </p>
         <span className="text-3xl font-bold text-[var(--color-primary-text-light)] dark:text-[var(--color-primary-text-dark)]">
-          ۱۰,۰۰۰ تومان
+          {product?.price.toLocaleString()} تومان
         </span>
         <div id="productDetail" className="flex justify-between">
           <div
@@ -42,7 +61,7 @@ const ProductContainer = () => {
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 امتیاز :
               </h6>
-              <h6>۵</h6>
+              <h6>{Number(product?.rating).toFixed(2)}</h6>
             </div>
             <div className="flex gap-2">
               <img
@@ -58,7 +77,7 @@ const ProductContainer = () => {
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 تعداد :
               </h6>
-              <h6>۵۲</h6>
+              <h6>{product?.quantity}</h6>
             </div>
             <div className="flex gap-2">
               <img
@@ -74,7 +93,7 @@ const ProductContainer = () => {
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 موجودی :
               </h6>
-              <h6>۱۰</h6>
+              <h6>{product?.countInStock}</h6>
             </div>
           </div>
           <div
@@ -95,7 +114,7 @@ const ProductContainer = () => {
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 برند :
               </h6>
-              <h6>اپل</h6>
+              <h6>{productCategory?.name}</h6>
             </div>
             <div className="flex gap-2">
               <img
@@ -111,7 +130,9 @@ const ProductContainer = () => {
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 زمان بروزرسانی :
               </h6>
-              <h6>چند لحظه قبل</h6>
+              <h6>
+                {new Date(product?.updatedAt).toLocaleDateString("fa-IR")}
+              </h6>
             </div>
             <div className="flex gap-2">
               <img
@@ -127,13 +148,13 @@ const ProductContainer = () => {
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 نظرات :
               </h6>
-              <h6>۴۲۰۲</h6>
+              <h6>{product?.numReviews}</h6>
             </div>
           </div>
         </div>
         <div className="flex justify-between">
           <div className="flex items-center gap-2 text-[var(--color-primary-text-light)] dark:text-[var(--color-primary-text-dark)]">
-            ۵۰۰۰ نظر
+            {product?.numReviews} نظر
             <div id="stars" className="flex items-center gap-1">
               <img
                 src="../../public/icons/half-star-light.svg"
@@ -188,11 +209,25 @@ const ProductContainer = () => {
             </div>
           </div>
           <div id="select-box" className="w-24 h-10">
-            <InventoryDropdown />
+            <InventoryDropdown
+              onChange={(value: number) => setQuantity(value)}
+            />
           </div>
         </div>
         <div>
-          <ButtonPrimary text="افزودن به سبد خرید" handleClick={() => {}} />
+          <ButtonPrimary
+            text="افزودن به سبد خرید"
+            handleClick={() => {
+              addToCart({
+                id: product.id as number,
+                title: product.name,
+                price: Number(product.price),
+                quantity: quantity,
+                imageUrl: product.image,
+                description: product.description,
+              });
+            }}
+          />
         </div>
       </div>
       <div className="mr-60">

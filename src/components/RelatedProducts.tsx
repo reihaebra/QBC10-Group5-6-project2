@@ -1,7 +1,65 @@
 import ProductCard from "./ui/ProductCard";
 import allProducts from "../../constants/all-products-samples";
+import { getAllProducts } from "../api/requests/products";
+import { getProductCategory } from "../api/requests/productCategory";
+import { useEffect, useState } from "react";
 
-const RelatedProducts = () => {
+interface productCategory {
+  _id: string | number;
+  name: string;
+  __v: string;
+}
+
+interface Reviews {
+  name: string;
+  rating: number | string;
+  comment: string;
+  user: number | string;
+  _id: number | string;
+  createdAt: number | string;
+  updatedAt: string | number;
+}
+
+export interface Product {
+  _id: number | string;
+  name: string;
+  image: string;
+  quantity: number | string;
+  description: string;
+  rating: number | string;
+  price: string;
+  countInStock: number | string;
+  reviews: Reviews[];
+  category: productCategory[];
+  createdAt: number | string;
+  updatedAt: string | number;
+  numReviews: string | number;
+  __v: number;
+}
+interface RelatedProductsProps {
+  productID: string;
+}
+const RelatedProducts = ({ productID }: RelatedProductsProps) => {
+  const [related, setRelated] = useState<Product[]>([]);
+  const [category, setCategory] = useState<productCategory[]>([]);
+  useEffect(() => {
+    const fetchRelatedProducts = async () => {
+      try {
+        console.log(productID);
+        
+        const response = await getAllProducts();
+        const category = await getProductCategory(productID);
+
+        console.log("this is all products :"+response);
+        console.log("this is category :"+category);
+        setRelated(response);
+        setCategory(category);
+      } catch (error) {
+        console.error("Erorr:", error);
+      }
+    };
+    fetchRelatedProducts();
+  }, []);
   return (
     <div
       className="font-yekan-bakh w-full
@@ -10,15 +68,24 @@ const RelatedProducts = () => {
                  transition-colors duration-300"
     >
       <div className="flex flex-wrap gap-8">
-        {allProducts.map((p) => (
-          <ProductCard
-            key={p.id}
-            size="small"
-            title={p.title}
-            price={p.price}
-            imageUrl={p.imageUrl}
-          />
-        ))}
+        {related
+          .filter((p) => {
+            if (!category || category.length === 0) return false;
+            const categories = Array.isArray(p.category)
+              ? p.category
+              : [p.category];
+            return categories.some((c) => c?.name === category[0]?.name);
+          })
+
+          .map((p) => (
+            <ProductCard
+              key={p._id}
+              size="small"
+              title={p.name}
+              price={p.price}
+              imageUrl={p.image}
+            />
+          ))}
       </div>
     </div>
   );
