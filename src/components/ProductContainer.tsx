@@ -222,7 +222,7 @@ const ProductContainer = ({
                 id: product.id as number,
                 title: product.name,
                 price: Number(product.price),
-                quantity: quantity.toString(),
+                quantity: quantity,
                 imageUrl: product.image,
                 description: product.description,
               });
