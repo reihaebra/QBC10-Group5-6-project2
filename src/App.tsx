@@ -19,35 +19,38 @@ import Dashboard from "./pages/Dashboard";
 import CreateProduct from "./pages/CreateProduct";
 import EditProduct from "./pages/EditProduct";
 import AllProducts from "./pages/AllProducts";
+import CartProvider from "./context/CartContextProvider";
 
 const App = () => {
   return (
-    <Routes>
-      <Route index element={<LoginPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/user/home" element={<HomePage />} />
-      <Route path="/user/shop" element={<ShopPage />} />
-      <Route path="/user/shop/:productId" element={<ProductPage />} />
-      <Route path="/user/favorites" element={<FavoritePage />} />
-      <Route path="/user/cart" element={<CartPage />} />
-      <Route path="/user/shop-progress" element={<ShoppingProgressPage />} />
-      <Route path="/user/checkout" element={<CheckoutPage />} />
-      <Route path="/user/my-orders" element={<UserOrdersPage />} />
-      <Route path="/user/my-orders/:orderId" element={<OrderDetailPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/admin/dashboard" element={<Dashboard />} />
-      <Route path="/admin/all-users" element={<UsersPage />} />
-      <Route path="/admin/orders" element={<OrderPage />} />
-      <Route
-        path="/admin/orders/:orderId"
-        element={<OrdersDeliverOptionPage />}
-      />
-      <Route path="/admin/create-product" element={<CreateProduct />} />
-      <Route path="/admin/edit-product" element={<EditProduct />} />
-      <Route path="/admin/all-products" element={<AllProducts />} />
-      <Route path="*" element={<div>Page Not Found</div>} />
-    </Routes>
+    <CartProvider>
+      <Routes>
+        <Route index element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/user/home" element={<HomePage />} />
+        <Route path="/user/shop" element={<ShopPage />} />
+        <Route path="/user/shop/:productId" element={<ProductPage />} />
+        <Route path="/user/favorites" element={<FavoritePage />} />
+        <Route path="/user/cart" element={<CartPage />} />
+        <Route path="/user/shop-progress" element={<ShoppingProgressPage />} />
+        <Route path="/user/checkout" element={<CheckoutPage />} />
+        <Route path="/user/my-orders" element={<UserOrdersPage />} />
+        <Route path="/user/my-orders/:orderId" element={<OrderDetailPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/all-users" element={<UsersPage />} />
+        <Route path="/admin/orders" element={<OrderPage />} />
+        <Route
+          path="/admin/orders/:orderId"
+          element={<OrdersDeliverOptionPage />}
+        />
+        <Route path="/admin/create-product" element={<CreateProduct />} />
+        <Route path="/admin/edit-product" element={<EditProduct />} />
+        <Route path="/admin/all-products" element={<AllProducts />} />
+        <Route path="*" element={<div>Page Not Found</div>} />
+      </Routes>
+    </CartProvider>
   );
 };
 

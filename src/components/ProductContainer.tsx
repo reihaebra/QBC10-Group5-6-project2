@@ -4,7 +4,7 @@ import ButtonFavorite from "./ui/ButtonFavorite";
 import { useState } from "react";
 import type { Product } from "../pages/ProductPage";
 import page from "../../public/icons/star-light.svg";
-
+import { useCartContext } from "../context/useCartContext";
 interface productCategory {
   _id: string | number;
   name: string;
@@ -12,14 +12,17 @@ interface productCategory {
 }
 
 interface ProductContainerProps {
-  product: Product[];
-  productCategory: productCategory[];
+  product: Product;
+  productCategory: productCategory | null;
 }
 
 const ProductContainer = ({
   product,
   productCategory,
 }: ProductContainerProps) => {
+  const { addToCart } = useCartContext()!;
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className="font-yekan-bakh flex gap-16 bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
       <div id="productImage" className="w-1/3 rounded-lg">
@@ -58,7 +61,7 @@ const ProductContainer = ({
               <h6 className="text-[var(--color-secondary-light)] dark:text-[var(--color-secondary-dark)]">
                 امتیاز :
               </h6>
-              <h6>{product?.rating.toFixed(2)}</h6>
+              <h6>{Number(product?.rating).toFixed(2)}</h6>
             </div>
             <div className="flex gap-2">
               <img
@@ -206,11 +209,25 @@ const ProductContainer = ({
             </div>
           </div>
           <div id="select-box" className="w-24 h-10">
-            <InventoryDropdown />
+            <InventoryDropdown
+              onChange={(value: number) => setQuantity(value)}
+            />
           </div>
         </div>
         <div>
-          <ButtonPrimary text="افزودن به سبد خرید" handleClick={() => {}} />
+          <ButtonPrimary
+            text="افزودن به سبد خرید"
+            handleClick={() => {
+              addToCart({
+                id: product.id as number,
+                title: product.name,
+                price: Number(product.price),
+                quantity: quantity,
+                imageUrl: product.image,
+                description: product.description,
+              });
+            }}
+          />
         </div>
       </div>
       <div className="mr-60">

@@ -5,6 +5,7 @@ import { getAllProducts } from "../api/requests/products";
 import { getProductsPagination } from "../api/requests/productsPagination";
 import { getFilteredProducts } from "../api/requests/filteredProducts";
 import Pagination from "./Pagination";
+import { useNavigate } from "react-router-dom";
 interface ProductShopPage {
   _id: string;
   name: string;
@@ -30,6 +31,10 @@ const ShopPageProducts = ({
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const pageNumbers = useRef(1);
+  const navigate = useNavigate();
+  const handleShowMore = (productId: string) => {
+    navigate(`/user/shop/${productId}`);
+  };
 
   useEffect(() => {
     const fetchTotalProducts = async () => {
@@ -84,6 +89,7 @@ const ShopPageProducts = ({
               description={item.description}
               imageUrl={item.image}
               onAddToCart={() => console.log(`${item.name} added to cart!`)}
+              onShowMore={()=> handleShowMore(item._id)}
             />
           ))
         ) : (
@@ -91,11 +97,11 @@ const ShopPageProducts = ({
         )}
       </section>
       {selectedCategories.length === 0 && !priceFilter && (
-         <Pagination
-        page={page}
-        totalPages={pageNumbers.current}
-        onPageChange={setPage}
-      />
+        <Pagination
+          page={page}
+          totalPages={pageNumbers.current}
+          onPageChange={setPage}
+        />
       )}
     </main>
   );

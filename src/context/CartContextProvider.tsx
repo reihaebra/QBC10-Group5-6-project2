@@ -7,6 +7,7 @@ export interface Product {
   price: number;
   imageUrl?: string;
   description?: string;
+  quantity?: number;
 }
 
 interface CartProviderProps {
@@ -17,7 +18,22 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Product[]>([]);
 
   const addToCart = (product: Product) => {
-    setCart((prev) => [...prev, product]);
+    setCart((prev) => {
+      const exist = prev.find((item) => item.title === product.title);
+      if (exist) {
+        if ((product.quantity || 1) !== (exist.quantity || 1)) {
+          return prev.map((item) =>
+            item.title === product.title
+              ? { ...item, quantity: product.quantity || 1 }
+              : item
+          );
+        }
+
+        return prev;
+      }
+
+      return [...prev, { ...product, quantity: product.quantity || 1 }];
+    });
   };
 
   const removeFromCart = (id: number) => {

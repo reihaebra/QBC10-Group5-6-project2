@@ -8,6 +8,7 @@ import CommentForm from "../components/CommentForm";
 import CommentItem from "../components/CommentItem";
 import { getSingleProducts } from "../api/requests/singleProduct";
 import { getProductCategory } from "../api/requests/productCategory";
+import { useParams } from "react-router-dom";
 
 interface Reviews {
   name: string;
@@ -36,10 +37,19 @@ export interface Product {
   __v: number;
 }
 
+interface productCategory {
+  _id: string | number;
+  name: string;
+  __v: string;
+}
+
 function ProductPage() {
   const [activeSection, setActiveSection] = useState("related");
   const [product, setProduct] = useState<Product | null>(null);
-  const [productCategory, setProductCategory] = useState(null);
+  const [productCategory, setProductCategory] = useState<productCategory | null>(null);
+  const { productId } = useParams<{ productId: string  }>();
+  console.log(productId);
+
   const [comments, setComments] = useState([
     {
       name: "علی موسوی",
@@ -61,7 +71,7 @@ function ProductPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await getSingleProducts("68f4998a843e1f637fbb33b7");
+        const response = await getSingleProducts(productId ?? "");
         if (response) {
           const data = await getProductCategory(response.category);
           setProductCategory(data);
@@ -81,7 +91,12 @@ function ProductPage() {
         <UserDropdown />
       </Sidebar>
       <div className="flex flex-col pr-32 py-20 bg-background-base-light dark:bg-[var(--color-background-primary-dark)] min-h-screen h-full">
-        <ProductContainer product={product} productCategory={productCategory} />
+        {product && (
+          <ProductContainer
+            product={product}
+            productCategory={productCategory}
+          />
+        )}
         <div className="flex pt-16 gap-28 pr-20">
           <SidebarLinks
             activeSection={activeSection}
@@ -89,7 +104,7 @@ function ProductPage() {
           />
 
           <div className="flex flex-1 flex-col">
-            {activeSection === "related" && <RelatedProducts />}
+            {activeSection === "related" && productId && (<RelatedProducts productID={productId}  />)}
 
             {activeSection === "add" && (
               <CommentForm onSubmit={handleCommentSubmit} />
