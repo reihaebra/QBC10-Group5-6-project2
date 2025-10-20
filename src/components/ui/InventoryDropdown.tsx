@@ -1,6 +1,10 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 
-export const InventoryDropdown = () => {
+interface InventoryDropdownProps {
+  onChange?: (value: number) => void;
+}
+
+export const InventoryDropdown: React.FC<InventoryDropdownProps> = ({ onChange }) => {
   const [open, setOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(1);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -10,6 +14,7 @@ export const InventoryDropdown = () => {
   const handleSelect = (item: number): void => {
     setSelectedItem(item);
     setOpen(false);
+    if (onChange) onChange(item);
   };
 
   return (
