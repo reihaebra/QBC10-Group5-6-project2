@@ -6,14 +6,14 @@ import HeroProductCard from "./HeroProductCard";
 
 export interface Product {
   id: number;
-  title: string;
-  brand: string; // ✅ حالا اجباریه
+  name: string;
+  category: string; // ✅ حالا اجباریه
   price: string;
   description: string;
-  imageUrl: string;
+  image: string;
   rating: number;
   reviews: number;
-  stock: number;
+  countInStock: number;
   updatedAt: string;
 }
 

@@ -3,14 +3,14 @@ import SideCards from "../components/SideCards";
 
 export interface Product {
   id: number;
-  title: string;
-  brand?: string;
+  name: string;
+  category?: string;
   price: string;
   description?: string;
-  imageUrl: string; // ✅ اجباری شد
+  image: string; // ✅ اجباری شد
   rating?: number;
   reviews?: number;
-  stock?: number;
+  countInStock?: number;
   updatedAt?: string;
 }
 

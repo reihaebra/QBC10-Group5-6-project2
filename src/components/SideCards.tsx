@@ -22,7 +22,7 @@ const SideCards: React.FC<SideCardsProps> = ({ products }) => {
   return (
     <div className="grid grid-cols-2 2xl:grid-cols-3 gap-4 h-fit">
       {products.map((product: Product, i: number) => (
-        <ProductCard key={i} {...product} size="small" />
+        <ProductCard key={i} product={product} size="small" />
       ))}
     </div>
   );

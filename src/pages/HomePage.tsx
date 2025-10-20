@@ -6,11 +6,11 @@ import SpecialProducts from "../components/SpecialProducts";
 
 export interface Product {
   id: number;
-  title: string;
-  brand?: string;
+  name: string;
+  category?: string;
   price: string;
   description?: string;
-  imageUrl: string; // ✅ اجباری شد
+  imageUrl: string;
   rating?: number;
   reviews?: number;
   stock?: number;
@@ -40,8 +40,10 @@ const HomePage = () => {
   if (loading) return <p className="text-center mt-10">در حال بارگذاری...</p>;
 
   // تقسیم داده‌ها برای بخش‌های مختلف صفحه
-  const heroProducts = products.slice(0, 2);
+  const heroProducts = products.slice(0, 2);  
   const sideProducts = products.slice(2, 6);
+  console.log(sideProducts);
+  
   const specialProducts = products.slice(6, 12);
 
   return (
