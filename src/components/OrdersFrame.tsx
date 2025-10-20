@@ -1,10 +1,14 @@
 import OrderRow from "./OrderRow";
-import data from "../../constants/orders-sample";
+import type { Order } from "../pages/OrderPage";
 
-const OrdersFrame = () => {
+interface OrdersFrameProps {
+  order: Order[]; // ✅ فقط آرایه سفارش‌ها
+}
+
+const OrdersFrame = ({ order }: OrdersFrameProps) => {
   return (
     <div className="w-full overflow-x-auto font-yekan-bakh dark:text-[var(--color-primary-text-dark)]">
-      <table className="min-w-full border-collapse ">
+      <table className="min-w-full border-collapse">
         <thead>
           <tr className="border-b border-input-light dark:border-[var(--color-input-dark)]">
             <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-20 dark:text-[var(--color-primary-text-dark)]">
@@ -35,18 +39,29 @@ const OrdersFrame = () => {
         </thead>
 
         <tbody>
-          {data.map((item) => (
-            <OrderRow
-              key={item.id}
-              imageUrl={item.imageUrl}
-              name={item.name}
-              price={item.price}
-              user={item.user}
-              date={item.date}
-              paymentStatus={item.paymentStatus}
-              transitionStatus={item.transitionStatus}
-            />
-          ))}
+          {order?.length > 0 ? (
+            order.map((item) => (
+              <OrderRow
+                key={item._id}
+                imageUrl={item.orderItems[0]?.image ?? ""}
+                name={item.orderItems[0]?.name ?? ""}
+                price={item.totalPrice.toString()}
+                user={item.user?.username}
+                date={item.createdAt.toString()}
+                paymentStatus={item.isPaid ? "paid" : "unpaid"}
+                transitionStatus={item.isDelivered ? "sent" : "unsent"}
+              />
+            ))
+          ) : (
+            <tr>
+              <td
+                colSpan={8}
+                className="text-center py-6 text-gray-500 dark:text-gray-400"
+              >
+                هیچ سفارشی یافت نشد
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
