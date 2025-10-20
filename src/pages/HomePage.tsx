@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllProducts } from "../api/requests/products";
 import HeroSection from "../components/HeroSection";
 import SpecialProducts from "../components/SpecialProducts";
+import Sidebar from "../components/ui/Sidebar";
+import UserDropdown from "../components/ui/UserDropdown";
 
 
 export interface Product {
@@ -39,7 +41,6 @@ const HomePage = () => {
 
   if (loading) return <p className="text-center mt-10">در حال بارگذاری...</p>;
 
-  // تقسیم داده‌ها برای بخش‌های مختلف صفحه
   const heroProducts = products.slice(0, 2);  
   const sideProducts = products.slice(2, 6);
   console.log(sideProducts);
@@ -47,9 +48,14 @@ const HomePage = () => {
   const specialProducts = products.slice(6, 12);
 
   return (
-    <main className="flex flex-col gap-12 w-full px-4 xl:px-12">
+    <main className="bg-background-base-light dark:bg-[var(--color-background-primary-dark)] pr-36 py-8 pl-14">
+        <Sidebar>
+          <UserDropdown />
+        </Sidebar>
+        <div>
       <HeroSection heroProducts={heroProducts} sideProducts={sideProducts} />
       <SpecialProducts specialProducts={specialProducts} />
+      </div>
     </main>
   );
 };

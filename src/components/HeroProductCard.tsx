@@ -43,7 +43,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
         <div className="flex-1 min-w-[45%] flex flex-col">
           <h3 className="text-base font-normal font-sans">{name}</h3>
           <p className="text-lg font-normal text-black text-left dark:text-white">
-            {price}
+            {price} تومان
           </p>
           <p className="text-dark text-sm leading-relaxed dark:text-white pt-6">
             {description}
