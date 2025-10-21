@@ -6,7 +6,7 @@ interface addressProps {
   address: string;
   city: string;
   country: string;
-  postal: number;
+  postal: string;
 }
 
 const ShoppingProgress3 = (props: addressProps) => {
@@ -27,6 +27,7 @@ const ShoppingProgress3 = (props: addressProps) => {
         />
       </div>
     </main>
+
   );
 };
 

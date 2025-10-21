@@ -1,5 +1,5 @@
 import ButtonSecondary from "./ui/ButtonSecondary";
-
+import { shoppingProgressPostAddress } from "../api/requests/shoppingProgressPostAddress"
 interface FormProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setAddress: React.Dispatch<React.SetStateAction<string>>;
@@ -26,6 +26,13 @@ const PurchaseForm = (props: FormProps) => {
 
   const handleClick = () => {
     setStep((step) => step + 1);
+
+    // try {
+    //   const response = shoppingProgressPostAddress(orderData);
+    //   console.log(response);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   return (

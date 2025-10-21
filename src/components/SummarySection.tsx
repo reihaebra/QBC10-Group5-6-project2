@@ -1,19 +1,46 @@
 import ButtonSecondary from "./ui/ButtonSecondary";
+import { createOrder } from "../api/requests/createOrder";
+import { useState } from "react";
+import type { OrderData } from "../api/requests/createOrder";
+import { useCartContext } from "../context/useCartContext";
+import type { OrderItem } from "../api/requests/createOrder";
 
 interface SummaryProps {
   address: string;
   city: string;
   country: string;
-  postal: number;
+  postal: string;
   sum: number;
 }
 
 const SummarySection = (props: SummaryProps) => {
   const { address, city, country, postal, sum } = props;
 
+  const {cart} = useCartContext()!;
+  const newCart: OrderItem[] = cart.map((item)=>{
+    return {
+    _id: item.id,
+    name: item.title,
+    qty: item.quantity!,
+  };
+  })
+
   const tax = 0.1 * sum;
 
-  function handleClick(): void {}
+  const [orderData, setOrderData] = useState<OrderData>({
+    orderItems: newCart,
+    paymentMethod: "Cash",
+    shippingAddress: { address: address, city: city, postalCode: postal }
+  });
+
+
+  function handleClick(): void {
+    const fetchData = async () => {
+      const response = await createOrder(orderData);
+      console.log(response);
+    }
+    fetchData();
+  }
 
   return (
     <div className="flex flex-col gap-5">

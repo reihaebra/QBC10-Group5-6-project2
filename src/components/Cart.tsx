@@ -1,9 +1,11 @@
 import InventoryDropdown from "./ui/InventoryDropdown";
 import ButtonSecondary from "./ui/ButtonSecondary";
 import { useCartContext } from "../../src/context/useCartContext";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
   const { cart, removeFromCart, addToCart } = useCartContext()!;
+  const navigate = useNavigate();
 
   const handleQuantityChange = (id: number, newQuantity: number) => {
     const product = cart.find((item) => item.id === id);
@@ -23,7 +25,7 @@ export const Cart = () => {
   );
 
   const handleButtonClick = () => {
-    console.log("تکمیل خرید:", cart);
+    navigate("/user/shop-progress");
   };
 
   return (
