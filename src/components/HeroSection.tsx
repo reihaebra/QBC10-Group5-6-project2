@@ -1,17 +1,17 @@
-import HeroCarousel from "../components/HeroCarousel";
-import SideCards from "../components/SideCards";
+import HeroCarousel from "./HeroCarousel";
+import SideCards from "./SideCards";
 
-export interface Product {
-  id: number;
+interface Product {
+  _id: string;
   name: string;
-  category?: string;
-  price: string;
-  description?: string;
-  image: string; // ✅ اجباری شد
+  category: { name: string };
+  price: number | string;
+  description: string;
+  image: string;
   rating?: number;
-  reviews?: number;
+  numReviews?: number;
   countInStock?: number;
-  updatedAt?: string;
+  updatedAt: string;
 }
 
 interface HeroSectionProps {
@@ -19,7 +19,10 @@ interface HeroSectionProps {
   sideProducts: Product[];
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ heroProducts, sideProducts }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({
+  heroProducts,
+  sideProducts,
+}) => {
   return (
     <section className="flex flex-col xl:flex-row gap-10 items-center w-full mb-12">
       <SideCards products={sideProducts} />
