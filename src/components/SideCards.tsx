@@ -1,33 +1,27 @@
-import ProductCard from "../components/ui/ProductCard";
+import ProductCard from "./ui/ProductCard";
 
-const SideCards = () => {
-  const products = [
-    {
-      title: "Apple iPad Pro 12.9-inch",
-      price: "۴۵,۰۰۰,۰۰۰ تومان",
-      imageUrl: "./../../public/images/ipad-pro.png",
-    },
-    {
-      title: "Apple iPad Air 10.9-inch",
-      price: "۳۵,۰۰۰,۰۰۰ تومان",
-      imageUrl: "./../../public/images/ipad-air.png",
-    },
-    {
-      title: "Apple iPad Mini",
-      price: "۲۵,۰۰۰,۰۰۰ تومان",
-      imageUrl: "./../../public/images/ipad-mini.png",
-    },
-    {
-      title: "Apple Watch Ultra 2",
-      price: "۵۵,۰۰۰,۰۰۰ تومان",
-      imageUrl: "./../../public/images/apple-watch-ultra.png",
-    },
-  ];
+interface Product {
+  _id: string;
+  name: string;
+  category?: { name: string };
+  price: number | string;
+  description?: string;
+  image: string;
+  rating?: number;
+  numReviews?: number;
+  countInStock?: number;
+  updatedAt?: string;
+}
 
+interface SideCardsProps {
+  products: Product[];
+}
+
+const SideCards: React.FC<SideCardsProps> = ({ products }) => {
   return (
     <div className="grid grid-cols-2 2xl:grid-cols-3 gap-4 h-fit">
-      {products.map((product, i) => (
-        <ProductCard key={i} {...product} size="small" />
+      {products.map((product) => (
+        <ProductCard key={product._id} product={product} size="small" />
       ))}
     </div>
   );
