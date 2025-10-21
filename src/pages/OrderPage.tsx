@@ -2,7 +2,7 @@ import Sidebar from "../components/ui/Sidebar";
 import OrdersFrame from "../components/OrdersFrame";
 import AdminDropdown from "../components/ui/AdminDropdown";
 import { useEffect, useState } from "react";
-import { getAllOrders } from "../api/requests/allOrders(Admin)";
+import { getAllOrders } from "../api/requests/ordersList";
 
 export interface ShippingAddress {
   address: string;

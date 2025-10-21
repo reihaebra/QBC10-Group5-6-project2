@@ -2,7 +2,7 @@ import OrderRow from "./OrderRow";
 import type { Order } from "../pages/OrderPage";
 
 interface OrdersFrameProps {
-  order: Order[]; // ✅ فقط آرایه سفارش‌ها
+  order: Order[];
 }
 
 const OrdersFrame = ({ order }: OrdersFrameProps) => {
@@ -45,9 +45,9 @@ const OrdersFrame = ({ order }: OrdersFrameProps) => {
                 key={item._id}
                 imageUrl={item.orderItems[0]?.image ?? ""}
                 name={item.orderItems[0]?.name ?? ""}
-                price={item.totalPrice.toString()}
+                price={item.totalPrice.toLocaleString()}
                 user={item.user?.username}
-                date={item.createdAt.toString()}
+                date={new Date(item.createdAt).toLocaleDateString("fa-IR")}
                 paymentStatus={item.isPaid ? "paid" : "unpaid"}
                 transitionStatus={item.isDelivered ? "sent" : "unsent"}
               />
