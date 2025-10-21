@@ -5,19 +5,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import HeroProductCard from "./HeroProductCard";
 
-export interface Product {
-  id: number;
+interface Product {
+  _id: string;
   name: string;
-  category: string;
-  price: string;
+  category: { name: string };
+  price: number | string;
   description: string;
   image: string;
-  rating: number;
-  reviews: number;
-  countInStock: number;
+  rating?: number;
+  numReviews?: number;
+  countInStock?: number;
   updatedAt: string;
 }
-
 interface HeroCarouselProps {
   products: Product[];
 }
@@ -48,8 +47,8 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ products }) => {
           slidesPerView={1}
           className="overflow-hidden"
         >
-          {products.map((product, index) => (
-            <SwiperSlide key={index}>
+          {products.map((product) => (
+            <SwiperSlide key={product._id}>
               <HeroProductCard {...product} />
             </SwiperSlide>
           ))}
@@ -57,30 +56,31 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ products }) => {
       </div>
       <button
         ref={prevRef}
-        className="absolute -left-8 top-1/2 -translate-y-1/2 p-0 rounded-full hover:scale-105 transition-transform"
+        className="absolute -left-8 top-1/2 -translate-y-1/2 p-0 rounded-full hover:scale-105 transition-transform cursor-pointer"
       >
         <img
-          src="/icons/arrleft-light.svg"
+          src="../../public/icons/arrleft-light.svg"
           alt="prev"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="/icons/arrleft-dark.svg"
+          src="../../public/icons/arrleft-dark.svg"
           alt="prev dark"
           className="hidden w-5 h-5 dark:block"
         />
       </button>
       <button
         ref={nextRef}
-        className="absolute -right-8 top-1/2 -translate-y-1/2 p-0 rounded-full hover:scale-105 transition-transform"
+        className="absolute -right-8 top-1/2 -translate-y-1/2 p-0 rounded-full 
+        hover:scale-105 transition-transform cursor-pointer"
       >
         <img
-          src="/icons/arrright-light.svg"
+          src="../../public/icons/arrright-light.svg"
           alt="next"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="/icons/arrright-dark.svg"
+          src="../../public/icons/arrright-dark.svg"
           alt="next dark"
           className="hidden w-5 h-5 dark:block"
         />
