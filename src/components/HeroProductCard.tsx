@@ -1,41 +1,49 @@
+import { Link } from "react-router-dom";
+import { products } from "../../constants/all-products-samples";
+
 interface HeroProductCardProps {
-  imageUrl: string;
-  title: string;
-  brand: string;
+  image: string;
+  name: string;
+  category: string;
   price: string | number;
   description: string;
   rating: number;
   reviews: number;
-  stock: number;
+  countInStock: number;
   updatedAt: string;
+  numReviews: number
 }
 
 const HeroProductCard: React.FC<HeroProductCardProps> = ({
-  imageUrl,
-  title,
-  brand,
+  _id,
+  image,
+  name,
+  category,
   price,
   description,
   rating,
   reviews,
-  stock,
+  countInStock,
   updatedAt,
+  numReviews
 }) => {
+
   return (
+    <Link to={`/user/shop/${_id}`}> 
     <div className="font-yekan-bakh flex flex-col max-w-xl">
       <div className="w-full flex justify-center rounded-lg">
         <img
-          src={imageUrl}
-          alt={title}
+          src={image}
+          alt={name}
           className="object-cover w-full h-96 rounded-lg"
         />
       </div>
 
       <div className="flex w-full pt-4 gap-6">
         <div className="flex-1 min-w-[45%] flex flex-col">
-          <h3 className="text-base font-normal font-sans">{title}</h3>
+          <h3 className="text-base font-normal font-sans">{name}</h3>
           <p className="text-lg font-normal text-black text-left dark:text-white">
-            {price}
+            {price} تومان
           </p>
           <p className="text-dark text-sm leading-relaxed dark:text-white pt-6">
             {description}
@@ -74,7 +82,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
               />
               <span>
                 تعداد:
-                <span className="text-black dark:text-white"> {reviews}</span>
+                <span className="text-black dark:text-white"> {numReviews}</span>
               </span>
             </div>
 
@@ -91,7 +99,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
               />
               <span>
                 موجودی:
-                <span className="text-black dark:text-white">{stock}</span>
+                <span className="text-black dark:text-white">{countInStock}</span>
               </span>
             </div>
           </div>
@@ -110,7 +118,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
               />
               <span>
                 برند:
-                <span className="text-black dark:text-white"> {brand}</span>
+                <span className="text-black dark:text-white"> {category.name}</span>
               </span>
             </div>
 
@@ -127,7 +135,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
               />
               <span>
                 بروزرسانی:
-                <span className="text-black dark:text-white"> {updatedAt}</span>
+                <span className="text-black dark:text-white">{new Date(updatedAt).toLocaleDateString("fa-IR")}</span>
               </span>
             </div>
 
@@ -144,13 +152,14 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
               />
               <span>
                 نظرات:
-                <span className="text-black dark:text-white"> {reviews}</span>
+                <span className="text-black dark:text-white"> {numReviews}</span>
               </span>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

@@ -1,41 +1,42 @@
-import ProductCard from "./ui/ProductCard";
-import ButtonSecondary from "./ui/ButtonSecondary";
+import ProductCard from "../components/ui/ProductCard";
+import ButtonSecondary from "../components/ui/ButtonSecondary";
+import { Link } from "react-router-dom";
 
-const SpecialProducts = () => {
-  const products = [
-    { title: "Apple iPad Pro 12.9-inch", price: "۸,۰۰۰ تومان" },
-    { title: "Apple iPad Pro 11-inch", price: "۶,۰۰۰ تومان" },
-    { title: "Apple iPad Air", price: "۵,۵۰۰ تومان" },
-    { title: "Apple iPad Mini", price: "۴,۵۰۰ تومان" },
-    { title: "Apple Watch Ultra", price: "۹,۰۰۰ تومان" },
-    { title: "Apple Watch SE", price: "۵,۰۰۰ تومان" },
-    { title: "AirPods Pro 2", price: "۴,۰۰۰ تومان" },
-    { title: "MacBook Pro 14-inch", price: "۲۰,۰۰۰ تومان" },
-    { title: "MacBook Air M3", price: "۱۸,۰۰۰ تومان" },
-  ];
+export interface Product {
+  id: number;
+  title: string;
+  brand?: string;
+  price: string;
+  description?: string;
+  imageUrl: string;
+  rating?: number;
+  reviews?: number;
+  stock?: number;
+  updatedAt?: string;
+}
 
-  const visibleProducts = products.slice(0, 6);
 
+interface SpecialProductsProps {
+  specialProducts: Product[];
+}
+
+const SpecialProducts: React.FC<SpecialProductsProps> = ({ specialProducts }) => {
   return (
     <div className="flex flex-col gap-6 w-full items-center justify-center">
       <div className="flex justify-between items-center py-3 w-full">
         <h2 className="font-yekan-bakh text-xl font-semibold">محصولات ویژه</h2>
-        <div className="font-yekan-bakh">
-          <ButtonSecondary
-            text="فروشگاه"
-            handleClick={() => console.log("رفتن به فروشگاه")}
-          />
-        </div>
+        <Link to={`/user/shop`} className="w-[150px]">
+
+        <ButtonSecondary
+          text="فروشگاه"
+          handleClick={() => {}}
+        />
+        </Link>
       </div>
 
       <div className="grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-8 h-fit w-fit">
-        {visibleProducts.map((p, i) => (
-          <ProductCard
-            key={i}
-            {...p}
-            size="big"
-            imageUrl="./../../public/images/ipad.png"
-          />
+        {specialProducts.map((product: Product, i: number) => (
+          <ProductCard key={i} product={product} size="big" />
         ))}
       </div>
     </div>

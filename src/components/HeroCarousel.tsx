@@ -3,51 +3,29 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import HeroProductCard from "../components/HeroProductCard";
+import HeroProductCard from "./HeroProductCard";
 
-interface Product {
-  title: string;
-  brand: string;
+export interface Product {
+  id: number;
+  name: string;
+  category: string;
   price: string;
   description: string;
-  imageUrl: string;
+  image: string;
   rating: number;
   reviews: number;
-  stock: number;
+  countInStock: number;
   updatedAt: string;
 }
 
-const HeroCarousel: React.FC = () => {
+interface HeroCarouselProps {
+  products: Product[];
+}
+
+const HeroCarousel: React.FC<HeroCarouselProps> = ({ products }) => {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
   const [swiperInstance, setSwiperInstance] = useState<any>(null);
-
-  const products: Product[] = [
-    {
-      title: "Apple iPhone 14 Pro",
-      brand: "اپل",
-      price: "۵۰,۰۰۰,۰۰۰ تومان",
-      description:
-        "آیفون 14 پرو دارای صفحه‌نمایش 6.1 اینچی Super Retina XDR و تراشه قدرتمند A16 Bionic است.",
-      imageUrl: "/../../public/images/iphone-14-pro.png",
-      rating: 5,
-      reviews: 4202,
-      stock: 10,
-      updatedAt: "چند لحظه قبل",
-    },
-    {
-      title: "Apple iPhone 14",
-      brand: "اپل",
-      price: "۴۰,۰۰۰,۰۰۰ تومان",
-      description:
-        "آیفون 14 با طراحی زیبا و صفحه‌نمایش Super Retina XDR تجربه‌ای روان و دلپذیر ارائه می‌دهد.",
-      imageUrl: "/../../public/images/iphone-14-pro.png",
-      rating: 4.8,
-      reviews: 3580,
-      stock: 5,
-      updatedAt: "۲ ساعت قبل",
-    },
-  ];
 
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
@@ -77,34 +55,32 @@ const HeroCarousel: React.FC = () => {
           ))}
         </Swiper>
       </div>
-
       <button
         ref={prevRef}
-        className="absolute -left-8 bottom-7/12 z-20 p-2 rounded-full hover:scale-105 transition-transform"
+        className="absolute -left-8 top-1/2 -translate-y-1/2 p-0 rounded-full hover:scale-105 transition-transform"
       >
         <img
-          src="../../public/icons/arrleft-light.svg"
+          src="/icons/arrleft-light.svg"
           alt="prev"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="../../public/icons/arrleft-dark.svg"
+          src="/icons/arrleft-dark.svg"
           alt="prev dark"
           className="hidden w-5 h-5 dark:block"
         />
       </button>
-
       <button
         ref={nextRef}
-        className="absolute -right-8 bottom-7/12 z-20 p-2 rounded-full hover:scale-105 transition-transform"
+        className="absolute -right-8 top-1/2 -translate-y-1/2 p-0 rounded-full hover:scale-105 transition-transform"
       >
         <img
-          src="../../public/icons/arrright-light.svg"
+          src="/icons/arrright-light.svg"
           alt="next"
           className="w-5 h-5 dark:hidden"
         />
         <img
-          src="../../public/icons/arrright-dark.svg"
+          src="/icons/arrright-dark.svg"
           alt="next dark"
           className="hidden w-5 h-5 dark:block"
         />

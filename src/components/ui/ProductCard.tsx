@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Badge from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
 
@@ -9,10 +10,8 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
-  size = "small",
-  title = "Apple iPad Pro 12.9-inch",
-  price = "۱۰,۰۰۰ تومان",
-  imageUrl = "",
+  size ,
+  product
 }: ProductCardProps) => {
   const sizeStyles =
     size === "big"
@@ -28,18 +27,20 @@ const ProductCard = ({
           titleText: "text-base",
           badgeSize: "small",
         };
+        console.log(product);
 
   return (
+    <Link to={`/user/shop/${product._id}`}> 
     <div
       className={`font-yekan-bakh flex flex-col gap-4 ${sizeStyles.container}`}
     >
       <div
         className={`bg-neutral-light-600 ${sizeStyles.imageContainer} rounded-lg overflow-hidden relative dark:bg-[var(--color-neutral-dark-600)]`}
       >
-        {imageUrl ? (
+        {product?.image ? (
           <img
-            src={imageUrl}
-            alt={title}
+            src={product?.image}
+            alt={product?.name}
             className="w-full h-full object-cover object-center rounded-lg"
           />
         ) : null}
@@ -51,11 +52,12 @@ const ProductCard = ({
         <span
           className={`font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-[var(--color-primary-text-dark)]`}
         >
-          {title}
+          {product?.name}
         </span>
-        <Badge size={sizeStyles.badgeSize}>{price}</Badge>
+        <Badge size={sizeStyles.badgeSize}>{product?.price}</Badge>
       </div>
     </div>
+    </Link>
   );
 };
 
