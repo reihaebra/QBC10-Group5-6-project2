@@ -4,22 +4,22 @@ import AdminDropdown from "../components/ui/AdminDropdown";
 import { useEffect, useState } from "react";
 import { getAllOrders } from "../api/requests/ordersList";
 
-export interface ShippingAddress {
+interface ShippingAddress {
   address: string;
   city: string;
   postalCode: string | number;
 }
 
-export interface PaymentResult {
+interface PaymentResult {
   update_time: string | number;
 }
 
-export interface User {
+interface User {
   _id: string | number;
   username: string;
 }
 
-export interface OrderItems {
+interface OrderItems {
   name: string;
   qty: number;
   price: number;
