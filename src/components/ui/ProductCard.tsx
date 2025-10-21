@@ -1,19 +1,27 @@
+import { Link } from "react-router-dom";
 import Badge from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
+import { shortText } from "../../../utils/shortText";
 
 interface ProductCardProps {
   size: "small" | "big";
-  title: string;
-  price: string;
-  imageUrl: string;
+  product: {
+    _id: string;
+    name: string;
+    category?: {
+      name: string;
+    };
+    price: number | string;
+    description?: string;
+    image: string;
+    rating?: number;
+    numReviews?: number;
+    countInStock?: number;
+    updatedAt?: string;
+  };
 }
 
-const ProductCard = ({
-  size = "small",
-  title = "Apple iPad Pro 12.9-inch",
-  price = "۱۰,۰۰۰ تومان",
-  imageUrl = "",
-}: ProductCardProps) => {
+const ProductCard = ({ size, product }: ProductCardProps) => {
   const sizeStyles =
     size === "big"
       ? {
@@ -30,32 +38,36 @@ const ProductCard = ({
         };
 
   return (
-    <div
-      className={`font-yekan-bakh flex flex-col gap-4 ${sizeStyles.container}`}
-    >
+    <Link to={`/user/shop/${product._id}`}>
       <div
-        className={`bg-neutral-light-600 ${sizeStyles.imageContainer} rounded-lg overflow-hidden relative dark:bg-[var(--color-neutral-dark-600)]`}
+        className={`font-yekan-bakh flex flex-col gap-4 ${sizeStyles.container}`}
       >
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={title}
-            className="w-full h-full object-cover object-center rounded-lg"
-          />
-        ) : null}
-        <div className="absolute top-4 right-4">
-          <ButtonFavorite />
+        <div
+          className={`bg-neutral-light-600 ${sizeStyles.imageContainer} rounded-lg overflow-hidden relative dark:bg-[var(--color-neutral-dark-600)]`}
+        >
+          {product?.image ? (
+            <img
+              src={product?.image}
+              alt={product?.name}
+              className="w-full h-full object-cover object-center rounded-lg hover:scale-105 transition"
+            />
+          ) : null}
+          <div className="absolute top-4 right-4">
+            <ButtonFavorite />
+          </div>
+        </div>
+        <div className="flex items-center justify-between">
+          <span
+            className={`font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-[var(--color-primary-text-dark)]`}
+          >
+            {shortText(product?.name, 4)}
+          </span>
+          <Badge size={sizeStyles.badgeSize}>
+            {product?.price.toLocaleString("fa-IR")} تومان
+          </Badge>
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <span
-          className={`font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-[var(--color-primary-text-dark)]`}
-        >
-          {title}
-        </span>
-        <Badge size={sizeStyles.badgeSize}>{price}</Badge>
-      </div>
-    </div>
+    </Link>
   );
 };
 
