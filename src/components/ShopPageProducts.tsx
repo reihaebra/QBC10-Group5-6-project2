@@ -89,7 +89,7 @@ const ShopPageProducts = ({
               description={item.description}
               imageUrl={item.image}
               onAddToCart={() => console.log(`${item.name} added to cart!`)}
-              onShowMore={()=> handleShowMore(item._id)}
+              onShowMore={() => handleShowMore(item._id)}
             />
           ))
         ) : (

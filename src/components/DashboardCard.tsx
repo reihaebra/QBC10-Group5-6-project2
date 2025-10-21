@@ -5,7 +5,10 @@ interface DashboardCardProps {
 
 const DashboardCard: React.FC<DashboardCardProps> = ({ title, amount }) => {
   return (
-    <div className="w-60 h-40 rounded-lg bg-on-primary-light font-yekan-bakh flex flex-col justify-center gap-4 pr-7 dark:bg-[var(--color-primary-text-light)]">
+    <div
+      className="max-w-80 h-40 rounded-lg bg-on-primary-light font-yekan-bakh flex flex-col w-full 
+    justify-center gap-5 px-5 dark:bg-[var(--color-primary-text-light)]"
+    >
       <figure className="w-12 h-12 rounded-full bg-primary-main py-3 px-5 text-white">
         $
       </figure>
