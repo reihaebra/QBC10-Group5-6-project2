@@ -18,6 +18,7 @@ import {
   getTotalSalesByDate,
 } from "../api/requests/dashboard";
 import toast from "react-hot-toast";
+import Spinner from "../components/Spinner";
 
 interface SaleData {
   date: string;
@@ -76,11 +77,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div role="status" className="flex justify-center items-center h-screen">
-        <span className="loading loading-bars loading-xl bg-[var(--color-primary-main)]"></span>
-      </div>
-    );
+    return <Spinner />;
   }
 
   return (
