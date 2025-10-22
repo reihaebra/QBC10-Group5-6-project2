@@ -57,7 +57,6 @@ function ProductPage() {
     { name: string; date: string; text: string; rating: number }[]
   >([]);
 
-  // 🟢 دریافت اطلاعات محصول و دسته‌بندی
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -75,7 +74,6 @@ function ProductPage() {
     fetchProduct();
   }, [productId]);
 
-  // 🟢 دریافت نظرات محصول
   useEffect(() => {
     if (!productId) return;
 
@@ -93,12 +91,11 @@ function ProductPage() {
       .catch((err) => console.error("خطا در دریافت نظرات:", err));
   }, [productId]);
 
-  // 🟢 ثبت نظر
   const handleCommentSubmit = async (newComment: { text: string; rating: number }) => {
     if (!productId) return;
 
     try {
-      const user = await getUserProfile(); // بررسی لاگین با کوکی‌ها
+      const user = await getUserProfile(); 
       console.log(user)
       const res = await addComment(productId, {
         rating: newComment.rating,
@@ -106,7 +103,7 @@ function ProductPage() {
       });
       console.log("response :" , res)
       
-      // اضافه کردن نظر جدید به لیست
+    
       setComments((prev) => [
         ...prev,
         {
