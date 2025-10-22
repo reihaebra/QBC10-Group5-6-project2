@@ -18,10 +18,10 @@ const Favorite = () => {
         {favorites.map((product) => (
           <div>
             <ProductCard
-              key={product.title}
+              key={product.id}
               size="small"
               product={{
-                _id: String(product.id),
+                _id: product.id.toString(),
                 name: product.title,
                 price: product.price,
                 image: product.imageUrl,
