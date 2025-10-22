@@ -21,6 +21,7 @@ import EditProduct from "./pages/EditProduct";
 import AllProducts from "./pages/AllProducts";
 import CartProvider from "./context/CartContextProvider";
 import NotFound from "./pages/NotFound";
+import PrivateRoute from "./layouts/PrivateRoute";
 
 const App = () => {
   return (
@@ -29,26 +30,125 @@ const App = () => {
         <Route index element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+
         <Route path="/user/home" element={<HomePage />} />
         <Route path="/user/shop" element={<ShopPage />} />
         <Route path="/user/shop/:productId" element={<ProductPage />} />
-        <Route path="/user/favorites" element={<FavoritePage />} />
-        <Route path="/user/cart" element={<CartPage />} />
-        <Route path="/user/shop-progress" element={<ShoppingProgressPage />} />
-        <Route path="/user/checkout" element={<CheckoutPage />} />
-        <Route path="/user/my-orders" element={<UserOrdersPage />} />
-        <Route path="/user/my-orders/:orderId" element={<OrderDetailPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/all-users" element={<UsersPage />} />
-        <Route path="/admin/orders" element={<OrderPage />} />
+        <Route
+          path="/user/favorites"
+          element={
+            <PrivateRoute>
+              <FavoritePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/cart"
+          element={
+            <PrivateRoute>
+              <CartPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/shop-progress"
+          element={
+            <PrivateRoute>
+              <ShoppingProgressPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/checkout"
+          element={
+            <PrivateRoute>
+              <CheckoutPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/my-orders"
+          element={
+            <PrivateRoute>
+              <UserOrdersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/my-orders/:orderId"
+          element={
+            <PrivateRoute>
+              <OrderDetailPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            <PrivateRoute adminOnly>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/all-users"
+          element={
+            <PrivateRoute adminOnly>
+              <UsersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/orders"
+          element={
+            <PrivateRoute adminOnly>
+              <OrderPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/admin/orders/:orderId"
-          element={<OrdersDeliverOptionPage />}
+          element={
+            <PrivateRoute adminOnly>
+              <OrdersDeliverOptionPage />
+            </PrivateRoute>
+          }
         />
-        <Route path="/admin/create-product" element={<CreateProduct />} />
-        <Route path="/admin/edit-product" element={<EditProduct />} />
-        <Route path="/admin/all-products" element={<AllProducts />} />
+        <Route
+          path="/admin/create-product"
+          element={
+            <PrivateRoute adminOnly>
+              <CreateProduct />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/edit-product"
+          element={
+            <PrivateRoute adminOnly>
+              <EditProduct />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/all-products"
+          element={
+            <PrivateRoute adminOnly>
+              <AllProducts />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="/not-found" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </CartProvider>
