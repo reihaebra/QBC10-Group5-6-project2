@@ -218,8 +218,10 @@ const ProductContainer = ({
           <ButtonPrimary
             text="افزودن به سبد خرید"
             handleClick={() => {
+              console.log("we are in shop :" +product._id);
+              
               addToCart({
-                id: product.id as number,
+                id: product._id as number,
                 title: product.name,
                 price: Number(product.price),
                 quantity: quantity,
