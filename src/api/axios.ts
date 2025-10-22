@@ -38,6 +38,7 @@ api.interceptors.response.use(
 
         case 404:
           toast.error("موردی یافت نشد!");
+          navigate("/login");
           break;
 
         case 500:
