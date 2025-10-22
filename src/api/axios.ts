@@ -9,10 +9,10 @@ const api = axios.create({
   },
 });
 
-//  Request Interceptor
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -21,21 +21,36 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-//  Response Interceptor
 api.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError<any>) => {
     if (error.response) {
       const status = error.response.status;
+      const message = error.response.data?.message;
 
-      if (status === 401) {
-        toast.error("دسترسی غیرمجاز. لطفاً دوباره وارد شوید.");
-      } else if (status === 404) {
-        toast.error("موردی یافت نشد!");
-      } else if (status >= 500) {
-        toast.error("خطا در سرور!");
-      } else {
-        toast.error(error.response.data.message || "خطای ناشناخته!");
+      switch (status) {
+        case 401:
+          toast.error("دسترسی غیرمجاز. لطفاً دوباره وارد شوید.");
+          window.location.href = "/login";
+          break;
+
+        case 404:
+          toast.error("موردی یافت نشد!");
+          window.location.href = "/login";
+          break;
+
+        case 500:
+          if (message === "Not authorized, no token.") {
+            toast.error("لطفاً ابتدا وارد حساب کاربری شوید.");
+            window.location.href = "/login";
+          } else {
+            toast.error("خطا در سرور!");
+          }
+          break;
+
+        default:
+          toast.error(message || "خطای ناشناخته!");
+          break;
       }
     } else {
       toast.error("ارتباط با سرور برقرار نشد!");
@@ -44,4 +59,5 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 export default api;

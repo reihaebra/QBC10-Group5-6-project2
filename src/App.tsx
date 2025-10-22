@@ -20,6 +20,7 @@ import CreateProduct from "./pages/CreateProduct";
 import EditProduct from "./pages/EditProduct";
 import AllProducts from "./pages/AllProducts";
 import CartProvider from "./context/CartContextProvider";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -48,7 +49,7 @@ const App = () => {
         <Route path="/admin/create-product" element={<CreateProduct />} />
         <Route path="/admin/edit-product" element={<EditProduct />} />
         <Route path="/admin/all-products" element={<AllProducts />} />
-        <Route path="*" element={<div>Page Not Found</div>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </CartProvider>
   );
