@@ -29,7 +29,10 @@ export const Cart = () => {
   };
 
   return (
-    <div className="w-full h-screen font-yekan-bakh text-base font-normal text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
+    <div
+      className="w-full h-screen font-yekan-bakh text-base font-normal 
+    text-primary-text-light dark:text-[var(--color-primary-text-dark)]"
+    >
       <div className="px-8">
         <table className="w-full rounded-xl table-fixed border-collapse">
           <tbody className="text-[var(--color-primary-text-light)] dark:text-[var(--color-primary-text-dark)]">
@@ -38,7 +41,6 @@ export const Cart = () => {
                 key={item.id}
                 className="hover:bg-[var(--color-primary-hover-dark)] transition-all duration-150"
               >
-                {/* Image */}
                 <td className="p-2 w-1/10">
                   <img
                     className="w-[88px] h-[88px] rounded-sm cursor-pointer"
@@ -47,15 +49,11 @@ export const Cart = () => {
                   />
                 </td>
 
-                {/* Title & Price */}
                 <td>
-                  <p className="text-[var(--color-primary-main)]">
-                    {item.title}
-                  </p>
+                  <p className="text-primary-main">{item.title}</p>
                   <p className="font-bold">{item.price}</p>
                 </td>
 
-                {/* Quantity & Delete */}
                 <td>
                   <div className="flex justify-end items-center pl-2 gap-2">
                     <div className="w-40 h-1 flex justify-center items-center">
@@ -83,7 +81,7 @@ export const Cart = () => {
           <div className="flex flex-col items-start gap-4 max-w-xl mt-8">
             <p className="font-semibold text-xl">تعداد ({totalQuantity})</p>
             <p className="font-bold text-2xl mb-2">
-              {totalPrice.toLocaleString()} تومان
+              {totalPrice.toLocaleString("fa-IR")} تومان
             </p>
             <div className="w-full">
               <ButtonSecondary
