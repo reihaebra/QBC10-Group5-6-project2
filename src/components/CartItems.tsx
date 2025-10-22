@@ -22,8 +22,8 @@ const CartItems = (props: CartItemProps) => {
         <p className="text-right">{name}</p>
       </td>
       <td className="w-9">{quantity}</td>
-      <td className="w-20">{price.toLocaleString()}</td>
-      <td className="w-25">{finalPrice.toLocaleString()}</td>
+      <td className="w-20">{price.toLocaleString("fa-IR")}</td>
+      <td className="w-25">{finalPrice.toLocaleString("fa-IR")}</td>
     </tr>
   );
 };
