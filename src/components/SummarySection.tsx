@@ -16,32 +16,31 @@ interface SummaryProps {
 const SummarySection = (props: SummaryProps) => {
   const { address, city, country, postal, sum } = props;
 
-  const {cart} = useCartContext()!;
-  const newCart: OrderItem[] = cart.map((item)=>{
+  const { cart } = useCartContext()!;
+  const newCart: OrderItem[] = cart.map((item) => {
     return {
-    _id: item.id,
-    name: item.title,
-    qty: item.quantity!,
-  };
-  })
+      _id: item.id,
+      name: item.title,
+      qty: item.quantity!,
+    };
+  });
 
   const tax = 0.1 * sum;
 
   const [orderData, setOrderData] = useState<OrderData>({
     orderItems: newCart,
     paymentMethod: "Cash",
-    shippingAddress: { address: address, city: city, postalCode: postal }
+    shippingAddress: { address: address, city: city, postalCode: postal },
   });
 
-
   function handleClick(): void {
-    const fetchData = async () => {
+    const sendData = async () => {
+      console.log("orderData:", JSON.stringify(orderData, null, 2));
       const response = await createOrder(orderData);
       console.log(response);
-    }
-    fetchData();
+    };
+    sendData();
   }
-
   return (
     <div className="flex flex-col gap-5">
       <h2 className="font-medium text-right text-2xl text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
@@ -56,7 +55,7 @@ const SummarySection = (props: SummaryProps) => {
           <p className="text-base text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
             <span className="text-secondary-light dark:text-[var(--color-secondary-dark)]">
               روش:
-            </span>{" "}
+            </span>
             درگاه پرداخت پاسارگاد
           </p>
         </div>
@@ -67,7 +66,7 @@ const SummarySection = (props: SummaryProps) => {
           <p className="text-base text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
             <span className="text-secondary-light dark:text-[var(--color-secondary-dark)]">
               آدرس:
-            </span>{" "}
+            </span>
             {country}، {city}، {address}، کدپستی: {postal}
           </p>
         </div>
@@ -77,7 +76,7 @@ const SummarySection = (props: SummaryProps) => {
               قیمت محصولات:
             </p>
             <p className="font-normal text-base text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
-              {sum.toLocaleString()} تومان
+              {sum.toLocaleString("fa-IR")} تومان
             </p>
           </div>
           <div className="flex justify-between">
@@ -93,7 +92,7 @@ const SummarySection = (props: SummaryProps) => {
               مالیات:
             </p>
             <p className="font-normal text-base text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
-              {tax.toLocaleString()} تومان
+              {tax.toLocaleString("fa-IR")} تومان
             </p>
           </div>
           <div className="flex justify-between">
@@ -101,7 +100,7 @@ const SummarySection = (props: SummaryProps) => {
               مبلغ نهایی:
             </p>
             <p className="font-normal text-base text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
-              {(tax + sum).toLocaleString()} تومان
+              {(tax + sum).toLocaleString("fa-IR")} تومان
             </p>
           </div>
         </div>

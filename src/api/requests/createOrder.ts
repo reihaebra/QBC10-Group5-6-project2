@@ -1,9 +1,9 @@
 import api from "../axios";
 
 export interface OrderItem {
-    _id: number;
-    name: string;
-    qty: number;
+  _id: number;
+  name: string;
+  qty: number;
 }
 
 export interface ShippingAddress {
@@ -19,6 +19,8 @@ export interface OrderData {
 }
 
 export const createOrder = async (orderData: OrderData) => {
-  const response = await api.post("/orders", orderData);
+  const response = await api.post("/orders", JSON.stringify(orderData), {
+    headers: { "Content-Type": "application/json" },
+  });
   return response.data;
 };
