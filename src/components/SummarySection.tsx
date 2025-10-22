@@ -41,6 +41,7 @@ const SummarySection = (props: SummaryProps) => {
     };
     sendData();
   }
+
   return (
     <div className="flex flex-col gap-5">
       <h2 className="font-medium text-right text-2xl text-primary-text-light dark:text-[var(--color-primary-text-dark)]">
