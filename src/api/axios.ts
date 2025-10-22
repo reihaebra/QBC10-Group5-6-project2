@@ -1,6 +1,5 @@
 import axios, { AxiosError, type AxiosResponse } from "axios";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
@@ -28,23 +27,22 @@ api.interceptors.response.use(
     if (error.response) {
       const status = error.response.status;
       const message = error.response.data?.message;
-      const navigate = useNavigate();
 
       switch (status) {
         case 401:
           toast.error("دسترسی غیرمجاز. لطفاً دوباره وارد شوید.");
-          navigate("/login");
+          window.location.href = "/login";
           break;
 
         case 404:
           toast.error("موردی یافت نشد!");
-          navigate("/login");
+          window.location.href = "/login";
           break;
 
         case 500:
           if (message === "Not authorized, no token.") {
             toast.error("لطفاً ابتدا وارد حساب کاربری شوید.");
-            navigate("/login");
+            window.location.href = "/login";
           } else {
             toast.error("خطا در سرور!");
           }
