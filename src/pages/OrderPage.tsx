@@ -3,6 +3,7 @@ import OrdersFrame from "../components/OrdersFrame";
 import AdminDropdown from "../components/ui/AdminDropdown";
 import { useEffect, useState } from "react";
 import { getAllOrders } from "../api/requests/ordersList";
+import Spinner from "../components/Spinner";
 
 interface ShippingAddress {
   address: string;
@@ -49,9 +50,11 @@ export interface Order {
 
 const OrderPage = () => {
   const [orders, setOrders] = useState<Order[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchOrders = async () => {
+      const nowTimeStamp = new Date().getTime();
       try {
         const response = await getAllOrders();
         if (response) {
@@ -60,14 +63,26 @@ const OrderPage = () => {
         }
       } catch (error) {
         console.error("Error fetching orders:", error);
+      } finally {
+        const elapsed = new Date().getTime() - nowTimeStamp;
+        setTimeout(() => {
+          setLoading(false);
+        }, Math.max(0, 500 - elapsed));
       }
     };
 
     fetchOrders();
   }, []);
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
-    <div className="relative flex min-h-screen h-full justify-between bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
+    <div
+      className="relative flex min-h-screen h-full justify-between bg-background-base-light 
+    dark:bg-[var(--color-background-primary-dark)]"
+    >
       <Sidebar>
         <AdminDropdown />
       </Sidebar>
