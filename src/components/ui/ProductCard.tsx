@@ -55,7 +55,7 @@ const ProductCard = ({ size, product }: ProductCardProps) => {
           <div className="absolute top-4 right-4">
             <ButtonFavorite
               title={product.name}
-              price={String(product.price)}
+              price={product.price.toLocaleString("fa-IR")}
               imageUrl={product.image}
             />
           </div>
@@ -67,9 +67,7 @@ const ProductCard = ({ size, product }: ProductCardProps) => {
             {product.name ? shortText(product.name, 4) : ""}
           </span>
           <Badge size={sizeStyles.badgeSize}>
-            {product?.price
-              ? Number(product.price).toLocaleString("fa-IR") + " تومان"
-              : "—"}
+            {(product?.price).toLocaleString("fa-IR")} تومان
           </Badge>
         </div>
       </div>
