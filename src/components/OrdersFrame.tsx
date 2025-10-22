@@ -11,28 +11,28 @@ const OrdersFrame = ({ order }: OrdersFrameProps) => {
       <table className="min-w-full border-collapse">
         <thead>
           <tr className="border-b border-input-light dark:border-[var(--color-input-dark)]">
-            <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-20 dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-right font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
               عکس
             </th>
-            <th className="text-right font-normal text-primary-text-light text-base py-3 px-2 w-50 dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-right font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
               نام محصول
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
               تاریخ
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
               کاربر
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
-              قیمت نهایی
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
+              قیمت نهایی (تومان)
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
               پرداخت
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
               ارسال
             </th>
-            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
+            <th className="text-center font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
               عملیات
             </th>
           </tr>
