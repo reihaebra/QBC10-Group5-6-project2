@@ -35,7 +35,7 @@ const ShoppingProgressPage = () => {
           address={address}
           city={city}
           country={country}
-          postal={postal}
+          postal={postal.toString()}
         />
       )}
     </div>

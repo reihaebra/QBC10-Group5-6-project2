@@ -35,11 +35,12 @@ const SummarySection = (props: SummaryProps) => {
 
 
   function handleClick(): void {
-    const fetchData = async () => {
+    const sendData = async () => {
+      console.log("orderData:", JSON.stringify(orderData, null, 2));
       const response = await createOrder(orderData);
       console.log(response);
     }
-    fetchData();
+    sendData();
   }
 
   return (
