@@ -1,5 +1,4 @@
 import CartItems from "./CartItems";
-import { items as cart } from "../../constants/shopping-progress";
 import { useCartContext } from "../context/useCartContext";
 
 
@@ -13,9 +12,9 @@ const CartTable = (props: TableProps) => {
 
   console.log(cart);
 
-  const list = cart.map((item, index) => (
+  const list = cart.map((item) => (
     <CartItems
-      key={index}
+      key={item.id}
       image={item.imageUrl!}
       name={item.title}
       quantity={item.quantity!}
