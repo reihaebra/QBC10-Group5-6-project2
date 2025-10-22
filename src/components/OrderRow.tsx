@@ -23,18 +23,18 @@ const OrderRow = ({
   transitionStatus = "unsent",
 }: OrderRowProps) => {
   return (
-    <tr className="bg-surface-light  ">
-      <td className="py-3 px-2 flex items-center gap-3">
-        <figure className="w-16 h-16 overflow-hidden p-1 flex-shrink-0">
+    <tr className="bg-surface-light">
+      <td className="py-2 flex items-center gap-3">
+        <figure className="w-16 h-16 overflow-hidden p-1">
           <img
             src={imageUrl}
             alt={name}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover"
           />
         </figure>
       </td>
       <td>
-        <p className="font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)]">
+        <p className="text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] max-w-36">
           {name || "نام محصول"}
         </p>
       </td>
