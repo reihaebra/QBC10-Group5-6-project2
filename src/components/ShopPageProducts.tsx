@@ -1,9 +1,6 @@
 import ShopProductCard from "./ui/ShopProductCard";
-import { useEffect, useRef, useState } from "react";
-import { getAllProducts } from "../api/requests/products";
-import { getProductsPagination } from "../api/requests/productsPagination";
-import { getFilteredProducts } from "../api/requests/filteredProducts";
 import Pagination from "./Pagination";
+import Spinner from "./Spinner";
 import { useCartContext } from "../context/useCartContext";
 
 interface ProductShopPage {
@@ -17,57 +14,29 @@ interface ProductShopPage {
   description: string;
   image: string;
 }
+
 interface ShopPageProductsProps {
+  products: ProductShopPage[];
+  page: number;
+  totalPages: number;
+  hasMore: boolean;
   selectedCategories: string[];
   priceFilter: string;
+  onPageChange: (page: number) => void;
 }
 
 const ShopPageProducts = ({
+  products,
+  page,
+  totalPages,
+  hasMore,
   selectedCategories,
   priceFilter,
+  onPageChange,
 }: ShopPageProductsProps) => {
-  const [products, setProducts] = useState<ProductShopPage[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const pageNumbers = useRef(1);
-   const { addToCart } = useCartContext()!;
+  const { addToCart } = useCartContext()!;
 
-  useEffect(() => {
-    const fetchTotalProducts = async () => {
-      const response = await getAllProducts();
-      pageNumbers.current = Math.ceil(response.length / 6);
-    };
-    fetchTotalProducts();
-  }, []);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        if (selectedCategories.length > 0 || priceFilter) {
-          const response = await getFilteredProducts(
-            selectedCategories,
-            priceFilter ? [0, parseInt(priceFilter)] : [0, 20000000000]
-          );
-          setProducts(response);
-          setHasMore(false);
-        } else {
-          const response = await getProductsPagination(page, 6);
-          setHasMore(response.hasMore);
-          setProducts(response.products);
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, [page, selectedCategories, priceFilter]);
-
-  if (loading) {
-    return <p>در حال بارگذاری محصولات...</p>;
-  }
+  
 
   return (
     <main className="flex flex-col items-center">
@@ -85,15 +54,13 @@ const ShopPageProducts = ({
                 imageUrl: item.image,
               }}
               onAddToCart={() => {
-                console.log(item._id);
-                
                 addToCart({
                   id: item._id,
                   title: item.name,
                   price: Number(item.price),
                   quantity: 1,
                   imageUrl: item.image,
-                  description:item.description,
+                  description: item.description,
                 });
               }}
             />
@@ -102,11 +69,12 @@ const ShopPageProducts = ({
           <p>محصولی یافت نشد.</p>
         )}
       </section>
-      {selectedCategories.length === 0 && !priceFilter && (
+
+      {selectedCategories.length === 0 && !priceFilter && hasMore && (
         <Pagination
           page={page}
-          totalPages={pageNumbers.current}
-          onPageChange={setPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
         />
       )}
     </main>
