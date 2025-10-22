@@ -9,13 +9,13 @@ import ButtonSecondary from "../components/ui/ButtonSecondary";
 import AdminDropdown from "../components/ui/AdminDropdown";
 import Spinner from "../components/Spinner";
 import { getOrderById } from "../api/requests/ordersList";
-import type { Order } from "../types/order";
+import type { Order } from "../../constants/order";
 import { toast } from "react-hot-toast";
 
 const OrdersDeliverOptionPage = () => {
   const { orderId } = useParams<{ orderId: string }>();
 
-  console.log("🔍 orderId:", orderId); // ✅ Debug 1
+  console.log("🔍 orderId:", orderId); 
 
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,19 +23,19 @@ const OrdersDeliverOptionPage = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       if (!orderId) {
-        console.error("❌ No orderId!"); // ✅ Debug 2
+       
         setLoading(false);
         return;
       }
 
       try {
-        console.log("📡 Fetching order:", orderId); // ✅ Debug 3
+       
         setLoading(true);
         const orderData = await getOrderById(orderId);
-        console.log("✅ Order data:", orderData); // ✅ Debug 4
+         
         setOrder(orderData);
       } catch (error) {
-        console.error("❌ API Error:", error); // ✅ Debug 5
+       
         toast.error("خطا در دریافت اطلاعات سفارش");
       } finally {
         setLoading(false);
@@ -45,7 +45,7 @@ const OrdersDeliverOptionPage = () => {
     fetchOrder();
   }, [orderId]);
 
-  // ✅ Debug UI
+  
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-blue-50">
@@ -73,7 +73,7 @@ const OrdersDeliverOptionPage = () => {
     );
   }
 
-  console.log("🎉 Rendering order:", order._id); // ✅ Debug 6
+
 
   return (
     <>
