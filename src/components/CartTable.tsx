@@ -1,5 +1,5 @@
 import CartItems from "./CartItems";
-import { items } from "../../constants/shopping-progress";
+import { useCartContext } from "../context/useCartContext";
 
 interface TableProps {
   setSum: React.Dispatch<React.SetStateAction<number>>;
@@ -7,19 +7,20 @@ interface TableProps {
 
 const CartTable = (props: TableProps) => {
   const { setSum } = props;
+  const { cart } = useCartContext()!;
 
-  const list = items.map((item, index) => (
+  const list = cart.map((item) => (
     <CartItems
-      key={index}
-      image={item.image}
-      name={item.name}
-      quantity={item.quantity}
+      key={item.id}
+      image={item.imageUrl!}
+      name={item.title}
+      quantity={item.quantity!}
       price={item.price}
     />
   ));
 
-  const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity!,
     0
   );
 

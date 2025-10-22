@@ -1,5 +1,4 @@
 import ButtonSecondary from "./ui/ButtonSecondary";
-
 interface FormProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setAddress: React.Dispatch<React.SetStateAction<string>>;
