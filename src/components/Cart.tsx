@@ -7,7 +7,7 @@ export const Cart = () => {
   const { cart, removeFromCart, addToCart } = useCartContext()!;
   const navigate = useNavigate();
 
-  const handleQuantityChange = (id: number, newQuantity: number) => {
+  const handleQuantityChange = (id: string, newQuantity: number) => {
     const product = cart.find((item) => item.id === id);
     if (product) {
       addToCart({ ...product, quantity: newQuantity });
@@ -38,7 +38,7 @@ export const Cart = () => {
           <tbody className="text-[var(--color-primary-text-light)] dark:text-[var(--color-primary-text-dark)]">
             {cart.map((item) => (
               <tr
-                key={item.id}
+                key={item?.id ?? item.title}
                 className="hover:bg-[var(--color-primary-hover-dark)] transition-all duration-150"
               >
                 <td className="p-2 w-1/10">
@@ -68,7 +68,7 @@ export const Cart = () => {
                       className="w-4 h-4 cursor-pointer"
                       src="/../../public/icons/cart-delete-red.svg"
                       alt="delete"
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item.id, item.title)}
                     />
                   </div>
                 </td>

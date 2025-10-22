@@ -2,7 +2,7 @@ import { useState, useEffect, type ReactNode } from "react";
 import { CartContext } from "./cartContext";
 
 export interface Product {
-  id: number;
+  id: string;
   title: string;
   price: number;
   imageUrl?: string;
@@ -36,8 +36,14 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     });
   };
 
-  const removeFromCart = (id: number) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (id: string , title?:string) => {
+    if (id != null || undefined) {
+      setCart((prev) => prev.filter((item) => item.id != id));
+    }
+    else
+    {
+      setCart((prev) => prev.filter((item) => item.title !== title));
+    }
   };
 
   const clearCart = () => setCart([]);
