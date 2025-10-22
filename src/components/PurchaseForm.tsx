@@ -1,157 +1,120 @@
-import ButtonSecondary from "./ui/ButtonSecondary";
+import { useState } from "react";
+import ButtonPrimary from "./ui/ButtonPrimary";
 
-interface FormProps {
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-  setAddress: React.Dispatch<React.SetStateAction<string>>;
-  setCity: React.Dispatch<React.SetStateAction<string>>;
-  setCountry: React.Dispatch<React.SetStateAction<string>>;
-  setPostal: React.Dispatch<React.SetStateAction<number>>;
+interface CommentFormProps {
+  onSubmit: (comment: { text: string; rating: number }) => void;
 }
 
-const PurchaseForm = (props: FormProps) => {
-  const { setStep, setAddress, setCity, setCountry, setPostal } = props;
+const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [rating, setRating] = useState<number | null>(null);
+  const [comment, setComment] = useState("");
 
-  const handleAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddress(e.target.value);
-  };
-  const handleCity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCity(e.target.value);
-  };
-  const handleCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCountry(e.target.value);
-  };
-  const handlePostal = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPostal(Number(e.target.value));
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!comment || rating === null) {
+      alert("لطفاً همه فیلدها را پر کنید");
+      return;
+    }
+
+    onSubmit({ text: comment, rating });
+
+    setComment("");
+    setRating(null);
+    setIsOpen(false);
   };
 
-  const handleClick = () => {
-    setStep((step) => step + 1);
+  const handleSelect = (value: number) => {
+    setRating(value);
+    setIsOpen(false);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] font-yekan-bakh">
-      <div className="w-2xl">
-        <h2 className="text-base font-bold text-primary-text-light dark:text-white mb-3 text-right">
-          آدرس دریافت
-        </h2>
+    <div className="font-yekan-bakh">
+      <form
+        onSubmit={handleSubmit}
+        className="rounded-lg flex flex-col gap-6 transition-colors duration-300"
+      >
+        {/* انتخاب امتیاز */}
+        <div>
+          <label className="block text-primary-text-light dark:text-[var(--color-on-primary-light)] mb-2 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]">
+            امتیاز
+          </label>
 
-        <form className="flex flex-col gap-2">
-          <div>
-            <label
-              htmlFor="address"
-              className="block text-sm text-primary-text-light dark:text-white mb-1 mt-2"
+          <div
+            onClick={() => setIsOpen(!isOpen)}
+            className={`cursor-pointer w-xl text-primary-text-light bg-on-primary-light 
+            border border-input-light rounded-lg placeholder-secondary-light outline-none
+            focus:border-input-active dark:text-[var(--color-on-primary-light)] 
+            dark:placeholder-[var(--color-secondary-dark)] dark:bg-[var(--color-base-text-field-dark)] dark:border-[var(--color-input-dark)]
+            px-3 py-2 pr-4 flex justify-between items-center`}
+          >
+            <span
+              className={`${
+                rating === null
+                  ? "text-secondary-light dark:text-[var(--color-secondary-dark)]"
+                  : "text-gray-900 dark:text-gray-100"
+              }`}
             >
-              آدرس
-            </label>
-            <input
-              id="address"
-              type="text"
-              placeholder="آدرس را وارد نمایید"
-              className="w-full py-1.5 px-2.5 text-sm rounded-md border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]
-                bg-on-primary-light dark:bg-[var(--color-base-text-field-dark)]
-                text-primary-text-light dark:text-white
-                placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
-                 focus:border-info-light
-                outline-none transition-all"
-              onChange={handleAddress}
+              {rating === null ? "انتخاب امتیاز" : `امتیاز: ${rating}`}
+            </span>
+
+            <img
+              src="../../public/icons/chevron_left_light.svg"
+              alt="فلش"
+              className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""} dark:hidden`}
+            />
+            <img
+              src="../../public/icons/chevron_left_dark.svg"
+              alt="فلش تیره"
+              className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""} hidden dark:block`}
             />
           </div>
-          <div>
-            <label
-              htmlFor="city"
-              className="block text-sm text-primary-text-light dark:text-white mb-1 mt-2"
+
+          {isOpen && (
+            <ul
+              className="absolute z-10 mt-1 w-xl text-primary-text-light dark:text-[var(--color-on-primary-light)] 
+              bg-on-primary-light dark:bg-[var(--color-base-text-field-dark)] border border-[var(--color-input-light)] 
+              dark:border-[var(--color-input-dark)] rounded-lg shadow-md max-h-48 overflow-auto"
             >
-              شهر
-            </label>
-            <input
-              id="city"
-              type="text"
-              placeholder="شهر را وارد نمایید"
-              className="w-full py-1.5 px-2.5 text-sm rounded-md border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]
-                bg-on-primary-light dark:bg-[var(--color-base-text-field-dark)]
-                text-primary-text-light dark:text-white
-                placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
-                 focus:border-info-light
-                outline-none transition-all"
-              onChange={handleCity}
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="country"
-              className="block text-sm text-primary-text-light dark:text-white mb-1 mt-2"
-            >
-              کشور
-            </label>
-            <input
-              id="country"
-              type="text"
-              placeholder="کشور را وارد نمایید"
-              className="w-full py-1.5 px-2.5 text-sm rounded-md border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]
-                bg-on-primary-light dark:bg-[var(--color-base-text-field-dark)]
-                text-primary-text-light dark:text-white
-                placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
-                 focus:border-info-light
-                outline-none transition-all"
-              onChange={handleCountry}
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="postal"
-              className="block text-sm text-primary-text-light dark:text-white mb-1 mt-2"
-            >
-              کدپستی
-            </label>
-            <input
-              id="postal"
-              type="text"
-              placeholder="کدپستی را وارد نمایید"
-              className="w-full py-1.5 px-2.5 text-sm rounded-md border border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]
-                bg-on-primary-light dark:bg-[var(--color-base-text-field-dark)]
-                text-primary-text-light dark:text-white
-                placeholder:text-secondary-light dark:placeholder:text-[var(--color-secondary-dark)]
-                 focus:border-info-light
-                outline-none transition-all"
-              onChange={handlePostal}
-            />
-          </div>
-          <div className="pt-1.5">
-            <p
-              className="text-sm text-secondary-light dark:text-secondary-dark mb-1 mt-2.5
-            dark:text-[var(--color-secondary-dark)]"
-            >
-              روش پرداخت
-            </p>
-            <div className="flex items-center space-x-2 space-x-reverse gap-1.5 pb-2">
-              <input
-                id="pasargadPayment"
-                type="radio"
-                name="paymentMethod"
-                defaultChecked
-                className="appearance-none w-3.5 h-3.5 
-                  rounded-full border-2
-                  border-primary-text-light
-                  dark:border-white
-                  checked:bg-primary-main
-                  checked:ring-primary-text-light
-                  transition-all"
-              />
-              <label
-                htmlFor="pasargadPayment"
-                className="text-sm text-primary-text-light dark:text-white"
-              >
-                درگاه پرداخت پاسارگاد
-              </label>
-            </div>
-            <div className="mt-3">
-              <ButtonSecondary text={"ادامه"} handleClick={handleClick} />
-            </div>
-          </div>
-        </form>
-      </div>
+              {[1, 2, 3, 4, 5].map((num) => (
+                <li
+                  key={num}
+                  onClick={() => handleSelect(num)}
+                  className="px-4 py-2 text-primary-text-light dark:text-[var(--color-on-primary-light)]
+                  hover:bg-[var(--color-primary-hover-dark)] hover:text-[var(--color-primary-main)] cursor-pointer transition-colors"
+                >
+                  {num}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* متن نظر */}
+        <div className="flex flex-col items-start gap-2 w-xl">
+          <label className="font-normal text-base leading-6 text-primary-text-light dark:text-[var(--color-on-primary-light)]">
+            نظر
+          </label>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="نظر خود را وارد نمایید"
+            className="px-3 py-2 w-full h-28 resize-none text-secondary-light bg-on-primary-light 
+            border border-input-light rounded-lg placeholder-secondary-light outline-none disabled:bg-input-light 
+            focus:border-input-active dark:disabled:bg-[var(--color-input-dark)] dark:text-[var(--color-secondary-dark)] 
+            dark:placeholder-[var(--color-secondary-dark)] dark:bg-[var(--color-base-text-field-dark)] dark:border-[var(--color-input-dark)]"
+          />
+        </div>
+
+        {/* دکمه ثبت */}
+        <div className="self-start">
+          <ButtonPrimary text="ثبت نظر" type="submit" />
+        </div>
+      </form>
     </div>
   );
 };
 
-export default PurchaseForm;
+export default CommentForm;
