@@ -29,7 +29,7 @@ const ButtonFavorite = ({ title, price, imageUrl }: ButtonFavoriteProps) => {
       <img
         src={active ? "/icons/favorite-hover.svg" : "/icons/favorite.svg"}
         alt="favorite"
-        className="w-6 h-6 transition"
+        className="transition hover:content-[url('./../../public/icons/favorite-hover.svg')]"
       />
     </button>
   );
