@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
 import OrderRowButton from "./OrderRowButton";
 import ButtonPrimary from "./ui/ButtonPrimary";
+import type { Order } from "../pages/OrderPage";
+
 type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";
 
@@ -11,6 +14,7 @@ interface OrderRowProps {
   date: string;
   paymentStatus: PaymentStatus;
   transitionStatus: TransitionStatus;
+  orderId: string | number; // ✅ orderId اضافه شد
 }
 
 const OrderRow = ({
@@ -21,6 +25,7 @@ const OrderRow = ({
   date,
   paymentStatus = "unpaid",
   transitionStatus = "unsent",
+  orderId, //  orderId prop
 }: OrderRowProps) => {
   return (
     <tr className="bg-surface-light">
@@ -59,10 +64,10 @@ const OrderRow = ({
 
       <td className="text-center align-middle">
         <div className="flex justify-center">
-          <ButtonPrimary
-            text={"جزییات"}
-            handleClick={() => console.log("button info clicked")}
-          />
+          {/* handleClick */}
+          <Link to={`/admin/orders/${orderId}`}>
+            <ButtonPrimary text={"جزئیات"} />
+          </Link>
         </div>
       </td>
     </tr>

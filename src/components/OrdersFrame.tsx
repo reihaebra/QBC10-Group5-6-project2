@@ -42,14 +42,17 @@ const OrdersFrame = ({ order }: OrdersFrameProps) => {
           {order?.length > 0 ? (
             order.map((item) => (
               <OrderRow
-                key={item._id}
+                key={item._id as string}
                 imageUrl={item.orderItems[0]?.image ?? ""}
                 name={item.orderItems[0]?.name ?? ""}
                 price={item.totalPrice.toLocaleString()}
-                user={item.user?.username}
-                date={new Date(item.createdAt).toLocaleDateString("fa-IR")}
+                user={item.user?.username ?? ""}
+                date={new Date(item.createdAt as string).toLocaleDateString(
+                  "fa-IR"
+                )}
                 paymentStatus={item.isPaid ? "paid" : "unpaid"}
                 transitionStatus={item.isDelivered ? "sent" : "unsent"}
+                orderId={item._id} // ✅ orderId پاس داده شد
               />
             ))
           ) : (
