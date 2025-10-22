@@ -1,13 +1,63 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const UserDropdown = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const menuItems = [
+  // Check role
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+
+  // Admin menu items
+  const adminMenuItems = [
+    { label: "داشبورد", path: "/admin/dashboard" },
+    { label: "محصول جدید", path: "/admin/products/new" },
+    { label: "مدیریت کاربران", path: "/admin/all-users" },
+    { label: "سفارشات", path: "/admin/orders" },
     { label: "پروفایل", path: "/profile" },
     { label: "خروج از حساب", path: "/login" },
   ];
+
+  // User menu items
+  const userMenuItems = [
+    { label: "پروفایل", path: "/profile" },
+    { label: "خروج از حساب", path: "/login" },
+  ];
+
+// Regular User or Admin?
+  const menuItems = isAdmin ? adminMenuItems : userMenuItems;
+
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      try {
+        const authModule = (await import("../../api/requests/auth")) as any;
+        if (authModule && typeof authModule.logoutUser === "function") {
+          await authModule.logoutUser();
+        }
+      } catch (_) {
+        //optional 
+      }
+
+      localStorage.removeItem("token");
+      localStorage.removeItem("id");
+      localStorage.removeItem("isAdmin");
+
+      const setCookieZero = (name: string) => {
+        document.cookie = `${name}=0; Max-Age=0; path=/;`;
+        document.cookie = `${name}=0; Max-Age=0; path=/; domain=${location.hostname};`;
+      };
+      ["jwt", "token", "access_token"].forEach(setCookieZero);
+
+      setOpen(false);
+      toast.success("با موفقیت از حساب خارج شدید");
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+      toast.error("مشکلی در خروج از حساب پیش آمد");
+    }
+  };
 
   return (
     <div className="p-4 flex flex-col items-start font-yekan-bakh text-base text-regular relative">
@@ -15,7 +65,7 @@ export const UserDropdown = () => {
         className="flex items-center gap-4 cursor-pointer select-none"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-primary-text-light dark:text-white">کاربر</span>
+        <span className="text-primary-text-light dark:text-white">{isAdmin ? "ادمین" : "کاربر"}</span>
         <img
           src="../../public/icons/sidebar-more-light.svg"
           alt="user"
@@ -49,7 +99,19 @@ export const UserDropdown = () => {
                 index * 50
               }ms]`}
             >
-              <NavLink to={item.path}>{item.label}</NavLink>
+              {item.label === "خروج از حساب" ? (
+                <NavLink
+                  to={item.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLogout();
+                  }}
+                >
+                  {item.label}
+                </NavLink>
+              ) : (
+                <NavLink to={item.path}>{item.label}</NavLink>
+              )}
             </li>
           ))}
         </ul>
