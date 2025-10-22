@@ -4,6 +4,7 @@ import { getAllProducts } from "../api/requests/products";
 import { getProductsPagination } from "../api/requests/productsPagination";
 import { getFilteredProducts } from "../api/requests/filteredProducts";
 import Pagination from "./Pagination";
+import { useCartContext } from "../context/useCartContext";
 
 interface ProductShopPage {
   _id: string;
@@ -30,6 +31,7 @@ const ShopPageProducts = ({
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const pageNumbers = useRef(1);
+   const { addToCart } = useCartContext()!;
 
   useEffect(() => {
     const fetchTotalProducts = async () => {
@@ -82,7 +84,18 @@ const ShopPageProducts = ({
                 description: item.description,
                 imageUrl: item.image,
               }}
-              onAddToCart={() => console.log(`${item.name} added to cart!`)}
+              onAddToCart={() => {
+                console.log(item._id);
+                
+                addToCart({
+                  id: item._id,
+                  title: item.name,
+                  price: Number(item.price),
+                  quantity: 1,
+                  imageUrl: item.image,
+                  description:item.description,
+                });
+              }}
             />
           ))
         ) : (
