@@ -1,11 +1,10 @@
 import ShopProductCard from "./ui/ShopProductCard";
-import data from "../../constants/shop-page-sample";
 import { useEffect, useRef, useState } from "react";
 import { getAllProducts } from "../api/requests/products";
 import { getProductsPagination } from "../api/requests/productsPagination";
 import { getFilteredProducts } from "../api/requests/filteredProducts";
 import Pagination from "./Pagination";
-import { useNavigate } from "react-router-dom";
+
 interface ProductShopPage {
   _id: string;
   name: string;
@@ -31,16 +30,11 @@ const ShopPageProducts = ({
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const pageNumbers = useRef(1);
-  const navigate = useNavigate();
-  const handleShowMore = (productId: string) => {
-    navigate(`/user/shop/${productId}`);
-  };
 
   useEffect(() => {
     const fetchTotalProducts = async () => {
       const response = await getAllProducts();
       pageNumbers.current = Math.ceil(response.length / 6);
-      console.log("Total pages:", pageNumbers.current);
     };
     fetchTotalProducts();
   }, []);
@@ -57,10 +51,7 @@ const ShopPageProducts = ({
           setHasMore(false);
         } else {
           const response = await getProductsPagination(page, 6);
-          console.log(response);
           setHasMore(response.hasMore);
-          console.log(hasMore);
-          console.log(pageNumbers.current);
           setProducts(response.products);
         }
       } catch (error) {
@@ -83,13 +74,15 @@ const ShopPageProducts = ({
           products.map((item) => (
             <ShopProductCard
               key={item._id}
-              title={item.name}
-              brand={item.category.name}
-              price={item.price}
-              description={item.description}
-              imageUrl={item.image}
+              product={{
+                _id: item._id,
+                title: item.name,
+                brand: item.category.name,
+                price: item.price,
+                description: item.description,
+                imageUrl: item.image,
+              }}
               onAddToCart={() => console.log(`${item.name} added to cart!`)}
-              onShowMore={()=> handleShowMore(item._id)}
             />
           ))
         ) : (
