@@ -21,7 +21,7 @@ interface Reviews {
 }
 
 export interface Product {
-  id: number | string;
+  _id: number | string;
   name: string;
   image: string;
   quantity: number | string;
@@ -76,8 +76,10 @@ function ProductPage() {
           const data = await getProductCategory(response.category);
           setProductCategory(data);
         }
-        console.log(response);
+       ;
         setProduct(response);
+        console.log("single product :"+product?._id);
+        
       } catch (error) {
         console.error("Erorr:", error);
       }
@@ -91,6 +93,7 @@ function ProductPage() {
         <UserDropdown />
       </Sidebar>
       <div className="flex flex-col pr-32 py-20 bg-background-base-light dark:bg-[var(--color-background-primary-dark)] min-h-screen h-full">
+        
         {product && (
           <ProductContainer
             product={product}
