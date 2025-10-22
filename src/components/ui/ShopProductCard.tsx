@@ -1,43 +1,46 @@
+import { Link } from "react-router-dom";
 import Badge from "./Badge";
 import ButtonFavorite from "./ButtonFavorite";
 import ButtonPrimary from "./ButtonPrimary";
 import { shortText } from "../../../utils/shortText";
 
 interface ShopProductCardProps {
-  title: string;
-  brand: string;
-  price: string;
-  description: string;
-  imageUrl: string;
+  product: {
+    _id: string;
+    title: string;
+    brand?: string;
+    price: number | string;
+    description?: string;
+    imageUrl: string;
+  };
   onAddToCart: () => void;
-  onShowMore: () => void;
 }
 
-const ShopProductCard = ({
-  title,
-  brand = "Apple",
-  price = "۱۰,۰۰۰ تومان",
-  description = "آیفون 14 پرو دارای صفحه نمایش 6.1 اینچی سوپر است نمایشگر Retina XDR ...",
-  imageUrl = "../../public/images/iphone-14-pro.png",
-  onAddToCart,
-  onShowMore,
-}: ShopProductCardProps) => {
+const ShopProductCard = ({ product, onAddToCart }: ShopProductCardProps) => {
+  const { _id, title, brand, price, description, imageUrl } = product;
+
   return (
     <div
       className="relative font-yekan-bakh flex flex-col rounded-lg max-w-80 max-h-96 w-full 
     bg-card-light dark:bg-[var(--color-shop-card-dark)]"
     >
       <div className="absolute top-4 right-4 z-10">
-        <ButtonFavorite />
+        <ButtonFavorite
+          title={title}
+          price={price.toLocaleString("fa-IR")}
+          imageUrl={imageUrl}
+        />
       </div>
       <div className="h-1/2 relative">
-        <div className="w-full h-full overflow-hidden rounded-t-lg">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="object-cover w-full h-full hover:scale-110 transition"
-          />
-        </div>
+        <Link to={`/user/shop/${_id}`}>
+          <div className="w-full h-full overflow-hidden rounded-t-lg">
+            <img
+              src={imageUrl}
+              alt={title}
+              className="object-cover w-full h-full hover:scale-105 transition"
+            />
+          </div>
+        </Link>
         <div className="absolute right-4 bottom-3">
           <Badge size="big">{brand}</Badge>
         </div>
@@ -51,22 +54,23 @@ const ShopProductCard = ({
             {shortText(title, 3)}
           </span>
           <span className="font-bold text-base leading-6 text-primary-main">
-            {price} تومان
+            {price.toLocaleString("fa-IR")} تومان
           </span>
         </div>
         <p className="font-normal text-base leading-6 text-secondary-light dark:text-[var(--color-secondary-dark)]">
-          {shortText(description, 10)}
+          {shortText(description ?? "", 10)}
         </p>
         <div className="flex items-end justify-between pt-3 mt-auto">
-          <ButtonPrimary
-            text="مشاهده بیشتر"
-            iconSrc="../../public/icons/left-arrow.svg"
-            altText="left arrow"
-            handleClick={onShowMore}
-          />
+          <Link to={`/user/shop/${_id}`}>
+            <ButtonPrimary
+              text="مشاهده بیشتر"
+              iconSrc="/icons/left-arrow.svg"
+              altText="left arrow"
+            />
+          </Link>
           <button
             onClick={onAddToCart}
-            className="p-2 cursor-pointer hover:scale-105"
+            className="p-2 cursor-pointer hover:-rotate-6"
           >
             <img
               src="../../public/icons/add-to-cart-light.svg"
