@@ -19,7 +19,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!name || !comment || rating === null) {
+    if (!comment || rating === null) {
       alert("لطفاً همه فیلدها را پر کنید");
       return;
     }

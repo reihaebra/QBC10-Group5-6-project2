@@ -8,7 +8,9 @@ import CommentForm from "../components/CommentForm";
 import CommentItem from "../components/CommentItem";
 import { getSingleProducts } from "../api/requests/singleProduct";
 import { getProductCategory } from "../api/requests/productCategory";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getUserProfile } from "../api/requests/profile";
+import { addComment, getComments } from "../api/requests/comments";
 
 interface Reviews {
   name: string;
@@ -44,29 +46,25 @@ interface productCategory {
 }
 
 function ProductPage() {
+  const navigate = useNavigate();
+  const { productId } = useParams<{ productId: string  }>();
+
   const [activeSection, setActiveSection] = useState("related");
   const [product, setProduct] = useState<Product | null>(null);
   const [productCategory, setProductCategory] = useState<productCategory | null>(null);
-  const { productId } = useParams<{ productId: string  }>();
   console.log(productId);
 
-  const [comments, setComments] = useState([
-    {
-      name: "علی موسوی",
-      date: "1403/05/31",
-      text: "متن پیام اینجا وارد میشود که میتواند یه متن بلند باشد برای مثال لورم ایپسوم یک متن ساختگی هست برای کارهای گرافیکی",
-      rating: 4,
-    },
-  ]);
+  const [comments, setComments] = useState<any[]>([]);
 
-  const handleCommentSubmit = (newComment: {
-    name: string;
-    date: string;
-    text: string;
-    rating: number;
-  }) => {
-    setComments((prev) => [...prev, newComment]);
-  };
+  
+  // const handleCommentSubmit = (newComment: {
+  //   name: string;
+  //   date: string;
+  //   text: string;
+  //   rating: number;
+  // }) => {
+  //   setComments((prev) => [...prev, newComment]);
+  // };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -76,15 +74,52 @@ function ProductPage() {
           const data = await getProductCategory(response.category);
           setProductCategory(data);
         }
-        console.log(response);
         setProduct(response);
       } catch (error) {
         console.error("Erorr:", error);
       }
     };
-    fetchProduct();
-  }, []);
+    if (productId) fetchProduct();
+  }, [productId]);
+  useEffect(() => {
+    if (!productId) return;
 
+    const fetchComments = async () => {
+      try {
+        const data = await getCommentsDataFromServer(productId);
+        setComments(data);
+      } catch (err: any) {
+        if (err.response?.status === 401) {
+          console.log("کاربر لاگین نکرده");
+        } else {
+          console.error(err);
+        }
+      }
+    };
+  
+    fetchComments();
+  }, [productId]);
+  const handleCommentSubmit = async (newComment: { text: string; rating: number }) => {
+    if (!productId) return;
+
+    try {
+      await addComment(productId, { rating, comment });
+const updatedComments = await getCommentsDataFromServer(productId);
+setComments(updatedComments);
+    
+      
+      setActiveSection("view");
+    } 
+    catch (err: any) {
+      const status = err?.response?.status;
+      if (status === 401) {
+        console.log("کاربر لاگین نکرده");
+      
+      } else {
+        console.error(err);
+      }
+    }
+  };
   return (
     <>
       <Sidebar>
@@ -133,5 +168,22 @@ function ProductPage() {
     </>
   );
 }
+async function getCommentsDataFromServer(productId: string) {
+  try {
+    const res = await getComments(productId);
+    return res.data.map((c: any) => ({
+      name: c.name || c.user?.username || "کاربر",
+      date: new Date(c.createdAt).toLocaleDateString("fa-IR"),
+      text: c.comment,
+      rating: c.rating,
+    }));
+  } catch (err) {
+    console.error("❌ خطا در دریافت کامنت‌ها:", err);
+    return [];
+  }
+}
 
 export default ProductPage;
+
+
+
