@@ -49,11 +49,11 @@ const RelatedProducts = ({ productID }: RelatedProductsProps) => {
         console.log(productID);
 
         const response = await getAllProducts();
-        const categoryres = await getSingleProducts(productID);
+        const categoryRes = await getSingleProducts(productID);
         setRelated(response);
-        setCategory(categoryres.category);
+        setCategory(categoryRes.category);
       } catch (error) {
-        console.error("Erorr:", error);
+        console.error("Erorr: ", error);
       }
     };
     fetchRelatedProducts();
@@ -62,8 +62,8 @@ const RelatedProducts = ({ productID }: RelatedProductsProps) => {
   return (
     <div
       className="font-yekan-bakh w-full
-                 bg-[color:var(--color-background-base-light)]
-                 dark:bg-[color:var(--color-background-primary-dark)]
+                 bg-background-base-light
+                 dark:bg-[var(--color-background-primary-dark)]
                  transition-colors duration-300"
     >
       <div className="flex flex-wrap gap-8">
