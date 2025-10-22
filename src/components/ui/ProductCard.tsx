@@ -53,17 +53,23 @@ const ProductCard = ({ size, product }: ProductCardProps) => {
             />
           ) : null}
           <div className="absolute top-4 right-4">
-            <ButtonFavorite />
+            <ButtonFavorite
+              title={product.name}
+              price={String(product.price)}
+              imageUrl={product.image}
+            />
           </div>
         </div>
         <div className="flex items-center justify-between">
           <span
             className={`font-normal ${sizeStyles.titleText} text-primary-text-light dark:text-[var(--color-primary-text-dark)]`}
           >
-            {shortText(product?.name, 4)}
+            {product.name ? shortText(product.name, 4) : ""}
           </span>
           <Badge size={sizeStyles.badgeSize}>
-            {product?.price.toLocaleString("fa-IR")} تومان
+            {product?.price
+              ? Number(product.price).toLocaleString("fa-IR") + " تومان"
+              : "—"}
           </Badge>
         </div>
       </div>

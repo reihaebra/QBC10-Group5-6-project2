@@ -1,17 +1,31 @@
 import ProductCard from "./ui/ProductCard";
-import allProductsSample from "../../constants/all-products-samples";
+import { useFavorite } from "../context/FavoriteContext";
 
 const Favorite = () => {
+  const { favorites } = useFavorite();
+
+  if (favorites.length === 0) {
+    return (
+      <div className="text-center w-full mt-16 text-lg text-gray-500 dark:text-gray-300">
+        هیچ محصولی به علاقه‌مندی‌ها اضافه نشده است.
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex flex-wrap justify-start gap-8">
-        {allProductsSample.map((product) => (
-          <div key={product.id}>
+        {favorites.map((product) => (
+          <div>
             <ProductCard
+              key={product.title}
               size="small"
-              title={product.title}
-              price={product.price}
-              imageUrl={product.imageUrl}
+              product={{
+                _id: String(product.id),
+                name: product.title,
+                price: product.price,
+                image: product.imageUrl,
+              }}
             />
           </div>
         ))}
