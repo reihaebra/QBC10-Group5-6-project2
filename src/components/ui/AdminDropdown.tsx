@@ -1,8 +1,41 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const AdminDropdown = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      try {
+        const authModule = (await import("../../api/requests/auth")) as any;
+        if (authModule && typeof authModule.logoutUser === "function") {
+          await authModule.logoutUser();
+        }
+      } catch (_) {
+        //optional 
+      }
+
+      
+      localStorage.removeItem("token");
+      localStorage.removeItem("id");
+      localStorage.removeItem("isAdmin");
+
+      const setCookieZero = (name: string) => {
+        document.cookie = `${name}=0; Max-Age=0; path=/;`;
+        document.cookie = `${name}=0; Max-Age=0; path=/; domain=${location.hostname};`;
+      };
+      ["jwt", "token", "access_token"].forEach(setCookieZero);
+
+      setOpen(false);
+      toast.success("با موفقیت از حساب خارج شدید");
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+      toast.error("مشکلی در خروج از حساب پیش آمد");
+    }
+  };
 
   const menuItems = [
     { label: "داشبورد", path: "/admin/dashboard" },
@@ -53,7 +86,19 @@ export const AdminDropdown = () => {
                 index * 50
               }ms]`}
             >
-              <NavLink to={item.path}>{item.label}</NavLink>
+              {item.label === "خروج از حساب" ? (
+                <NavLink
+                  to={item.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLogout();
+                  }}
+                >
+                  {item.label}
+                </NavLink>
+              ) : (
+                <NavLink to={item.path}>{item.label}</NavLink>
+              )}
             </li>
           ))}
         </ul>
