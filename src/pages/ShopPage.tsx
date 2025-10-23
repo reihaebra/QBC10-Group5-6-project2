@@ -7,11 +7,21 @@ import { getAllProducts } from "../api/requests/products";
 import { getProductsPagination } from "../api/requests/productsPagination";
 import { getFilteredProducts } from "../api/requests/filteredProducts";
 import Spinner from "../components/Spinner";
+import { getProductCategory } from "../api/requests/productCategory";
+
+export interface ProductShopPage {
+  _id: string;
+  name: string;
+  category: string;
+  price: string;
+  description: string;
+  image: string;
+}
 
 const ShopPage = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [priceFilter, setPriceFilter] = useState<string>("");
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<ProductShopPage[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -25,6 +35,16 @@ const ShopPage = () => {
     fetchTotalProducts();
   }, []);
 
+  const getCategoryName = (
+    category: string | { _id: string; name: string }
+  ): string => {
+    if (typeof category === "string") return category;
+    if (category && typeof category === "object" && "name" in category) {
+      return category.name || "Unknown";
+    }
+    return "Unknown";
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       const nowTimeStamp = new Date().getTime();
@@ -35,11 +55,62 @@ const ShopPage = () => {
             selectedCategories,
             priceFilter ? [0, parseInt(priceFilter)] : [0, 2e10]
           );
-          setProducts(response);
+
+          const productsWithCategories = await Promise.all(
+            response.map(async (product: ProductShopPage) => {
+              try {
+                const categoryData = await getProductCategory(
+                  product.category.toString()
+                );
+                const categoryName = getCategoryName(categoryData);
+                return {
+                  ...product,
+                  category: categoryName,
+                };
+              } catch (error) {
+                console.error(
+                  `Error fetching category for product ${product._id}:`,
+                  error
+                );
+
+                return {
+                  ...product,
+                  category: getCategoryName(product.category),
+                };
+              }
+            })
+          );
+
+          setProducts(productsWithCategories);
           setHasMore(false);
         } else {
           const response = await getProductsPagination(page, 6);
-          setProducts(response.products);
+
+          const productsWithCategories = await Promise.all(
+            response.products.map(async (product: ProductShopPage) => {
+              try {
+                const categoryData = await getProductCategory(
+                  product.category.toString()
+                );
+                const categoryName = getCategoryName(categoryData);
+                return {
+                  ...product,
+                  category: categoryName, 
+                };
+              } catch (error) {
+                console.error(
+                  `Error fetching category for product ${product._id}:`,
+                  error
+                );
+                return {
+                  ...product,
+                  category: getCategoryName(product.category),
+                };
+              }
+            })
+          );
+
+          setProducts(productsWithCategories);
           setHasMore(response.hasMore);
         }
       } catch (err) {
