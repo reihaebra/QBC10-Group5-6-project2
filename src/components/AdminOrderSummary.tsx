@@ -5,7 +5,7 @@ interface Props {
   totalPrice: number;
 }
 
-const OrderSummaryAPI: React.FC<Props> = ({
+const AdminOrderSummary: React.FC<Props> = ({
   itemsPrice,
   taxPrice,
   shippingPrice,
@@ -38,4 +38,4 @@ const OrderSummaryAPI: React.FC<Props> = ({
   );
 };
 
-export default OrderSummaryAPI;
+export default AdminOrderSummary;

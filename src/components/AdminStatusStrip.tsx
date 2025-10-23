@@ -3,7 +3,7 @@ interface Props {
   isDelivered: boolean;
 }
 
-const StatusStripAPI: React.FC<Props> = ({ isPaid, isDelivered }) => (
+const AdminStatusStrip: React.FC<Props> = ({ isPaid, isDelivered }) => (
   <div className="w-full h-12 rounded-lg border-2 border-input-light py-3 px-4 bg-card-light dark:bg-[var(--color-shop-card-dark)] dark:border-[var(--color-input-dark)]">
     <span className="font-bold text-lg">
       پرداخت:
@@ -18,4 +18,4 @@ const StatusStripAPI: React.FC<Props> = ({ isPaid, isDelivered }) => (
   </div>
 );
 
-export default StatusStripAPI;
+export default AdminStatusStrip;

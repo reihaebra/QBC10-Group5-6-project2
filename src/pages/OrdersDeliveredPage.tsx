@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "../components/ui/Sidebar";
-import OrderItemsTableAPI from "../components/OrderItemsTableAPI";
-import CustomerInfoAPI from "../components/CustomerInfoAPI";
-import OrderSummaryAPI from "../components/OrderSummaryAPI";
-import StatusStripAPI from "../components/StatusStripAPI";
+import AdminOrderItemsTable from "../components/AdminOrderItemsTable";
+import AdminCustomerInfo from "../components/AdminCustomerInfo";
+import AdminOrderSummary from "../components/AdminOrderSummary";
+import AdminStatusStrip from "../components/AdminStatusStrip";
 import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Spinner from "../components/Spinner";
 import { getOrderById } from "../api/requests/ordersList";
@@ -49,12 +49,12 @@ const OrdersDeliveredPage = () => {
         <main className="flex-1 pr-32 p-8 mt-8 mx-auto">
           <div className="flex gap-10 mx-auto max-w-7xl">
             <div className="flex-1 min-w-0">
-              <OrderItemsTableAPI orderItems={order.orderItems} />
+              <AdminOrderItemsTable orderItems={order.orderItems} />
             </div>
             <div className="w-96 flex flex-col gap-6">
-              <CustomerInfoAPI data={order.shippingAddress} />
-              <StatusStripAPI isPaid={order.isPaid} isDelivered={true} />
-              <OrderSummaryAPI
+              <AdminCustomerInfo data={order.shippingAddress} />
+              <AdminStatusStrip isPaid={order.isPaid} isDelivered={true} />
+              <AdminOrderSummary
                 itemsPrice={order.itemsPrice}
                 taxPrice={order.taxPrice}
                 shippingPrice={order.shippingPrice}
