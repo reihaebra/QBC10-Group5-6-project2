@@ -7,7 +7,7 @@ interface Props {
 const formatMoney = (value: number) =>
   new Intl.NumberFormat("fa-IR").format(value) + " تومان";
 
-const OrderItemsTableAPI: React.FC<Props> = ({ orderItems }) => (
+const AdminOrderItemsTable: React.FC<Props> = ({ orderItems }) => (
   <section className="w-fit h-auto max-h-96 p-6 gap-2.5 border-2 border-input-light dark:border-[var(--color-input-dark)] rounded-lg">
     <table className="w-fit font-normal text-base">
       <thead className="border-b border-input-light dark:border-[var(--color-input-dark)]">
@@ -42,4 +42,4 @@ const OrderItemsTableAPI: React.FC<Props> = ({ orderItems }) => (
   </section>
 );
 
-export default OrderItemsTableAPI;
+export default AdminOrderItemsTable;

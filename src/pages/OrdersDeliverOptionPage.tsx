@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "../components/ui/Sidebar";
-import OrderItemsTableAPI from "../components/OrderItemsTableAPI";
-import CustomerInfoAPI from "../components/CustomerInfoAPI";
-import OrderSummaryAPI from "../components/OrderSummaryAPI";
-import StatusStripAPI from "../components/StatusStripAPI";
+import AdminOrderItemsTable from "../components/AdminOrderItemsTable";
+import AdminCustomerInfo from "../components/AdminCustomerInfo";
+import AdminOrderSummary from "../components/AdminOrderSummary";
+import AdminStatusStrip from "../components/AdminStatusStrip";
 import ButtonSecondary from "../components/ui/ButtonSecondary";
 import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Spinner from "../components/Spinner";
@@ -15,7 +15,7 @@ import { toast } from "react-hot-toast";
 const OrdersDeliverOptionPage = () => {
   const { orderId } = useParams<{ orderId: string }>();
 
-  console.log("🔍 orderId:", orderId); // ✅ Debug 1
+  console.log("🔍 orderId:", orderId);
 
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,20 +23,20 @@ const OrdersDeliverOptionPage = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       if (!orderId) {
-        console.error("❌ No orderId!"); // ✅ Debug 2
+        console.error("❌ No orderId!");
         setLoading(false);
         return;
       }
       const nowTimeStamp = new Date().getTime();
 
       try {
-        console.log("📡 Fetching order:", orderId); // ✅ Debug 3
+        console.log("📡 Fetching order:", orderId); 
         setLoading(true);
         const orderData = await getOrderById(orderId);
-        console.log("✅ Order data:", orderData); // ✅ Debug 4
+        console.log("✅ Order data:", orderData); 
         setOrder(orderData);
       } catch (error) {
-        console.error("❌ API Error:", error); // ✅ Debug 5
+        console.error("❌ API Error:", error); 
         toast.error("خطا در دریافت اطلاعات سفارش");
       } finally {
         const elapsed = new Date().getTime() - nowTimeStamp;
@@ -49,7 +49,7 @@ const OrdersDeliverOptionPage = () => {
     fetchOrder();
   }, [orderId]);
 
-  // ✅ Debug UI
+  
   if (loading) {
     return <Spinner />;
   }
@@ -70,7 +70,7 @@ const OrdersDeliverOptionPage = () => {
     );
   }
 
-  console.log("🎉 Rendering order:", order._id); // ✅ Debug 6
+  console.log("🎉 Rendering order:", order._id); 
 
   return (
     <>
@@ -81,12 +81,12 @@ const OrdersDeliverOptionPage = () => {
         <main className="flex-1 pr-32 p-8 mt-8 mx-auto">
           <div className="flex gap-10 mx-auto max-w-7xl">
             <div className="flex-1 min-w-0">
-              <OrderItemsTableAPI orderItems={order.orderItems} />
+              <AdminOrderItemsTable orderItems={order.orderItems} />
             </div>
             <div className="w-96 flex flex-col gap-6">
-              <CustomerInfoAPI data={order.shippingAddress} />
-              <StatusStripAPI isPaid={order.isPaid} isDelivered={false} />
-              <OrderSummaryAPI
+              <AdminCustomerInfo data={order.shippingAddress} />
+              <AdminStatusStrip isPaid={order.isPaid} isDelivered={order.isDelivered} />
+              <AdminOrderSummary
                 itemsPrice={order.itemsPrice}
                 taxPrice={order.taxPrice}
                 shippingPrice={order.shippingPrice}

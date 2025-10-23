@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import OrderRowButton from "./OrderRowButton";
 import ButtonPrimary from "./ui/ButtonPrimary";
+import { useState } from "react";
+import {
+  deliverOrderAPI,
+  payOrderَAPI,
+} from "../api/requests/updateStatusOrder";
 
 type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";
@@ -13,7 +18,7 @@ interface OrderRowProps {
   date: string;
   paymentStatus: PaymentStatus;
   transitionStatus: TransitionStatus;
-  orderId: string | number; // ✅ orderId اضافه شد
+  orderId: string | number;
 }
 
 const OrderRow = ({
@@ -24,8 +29,35 @@ const OrderRow = ({
   date,
   paymentStatus = "unpaid",
   transitionStatus = "unsent",
-  orderId, //  orderId prop
+  orderId,
 }: OrderRowProps) => {
+  const [paymentstate, setpayment] = useState(paymentStatus);
+  const [transitionstate, settransition] = useState(transitionStatus);
+  const isAdmin = localStorage.getItem("isAdmin");
+  const handlePaid = async () => {
+    if (isAdmin === "true") {
+      try {
+        const res = await payOrderَAPI(orderId.toString());
+        if (res.status === 200) {
+          setpayment("paid");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  const handleTransition = async () => {
+    if (isAdmin === "true") {
+      try {
+        const res = await deliverOrderAPI(orderId.toString());
+        if (res.status === 200) {
+          settransition("sent");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   return (
     <tr className="bg-surface-light">
       <td className="py-2 flex items-center gap-3">
@@ -54,11 +86,11 @@ const OrderRow = ({
       </td>
 
       <td className="text-center align-middle ">
-        <OrderRowButton status={paymentStatus} />
+        <OrderRowButton status={paymentstate} onclick={handlePaid} />
       </td>
 
       <td className="text-center align-middle">
-        <OrderRowButton status={transitionStatus} />
+        <OrderRowButton status={transitionstate} onclick={handleTransition} />
       </td>
 
       <td className="text-center align-middle">

@@ -3,9 +3,10 @@ type TransitionStatus = "sent" | "pending" | "unsent";
 
 interface OrderRowButtonProps {
   status: PaymentStatus | TransitionStatus;
+  onclick?: ()=> void;
 }
 
-const OrderRowButton = ({ status }: OrderRowButtonProps) => {
+const OrderRowButton = ({ status , onclick }: OrderRowButtonProps) => {
   const bgColorClass =
     status === "paid" || status === "sent"
       ? "bg-success-light"
@@ -35,6 +36,7 @@ const OrderRowButton = ({ status }: OrderRowButtonProps) => {
     <div className="flex gap-2.5 h-fit w-fit justify-center mx-auto">
       <button
         className={`rounded-xl px-2 py-0.5 flex items-center justify-center  ${bgColorClass}`}
+        onClick={onclick}
       >
         <p className={`font-normal text-sm ${textColorClass}`}>{text}</p>
       </button>
