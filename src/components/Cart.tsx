@@ -52,8 +52,9 @@ export const Cart = () => {
                       />
                     </td>
 
-                    <td>
+                    <td className="flex flex-col gap-2">
                       <p className="text-primary-main">{item.title}</p>
+                      <p className="font-bold">{item.brand}</p>
                       <p className="font-bold">{item.price}</p>
                     </td>
 
