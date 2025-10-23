@@ -205,8 +205,8 @@ export const UsersPage = () => {
         font-normal bg-[var(--color-background-base-light)] dark:bg-[var(--color-background-primary-dark)] 
         text-primary-text-light dark:text-[var(--color-primary-text-dark)]"
       >
-        <div className="flex-col items-center justify-center">
-          <table className="w-6xl rounded-xl table-fixed border-collapse">
+        <div className="flex-col items-center justify-center mx-auto">
+          <table className="w-6xl rounded-xl table-fixed border-collapse mx-auto">
             <thead>
               <tr className="border-b-1 border-[var(--color-input-light)] dark:border-[var(--color-input-dark)]">
                 <th scope="col" className="text-right w-2/8 m-2 font-normal">
@@ -340,13 +340,13 @@ export const UsersPage = () => {
                     </div>
                   </td>
 
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 justify-center">
                     <button
                       onClick={() => handleToggleAdmin(user._id, user.isAdmin)}
                       disabled={operationLoading === user._id}
-                      className="mx-auto cursor-pointer disabled:opacity-50"
+                      className="mx-auto cursor-pointer disabled:opacity-50 flex justify-center"
                     >
-                      <img
+                      <img 
                         src={
                           user.isAdmin
                             ? "/../../public/icons/user-list-check.svg"
