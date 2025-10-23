@@ -32,42 +32,6 @@ The primary goal of this project is to implement a scalable and well-structured 
 - **Linting:** ESLint
 - **Version Control:** Git & GitHub
 
-## Project Structure
-
-Ecommerce
-│
-├── public/
-│ ├── icons/
-│ └── images/
-│
-├── src/
-│ ├── api/
-│ │ └── requests/
-│ │ └── axios.ts
-│ ├── assets/
-│ │ └── font/
-│ ├── components/
-│ │ └── ui/
-│ ├── context/
-│ ├── pages/
-│ ├── utils/
-│ ├── types/
-│ ├── App.tsx
-│ ├── main.tsx
-│ ├── index.css
-│ ├── App.css
-│ └── vite-env.d.ts
-│
-├── .env
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── package-lock.json
-├── README.md
-├── tsconfig.json
-└── vite.config.ts
-
 ## Usage
 
 To run the project locally:
