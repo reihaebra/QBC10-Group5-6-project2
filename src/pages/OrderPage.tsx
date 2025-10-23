@@ -18,6 +18,7 @@ interface PaymentResult {
 interface User {
   _id: string | number;
   username: string;
+  email: string;
 }
 
 interface OrderItems {
@@ -44,8 +45,8 @@ export interface Order {
   createdAt: string | number;
   updatedAt: string | number;
   __v: number;
-  deliveredAt: string | number;
-  paidAt: string | number;
+  deliveredAt?: string | number;
+  paidAt?: string | number;
 }
 
 const OrderPage = () => {
@@ -54,40 +55,46 @@ const OrderPage = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const nowTimeStamp = new Date().getTime();
       try {
+        console.log("📡 Fetching orders...");
         const response = await getAllOrders();
-        if (response) {
-          console.log(response);
+        console.log("✅ API Response:", response);
+
+        if (response && Array.isArray(response)) {
           setOrders(response);
+          console.log("✅ Orders set:", response.length);
+        } else {
+          console.error("❌ Invalid response format:", response);
+          setOrders([]);
         }
       } catch (error) {
-        console.error("Error fetching orders:", error);
+        console.error("❌ Error fetching orders:", error);
+        setOrders([]);
       } finally {
-        const elapsed = new Date().getTime() - nowTimeStamp;
-        setTimeout(() => {
-          setLoading(false);
-        }, Math.max(0, 500 - elapsed));
+        setLoading(false);
       }
     };
 
     fetchOrders();
   }, []);
 
+  console.log("🎯 Rendering with orders:", orders.length);
+
   if (loading) {
-    return <Spinner />;
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Spinner />
+      </div>
+    );
   }
 
   return (
-    <div
-      className="relative flex min-h-screen h-full justify-between bg-background-base-light 
-    dark:bg-[var(--color-background-primary-dark)]"
-    >
+    <div className="relative flex min-h-screen h-full justify-between bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
       <Sidebar>
         <AdminDropdown />
       </Sidebar>
 
-      <div className="relative flex w-screen py-8 pl-10 pr-32">
+      <div className="relative flex flex-1 w-full py-8 pl-10 pr-32">
         <OrdersFrame order={orders} />
       </div>
     </div>

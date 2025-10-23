@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
 import OrderRowButton from "./OrderRowButton";
 import ButtonPrimary from "./ui/ButtonPrimary";
+import type { Order } from "../pages/OrderPage";
+
 type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";
 
@@ -11,6 +14,9 @@ interface OrderRowProps {
   date: string;
   paymentStatus: PaymentStatus;
   transitionStatus: TransitionStatus;
+  orderId: string | number;
+  isDelivered: boolean;
+  onStatusUpdate: () => void; 
 }
 
 const OrderRow = ({
@@ -21,13 +27,21 @@ const OrderRow = ({
   date,
   paymentStatus = "unpaid",
   transitionStatus = "unsent",
+  orderId,
+  isDelivered,
+  onStatusUpdate,
 }: OrderRowProps) => {
+  
+  const detailLink = isDelivered 
+    ? `/admin/orders/${orderId}/delivered` 
+    : `/admin/orders/${orderId}`;
+
   return (
     <tr className="bg-surface-light">
       <td className="py-2 flex items-center gap-3">
         <figure className="w-16 h-16 overflow-hidden p-1">
           <img
-            src={imageUrl}
+            src={imageUrl || "/placeholder.jpg"}
             alt={name}
             className="w-full h-full object-cover"
           />
@@ -49,20 +63,32 @@ const OrderRow = ({
         {price || "0 تومان"}
       </td>
 
-      <td className="text-center align-middle ">
-        <OrderRowButton status={paymentStatus} />
+      <td className="text-center align-middle">
+   
+        <OrderRowButton
+          status={paymentStatus}
+          type="payment"
+          orderId={String(orderId)}
+          onStatusUpdate={onStatusUpdate}
+        />
       </td>
 
       <td className="text-center align-middle">
-        <OrderRowButton status={transitionStatus} />
+        
+        <OrderRowButton
+          status={transitionStatus}
+          type="delivery"
+          orderId={String(orderId)}
+          onStatusUpdate={onStatusUpdate}
+        />
       </td>
 
       <td className="text-center align-middle">
         <div className="flex justify-center">
-          <ButtonPrimary
-            text={"جزییات"}
-            handleClick={() => console.log("button info clicked")}
-          />
+         
+          <Link to={detailLink}>
+            <ButtonPrimary text={"جزئیات"} />
+          </Link>
         </div>
       </td>
     </tr>

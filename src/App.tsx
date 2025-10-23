@@ -14,6 +14,7 @@ import UserOrdersPage from "./pages/UserOrdersPage";
 import OrderPage from "./pages/OrderPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import OrdersDeliverOptionPage from "./pages/OrdersDeliverOptionPage";
+import OrdersDeliveredPage from "./pages/OrdersDeliveredPage";
 import UsersPage from "./pages/UsersPage";
 import Dashboard from "./pages/Dashboard";
 import CreateProduct from "./pages/CreateProduct";
@@ -39,16 +40,24 @@ const App = () => {
         <Route path="/user/my-orders" element={<UserOrdersPage />} />
         <Route path="/user/my-orders/:orderId" element={<OrderDetailPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/all-users" element={<UsersPage />} />
         <Route path="/admin/orders" element={<OrderPage />} />
+
+        <Route
+          path="/admin/orders/:orderId/delivered"
+          element={<OrdersDeliveredPage />}
+        />
         <Route
           path="/admin/orders/:orderId"
           element={<OrdersDeliverOptionPage />}
         />
+
         <Route path="/admin/create-product" element={<CreateProduct />} />
         <Route path="/admin/edit-product" element={<EditProduct />} />
         <Route path="/admin/all-products" element={<AllProducts />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </CartProvider>
