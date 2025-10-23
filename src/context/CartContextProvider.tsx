@@ -2,9 +2,10 @@ import { useState, useEffect, type ReactNode } from "react";
 import { CartContext } from "./cartContext";
 
 export interface Product {
-  id: number;
+  id: string;
   title: string;
   price: number;
+  brand:string
   imageUrl?: string;
   description?: string;
   quantity?: number;
@@ -18,6 +19,8 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Product[]>([]);
 
   const addToCart = (product: Product) => {
+    console.log(product.brand);
+    
     setCart((prev) => {
       const exist = prev.find((item) => item.title === product.title);
       if (exist) {
@@ -36,8 +39,14 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     });
   };
 
-  const removeFromCart = (id: number) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (id: string , title?:string) => {
+    if (id != null || undefined) {
+      setCart((prev) => prev.filter((item) => item.id != id));
+    }
+    else
+    {
+      setCart((prev) => prev.filter((item) => item.title !== title));
+    }
   };
 
   const clearCart = () => setCart([]);

@@ -3,7 +3,7 @@ import { getAllProducts } from "../api/requests/products";
 import HeroSection from "../components/HeroSection";
 import SpecialProducts from "../components/SpecialProducts";
 import Sidebar from "../components/ui/Sidebar";
-import UserDropdown from "../components/ui/UserDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 
@@ -56,7 +56,7 @@ const HomePage = () => {
   return (
     <main className="bg-background-base-light dark:bg-[var(--color-background-primary-dark)] pr-36 py-8 pl-14">
       <Sidebar>
-        <UserDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div>
         <HeroSection heroProducts={heroProducts} sideProducts={sideProducts} />

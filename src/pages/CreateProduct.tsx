@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sidebar from "../components/ui/Sidebar";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import ProductForm from "../components/ProductForm";
 import ButtonPrimary from "../components/ui/ButtonPrimary";
 
@@ -42,7 +42,7 @@ const CreateProduct = () => {
       bg-background-base-light dark:bg-[var(--color-background-primary-dark)]"
     >
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <main className="w-full max-w-4xl">
         <h1

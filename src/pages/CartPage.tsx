@@ -1,6 +1,6 @@
 import Cart from "../components/Cart";
 import Sidebar from "../components/ui/Sidebar";
-import UserDropdown from "../components/ui/UserDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 
 const CartPage = () => {
   return (
@@ -9,7 +9,7 @@ const CartPage = () => {
       dark:bg-[var(--color-background-primary-dark)] py-8 pr-24 min-h-screen h-full"
     >
       <Sidebar>
-        <UserDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div className="flex w-screen">
         <Cart />

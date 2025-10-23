@@ -6,7 +6,7 @@ const Favorite = () => {
 
   if (favorites.length === 0) {
     return (
-      <div className="text-center w-full mt-16 text-lg text-gray-500 dark:text-gray-300">
+      <div className="font-yekan-bakh text-primary-text-light dark:text-white font-semibold">
         هیچ محصولی به علاقه‌مندی‌ها اضافه نشده است.
       </div>
     );

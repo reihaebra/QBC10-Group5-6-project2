@@ -19,13 +19,11 @@ export default function Register() {
 
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Env diagnostics
     try {
       console.log("Current baseURL:", axios?.defaults?.baseURL);
       console.log("Frontend origin:", window.location.origin);
     } catch {}
 
-    // Simple validations before API call
     if (!username.trim()) return toast.error("نام و نام خانوادگی الزامی است");
     if (!email.trim()) return toast.error("ایمیل الزامی است");
     if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email))
@@ -46,7 +44,6 @@ export default function Register() {
         confirm_Password: passwordRepeat,
       } as any);
 
-      // Success diagnostics
       console.log("register status:", res?.status);
       console.log("register keys:", Object.keys(res?.data ?? {}));
 
@@ -65,7 +62,6 @@ export default function Register() {
         error?.response?.status,
         error?.response?.data || error?.message
       );
-      // Extended diagnostics
       console.log("Register error:", error);
       console.log("Response status:", error?.response?.status);
       console.log("Response data:", error?.response?.data);

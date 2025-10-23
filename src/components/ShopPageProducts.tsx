@@ -1,102 +1,87 @@
 import ShopProductCard from "./ui/ShopProductCard";
-import { useEffect, useRef, useState } from "react";
-import { getAllProducts } from "../api/requests/products";
-import { getProductsPagination } from "../api/requests/productsPagination";
-import { getFilteredProducts } from "../api/requests/filteredProducts";
 import Pagination from "./Pagination";
+import { useCartContext } from "../context/useCartContext";
+import toast, { Toaster } from "react-hot-toast";
 
-interface ProductShopPage {
+export interface ProductShopPage {
   _id: string;
   name: string;
-  category: {
-    id: string;
-    name: string;
-  };
+  category: string;
   price: string;
   description: string;
   image: string;
 }
+
 interface ShopPageProductsProps {
+  products: ProductShopPage[];
+  page: number;
+  totalPages: number;
+  hasMore: boolean;
   selectedCategories: string[];
   priceFilter: string;
+  onPageChange: (page: number) => void;
 }
 
 const ShopPageProducts = ({
+  products,
+  page,
+  totalPages,
+  hasMore,
   selectedCategories,
   priceFilter,
+  onPageChange,
 }: ShopPageProductsProps) => {
-  const [products, setProducts] = useState<ProductShopPage[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const pageNumbers = useRef(1);
-
-  useEffect(() => {
-    const fetchTotalProducts = async () => {
-      const response = await getAllProducts();
-      pageNumbers.current = Math.ceil(response.length / 6);
-    };
-    fetchTotalProducts();
-  }, []);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        if (selectedCategories.length > 0 || priceFilter) {
-          const response = await getFilteredProducts(
-            selectedCategories,
-            priceFilter ? [0, parseInt(priceFilter)] : [0, 20000000000]
-          );
-          setProducts(response);
-          setHasMore(false);
-        } else {
-          const response = await getProductsPagination(page, 6);
-          setHasMore(response.hasMore);
-          setProducts(response.products);
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, [page, selectedCategories, priceFilter]);
-
-  if (loading) {
-    return <p>در حال بارگذاری محصولات...</p>;
-  }
+  const { addToCart } = useCartContext()!;
 
   return (
-    <main className="flex flex-col items-center">
-      <section className="flex flex-row flex-wrap gap-6 max-w-[1200px]">
-        {products.length > 0 ? (
-          products.map((item) => (
-            <ShopProductCard
-              key={item._id}
-              product={{
-                _id: item._id,
-                title: item.name,
-                brand: item.category.name,
-                price: item.price,
-                description: item.description,
-                imageUrl: item.image,
-              }}
-              onAddToCart={() => console.log(`${item.name} added to cart!`)}
-            />
-          ))
-        ) : (
-          <p>محصولی یافت نشد.</p>
+    <>
+      <Toaster position="top-right" />
+      <main className="flex flex-col items-center">
+        <section className="flex flex-row flex-wrap gap-6 max-w-[1200px]">
+          {products.length > 0 ? (
+            products.map((item) => (
+              <ShopProductCard
+                key={item._id}
+                product={{
+                  _id: item._id,
+                  title: item.name,
+                  brand: item.category,
+                  price: item.price,
+                  description: item.description,
+                  imageUrl: item.image,
+                }}
+                onAddToCart={() => {
+                  console.log(item.category);
+
+                  addToCart({
+                    id: item._id,
+                    title: item.name,
+                    price: Number(item.price),
+                    quantity: 1,
+                    brand: item.category,
+                    imageUrl: item.image,
+                    description: item.description,
+                  });
+                  toast.success("محصول با موفقیت به سبد خرید اضافه شد.");
+                }}
+              />
+            ))
+          ) : (
+            <p className="text-primary-text-light dark:text-white font-yekan-bakh font-semibold">
+              محصولی یافت نشد.
+            </p>
+          )}
+        </section>
+
+        {selectedCategories.length === 0 && !priceFilter && hasMore && (
+          <Pagination
+            page={page}
+            totalPages={totalPages}
+            onPageChange={onPageChange}
+          />
         )}
-      </section>
-      {selectedCategories.length === 0 && !priceFilter && (
-        <Pagination
-          page={page}
-          totalPages={pageNumbers.current}
-          onPageChange={setPage}
-        />
-      )}
-    </main>
+      </main>
+    </>
   );
 };
 

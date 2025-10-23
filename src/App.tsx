@@ -14,6 +14,7 @@ import UserOrdersPage from "./pages/UserOrdersPage";
 import OrderPage from "./pages/OrderPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import OrdersDeliverOptionPage from "./pages/OrdersDeliverOptionPage";
+import OrdersDeliveredPage from "./pages/OrdersDeliveredPage";
 import UsersPage from "./pages/UsersPage";
 import Dashboard from "./pages/Dashboard";
 import CreateProduct from "./pages/CreateProduct";
@@ -82,6 +83,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/profile"
           element={
@@ -104,6 +106,14 @@ const App = () => {
           element={
             <PrivateRoute adminOnly>
               <UsersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/orders/:orderId/delivered"
+          element={
+            <PrivateRoute adminOnly>
+              <OrdersDeliveredPage />
             </PrivateRoute>
           }
         />

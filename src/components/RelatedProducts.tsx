@@ -1,7 +1,5 @@
 import ProductCard from "./ui/ProductCard";
-import allProducts from "../../constants/all-products-samples";
 import { getAllProducts } from "../api/requests/products";
-import { getProductCategory } from "../api/requests/productCategory";
 import { useEffect, useState } from "react";
 import { getSingleProducts } from "../api/requests/singleProduct";
 

@@ -1,5 +1,5 @@
 import AllProductsMain from "../components/AllProductsMain";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Sidebar from "../components/ui/Sidebar";
 
 const AllProducts: React.FC = () => {
@@ -9,7 +9,7 @@ const AllProducts: React.FC = () => {
     justify-between dark:bg-[var(--color-background-primary-dark)]"
     >
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
 
       <AllProductsMain />

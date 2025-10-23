@@ -10,10 +10,6 @@ interface ProductCardProps {
   createdAt: string;
 }
 
-const handleClick = () => {
-  console.log("Button clicked");
-};
-
 const AllProductsCard: React.FC<ProductCardProps> = ({
   description,
   name,
@@ -34,7 +30,7 @@ const AllProductsCard: React.FC<ProductCardProps> = ({
           <h2 className="text-xl font-semibold text-primary-text-light dark:text-white">
             {shortText(name, 4)}
           </h2>
-          <p className="text-xs font-normal text-secondary-light">
+          <p className="text-xs font-normal text-secondary-light dark:text-[var(--color-secondary-dark)]">
             {formatPersianDate(createdAt)}
           </p>
         </div>
@@ -46,7 +42,6 @@ const AllProductsCard: React.FC<ProductCardProps> = ({
         <div className="flex justify-between items-center pt-4">
           <ButtonPrimary
             text="مشاهده بیشتر"
-            handleClick={handleClick}
             iconSrc="./../../public/icons/left-arrow.svg"
           />
           <p className="text-base leading-6 font-normal text-primary-text-light dark:text-white">

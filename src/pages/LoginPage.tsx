@@ -30,7 +30,6 @@ export default function Login() {
         return;
       }
 
-      // Minimal diagnostics (success branch only)
       console.log("auth res.status:", response?.status);
       console.log("auth res.data keys:", Object.keys(response?.data ?? {}));
 

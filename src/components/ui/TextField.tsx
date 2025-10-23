@@ -4,6 +4,7 @@ interface TextFieldProps {
   inputValue: string;
   inputName?: string;
   placeholder?: string;
+  required?: boolean;
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -13,6 +14,7 @@ const TextField = ({
   inputValue,
   inputName = "",
   placeholder = "",
+  required = true,
   onChangeInput,
 }: TextFieldProps) => {
   return (
@@ -31,6 +33,7 @@ const TextField = ({
         value={inputValue}
         placeholder={placeholder}
         onChange={onChangeInput}
+        required={required}
         className="font-sans font-normal flex items-center justify-start px-2 py-2.5 
         w-full max-h-11 text-primary-text-light bg-on-primary-light border border-input-light 
         rounded-lg placeholder-secondary-light placeholder:font-yekan-bakh outline-none disabled:bg-input-light 

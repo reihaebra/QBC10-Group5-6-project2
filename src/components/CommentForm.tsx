@@ -1,13 +1,10 @@
 import { useState } from "react";
 import ButtonPrimary from "./ui/ButtonPrimary";
+import type { Reviews } from "../pages/ProductPage";
+import { addCommentApi } from "../api/requests/comment";
 
 interface CommentFormProps {
-  onSubmit: (comment: {
-    name: string;
-    date: string;
-    text: string;
-    rating: number;
-  }) => void;
+  onSubmit: (comment:Reviews) => void;
 }
 
 const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
@@ -16,18 +13,16 @@ const CommentForm: React.FC<CommentFormProps> = ({ onSubmit }) => {
   const [comment, setComment] = useState("");
   const [name, setName] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!comment || rating === null) {
 
-    if (!name || !comment || rating === null) {
       alert("لطفاً همه فیلدها را پر کنید");
       return;
     }
 
     const newComment = {
-      name,
-      date: new Date().toLocaleDateString("fa-IR"),
-      text: comment,
+      comment: comment,
       rating,
     };
 

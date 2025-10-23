@@ -63,7 +63,9 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
                 />
                 <span>
                   {`امتیاز: `}
-                  <span className="text-black dark:text-white"> {rating}</span>
+                  <span className="text-black dark:text-white">
+                    {rating?.toFixed(2)}
+                  </span>
                 </span>
               </div>
 
