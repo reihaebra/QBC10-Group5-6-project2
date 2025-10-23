@@ -346,7 +346,7 @@ export const UsersPage = () => {
                       disabled={operationLoading === user._id}
                       className="mx-auto cursor-pointer disabled:opacity-50 flex justify-center"
                     >
-                      <img 
+                      <img
                         src={
                           user.isAdmin
                             ? "/../../public/icons/user-list-check.svg"
@@ -380,25 +380,29 @@ export const UsersPage = () => {
             <button
               onClick={handlePrePage}
               disabled={currentPage === 1}
-              className={`px-3 py-1 rounded-md cursor-pointer ${
-                currentPage === 1
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-gray-800 hover:bg-gray-700"
-              }`}
+              className={`px-3 py-2 border border-input-light dark:border-[var(--color-input-dark)] cursor-pointer
+                w-16 dark:bg-[var(--color-shop-card-dark)] rounded-md 
+                 ${
+                   currentPage === 1
+                     ? "opacity-50 cursor-not-allowed text-black dark:text-white"
+                     : "hover:text-white transition bg-card-light hover:bg-primary-main dark:hover:bg-[var(--color-primary-dark)]"
+                 }`}
             >
               قبلی
             </button>
-            <span className="text-gray-300">
+            <span className="text-secondary-light dark:text-[var(--color-secondary-dark)] font-normal">
               صفحه {currentPage} از {totalPages}
             </span>
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className={`px-3 py-1 rounded-md cursor-pointer ${
-                currentPage === totalPages
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-gray-800 hover:bg-gray-700"
-              }`}
+              className={`px-3 py-2 border border-input-light dark:border-[var(--color-input-dark)] cursor-pointer
+                w-16 dark:bg-[var(--color-shop-card-dark)] rounded-md 
+                 ${
+                   currentPage === totalPages
+                     ? "opacity-50 cursor-not-allowed text-black dark:text-white"
+                     : "hover:text-white transition bg-card-light hover:bg-primary-main dark:hover:bg-[var(--color-primary-dark)]"
+                 }`}
             >
               بعدی
             </button>
