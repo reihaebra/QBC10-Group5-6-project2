@@ -10,7 +10,7 @@ export const SidebarDropdown = () => {
 
   const adminMenuItems = [
     { label: "داشبورد", path: "/admin/dashboard" },
-    { label: "محصول جدید", path: "/admin/products/new" },
+    { label: "محصول جدید", path: "/admin/create-product" },
     { label: "مدیریت کاربران", path: "/admin/all-users" },
     { label: "سفارشات", path: "/admin/orders" },
     { label: "پروفایل", path: "/profile" },
