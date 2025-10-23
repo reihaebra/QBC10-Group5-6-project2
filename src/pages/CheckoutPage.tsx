@@ -9,14 +9,14 @@ import {
   addressSeed,
   itemsSeed,
 } from "../components/TestData";
-import UserDropdown from "../components/ui/UserDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 
 const CheckoutPage = () => {
   return (
     <TestDataProvider seed={itemsSeed} address={addressSeed}>
       <div className="min-h-screen font-yekan-bakh bg-background-base-light dark:bg-[var(--color-background-primary-dark)] overflow-x-hidden flex flex-row-reverse justify-center items-center self-center mx-auto">
         <Sidebar>
-          <UserDropdown />
+          <SidebarDropdown />
         </Sidebar>
 
         <main className="flex-1 pr-32 p-8 mt-6 mx-auto">

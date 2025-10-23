@@ -6,7 +6,7 @@ import CustomerInfoAPI from "../components/CustomerInfoAPI";
 import OrderSummaryAPI from "../components/OrderSummaryAPI";
 import StatusStripAPI from "../components/StatusStripAPI";
 import ButtonSecondary from "../components/ui/ButtonSecondary";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Spinner from "../components/Spinner";
 import { getOrderById } from "../api/requests/ordersList";
 import type { Order } from "../types/order";
@@ -27,6 +27,7 @@ const OrdersDeliverOptionPage = () => {
         setLoading(false);
         return;
       }
+      const nowTimeStamp = new Date().getTime();
 
       try {
         console.log("📡 Fetching order:", orderId); // ✅ Debug 3
@@ -38,7 +39,10 @@ const OrdersDeliverOptionPage = () => {
         console.error("❌ API Error:", error); // ✅ Debug 5
         toast.error("خطا در دریافت اطلاعات سفارش");
       } finally {
-        setLoading(false);
+        const elapsed = new Date().getTime() - nowTimeStamp;
+        setTimeout(() => {
+          setLoading(false);
+        }, Math.max(0, 500 - elapsed));
       }
     };
 
@@ -47,14 +51,7 @@ const OrdersDeliverOptionPage = () => {
 
   // ✅ Debug UI
   if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-blue-50">
-        <div className="text-center">
-          <Spinner />
-          <p className="mt-4">در حال بارگذاری...</p>
-        </div>
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (!order) {
@@ -78,7 +75,7 @@ const OrdersDeliverOptionPage = () => {
   return (
     <>
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div className="min-h-screen font-yekan-bakh bg-background-base-light dark:bg-[var(--color-background-primary-dark)] overflow-x-hidden flex flex-row-reverse justify-center self-center mx-auto">
         <main className="flex-1 pr-32 p-8 mt-8 mx-auto">

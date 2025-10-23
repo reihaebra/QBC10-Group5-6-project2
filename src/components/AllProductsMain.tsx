@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import AllProductsCard from "./AllProductsCard";
 import { getAllProducts } from "../api/requests/products";
 import Pagination from "./Pagination";
+import Spinner from "./Spinner";
 
 interface Product {
   _id?: number;
@@ -23,6 +24,7 @@ const AllProductsMain: React.FC = () => {
 
   useEffect(() => {
     const getData = async () => {
+      const nowTimeStamp = new Date().getTime();
       try {
         const data = await getAllProducts();
         setAllProducts(data);
@@ -34,7 +36,10 @@ const AllProductsMain: React.FC = () => {
         }
         console.error("Error fetching products:", error);
       } finally {
-        setLoading(false);
+        const elapsed = new Date().getTime() - nowTimeStamp;
+        setTimeout(() => {
+          setLoading(false);
+        }, Math.max(0, 500 - elapsed));
       }
     };
     getData();
@@ -46,28 +51,25 @@ const AllProductsMain: React.FC = () => {
     setVisibleProducts(allProducts.slice(startIndex, endIndex));
   }, [page, allProducts]);
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <div>
       <div className="font-yekan-bakh flex flex-wrap gap-8 justify-center h-fit">
-        {loading
-          ? Array.from({ length: itemsPerPage }).map((_, i) => (
-              <div
-                key={i}
-                className="w-xl h-[176px] bg-gray-200 animate-pulse rounded-lg"
-              ></div>
-            ))
-          : visibleProducts.map(
-              ({ _id, name, description, price, image, createdAt }) => (
-                <AllProductsCard
-                  key={_id}
-                  description={description}
-                  name={name}
-                  price={price}
-                  imageUrl={image}
-                  createdAt={createdAt}
-                />
-              )
-            )}
+        {visibleProducts.map(
+          ({ _id, name, description, price, image, createdAt }) => (
+            <AllProductsCard
+              key={_id}
+              description={description}
+              name={name}
+              price={price}
+              imageUrl={image}
+              createdAt={createdAt}
+            />
+          )
+        )}
       </div>
       <div className="flex justify-center ">
         {allProducts.length > 0 && (

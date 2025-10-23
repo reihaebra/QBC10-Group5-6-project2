@@ -1,7 +1,7 @@
 import Sidebar from "../components/ui/Sidebar";
 import ShowPageAside from "../components/ShopPageAside";
 import ShopPageProducts from "../components/ShopPageProducts";
-import UserDropdown from "../components/ui/UserDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import { useEffect, useRef, useState } from "react";
 import { getAllProducts } from "../api/requests/products";
 import { getProductsPagination } from "../api/requests/productsPagination";
@@ -27,7 +27,7 @@ const ShopPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-       const nowTimeStamp = new Date().getTime();
+      const nowTimeStamp = new Date().getTime();
       setLoading(true);
       try {
         if (selectedCategories.length > 0 || priceFilter) {
@@ -57,6 +57,7 @@ const ShopPage = () => {
   if (loading) {
     return <Spinner />;
   }
+
   const handleCategoryChange = (id: string, checked: boolean) => {
     setSelectedCategories((prev) =>
       checked ? [...prev, id] : prev.filter((item) => item !== id)
@@ -75,7 +76,7 @@ const ShopPage = () => {
   return (
     <div className="flex bg-background-base-light justify-between font-yekan-bakh dark:bg-[var(--color-background-primary-dark)]">
       <Sidebar>
-        <UserDropdown />
+        <SidebarDropdown />
       </Sidebar>
 
       <div className="flex gap-16 py-8 font-YekanBakh text-black bg-background-base-light dark:bg-[var(--color-background-primary-dark)] dark:text-white min-h-screen h-full pr-56">

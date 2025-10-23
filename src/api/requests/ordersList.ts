@@ -1,5 +1,4 @@
 import api from "../axios";
-import type { Order } from "../../../constants/order";
 
 export const getAllOrders = async () => {
   const response = await api.get("/orders", { timeout: 5000 });

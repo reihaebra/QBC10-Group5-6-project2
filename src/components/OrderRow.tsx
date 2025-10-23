@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import OrderRowButton from "./OrderRowButton";
 import ButtonPrimary from "./ui/ButtonPrimary";
-import type { Order } from "../pages/OrderPage";
 
 type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";

@@ -5,10 +5,10 @@ import OrderItemsTableAPI from "../components/OrderItemsTableAPI";
 import CustomerInfoAPI from "../components/CustomerInfoAPI";
 import OrderSummaryAPI from "../components/OrderSummaryAPI";
 import StatusStripAPI from "../components/StatusStripAPI";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Spinner from "../components/Spinner";
 import { getOrderById } from "../api/requests/ordersList";
-import type { Order } from "../../constants/order";
+import type { Order } from "../types/order";
 
 const OrdersDeliveredPage = () => {
   const { orderId } = useParams<{ orderId: string }>();
@@ -18,6 +18,7 @@ const OrdersDeliveredPage = () => {
   useEffect(() => {
     if (!orderId) return;
     const fetchOrder = async () => {
+      const nowTimeStamp = new Date().getTime();
       try {
         setLoading(true);
         const orderData = await getOrderById(orderId);
@@ -25,19 +26,24 @@ const OrdersDeliveredPage = () => {
       } catch (error) {
         console.error("Error:", error);
       } finally {
-        setLoading(false);
+        const elapsed = new Date().getTime() - nowTimeStamp;
+        setTimeout(() => {
+          setLoading(false);
+        }, Math.max(0, 500 - elapsed));
       }
     };
     fetchOrder();
   }, [orderId]);
 
-  if (loading) return <Spinner />;
+  if (loading) {
+    return <Spinner />;
+  }
   if (!order) return <div>سفارش یافت نشد</div>;
 
   return (
     <>
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div className="min-h-screen font-yekan-bakh bg-background-base-light dark:bg-[var(--color-background-primary-dark)] overflow-x-hidden flex flex-row-reverse justify-center self-center mx-auto">
         <main className="flex-1 pr-32 p-8 mt-8 mx-auto">
