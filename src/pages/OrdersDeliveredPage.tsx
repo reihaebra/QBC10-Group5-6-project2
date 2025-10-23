@@ -8,7 +8,7 @@ import StatusStripAPI from "../components/StatusStripAPI";
 import AdminDropdown from "../components/ui/AdminDropdown";
 import Spinner from "../components/Spinner";
 import { getOrderById } from "../api/requests/ordersList";
-import type { Order } from "../../constants/order";
+import type { Order } from "../types/order";
 
 const OrdersDeliveredPage = () => {
   const { orderId } = useParams<{ orderId: string }>();
@@ -54,7 +54,6 @@ const OrdersDeliveredPage = () => {
                 shippingPrice={order.shippingPrice}
                 totalPrice={order.totalPrice}
               />
-       
             </div>
           </div>
         </main>

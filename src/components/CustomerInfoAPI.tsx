@@ -1,4 +1,4 @@
-import type { ShippingAddress } from "../../constants/order";
+import type { ShippingAddress } from "../types/order";
 
 interface Props {
   data: ShippingAddress;

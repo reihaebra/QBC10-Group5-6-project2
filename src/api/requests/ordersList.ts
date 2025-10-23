@@ -1,5 +1,4 @@
 import api from "../axios";
-import type { Order } from "../../../constants/order";
 
 export const getAllOrders = async () => {
   const response = await api.get("/orders", { timeout: 5000 });
@@ -16,6 +15,10 @@ export const makeOrderPaid = async (id: string) => {
 };
 
 export const makeOrderDelivered = async (id: string) => {
-  const response = await api.put(`/orders/${id}/deliver`, {}, { timeout: 5000 });
+  const response = await api.put(
+    `/orders/${id}/deliver`,
+    {},
+    { timeout: 5000 }
+  );
   return response.data;
 };

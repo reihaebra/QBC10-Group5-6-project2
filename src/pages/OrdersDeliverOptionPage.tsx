@@ -9,13 +9,13 @@ import ButtonSecondary from "../components/ui/ButtonSecondary";
 import AdminDropdown from "../components/ui/AdminDropdown";
 import Spinner from "../components/Spinner";
 import { getOrderById } from "../api/requests/ordersList";
-import type { Order } from "../../constants/order";
+import type { Order } from "../types/order";
 import { toast } from "react-hot-toast";
 
 const OrdersDeliverOptionPage = () => {
   const { orderId } = useParams<{ orderId: string }>();
 
-  console.log("🔍 orderId:", orderId); 
+  console.log("🔍 orderId:", orderId);
 
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,19 +23,16 @@ const OrdersDeliverOptionPage = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       if (!orderId) {
-       
         setLoading(false);
         return;
       }
 
       try {
-       
         setLoading(true);
         const orderData = await getOrderById(orderId);
-         
+
         setOrder(orderData);
       } catch (error) {
-       
         toast.error("خطا در دریافت اطلاعات سفارش");
       } finally {
         setLoading(false);
@@ -45,7 +42,6 @@ const OrdersDeliverOptionPage = () => {
     fetchOrder();
   }, [orderId]);
 
-  
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-blue-50">
@@ -72,8 +68,6 @@ const OrdersDeliverOptionPage = () => {
       </div>
     );
   }
-
-
 
   return (
     <>

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import OrderRowButton from "./OrderRowButton";
 import ButtonPrimary from "./ui/ButtonPrimary";
-import type { Order } from "../pages/OrderPage";
 
 type PaymentStatus = "paid" | "unpaid";
 type TransitionStatus = "sent" | "pending" | "unsent";
@@ -16,7 +15,7 @@ interface OrderRowProps {
   transitionStatus: TransitionStatus;
   orderId: string | number;
   isDelivered: boolean;
-  onStatusUpdate: () => void; 
+  onStatusUpdate: () => void;
 }
 
 const OrderRow = ({
@@ -31,9 +30,8 @@ const OrderRow = ({
   isDelivered,
   onStatusUpdate,
 }: OrderRowProps) => {
-  
-  const detailLink = isDelivered 
-    ? `/admin/orders/${orderId}/delivered` 
+  const detailLink = isDelivered
+    ? `/admin/orders/${orderId}/delivered`
     : `/admin/orders/${orderId}`;
 
   return (
@@ -64,7 +62,6 @@ const OrderRow = ({
       </td>
 
       <td className="text-center align-middle">
-   
         <OrderRowButton
           status={paymentStatus}
           type="payment"
@@ -74,7 +71,6 @@ const OrderRow = ({
       </td>
 
       <td className="text-center align-middle">
-        
         <OrderRowButton
           status={transitionStatus}
           type="delivery"
@@ -85,7 +81,6 @@ const OrderRow = ({
 
       <td className="text-center align-middle">
         <div className="flex justify-center">
-         
           <Link to={detailLink}>
             <ButtonPrimary text={"جزئیات"} />
           </Link>
