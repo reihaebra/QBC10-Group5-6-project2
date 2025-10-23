@@ -4,7 +4,7 @@ interface Props {
   data: ShippingAddress;
 }
 
-const CustomerInfoAPI: React.FC<Props> = ({ data }) => (
+const AdminCustomerInfo: React.FC<Props> = ({ data }) => (
   <div className="w-lg">
     <h2 className="font-bold text-xl text-right mb-3">آدرس دریافت</h2>
     <div className="flex flex-col justify-between items-start gap-4 text-base leading-relaxed">
@@ -24,4 +24,4 @@ const CustomerInfoAPI: React.FC<Props> = ({ data }) => (
   </div>
 );
 
-export default CustomerInfoAPI;
+export default AdminCustomerInfo;
