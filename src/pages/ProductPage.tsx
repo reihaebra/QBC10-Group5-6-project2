@@ -48,9 +48,8 @@ interface productCategory {
 function ProductPage() {
   const [activeSection, setActiveSection] = useState("related");
   const [product, setProduct] = useState<Product | null>(null);
-  const [productCategory, setProductCategory] =
-    useState<productCategory | null>(null);
-  const { productId } = useParams<{ productId: string }>();
+  const [productCategory, setProductCategory] = useState<productCategory | null>(null);
+  const { productId } = useParams<{ productId: string  }>();
   console.log(productId);
 
   const [comments, setComments] = useState<Reviews[]>([]);
@@ -137,9 +136,7 @@ function ProductPage() {
           />
 
           <div className="flex flex-1 flex-col">
-            {activeSection === "related" && productId && (
-              <RelatedProducts productID={productId} />
-            )}
+            {activeSection === "related" && productId && (<RelatedProducts productID={productId}  />)}
 
             {activeSection === "add" && (
               <CommentForm onSubmit={handleCommentSubmit} />

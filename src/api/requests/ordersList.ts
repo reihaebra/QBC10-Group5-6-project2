@@ -9,13 +9,3 @@ export const getOrderById = async (id: string) => {
   const response = await api.get(`/orders/${id}`, { timeout: 5000 });
   return response.data;
 };
-
-export const makeOrderPaid = async (id: string) => {
-  const response = await api.put(`/orders/${id}/pay`, {}, { timeout: 5000 });
-  return response.data;
-};
-
-export const makeOrderDelivered = async (id: string) => {
-  const response = await api.put(`/orders/${id}/deliver`, {}, { timeout: 5000 });
-  return response.data;
-};

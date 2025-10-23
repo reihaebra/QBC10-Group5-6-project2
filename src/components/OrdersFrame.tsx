@@ -1,42 +1,14 @@
 import OrderRow from "./OrderRow";
 import type { Order } from "../pages/OrderPage";
-import { useState, useEffect } from "react";
-import { getAllOrders } from "../api/requests/ordersList";
 
 interface OrdersFrameProps {
   order: Order[];
 }
 
-const OrdersFrame = ({ order: initialOrders }: OrdersFrameProps) => {
-  const [orders, setOrders] = useState<Order[]>(initialOrders);
-
-  useEffect(() => {
-    setOrders(initialOrders);
-    const interval = setInterval(async () => {
-      try {
-        const freshOrders = await getAllOrders();
-        setOrders(freshOrders);
-      } catch (error) {
-        console.error("Refresh error:", error);
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [initialOrders]);
-
-  const handleStatusUpdate = async (orderId: string) => {
-    try {
-      const freshOrders = await getAllOrders();
-      setOrders(freshOrders);
-    } catch (error) {
-      console.error("Update error:", error);
-    }
-  };
-
+const OrdersFrame = ({ order }: OrdersFrameProps) => {
   return (
     <div className="w-full overflow-x-auto font-yekan-bakh dark:text-[var(--color-primary-text-dark)]">
       <table className="min-w-full border-collapse">
-        {/* Header بدون تغییر */}
         <thead>
           <tr className="border-b border-input-light dark:border-[var(--color-input-dark)]">
             <th className="text-right font-normal text-primary-text-light text-base dark:text-[var(--color-primary-text-dark)] pb-4">
@@ -67,8 +39,8 @@ const OrdersFrame = ({ order: initialOrders }: OrdersFrameProps) => {
         </thead>
 
         <tbody>
-          {orders?.length > 0 ? (
-            orders.map((item) => (
+          {order?.length > 0 ? (
+            order.map((item) => (
               <OrderRow
                 key={item._id as string}
                 imageUrl={item.orderItems[0]?.image ?? ""}
@@ -80,9 +52,7 @@ const OrdersFrame = ({ order: initialOrders }: OrdersFrameProps) => {
                 )}
                 paymentStatus={item.isPaid ? "paid" : "unpaid"}
                 transitionStatus={item.isDelivered ? "sent" : "unsent"}
-                orderId={item._id}
-                isDelivered={item.isDelivered}
-                onStatusUpdate={() => handleStatusUpdate(item._id as string)}
+                orderId={item._id} // ✅ orderId پاس داده شد
               />
             ))
           ) : (
