@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { OrderData } from "../api/requests/createOrder";
 import { useCartContext } from "../context/useCartContext";
 import type { OrderItem } from "../api/requests/createOrder";
+import { Navigate, useNavigate } from "react-router-dom";
 
 interface SummaryProps {
   address: string;
@@ -40,6 +41,8 @@ const SummarySection = (props: SummaryProps) => {
       console.log(response);
     };
     sendData();
+    const navigate = useNavigate();
+    navigate("/user/my-orders");
   }
 
   return (

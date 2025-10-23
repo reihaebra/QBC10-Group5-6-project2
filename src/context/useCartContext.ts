@@ -1,13 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "./cartContext";
-export interface Product {
-  id: string;
-  title: string;
-  price: number;
-  imageUrl?: string;
-  description?: string;
-  quantity?: number;
-}
+import type { Product } from "./CartContextProvider";
 export const useCartContext = (): {
   cart: Product[];
   addToCart: (product: Product) => void;
