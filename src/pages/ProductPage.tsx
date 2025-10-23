@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductContainer from "../components/ProductContainer";
-import UserDropdown from "../components/ui/UserDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Sidebar from "../components/ui/Sidebar";
 import SidebarLinks from "../components/SidebarLinks";
 import RelatedProducts from "../components/RelatedProducts";
@@ -130,7 +130,7 @@ function ProductPage() {
   return (
     <>
       <Sidebar>
-        <UserDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div className="flex flex-col pr-32 py-20 bg-background-base-light dark:bg-[var(--color-background-primary-dark)] min-h-screen h-full">
         {product && (

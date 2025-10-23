@@ -1,5 +1,5 @@
 import Sidebar from "../components/ui/Sidebar";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import toast from "react-hot-toast";
 import {
   type User,
@@ -195,7 +195,7 @@ export const UsersPage = () => {
   return (
     <>
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div
         className="px-14 pr-36 py-8 mx-auto w-full min-h-screen h-full font-yekan-bakh text-base 

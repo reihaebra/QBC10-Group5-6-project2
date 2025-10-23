@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ButtonPrimary from "../components/ui/ButtonPrimary";
 import Sidebar from "../components/ui/Sidebar";
 import TextField from "../components/ui/TextField";
-import UserDropdown from "../components/ui/UserDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import { getUserProfile, updateUserProfile } from "../api/requests/profile";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -83,7 +83,7 @@ const ProfilePage = () => {
     >
       <aside>
         <Sidebar>
-          <UserDropdown />
+          <SidebarDropdown />
         </Sidebar>
       </aside>
       <main className="w-full max-w-2xl">

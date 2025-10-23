@@ -1,6 +1,6 @@
 import Sidebar from "../components/ui/Sidebar";
 import OrdersFrame from "../components/OrdersFrame";
-import UserDropdown from "../components/ui/UserDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import { useEffect, useState } from "react";
 import type { Order } from "./OrderPage";
 import { getAllOrdersMine } from "../api/requests/getAllOrdersMine";
@@ -40,7 +40,7 @@ const UserOrdersPage = () => {
       bg-background-base-light dark:bg-[var(--color-background-primary-dark)] "
     >
       <Sidebar>
-        <UserDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div className="relative flex w-screen py-8 pl-10 pr-32">
         <OrdersFrame order={orders} />

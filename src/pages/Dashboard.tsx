@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DashboardCard from "../components/DashboardCard";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Sidebar from "../components/ui/Sidebar";
 import {
   BarChart,
@@ -83,7 +83,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
 
       <div

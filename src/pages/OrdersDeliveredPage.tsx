@@ -5,7 +5,7 @@ import OrderItemsTableAPI from "../components/OrderItemsTableAPI";
 import CustomerInfoAPI from "../components/CustomerInfoAPI";
 import OrderSummaryAPI from "../components/OrderSummaryAPI";
 import StatusStripAPI from "../components/StatusStripAPI";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import Spinner from "../components/Spinner";
 import { getOrderById } from "../api/requests/ordersList";
 import type { Order } from "../types/order";
@@ -43,7 +43,7 @@ const OrdersDeliveredPage = () => {
   return (
     <>
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
       <div className="min-h-screen font-yekan-bakh bg-background-base-light dark:bg-[var(--color-background-primary-dark)] overflow-x-hidden flex flex-row-reverse justify-center self-center mx-auto">
         <main className="flex-1 pr-32 p-8 mt-8 mx-auto">

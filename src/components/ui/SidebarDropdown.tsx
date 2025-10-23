@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-export const UserDropdown = () => {
+export const SidebarDropdown = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -22,10 +22,11 @@ export const UserDropdown = () => {
   // User menu items
   const userMenuItems = [
     { label: "پروفایل", path: "/profile" },
+    { label: "سفارشات من", path: "/user/my-orders" },
     { label: "خروج از حساب", path: "/login" },
   ];
 
-// Regular User or Admin?
+  // Regular User or Admin?
   const menuItems = isAdmin ? adminMenuItems : userMenuItems;
 
   // Handle logout
@@ -37,7 +38,7 @@ export const UserDropdown = () => {
           await authModule.logoutUser();
         }
       } catch (_) {
-        //optional 
+        //optional
       }
 
       localStorage.removeItem("token");
@@ -60,12 +61,14 @@ export const UserDropdown = () => {
   };
 
   return (
-    <div className="p-4 flex flex-col items-start font-yekan-bakh text-base text-regular relative">
+    <div className="p-2 flex flex-col items-start pb-4 font-yekan-bakh text-base text-regular relative">
       <div
-        className="flex items-center gap-4 cursor-pointer select-none"
+        className="flex items-center gap-3 cursor-pointer select-none"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-primary-text-light dark:text-white">{isAdmin ? "ادمین" : "کاربر"}</span>
+        <span className="text-primary-text-light dark:text-white">
+          {isAdmin ? "ادمین" : "کاربر"}
+        </span>
         <img
           src="../../public/icons/sidebar-more-light.svg"
           alt="user"
@@ -85,7 +88,7 @@ export const UserDropdown = () => {
       <div className="relative" onMouseLeave={() => setOpen(false)}>
         <ul
           className={`absolute bottom-full mb-8 flex flex-col bg-card-light border border-base-text-field-dark text-primary-text-light
-            gap-2 w-40 py-4 px-2 dark:text-white dark:bg-[var(--color-base-side-dark)]
+            gap-2 px-2 py-4 w-40 dark:text-white dark:bg-[var(--color-base-side-dark)]
             rounded-box transition-all duration-300 overflow-hidden z-10 ${
               open
                 ? "opacity-100 translate-y-0"
@@ -120,4 +123,4 @@ export const UserDropdown = () => {
   );
 };
 
-export default UserDropdown;
+export default SidebarDropdown;

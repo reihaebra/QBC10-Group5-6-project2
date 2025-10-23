@@ -1,6 +1,6 @@
 import Sidebar from "../components/ui/Sidebar";
 import OrdersFrame from "../components/OrdersFrame";
-import AdminDropdown from "../components/ui/AdminDropdown";
+import SidebarDropdown from "../components/ui/SidebarDropdown";
 import { useEffect, useState } from "react";
 import { getAllOrders } from "../api/requests/ordersList";
 import Spinner from "../components/Spinner";
@@ -91,7 +91,7 @@ const OrderPage = () => {
   return (
     <div className="relative flex min-h-screen h-full justify-between bg-background-base-light dark:bg-[var(--color-background-primary-dark)]">
       <Sidebar>
-        <AdminDropdown />
+        <SidebarDropdown />
       </Sidebar>
 
       <div className="relative flex flex-1 w-full py-8 pl-10 pr-32">
