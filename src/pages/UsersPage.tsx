@@ -1,6 +1,6 @@
 import Sidebar from "../components/ui/Sidebar";
 import SidebarDropdown from "../components/ui/SidebarDropdown";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import {
   type User,
   getAllUsers,
@@ -169,21 +169,26 @@ export const UsersPage = () => {
   };
 
   const handleDelete = async (userId: string) => {
-    if (!confirm("آیا مطمئن هستید که می‌خواهید این کاربر را حذف کنید؟")) return;
+    const userToDelete = allUsers.find((u) => u._id === userId);
+
+    if (userToDelete?.isAdmin) {
+      toast.error("نمی‌توان ادمین را حذف کرد");
+      return;
+    }
 
     try {
       setOperationLoading(userId);
       await deleteUser(userId);
 
       setAllUsers((prev) => prev.filter((user) => user._id !== userId));
-      toast.success("کاربر با موفقیت حذف شد ✅");
+      toast.success("کاربر با موفقیت حذف شد");
 
       if (currentUser.length === 1 && currentPage > 1) {
         setCurrentPage((prev) => prev - 1);
       }
     } catch (error) {
       console.error("Error deleting user:", error);
-      toast.error("خطا در حذف کاربر ⚠️");
+      toast.error("خطا در حذف کاربر");
     } finally {
       setOperationLoading(null);
     }
@@ -194,6 +199,7 @@ export const UsersPage = () => {
       <Sidebar>
         <SidebarDropdown />
       </Sidebar>
+      <Toaster position="top-right" />
       <div
         className="px-14 pr-36 py-8 mx-auto w-full min-h-screen h-full font-yekan-bakh text-base 
         font-normal bg-[var(--color-background-base-light)] dark:bg-[var(--color-background-primary-dark)] 
