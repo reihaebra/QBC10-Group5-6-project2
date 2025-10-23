@@ -30,7 +30,7 @@ const AllProductsCard: React.FC<ProductCardProps> = ({
           <h2 className="text-xl font-semibold text-primary-text-light dark:text-white">
             {shortText(name, 4)}
           </h2>
-          <p className="text-xs font-normal text-secondary-light">
+          <p className="text-xs font-normal text-secondary-light dark:text-[var(--color-secondary-dark)]">
             {formatPersianDate(createdAt)}
           </p>
         </div>
