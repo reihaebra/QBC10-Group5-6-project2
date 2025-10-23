@@ -95,7 +95,6 @@ const OrderRow = ({
 
       <td className="text-center align-middle">
         <div className="flex justify-center">
-          {/* handleClick */}
           <Link to={`/admin/orders/${orderId}`}>
             <ButtonPrimary text={"جزئیات"} />
           </Link>

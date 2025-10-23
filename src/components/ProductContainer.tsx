@@ -3,8 +3,8 @@ import InventoryDropdown from "../components/ui/InventoryDropdown";
 import ButtonFavorite from "./ui/ButtonFavorite";
 import { useState } from "react";
 import type { Product } from "../pages/ProductPage";
-import page from "../../public/icons/star-light.svg";
 import { useCartContext } from "../context/useCartContext";
+
 interface productCategory {
   _id: string | number;
   name: string;
@@ -218,10 +218,8 @@ const ProductContainer = ({
           <ButtonPrimary
             text="افزودن به سبد خرید"
             handleClick={() => {
-              console.log("we are in shop :" +product._id);
-              
               addToCart({
-                id: product._id as number,
+                id: product._id,
                 title: product.name,
                 price: Number(product.price),
                 quantity: quantity,
@@ -233,7 +231,11 @@ const ProductContainer = ({
         </div>
       </div>
       <div className="mr-60">
-        <ButtonFavorite />
+        <ButtonFavorite
+          title={product?.name}
+          price={product?.price.toString()}
+          imageUrl={product?.image}
+        />
       </div>
     </div>
   );

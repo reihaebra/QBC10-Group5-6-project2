@@ -1,6 +1,5 @@
 import ProductCard from "./ui/ProductCard";
 import { getAllProducts } from "../api/requests/products";
-import { getProductCategory } from "../api/requests/productCategory";
 import { useEffect, useState } from "react";
 import { getSingleProducts } from "../api/requests/singleProduct";
 

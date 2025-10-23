@@ -91,7 +91,6 @@ export const UsersPage = () => {
     setEditValues({ ...editValues, [field]: e.target.value });
   };
 
-  //  UPDATE
   const handleSave = async (index: number, field: "name" | "email") => {
     if (!editing || editing.index !== index) return;
 
@@ -102,7 +101,7 @@ export const UsersPage = () => {
       return;
     }
 
-    const userId = user._id; //  userId scope
+    const userId = user._id;
 
     const payload: UpdateUserPayload = {
       username: field === "name" ? editValues.name : user.username,
@@ -118,8 +117,8 @@ export const UsersPage = () => {
           u._id === userId
             ? {
                 ...u,
-                username: payload.username!, //  non-null assertion
-                email: payload.email!, //  non-null assertion
+                username: payload.username!,
+                email: payload.email!,
               }
             : u
         )
@@ -143,7 +142,6 @@ export const UsersPage = () => {
     setEditing(null);
   };
 
-  //  CHANGE ROLE: isAdmin
   const handleToggleAdmin = async (userId: string, currentIsAdmin: boolean) => {
     const payload: ChangeRolePayload = { isAdmin: !currentIsAdmin };
 
@@ -170,7 +168,6 @@ export const UsersPage = () => {
     }
   };
 
-  //  DELETE
   const handleDelete = async (userId: string) => {
     if (!confirm("آیا مطمئن هستید که می‌خواهید این کاربر را حذف کنید؟")) return;
 
@@ -232,7 +229,6 @@ export const UsersPage = () => {
                 >
                   <td className="text-sm py-2">{user._id}</td>
 
-                  {/* نام */}
                   <td className="px-4 py-2">
                     <div className="inline-flex items-center gap-2">
                       {editing?.index === index && editing?.field === "name" ? (
@@ -285,7 +281,6 @@ export const UsersPage = () => {
                     </div>
                   </td>
 
-                  {/* ایمیل */}
                   <td className="px-4 py-2">
                     <div className="inline-flex items-center gap-2">
                       {editing?.index === index &&
@@ -339,7 +334,6 @@ export const UsersPage = () => {
                     </div>
                   </td>
 
-                  {/* ✅ ادمین - با changeUserRole API */}
                   <td className="px-4 py-2">
                     <button
                       onClick={() => handleToggleAdmin(user._id, user.isAdmin)}
@@ -358,7 +352,6 @@ export const UsersPage = () => {
                     </button>
                   </td>
 
-                  {/* Delete */}
                   <td className="px-8 py-2 justify-items-end pl">
                     <button
                       onClick={() => handleDelete(user._id)}

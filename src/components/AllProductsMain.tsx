@@ -3,6 +3,7 @@ import AllProductsCard from "./AllProductsCard";
 import { getAllProducts } from "../api/requests/products";
 import Pagination from "./Pagination";
 import Spinner from "./Spinner";
+import { toast } from "react-hot-toast";
 
 interface Product {
   _id?: number;
@@ -27,14 +28,17 @@ const AllProductsMain: React.FC = () => {
       const nowTimeStamp = new Date().getTime();
       try {
         const data = await getAllProducts();
+
+        if (!data || data.length === 0) {
+          toast("محصولی یافت نشد.");
+        }
+
         setAllProducts(data);
         totalPages.current = Math.ceil(data.length / itemsPerPage);
         setVisibleProducts(data.slice(0, itemsPerPage));
-      } catch (error: any) {
-        if (error.code === "ECONNABORTED") {
-          console.error("Request timed out:", error.message);
-        }
+      } catch (error) {
         console.error("Error fetching products:", error);
+        toast.error("خطا در دریافت محصولات ❌");
       } finally {
         const elapsed = new Date().getTime() - nowTimeStamp;
         setTimeout(() => {
@@ -71,7 +75,7 @@ const AllProductsMain: React.FC = () => {
           )
         )}
       </div>
-      <div className="flex justify-center ">
+      <div className="flex justify-center">
         {allProducts.length > 0 && (
           <Pagination
             page={page}

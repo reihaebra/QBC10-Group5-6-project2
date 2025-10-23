@@ -14,9 +14,6 @@ import { toast } from "react-hot-toast";
 
 const OrdersDeliverOptionPage = () => {
   const { orderId } = useParams<{ orderId: string }>();
-
-  console.log("🔍 orderId:", orderId);
-
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -30,13 +27,11 @@ const OrdersDeliverOptionPage = () => {
       const nowTimeStamp = new Date().getTime();
 
       try {
-        console.log("📡 Fetching order:", orderId); 
         setLoading(true);
         const orderData = await getOrderById(orderId);
-        console.log("✅ Order data:", orderData); 
         setOrder(orderData);
       } catch (error) {
-        console.error("❌ API Error:", error); 
+        console.error("❌ API Error:", error);
         toast.error("خطا در دریافت اطلاعات سفارش");
       } finally {
         const elapsed = new Date().getTime() - nowTimeStamp;
@@ -49,7 +44,6 @@ const OrdersDeliverOptionPage = () => {
     fetchOrder();
   }, [orderId]);
 
-  
   if (loading) {
     return <Spinner />;
   }
@@ -70,8 +64,6 @@ const OrdersDeliverOptionPage = () => {
     );
   }
 
-  console.log("🎉 Rendering order:", order._id); 
-
   return (
     <>
       <Sidebar>
@@ -85,7 +77,10 @@ const OrdersDeliverOptionPage = () => {
             </div>
             <div className="w-96 flex flex-col gap-6">
               <AdminCustomerInfo data={order.shippingAddress} />
-              <AdminStatusStrip isPaid={order.isPaid} isDelivered={order.isDelivered} />
+              <AdminStatusStrip
+                isPaid={order.isPaid}
+                isDelivered={order.isDelivered}
+              />
               <AdminOrderSummary
                 itemsPrice={order.itemsPrice}
                 taxPrice={order.taxPrice}
