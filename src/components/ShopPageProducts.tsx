@@ -1,6 +1,5 @@
 import ShopProductCard from "./ui/ShopProductCard";
 import Pagination from "./Pagination";
-import Spinner from "./Spinner";
 import { useCartContext } from "../context/useCartContext";
 
 interface ProductShopPage {
@@ -35,8 +34,6 @@ const ShopPageProducts = ({
   onPageChange,
 }: ShopPageProductsProps) => {
   const { addToCart } = useCartContext()!;
-
-  
 
   return (
     <main className="flex flex-col items-center">

@@ -14,29 +14,24 @@ import { toast } from "react-hot-toast";
 
 const OrdersDeliverOptionPage = () => {
   const { orderId } = useParams<{ orderId: string }>();
-
-  console.log("🔍 orderId:", orderId); // ✅ Debug 1
-
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrder = async () => {
       if (!orderId) {
-        console.error("❌ No orderId!"); // ✅ Debug 2
+        console.error("❌ No orderId!");
         setLoading(false);
         return;
       }
       const nowTimeStamp = new Date().getTime();
 
       try {
-        console.log("📡 Fetching order:", orderId); // ✅ Debug 3
         setLoading(true);
         const orderData = await getOrderById(orderId);
-        console.log("✅ Order data:", orderData); // ✅ Debug 4
         setOrder(orderData);
       } catch (error) {
-        console.error("❌ API Error:", error); // ✅ Debug 5
+        console.error("❌ API Error:", error);
         toast.error("خطا در دریافت اطلاعات سفارش");
       } finally {
         const elapsed = new Date().getTime() - nowTimeStamp;
@@ -49,7 +44,6 @@ const OrdersDeliverOptionPage = () => {
     fetchOrder();
   }, [orderId]);
 
-  // ✅ Debug UI
   if (loading) {
     return <Spinner />;
   }
@@ -69,8 +63,6 @@ const OrdersDeliverOptionPage = () => {
       </div>
     );
   }
-
-  console.log("🎉 Rendering order:", order._id); // ✅ Debug 6
 
   return (
     <>

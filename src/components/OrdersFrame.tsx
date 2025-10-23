@@ -52,7 +52,7 @@ const OrdersFrame = ({ order }: OrdersFrameProps) => {
                 )}
                 paymentStatus={item.isPaid ? "paid" : "unpaid"}
                 transitionStatus={item.isDelivered ? "sent" : "unsent"}
-                orderId={item._id} // ✅ orderId پاس داده شد
+                orderId={item._id}
               />
             ))
           ) : (

@@ -6,10 +6,8 @@ export const SidebarDropdown = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Check role
   const isAdmin = localStorage.getItem("isAdmin") === "true";
 
-  // Admin menu items
   const adminMenuItems = [
     { label: "داشبورد", path: "/admin/dashboard" },
     { label: "محصول جدید", path: "/admin/products/new" },
@@ -19,17 +17,14 @@ export const SidebarDropdown = () => {
     { label: "خروج از حساب", path: "/login" },
   ];
 
-  // User menu items
   const userMenuItems = [
     { label: "پروفایل", path: "/profile" },
     { label: "سفارشات من", path: "/user/my-orders" },
     { label: "خروج از حساب", path: "/login" },
   ];
 
-  // Regular User or Admin?
   const menuItems = isAdmin ? adminMenuItems : userMenuItems;
 
-  // Handle logout
   const handleLogout = async () => {
     try {
       try {
@@ -37,9 +32,7 @@ export const SidebarDropdown = () => {
         if (authModule && typeof authModule.logoutUser === "function") {
           await authModule.logoutUser();
         }
-      } catch (_) {
-        //optional
-      }
+      } catch (_) {}
 
       localStorage.removeItem("token");
       localStorage.removeItem("id");

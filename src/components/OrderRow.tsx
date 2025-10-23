@@ -13,7 +13,7 @@ interface OrderRowProps {
   date: string;
   paymentStatus: PaymentStatus;
   transitionStatus: TransitionStatus;
-  orderId: string | number; // ✅ orderId اضافه شد
+  orderId: string | number;
 }
 
 const OrderRow = ({
@@ -24,7 +24,7 @@ const OrderRow = ({
   date,
   paymentStatus = "unpaid",
   transitionStatus = "unsent",
-  orderId, //  orderId prop
+  orderId,
 }: OrderRowProps) => {
   return (
     <tr className="bg-surface-light">
@@ -63,7 +63,6 @@ const OrderRow = ({
 
       <td className="text-center align-middle">
         <div className="flex justify-center">
-          {/* handleClick */}
           <Link to={`/admin/orders/${orderId}`}>
             <ButtonPrimary text={"جزئیات"} />
           </Link>
