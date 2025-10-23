@@ -1,14 +1,16 @@
-
 interface PaginationProps {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ page, totalPages, onPageChange }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  page,
+  totalPages,
+  onPageChange,
+}) => {
   return (
-    <div className="flex items-center gap-3 mt-6 self-start">
-      {/* دکمه قبلی */}
+    <div className="font-yekan-bakh flex items-center gap-3 mt-6 self-start">
       <button
         disabled={page === 1}
         onClick={() => onPageChange(page - 1)}
@@ -18,7 +20,6 @@ const Pagination: React.FC<PaginationProps> = ({ page, totalPages, onPageChange 
         قبلی
       </button>
 
-      {/* شماره صفحات */}
       <div className="flex gap-2">
         {Array.from({ length: totalPages || 0 }, (_, i) => i + 1).map((num) => (
           <button
@@ -36,7 +37,6 @@ const Pagination: React.FC<PaginationProps> = ({ page, totalPages, onPageChange 
         ))}
       </div>
 
-      {/* دکمه بعدی */}
       <button
         disabled={page === totalPages}
         onClick={() => onPageChange(page + 1)}
