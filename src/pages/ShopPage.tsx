@@ -27,7 +27,7 @@ const ShopPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-       const nowTimeStamp = new Date().getTime();
+      const nowTimeStamp = new Date().getTime();
       setLoading(true);
       try {
         if (selectedCategories.length > 0 || priceFilter) {
@@ -57,6 +57,7 @@ const ShopPage = () => {
   if (loading) {
     return <Spinner />;
   }
+
   const handleCategoryChange = (id: string, checked: boolean) => {
     setSelectedCategories((prev) =>
       checked ? [...prev, id] : prev.filter((item) => item !== id)

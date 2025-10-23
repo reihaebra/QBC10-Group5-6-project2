@@ -26,6 +26,7 @@ const OrdersDeliverOptionPage = () => {
         setLoading(false);
         return;
       }
+      const nowTimeStamp = new Date().getTime();
 
       try {
         setLoading(true);
@@ -35,7 +36,10 @@ const OrdersDeliverOptionPage = () => {
       } catch (error) {
         toast.error("خطا در دریافت اطلاعات سفارش");
       } finally {
-        setLoading(false);
+        const elapsed = new Date().getTime() - nowTimeStamp;
+        setTimeout(() => {
+          setLoading(false);
+        }, Math.max(0, 500 - elapsed));
       }
     };
 
@@ -43,14 +47,7 @@ const OrdersDeliverOptionPage = () => {
   }, [orderId]);
 
   if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-blue-50">
-        <div className="text-center">
-          <Spinner />
-          <p className="mt-4">در حال بارگذاری...</p>
-        </div>
-      </div>
-    );
+    return <Spinner />;
   }
 
   if (!order) {

@@ -6,6 +6,7 @@ import UserDropdown from "../components/ui/UserDropdown";
 import { getUserProfile, updateUserProfile } from "../api/requests/profile";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState({
@@ -46,6 +47,7 @@ const ProfilePage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const nowTimeStamp = new Date().getTime();
 
     if (profile.password !== profile.confirmPassword) {
       toast.error("رمزعبور و تکرار آن مطابقت ندارند.");
@@ -53,7 +55,6 @@ const ProfilePage = () => {
     }
 
     try {
-      setLoading(true);
       await updateUserProfile({
         username: profile.username,
         email: profile.email,
@@ -64,12 +65,15 @@ const ProfilePage = () => {
       console.error("Error updating profile: ", e);
       toast.error("خطا در بروزرسانی پروفایل.");
     } finally {
-      setLoading(false);
+      const elapsed = new Date().getTime() - nowTimeStamp;
+      setTimeout(() => {
+        setLoading(false);
+      }, Math.max(0, 500 - elapsed));
     }
   };
 
   if (loading) {
-    return <p>در حال بارگذاری اطلاعات کاربر...</p>;
+    return <Spinner />;
   }
 
   return (

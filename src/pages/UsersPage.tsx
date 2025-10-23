@@ -11,6 +11,7 @@ import {
   type ChangeRolePayload,
 } from "../api/requests/adminUsers";
 import { useState, useEffect } from "react";
+import Spinner from "../components/Spinner";
 
 export const UsersPage = () => {
   const [loading, setLoading] = useState(true);
@@ -34,6 +35,7 @@ export const UsersPage = () => {
   }, []);
 
   const fetchUsers = async () => {
+    const nowTimeStamp = new Date().getTime();
     try {
       setLoading(true);
       const res = await getAllUsers();
@@ -42,16 +44,16 @@ export const UsersPage = () => {
       console.error("Error fetching users:", error);
       toast.error("خطا در دریافت لیست کاربران ⚠️");
     } finally {
-      setLoading(false);
+      const elapsed = new Date().getTime() - nowTimeStamp;
+      setTimeout(() => {
+        setLoading(false);
+      }, Math.max(0, 500 - elapsed));
     }
   };
 
-  if (loading)
-    return (
-      <div className="flex min-h-screen items-center justify-center text-gray-400">
-        در حال بارگذاری کاربران...
-      </div>
-    );
+  if (loading) {
+    return <Spinner />;
+  }
 
   if (!allUsers || allUsers.length === 0)
     return (

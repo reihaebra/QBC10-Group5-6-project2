@@ -55,6 +55,7 @@ const OrderPage = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
+      const nowTimeStamp = new Date().getTime();
       try {
         console.log("📡 Fetching orders...");
         const response = await getAllOrders();
@@ -71,7 +72,10 @@ const OrderPage = () => {
         console.error("❌ Error fetching orders:", error);
         setOrders([]);
       } finally {
-        setLoading(false);
+        const elapsed = new Date().getTime() - nowTimeStamp;
+        setTimeout(() => {
+          setLoading(false);
+        }, Math.max(0, 500 - elapsed));
       }
     };
 
@@ -81,11 +85,7 @@ const OrderPage = () => {
   console.log("🎯 Rendering with orders:", orders.length);
 
   if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Spinner />
-      </div>
-    );
+    return <Spinner />;
   }
 
   return (

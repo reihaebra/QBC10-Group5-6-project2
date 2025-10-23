@@ -18,6 +18,7 @@ const OrdersDeliveredPage = () => {
   useEffect(() => {
     if (!orderId) return;
     const fetchOrder = async () => {
+      const nowTimeStamp = new Date().getTime();
       try {
         setLoading(true);
         const orderData = await getOrderById(orderId);
@@ -25,13 +26,18 @@ const OrdersDeliveredPage = () => {
       } catch (error) {
         console.error("Error:", error);
       } finally {
-        setLoading(false);
+        const elapsed = new Date().getTime() - nowTimeStamp;
+        setTimeout(() => {
+          setLoading(false);
+        }, Math.max(0, 500 - elapsed));
       }
     };
     fetchOrder();
   }, [orderId]);
 
-  if (loading) return <Spinner />;
+  if (loading) {
+    return <Spinner />;
+  }
   if (!order) return <div>سفارش یافت نشد</div>;
 
   return (
